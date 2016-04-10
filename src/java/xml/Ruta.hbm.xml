@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 10-abr-2016 14:40:22 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class name="modelo.Ruta" optimistic-lock="version" schema="public" table="ruta">
+    <id name="idRuta" type="int">
+      <column name="id_ruta"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="modelo.Automovil" fetch="select" name="automovil">
+      <column name="id_auto" not-null="true"/>
+    </many-to-one>
+    <property name="mapa" type="string">
+      <column length="256" name="mapa" not-null="true"/>
+    </property>
+    <property name="descripcion" type="string">
+      <column length="120" name="descripcion"/>
+    </property>
+    <property name="activa" type="boolean">
+      <column name="activa" not-null="true"/>
+    </property>
+    <property name="fechaCreacion" type="date">
+      <column length="13" name="fecha_creacion" not-null="true"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="pasajeroRutas" table="pasajero_ruta">
+      <key>
+        <column name="id_ruta" not-null="true"/>
+      </key>
+      <one-to-many class="modelo.PasajeroRuta"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="horarios" table="horario">
+      <key>
+        <column name="id_ruta" not-null="true"/>
+      </key>
+      <one-to-many class="modelo.Horario"/>
+    </set>
+  </class>
+</hibernate-mapping>

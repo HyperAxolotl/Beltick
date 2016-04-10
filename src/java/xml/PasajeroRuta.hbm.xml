@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 10-abr-2016 14:40:22 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class name="modelo.PasajeroRuta" optimistic-lock="version" schema="public" table="pasajero_ruta">
+    <composite-id class="modelo.PasajeroRutaId" name="id">
+      <key-property name="idPasajero" type="int">
+        <column name="id_pasajero"/>
+      </key-property>
+      <key-property name="idRuta" type="int">
+        <column name="id_ruta"/>
+      </key-property>
+    </composite-id>
+    <many-to-one class="modelo.Pasajero" fetch="select" insert="false" name="pasajero" update="false">
+      <column name="id_pasajero" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="modelo.Ruta" fetch="select" insert="false" name="ruta" update="false">
+      <column name="id_ruta" not-null="true"/>
+    </many-to-one>
+    <property name="dia" type="int">
+      <column name="dia" not-null="true"/>
+    </property>
+  </class>
+</hibernate-mapping>

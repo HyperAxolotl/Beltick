@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 10-abr-2016 14:40:22 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class name="modelo.Horario" optimistic-lock="version" schema="public" table="horario">
+    <id name="idHorario" type="int">
+      <column name="id_horario"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="modelo.Ruta" fetch="select" name="ruta">
+      <column name="id_ruta" not-null="true"/>
+    </many-to-one>
+    <property name="lunes" type="java.lang.Integer">
+      <column name="lunes"/>
+    </property>
+    <property name="martes" type="java.lang.Integer">
+      <column name="martes"/>
+    </property>
+    <property name="miercoles" type="java.lang.Integer">
+      <column name="miercoles"/>
+    </property>
+    <property name="jueves" type="java.lang.Integer">
+      <column name="jueves"/>
+    </property>
+    <property name="viernes" type="java.lang.Integer">
+      <column name="viernes"/>
+    </property>
+    <property name="sabado" type="java.lang.Integer">
+      <column name="sabado"/>
+    </property>
+  </class>
+</hibernate-mapping>

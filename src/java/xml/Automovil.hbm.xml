@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 10-abr-2016 14:40:22 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class name="modelo.Automovil" optimistic-lock="version" schema="public" table="automovil">
+    <id name="idAutomovil" type="int">
+      <column name="id_automovil"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="modelo.Chofer" fetch="select" name="chofer">
+      <column name="id_chofer" not-null="true"/>
+    </many-to-one>
+    <property name="noIdentificacion" type="int">
+      <column name="no_identificacion" not-null="true" unique="true"/>
+    </property>
+    <property name="modelo" type="string">
+      <column length="64" name="modelo" not-null="true"/>
+    </property>
+    <property name="placas" type="string">
+      <column length="8" name="placas" not-null="true" unique="true"/>
+    </property>
+    <property name="color" type="string">
+      <column length="32" name="color" not-null="true"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="rutas" table="ruta">
+      <key>
+        <column name="id_auto" not-null="true"/>
+      </key>
+      <one-to-many class="modelo.Ruta"/>
+    </set>
+  </class>
+</hibernate-mapping>
