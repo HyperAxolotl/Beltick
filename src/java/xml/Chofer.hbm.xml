@@ -1,41 +1,45 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 10-abr-2016 14:40:22 by Hibernate Tools 4.3.1 -->
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 10/04/2016 10:54:39 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-  <class name="modelo.Chofer" optimistic-lock="version" schema="public" table="chofer">
-    <id name="idChofer" type="int">
-      <column name="id_chofer"/>
-      <generator class="assigned"/>
-    </id>
-    <property name="cnombre" type="string">
-      <column length="64" name="cnombre" not-null="true"/>
-    </property>
-    <property name="capp" type="string">
-      <column length="64" name="capp" not-null="true"/>
-    </property>
-    <property name="capm" type="string">
-      <column length="64" name="capm" not-null="true"/>
-    </property>
-    <property name="cnoCuenta" type="string">
-      <column length="64" name="cno_cuenta" not-null="true" unique="true"/>
-    </property>
-    <property name="cnoId" type="string">
-      <column length="64" name="cno_id" not-null="true" unique="true"/>
-    </property>
-    <property name="cfechaNac" type="date">
-      <column length="13" name="cfecha_nac" not-null="true"/>
-    </property>
-    <set fetch="select" inverse="true" lazy="true" name="perfilChofers" table="perfil_chofer">
-      <key>
-        <column name="id_chofer" not-null="true"/>
-      </key>
-      <one-to-many class="modelo.PerfilChofer"/>
-    </set>
-    <set fetch="select" inverse="true" lazy="true" name="automovils" table="automovil">
-      <key>
-        <column name="id_chofer" not-null="true"/>
-      </key>
-      <one-to-many class="modelo.Automovil"/>
-    </set>
-  </class>
+    <class name="modelo.Chofer" table="chofer" schema="public" optimistic-lock="version">
+        <id name="idChofer" type="int">
+            <column name="id_chofer" />
+            <generator class="assigned" />
+        </id>
+        <property name="cnombre" type="string">
+            <column name="cnombre" length="64" not-null="true" />
+        </property>
+        <property name="capp" type="string">
+            <column name="capp" length="64" not-null="true" />
+        </property>
+        <property name="capm" type="string">
+            <column name="capm" length="64" not-null="true" />
+        </property>
+        <property name="cnoCuenta" type="string">
+            <column name="cno_cuenta" length="64" not-null="true" unique="true" />
+        </property>
+        <property name="cnoId" type="string">
+            <column name="cno_id" length="64" not-null="true" unique="true" />
+        </property>
+        <property name="cfechaNac" type="date">
+            <column name="cfecha_nac" length="13" not-null="true" />
+        </property>
+        <property name="ccontrasenia" type="string">
+            <column name="ccontrasenia" length="128" not-null="true" />
+        </property>
+        <set name="perfilChofers" table="perfil_chofer" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_chofer" not-null="true" />
+            </key>
+            <one-to-many class="modelo.PerfilChofer" />
+        </set>
+        <set name="automovils" table="automovil" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_chofer" not-null="true" />
+            </key>
+            <one-to-many class="modelo.Automovil" />
+        </set>
+    </class>
 </hibernate-mapping>

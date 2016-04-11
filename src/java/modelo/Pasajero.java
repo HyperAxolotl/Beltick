@@ -1,5 +1,5 @@
 package modelo;
-// Generated 10-abr-2016 14:40:20 by Hibernate Tools 4.3.1
+// Generated 10/04/2016 10:54:38 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -19,6 +19,7 @@ public class Pasajero  implements java.io.Serializable {
      private String pcorreo;
      private String pnoCuenta;
      private Date pfechaNac;
+     private String pcontrasenia;
      private Set pasajeroRutas = new HashSet(0);
      private Set perfilPasajeros = new HashSet(0);
 
@@ -26,7 +27,7 @@ public class Pasajero  implements java.io.Serializable {
     }
 
 	
-    public Pasajero(int idPasajero, String pnombre, String papp, String papm, String pcorreo, String pnoCuenta, Date pfechaNac) {
+    public Pasajero(int idPasajero, String pnombre, String papp, String papm, String pcorreo, String pnoCuenta, Date pfechaNac, String pcontrasenia) {
         this.idPasajero = idPasajero;
         this.pnombre = pnombre;
         this.papp = papp;
@@ -34,8 +35,9 @@ public class Pasajero  implements java.io.Serializable {
         this.pcorreo = pcorreo;
         this.pnoCuenta = pnoCuenta;
         this.pfechaNac = pfechaNac;
+        this.pcontrasenia = pcontrasenia;
     }
-    public Pasajero(int idPasajero, String pnombre, String papp, String papm, String pcorreo, String pnoCuenta, Date pfechaNac, Set pasajeroRutas, Set perfilPasajeros) {
+    public Pasajero(int idPasajero, String pnombre, String papp, String papm, String pcorreo, String pnoCuenta, Date pfechaNac, String pcontrasenia, Set pasajeroRutas, Set perfilPasajeros) {
        this.idPasajero = idPasajero;
        this.pnombre = pnombre;
        this.papp = papp;
@@ -43,6 +45,7 @@ public class Pasajero  implements java.io.Serializable {
        this.pcorreo = pcorreo;
        this.pnoCuenta = pnoCuenta;
        this.pfechaNac = pfechaNac;
+       this.pcontrasenia = pcontrasenia;
        this.pasajeroRutas = pasajeroRutas;
        this.perfilPasajeros = perfilPasajeros;
     }
@@ -95,6 +98,13 @@ public class Pasajero  implements java.io.Serializable {
     
     public void setPfechaNac(Date pfechaNac) {
         this.pfechaNac = pfechaNac;
+    }
+    public String getPcontrasenia() {
+        return this.pcontrasenia;
+    }
+    
+    public void setPcontrasenia(String pcontrasenia) {
+        this.pcontrasenia = pcontrasenia;
     }
     public Set getPasajeroRutas() {
         return this.pasajeroRutas;

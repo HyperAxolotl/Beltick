@@ -1,5 +1,5 @@
 package modelo;
-// Generated 10-abr-2016 14:40:20 by Hibernate Tools 4.3.1
+// Generated 10/04/2016 10:54:38 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -19,6 +19,7 @@ public class Chofer  implements java.io.Serializable {
      private String cnoCuenta;
      private String cnoId;
      private Date cfechaNac;
+     private String ccontrasenia;
      private Set perfilChofers = new HashSet(0);
      private Set automovils = new HashSet(0);
 
@@ -26,7 +27,7 @@ public class Chofer  implements java.io.Serializable {
     }
 
 	
-    public Chofer(int idChofer, String cnombre, String capp, String capm, String cnoCuenta, String cnoId, Date cfechaNac) {
+    public Chofer(int idChofer, String cnombre, String capp, String capm, String cnoCuenta, String cnoId, Date cfechaNac, String ccontrasenia) {
         this.idChofer = idChofer;
         this.cnombre = cnombre;
         this.capp = capp;
@@ -34,8 +35,9 @@ public class Chofer  implements java.io.Serializable {
         this.cnoCuenta = cnoCuenta;
         this.cnoId = cnoId;
         this.cfechaNac = cfechaNac;
+        this.ccontrasenia = ccontrasenia;
     }
-    public Chofer(int idChofer, String cnombre, String capp, String capm, String cnoCuenta, String cnoId, Date cfechaNac, Set perfilChofers, Set automovils) {
+    public Chofer(int idChofer, String cnombre, String capp, String capm, String cnoCuenta, String cnoId, Date cfechaNac, String ccontrasenia, Set perfilChofers, Set automovils) {
        this.idChofer = idChofer;
        this.cnombre = cnombre;
        this.capp = capp;
@@ -43,6 +45,7 @@ public class Chofer  implements java.io.Serializable {
        this.cnoCuenta = cnoCuenta;
        this.cnoId = cnoId;
        this.cfechaNac = cfechaNac;
+       this.ccontrasenia = ccontrasenia;
        this.perfilChofers = perfilChofers;
        this.automovils = automovils;
     }
@@ -95,6 +98,13 @@ public class Chofer  implements java.io.Serializable {
     
     public void setCfechaNac(Date cfechaNac) {
         this.cfechaNac = cfechaNac;
+    }
+    public String getCcontrasenia() {
+        return this.ccontrasenia;
+    }
+    
+    public void setCcontrasenia(String ccontrasenia) {
+        this.ccontrasenia = ccontrasenia;
     }
     public Set getPerfilChofers() {
         return this.perfilChofers;

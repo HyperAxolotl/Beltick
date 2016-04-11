@@ -7,13 +7,13 @@
     <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/beltick</property>
     <property name="hibernate.connection.username">hyperaxolotl</property>
     <property name="hibernate.connection.password">pancho</property>
-    <mapping resource="xml/Pasajero.hbm.xml"/>
-    <mapping resource="xml/PasajeroRuta.hbm.xml"/>
+    <mapping resource="xml/PerfilPasajero.hbm.xml"/>
     <mapping resource="xml/Chofer.hbm.xml"/>
     <mapping resource="xml/Automovil.hbm.xml"/>
-    <mapping resource="xml/PerfilChofer.hbm.xml"/>
+    <mapping resource="xml/PasajeroRuta.hbm.xml"/>
+    <mapping resource="xml/Pasajero.hbm.xml"/>
     <mapping resource="xml/Horario.hbm.xml"/>
-    <mapping resource="xml/PerfilPasajero.hbm.xml"/>
+    <mapping resource="xml/PerfilChofer.hbm.xml"/>
     <mapping resource="xml/Ruta.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

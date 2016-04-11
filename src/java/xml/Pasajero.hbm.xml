@@ -1,41 +1,45 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 10-abr-2016 14:40:22 by Hibernate Tools 4.3.1 -->
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 10/04/2016 10:54:39 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-  <class name="modelo.Pasajero" optimistic-lock="version" schema="public" table="pasajero">
-    <id name="idPasajero" type="int">
-      <column name="id_pasajero"/>
-      <generator class="assigned"/>
-    </id>
-    <property name="pnombre" type="string">
-      <column length="64" name="pnombre" not-null="true"/>
-    </property>
-    <property name="papp" type="string">
-      <column length="64" name="papp" not-null="true"/>
-    </property>
-    <property name="papm" type="string">
-      <column length="64" name="papm" not-null="true"/>
-    </property>
-    <property name="pcorreo" type="string">
-      <column length="128" name="pcorreo" not-null="true" unique="true"/>
-    </property>
-    <property name="pnoCuenta" type="string">
-      <column length="9" name="pno_cuenta" not-null="true" unique="true"/>
-    </property>
-    <property name="pfechaNac" type="date">
-      <column length="13" name="pfecha_nac" not-null="true"/>
-    </property>
-    <set fetch="select" inverse="true" lazy="true" name="pasajeroRutas" table="pasajero_ruta">
-      <key>
-        <column name="id_pasajero" not-null="true"/>
-      </key>
-      <one-to-many class="modelo.PasajeroRuta"/>
-    </set>
-    <set fetch="select" inverse="true" lazy="true" name="perfilPasajeros" table="perfil_pasajero">
-      <key>
-        <column name="id_pasajero" not-null="true"/>
-      </key>
-      <one-to-many class="modelo.PerfilPasajero"/>
-    </set>
-  </class>
+    <class name="modelo.Pasajero" table="pasajero" schema="public" optimistic-lock="version">
+        <id name="idPasajero" type="int">
+            <column name="id_pasajero" />
+            <generator class="assigned" />
+        </id>
+        <property name="pnombre" type="string">
+            <column name="pnombre" length="64" not-null="true" />
+        </property>
+        <property name="papp" type="string">
+            <column name="papp" length="64" not-null="true" />
+        </property>
+        <property name="papm" type="string">
+            <column name="papm" length="64" not-null="true" />
+        </property>
+        <property name="pcorreo" type="string">
+            <column name="pcorreo" length="128" not-null="true" unique="true" />
+        </property>
+        <property name="pnoCuenta" type="string">
+            <column name="pno_cuenta" length="9" not-null="true" unique="true" />
+        </property>
+        <property name="pfechaNac" type="date">
+            <column name="pfecha_nac" length="13" not-null="true" />
+        </property>
+        <property name="pcontrasenia" type="string">
+            <column name="pcontrasenia" length="128" not-null="true" />
+        </property>
+        <set name="pasajeroRutas" table="pasajero_ruta" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_pasajero" not-null="true" />
+            </key>
+            <one-to-many class="modelo.PasajeroRuta" />
+        </set>
+        <set name="perfilPasajeros" table="perfil_pasajero" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_pasajero" not-null="true" />
+            </key>
+            <one-to-many class="modelo.PerfilPasajero" />
+        </set>
+    </class>
 </hibernate-mapping>
