@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11/04/2016 03:54:24 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.PerfilPasajero" table="perfil_pasajero" schema="public" optimistic-lock="version">
+        <id name="idPpasajero" type="int">
+            <column name="id_ppasajero" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="pasajero" class="modelo.Pasajero" fetch="select">
+            <column name="id_pasajero" not-null="true" />
+        </many-to-one>
+        <property name="foto" type="string">
+            <column name="foto" length="256" />
+        </property>
+        <property name="sobreMi" type="string">
+            <column name="sobre_mi" length="256" />
+        </property>
+        <property name="estado" type="java.lang.Boolean">
+            <column name="estado" />
+        </property>
+    </class>
+</hibernate-mapping>
