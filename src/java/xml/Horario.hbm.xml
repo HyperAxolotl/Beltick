@@ -6,7 +6,9 @@
     <class name="modelo.Horario" table="horario" schema="public" optimistic-lock="version">
         <id name="idHorario" type="int">
             <column name="id_horario" />
-            <generator class="assigned" />
+            <generator class="sequence">
+                <param name="sequence">horario_id_horario_seq</param>
+            </generator>
         </id>
         <many-to-one name="ruta" class="modelo.Ruta" fetch="select">
             <column name="id_ruta" not-null="true" />

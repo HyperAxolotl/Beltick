@@ -6,7 +6,9 @@
     <class name="modelo.PerfilChofer" table="perfil_chofer" schema="public" optimistic-lock="version">
         <id name="idPchofer" type="int">
             <column name="id_pchofer" />
-            <generator class="assigned" />
+            <generator class="sequence">
+                <param name="sequence">perfil_chofer_id_pchofer_seq</param>
+            </generator>
         </id>
         <many-to-one name="chofer" class="modelo.Chofer" fetch="select">
             <column name="id_chofer" not-null="true" />

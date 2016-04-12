@@ -3,10 +3,13 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 11/04/2016 03:54:24 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="modelo.Pasajero" table="pasajero" schema="public" optimistic-lock="version">
+    <class name="modelo.Pasajero" table="pasajero" schema="public">
         <id name="idPasajero" type="int">
             <column name="id_pasajero" />
-            <generator class="assigned" />
+            <!--generator class="increment"/-->
+            <generator class="sequence">
+                <param name="sequence">pasajero_id_pasajero_seq</param>
+            </generator>
         </id>
         <property name="pnombre" type="string">
             <column name="pnombre" length="64" not-null="true" />

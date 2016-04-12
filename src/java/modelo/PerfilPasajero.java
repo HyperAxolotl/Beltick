@@ -19,12 +19,10 @@ public class PerfilPasajero  implements java.io.Serializable {
     }
 
 	
-    public PerfilPasajero(int idPpasajero, Pasajero pasajero) {
-        this.idPpasajero = idPpasajero;
+    public PerfilPasajero(Pasajero pasajero) {
         this.pasajero = pasajero;
     }
-    public PerfilPasajero(int idPpasajero, Pasajero pasajero, String foto, String sobreMi, Boolean estado) {
-       this.idPpasajero = idPpasajero;
+    public PerfilPasajero(Pasajero pasajero, String foto, String sobreMi, Boolean estado) {
        this.pasajero = pasajero;
        this.foto = foto;
        this.sobreMi = sobreMi;

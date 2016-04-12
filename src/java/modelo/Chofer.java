@@ -27,8 +27,7 @@ public class Chofer  implements java.io.Serializable {
     }
 
 	
-    public Chofer(int idChofer, String cnombre, String capp, String capm, String cnoCuenta, String cnoId, Date cfechaNac, String ccontrasenia) {
-        this.idChofer = idChofer;
+    public Chofer(String cnombre, String capp, String capm, String cnoCuenta, String cnoId, Date cfechaNac, String ccontrasenia) {
         this.cnombre = cnombre;
         this.capp = capp;
         this.capm = capm;
@@ -37,8 +36,7 @@ public class Chofer  implements java.io.Serializable {
         this.cfechaNac = cfechaNac;
         this.ccontrasenia = ccontrasenia;
     }
-    public Chofer(int idChofer, String cnombre, String capp, String capm, String cnoCuenta, String cnoId, Date cfechaNac, String ccontrasenia, Set perfilChofers, Set automovils) {
-       this.idChofer = idChofer;
+    public Chofer(String cnombre, String capp, String capm, String cnoCuenta, String cnoId, Date cfechaNac, String ccontrasenia, Set perfilChofers, Set automovils) {
        this.cnombre = cnombre;
        this.capp = capp;
        this.capm = capm;

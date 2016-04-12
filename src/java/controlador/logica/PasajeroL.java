@@ -21,9 +21,11 @@ public class PasajeroL implements Serializable{
     
     public boolean registrar(Pasajero p){
         boolean exito = false;
-        
+        System.out.println("\n\n\n\n\nComienza registro");
         try{
+            
             con = ConexionBD.getSessionFactory().openSession();
+            System.out.println("Conexion realizada");
             trans = con.beginTransaction();
             con.save(p);
             trans.commit();

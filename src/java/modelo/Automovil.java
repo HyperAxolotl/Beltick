@@ -23,16 +23,14 @@ public class Automovil  implements java.io.Serializable {
     }
 
 	
-    public Automovil(int idAutomovil, Chofer chofer, int noIdentificacion, String modelo, String placas, String color) {
-        this.idAutomovil = idAutomovil;
+    public Automovil(Chofer chofer, int noIdentificacion, String modelo, String placas, String color) {
         this.chofer = chofer;
         this.noIdentificacion = noIdentificacion;
         this.modelo = modelo;
         this.placas = placas;
         this.color = color;
     }
-    public Automovil(int idAutomovil, Chofer chofer, int noIdentificacion, String modelo, String placas, String color, Set rutas) {
-       this.idAutomovil = idAutomovil;
+    public Automovil(Chofer chofer, int noIdentificacion, String modelo, String placas, String color, Set rutas) {
        this.chofer = chofer;
        this.noIdentificacion = noIdentificacion;
        this.modelo = modelo;

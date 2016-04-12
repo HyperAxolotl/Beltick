@@ -6,7 +6,9 @@
     <class name="modelo.Ruta" table="ruta" schema="public" optimistic-lock="version">
         <id name="idRuta" type="int">
             <column name="id_ruta" />
-            <generator class="assigned" />
+            <generator class="sequence">
+                <param name="sequence">ruta_id_ruta_seq</param>
+            </generator>
         </id>
         <many-to-one name="automovil" class="modelo.Automovil" fetch="select">
             <column name="id_auto" not-null="true" />

@@ -28,9 +28,10 @@ public class PasajeroC implements Serializable {
         this.pasajero = pasajero;
     }
     
-    public String registro() { //might return boolean 
+    public String registro() { 
         boolean exito;
         exito = ayudante.registrar(pasajero);
+        ayudante = new PasajeroL();
         if(exito) 
             return "exito";
         else {

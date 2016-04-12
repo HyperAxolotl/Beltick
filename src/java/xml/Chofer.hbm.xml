@@ -6,7 +6,9 @@
     <class name="modelo.Chofer" table="chofer" schema="public" optimistic-lock="version">
         <id name="idChofer" type="int">
             <column name="id_chofer" />
-            <generator class="assigned" />
+            <generator class="sequence">
+                <param name="sequence">chofer_id_chofer_seq</param>
+            </generator>
         </id>
         <property name="cnombre" type="string">
             <column name="cnombre" length="64" not-null="true" />

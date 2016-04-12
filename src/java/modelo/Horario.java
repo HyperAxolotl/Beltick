@@ -22,12 +22,10 @@ public class Horario  implements java.io.Serializable {
     }
 
 	
-    public Horario(int idHorario, Ruta ruta) {
-        this.idHorario = idHorario;
+    public Horario(Ruta ruta) {
         this.ruta = ruta;
     }
-    public Horario(int idHorario, Ruta ruta, Integer lunes, Integer martes, Integer miercoles, Integer jueves, Integer viernes, Integer sabado) {
-       this.idHorario = idHorario;
+    public Horario(Ruta ruta, Integer lunes, Integer martes, Integer miercoles, Integer jueves, Integer viernes, Integer sabado) {
        this.ruta = ruta;
        this.lunes = lunes;
        this.martes = martes;

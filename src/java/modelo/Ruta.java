@@ -25,15 +25,13 @@ public class Ruta  implements java.io.Serializable {
     }
 
 	
-    public Ruta(int idRuta, Automovil automovil, String mapa, boolean activa, Date fechaCreacion) {
-        this.idRuta = idRuta;
+    public Ruta(Automovil automovil, String mapa, boolean activa, Date fechaCreacion) {
         this.automovil = automovil;
         this.mapa = mapa;
         this.activa = activa;
         this.fechaCreacion = fechaCreacion;
     }
-    public Ruta(int idRuta, Automovil automovil, String mapa, String descripcion, boolean activa, Date fechaCreacion, Set pasajeroRutas, Set horarios) {
-       this.idRuta = idRuta;
+    public Ruta(Automovil automovil, String mapa, String descripcion, boolean activa, Date fechaCreacion, Set pasajeroRutas, Set horarios) {
        this.automovil = automovil;
        this.mapa = mapa;
        this.descripcion = descripcion;

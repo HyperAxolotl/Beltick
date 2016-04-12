@@ -19,12 +19,10 @@ public class PerfilChofer  implements java.io.Serializable {
     }
 
 	
-    public PerfilChofer(int idPchofer, Chofer chofer) {
-        this.idPchofer = idPchofer;
+    public PerfilChofer(Chofer chofer) {
         this.chofer = chofer;
     }
-    public PerfilChofer(int idPchofer, Chofer chofer, String foto, String sobreMi, Boolean estado) {
-       this.idPchofer = idPchofer;
+    public PerfilChofer(Chofer chofer, String foto, String sobreMi, Boolean estado) {
        this.chofer = chofer;
        this.foto = foto;
        this.sobreMi = sobreMi;
