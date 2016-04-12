@@ -19,21 +19,21 @@ public class PasajeroL implements Serializable{
     private Session con;
     private Transaction trans;
     
-    public void registrar(Pasajero p){
-        //boolean exito = false;
+    public boolean registrar(Pasajero p){
+        boolean exito = false;
         
         try{
             con = ConexionBD.getSessionFactory().openSession();
             trans = con.beginTransaction();
             con.save(p);
             trans.commit();
-            //exito = true;
+            exito = true;
         }catch(Exception e){
             trans.rollback();
             e.printStackTrace();
         }finally{
             con.close();
-            //return exito;
+            return exito;
         }
      
     }

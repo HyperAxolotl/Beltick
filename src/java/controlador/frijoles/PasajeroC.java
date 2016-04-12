@@ -29,14 +29,14 @@ public class PasajeroC implements Serializable {
     }
     
     public String registro() { //might return boolean 
-        //boolean exito =
-        ayudante.registrar(pasajero);
-        //if(exito)
-        return "exito";
-       /* else {
-        //mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "La cagaste", null);
-        //faceContext.addMessage(null, mensaje);
-        return "error";
-        }*/
+        boolean exito;
+        exito = ayudante.registrar(pasajero);
+        if(exito) 
+            return "exito";
+        else {
+            //mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "La cagaste", null);
+            //faceContext.addMessage(null, mensaje);
+            return "error";
+        }
     }
 }
