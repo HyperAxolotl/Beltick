@@ -6,14 +6,17 @@ import modelo.ConexionBD;
 import modelo.Pasajero;
 import modelo.PerfilPasajero;
 import org.hibernate.Transaction;
+import utiles.Cripta;
 
 
 public class PasajeroL implements Serializable{
     private Session con;
     private Transaction trans;
     private PerfilPasajero perfil = new PerfilPasajero();
+    private Cripta cripta;
     
- 
+
+
     
     public FacesMessage registrar(Pasajero p, String confirmacion){
         FacesMessage mensaje = null;
@@ -21,9 +24,11 @@ public class PasajeroL implements Serializable{
                 return new FacesMessage(FacesMessage.SEVERITY_INFO, "Las contraseñas no coinciden", null);
         System.out.println("\n\n\n\n\nComienza registro de pasajero");
         try{
+            cripta = new Cripta();
             con = ConexionBD.getSessionFactory().openSession();
             System.out.println("Conexion realizada");
             trans = con.beginTransaction();
+            p.setPcontrasenia(cripta.encripta(confirmacion));
             con.save(p);
             trans.commit();
         }catch(Exception e){
