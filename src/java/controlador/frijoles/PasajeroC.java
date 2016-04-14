@@ -8,14 +8,18 @@ import javax.faces.application.FacesMessage;
 
 import modelo.Pasajero;
 import controlador.logica.PasajeroL;
+import javax.servlet.http.HttpServletRequest;
+
 
 @ManagedBean
 @SessionScoped
 public class PasajeroC implements Serializable {
 
     private Pasajero pasajero = new Pasajero();
+    private String confirmacion;
     private PasajeroL ayudante = new PasajeroL();
     private FacesMessage mensaje;
+    
     
     public PasajeroC() {
     }
@@ -28,16 +32,25 @@ public class PasajeroC implements Serializable {
         this.pasajero = pasajero;
     }
     
-    public String registro() { 
-        boolean exito;
-        exito = ayudante.registrar(pasajero);
+    public String registro() {
+        mensaje = ayudante.registrar(pasajero,confirmacion);
         ayudante = new PasajeroL();
-        if(exito) 
-            return "exito";
+        if(mensaje != null) {
+            FacesContext.getCurrentInstance().addMessage(null, mensaje);
+            return "";
+        }
         else {
-            //mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "La cagaste", null);
-            //faceContext.addMessage(null, mensaje);
+            if(ayudante.generaPerfil(pasajero))
+               return "exito";
             return "error";
         }
+    }
+    
+    public void setConfirmacion(String contrasenia){
+        confirmacion = contrasenia;
+    }
+
+    public String getConfirmacion() {
+        return confirmacion;
     }
 }

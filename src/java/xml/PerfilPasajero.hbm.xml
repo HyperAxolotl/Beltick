@@ -13,8 +13,8 @@
         <many-to-one name="pasajero" class="modelo.Pasajero" fetch="select">
             <column name="id_pasajero" not-null="true" />
         </many-to-one>
-        <property name="pfoto" type="string">
-            <column name="pfoto" length="256" />
+        <property name="pfoto" type="string" insert="false">
+            <column name="pfoto" length="256"  />
         </property>
         <property name="psobreMi" type="string">
             <column name="psobre_mi" length="256" />
