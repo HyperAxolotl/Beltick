@@ -11,9 +11,9 @@ public class PerfilPasajero  implements java.io.Serializable {
 
      private int idPpasajero;
      private Pasajero pasajero;
-     private String foto;
-     private String sobreMi;
-     private Boolean estado;
+     private String pfoto;
+     private String psobreMi;
+     private Boolean pestado;
 
     public PerfilPasajero() {
     }
@@ -22,11 +22,11 @@ public class PerfilPasajero  implements java.io.Serializable {
     public PerfilPasajero(Pasajero pasajero) {
         this.pasajero = pasajero;
     }
-    public PerfilPasajero(Pasajero pasajero, String foto, String sobreMi, Boolean estado) {
+    public PerfilPasajero(Pasajero pasajero, String pfoto, String psobreMi, Boolean pestado) {
        this.pasajero = pasajero;
-       this.foto = foto;
-       this.sobreMi = sobreMi;
-       this.estado = estado;
+       this.pfoto = pfoto;
+       this.psobreMi = psobreMi;
+       this.pestado = pestado;
     }
    
     public int getIdPpasajero() {
@@ -43,26 +43,26 @@ public class PerfilPasajero  implements java.io.Serializable {
     public void setPasajero(Pasajero pasajero) {
         this.pasajero = pasajero;
     }
-    public String getFoto() {
-        return this.foto;
+    public String getPfoto() {
+        return this.pfoto;
     }
     
-    public void setFoto(String foto) {
-        this.foto = foto;
+    public void setPfoto(String pfoto) {
+        this.pfoto = pfoto;
     }
-    public String getSobreMi() {
-        return this.sobreMi;
-    }
-    
-    public void setSobreMi(String sobreMi) {
-        this.sobreMi = sobreMi;
-    }
-    public Boolean getEstado() {
-        return this.estado;
+    public String getPsobreMi() {
+        return this.psobreMi;
     }
     
-    public void setEstado(Boolean estado) {
-        this.estado = estado;
+    public void setPsobreMi(String psobreMi) {
+        this.psobreMi = psobreMi;
+    }
+    public Boolean getPestado() {
+        return this.pestado;
+    }
+    
+    public void setPestado(Boolean pestado) {
+        this.pestado = pestado;
     }
 
 

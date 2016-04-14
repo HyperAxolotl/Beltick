@@ -13,14 +13,14 @@
         <many-to-one name="pasajero" class="modelo.Pasajero" fetch="select">
             <column name="id_pasajero" not-null="true" />
         </many-to-one>
-        <property name="foto" type="string">
-            <column name="foto" length="256" />
+        <property name="pfoto" type="string">
+            <column name="pfoto" length="256" />
         </property>
-        <property name="sobreMi" type="string">
-            <column name="sobre_mi" length="256" />
+        <property name="psobreMi" type="string">
+            <column name="psobre_mi" length="256" />
         </property>
-        <property name="estado" type="java.lang.Boolean">
-            <column name="estado" />
+        <property name="pestado" type="java.lang.Boolean">
+            <column name="pestado" />
         </property>
     </class>
 </hibernate-mapping>

@@ -13,14 +13,14 @@
         <many-to-one name="chofer" class="modelo.Chofer" fetch="select">
             <column name="id_chofer" not-null="true" />
         </many-to-one>
-        <property name="noIdentificacion" type="int">
-            <column name="no_identificacion" not-null="true" unique="true" />
+        <property name="noIdentificacion" type="string">
+            <column name="no_identificacion" length="64" not-null="true" unique="true" />
         </property>
         <property name="modelo" type="string">
             <column name="modelo" length="64" not-null="true" />
         </property>
-        <property name="placas" type="string">
-            <column name="placas" length="8" not-null="true" unique="true" />
+        <property name="placa" type="string">
+            <column name="placa" length="8" not-null="true" unique="true" />
         </property>
         <property name="color" type="string">
             <column name="color" length="32" not-null="true" />

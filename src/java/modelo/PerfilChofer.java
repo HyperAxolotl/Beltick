@@ -11,9 +11,9 @@ public class PerfilChofer  implements java.io.Serializable {
 
      private int idPchofer;
      private Chofer chofer;
-     private String foto;
-     private String sobreMi;
-     private Boolean estado;
+     private String cfoto;
+     private String csobreMi;
+     private Boolean cestado;
 
     public PerfilChofer() {
     }
@@ -22,11 +22,11 @@ public class PerfilChofer  implements java.io.Serializable {
     public PerfilChofer(Chofer chofer) {
         this.chofer = chofer;
     }
-    public PerfilChofer(Chofer chofer, String foto, String sobreMi, Boolean estado) {
+    public PerfilChofer(Chofer chofer, String cfoto, String csobreMi, Boolean cestado) {
        this.chofer = chofer;
-       this.foto = foto;
-       this.sobreMi = sobreMi;
-       this.estado = estado;
+       this.cfoto = cfoto;
+       this.csobreMi = csobreMi;
+       this.cestado = cestado;
     }
    
     public int getIdPchofer() {
@@ -43,26 +43,26 @@ public class PerfilChofer  implements java.io.Serializable {
     public void setChofer(Chofer chofer) {
         this.chofer = chofer;
     }
-    public String getFoto() {
-        return this.foto;
+    public String getCfoto() {
+        return this.cfoto;
     }
     
-    public void setFoto(String foto) {
-        this.foto = foto;
+    public void setCfoto(String cfoto) {
+        this.cfoto = cfoto;
     }
-    public String getSobreMi() {
-        return this.sobreMi;
-    }
-    
-    public void setSobreMi(String sobreMi) {
-        this.sobreMi = sobreMi;
-    }
-    public Boolean getEstado() {
-        return this.estado;
+    public String getCsobreMi() {
+        return this.csobreMi;
     }
     
-    public void setEstado(Boolean estado) {
-        this.estado = estado;
+    public void setCsobreMi(String csobreMi) {
+        this.csobreMi = csobreMi;
+    }
+    public Boolean getCestado() {
+        return this.cestado;
+    }
+    
+    public void setCestado(Boolean cestado) {
+        this.cestado = cestado;
     }
 
 

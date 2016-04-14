@@ -13,9 +13,9 @@ public class Automovil  implements java.io.Serializable {
 
      private int idAutomovil;
      private Chofer chofer;
-     private int noIdentificacion;
+     private String noIdentificacion;
      private String modelo;
-     private String placas;
+     private String placa;
      private String color;
      private Set rutas = new HashSet(0);
 
@@ -23,18 +23,18 @@ public class Automovil  implements java.io.Serializable {
     }
 
 	
-    public Automovil(Chofer chofer, int noIdentificacion, String modelo, String placas, String color) {
+    public Automovil(Chofer chofer, String noIdentificacion, String modelo, String placa, String color) {
         this.chofer = chofer;
         this.noIdentificacion = noIdentificacion;
         this.modelo = modelo;
-        this.placas = placas;
+        this.placa = placa;
         this.color = color;
     }
-    public Automovil(Chofer chofer, int noIdentificacion, String modelo, String placas, String color, Set rutas) {
+    public Automovil(Chofer chofer, String noIdentificacion, String modelo, String placa, String color, Set rutas) {
        this.chofer = chofer;
        this.noIdentificacion = noIdentificacion;
        this.modelo = modelo;
-       this.placas = placas;
+       this.placa = placa;
        this.color = color;
        this.rutas = rutas;
     }
@@ -53,11 +53,11 @@ public class Automovil  implements java.io.Serializable {
     public void setChofer(Chofer chofer) {
         this.chofer = chofer;
     }
-    public int getNoIdentificacion() {
+    public String getNoIdentificacion() {
         return this.noIdentificacion;
     }
     
-    public void setNoIdentificacion(int noIdentificacion) {
+    public void setNoIdentificacion(String noIdentificacion) {
         this.noIdentificacion = noIdentificacion;
     }
     public String getModelo() {
@@ -67,12 +67,12 @@ public class Automovil  implements java.io.Serializable {
     public void setModelo(String modelo) {
         this.modelo = modelo;
     }
-    public String getPlacas() {
-        return this.placas;
+    public String getPlaca() {
+        return this.placa;
     }
     
-    public void setPlacas(String placas) {
-        this.placas = placas;
+    public void setPlaca(String placa) {
+        this.placa = placa;
     }
     public String getColor() {
         return this.color;

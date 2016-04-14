@@ -16,6 +16,7 @@ public class Chofer  implements java.io.Serializable {
      private String cnombre;
      private String capp;
      private String capm;
+     private String ccorreo;
      private String cnoCuenta;
      private String cnoId;
      private Date cfechaNac;
@@ -27,19 +28,21 @@ public class Chofer  implements java.io.Serializable {
     }
 
 	
-    public Chofer(String cnombre, String capp, String capm, String cnoCuenta, String cnoId, Date cfechaNac, String ccontrasenia) {
+    public Chofer(String cnombre, String capp, String capm, String ccorreo, String cnoCuenta, String cnoId, Date cfechaNac, String ccontrasenia) {
         this.cnombre = cnombre;
         this.capp = capp;
         this.capm = capm;
+        this.ccorreo = ccorreo;
         this.cnoCuenta = cnoCuenta;
         this.cnoId = cnoId;
         this.cfechaNac = cfechaNac;
         this.ccontrasenia = ccontrasenia;
     }
-    public Chofer(String cnombre, String capp, String capm, String cnoCuenta, String cnoId, Date cfechaNac, String ccontrasenia, Set perfilChofers, Set automovils) {
+    public Chofer(String cnombre, String capp, String capm, String ccorreo, String cnoCuenta, String cnoId, Date cfechaNac, String ccontrasenia, Set perfilChofers, Set automovils) {
        this.cnombre = cnombre;
        this.capp = capp;
        this.capm = capm;
+       this.ccorreo = ccorreo;
        this.cnoCuenta = cnoCuenta;
        this.cnoId = cnoId;
        this.cfechaNac = cfechaNac;
@@ -75,6 +78,13 @@ public class Chofer  implements java.io.Serializable {
     
     public void setCapm(String capm) {
         this.capm = capm;
+    }
+    public String getCcorreo() {
+        return this.ccorreo;
+    }
+    
+    public void setCcorreo(String ccorreo) {
+        this.ccorreo = ccorreo;
     }
     public String getCnoCuenta() {
         return this.cnoCuenta;
