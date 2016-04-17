@@ -39,11 +39,7 @@ public class AutomovilC implements Serializable {
             FacesContext.getCurrentInstance().addMessage(null, mensaje);
             return "";
         }
-        else {
-            if(ayudante.generaPerfil())
-               return "exito";
-            return "error";
-        }
+        return "Terminado";
     }
     public String getConfirmacion() {
         return confirmacion;
