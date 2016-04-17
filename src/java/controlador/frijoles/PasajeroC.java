@@ -8,11 +8,12 @@ import javax.faces.application.FacesMessage;
 
 import modelo.Pasajero;
 import controlador.logica.PasajeroL;
+import javax.enterprise.context.RequestScoped;
 import javax.servlet.http.HttpServletRequest;
 
 
 @ManagedBean
-@SessionScoped
+@RequestScoped
 public class PasajeroC implements Serializable {
 
     private Pasajero pasajero = new Pasajero();

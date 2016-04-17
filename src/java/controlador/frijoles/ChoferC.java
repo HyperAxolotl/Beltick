@@ -8,11 +8,12 @@ import javax.faces.application.FacesMessage;
 
 import modelo.Chofer;
 import controlador.logica.ChoferL;
+import javax.enterprise.context.RequestScoped;
 import javax.servlet.http.HttpServletRequest;
 
 
 @ManagedBean
-@SessionScoped
+@RequestScoped
 public class ChoferC implements Serializable {
 
     private Chofer chofer = new Chofer();
