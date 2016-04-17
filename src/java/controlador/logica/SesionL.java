@@ -26,7 +26,7 @@ public class SesionL {
 		Pasajero pa = null;
 		try {
 			sesion = HibernateUtil.getSessionFactory().openSession();
-			String hql = "FROM Pasajero WHERE Pnombre = '" + p.getPnombre()
+			String hql = "FROM Pasajero WHERE Pcorreo = '" + p.getPcorreo()
 					+ "' and Pcontrasenia = '" + cripta.encripta(p.getPcontrasenia()) + "'";
 			Query query = sesion.createQuery(hql);
 			if (!query.list().isEmpty())
@@ -44,7 +44,7 @@ public class SesionL {
 		Chofer ch = null;
 		try {
 			sesion = HibernateUtil.getSessionFactory().openSession();
-			String hql = "FROM Chofer WHERE Cnombre = '" + c.getCnombre()
+			String hql = "FROM Chofer WHERE Ccorreo = '" + c.getCcorreo()
 					+ "' and Ccontrasenia = '" + cripta.encripta(c.getCcontrasenia()) + "'";
 			Query query = sesion.createQuery(hql);
 			if (!query.list().isEmpty())
