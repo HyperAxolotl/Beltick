@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head></h:head>
+<body>
+	<h:outputLabel value="No ha iniciado sesión" rendered="#{sesionC.verificarSesion() eq false}" />
+	<h:form rendered="#{sesionC.verificarSesion()}">			
+		<h:panelGrid columns="2">
+			<p>Iniciaste sesión como el usuario: </p>
+
+			<h:outputLabel value="#{sesionC.pasajero.pnombre}" />
+                        <br/>
+			<h:commandButton value="Cerrar Sesión"
+				action="#{sesionC.cerrarSesion()}" />
+		</h:panelGrid>
+	</h:form>
+        <h:button value="Otra página" outcome="otro" />
+</body>
+</html>
+
+
