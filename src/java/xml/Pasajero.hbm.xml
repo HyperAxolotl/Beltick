@@ -40,7 +40,7 @@
         </set>
         <set name="perfilPasajeros" table="perfil_pasajero" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="id_pasajero" not-null="true" />
+                <column name="id_pasajero" not-null="true" unique="true" />
             </key>
             <one-to-many class="modelo.PerfilPasajero" />
         </set>

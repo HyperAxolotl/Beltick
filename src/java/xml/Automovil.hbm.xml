@@ -11,7 +11,7 @@
             </generator>
         </id>
         <many-to-one name="chofer" class="modelo.Chofer" fetch="select">
-            <column name="id_chofer" not-null="true" />
+            <column name="id_chofer" not-null="true" unique="true" />
         </many-to-one>
         <property name="noIdentificacion" type="string">
             <column name="no_identificacion" length="64" not-null="true" unique="true" />
@@ -27,7 +27,7 @@
         </property>
         <set name="rutas" table="ruta" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="id_auto" not-null="true" />
+                <column name="id_auto" not-null="true" unique="true" />
             </key>
             <one-to-many class="modelo.Ruta" />
         </set>

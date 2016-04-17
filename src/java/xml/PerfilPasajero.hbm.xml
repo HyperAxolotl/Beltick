@@ -11,7 +11,7 @@
             </generator>
         </id>
         <many-to-one name="pasajero" class="modelo.Pasajero" fetch="select">
-            <column name="id_pasajero" not-null="true" />
+            <column name="id_pasajero" not-null="true" unique="true" />
         </many-to-one>
         <property name="pfoto" type="string" insert="false">
             <column name="pfoto" length="256"  />

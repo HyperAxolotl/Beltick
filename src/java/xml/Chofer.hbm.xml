@@ -36,13 +36,13 @@
         </property>
         <set name="perfilChofers" table="perfil_chofer" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="id_chofer" not-null="true" />
+                <column name="id_chofer" not-null="true" unique="true" />
             </key>
             <one-to-many class="modelo.PerfilChofer" />
         </set>
         <set name="automovils" table="automovil" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="id_chofer" not-null="true" />
+                <column name="id_chofer" not-null="true" unique="true" />
             </key>
             <one-to-many class="modelo.Automovil" />
         </set>

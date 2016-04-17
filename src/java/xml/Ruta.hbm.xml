@@ -33,7 +33,7 @@
         </set>
         <set name="horarios" table="horario" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="id_ruta" not-null="true" />
+                <column name="id_ruta" not-null="true" unique="true" />
             </key>
             <one-to-many class="modelo.Horario" />
         </set>

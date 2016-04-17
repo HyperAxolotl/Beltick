@@ -11,7 +11,7 @@
             </generator>
         </id>
         <many-to-one name="ruta" class="modelo.Ruta" fetch="select">
-            <column name="id_ruta" not-null="true" />
+            <column name="id_ruta" not-null="true" unique="true" />
         </many-to-one>
         <property name="lunes" type="java.lang.Integer">
             <column name="lunes" />
