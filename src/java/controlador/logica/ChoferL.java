@@ -3,37 +3,35 @@ import java.io.Serializable;
 import javax.faces.application.FacesMessage;
 import org.hibernate.Session;
 import modelo.ConexionBD;
-import modelo.Pasajero;
-import modelo.PerfilPasajero;
+import modelo.Chofer;
 import org.hibernate.Transaction;
 import utiles.Cripta;
 
 
-public class PasajeroL implements Serializable{
+public class ChoferL implements Serializable{
     private Session con;
     private Transaction trans;
-    private PerfilPasajero perfil = new PerfilPasajero();
     private Cripta cripta;
     
 
 
     
-    public FacesMessage registrar(Pasajero p, String confirmacion){
+    public FacesMessage registrar(Chofer c, String confirmacion){
         FacesMessage mensaje = null;
-        if(!confirmacion.equals(p.getPcontrasenia())) 
+        if(!confirmacion.equals(c.getCcontrasenia())) 
                 return new FacesMessage(FacesMessage.SEVERITY_INFO, "Las contraseñas no coinciden", null);
-        System.out.println("\n\n\n\n\nComienza registro de pasajero");
+        System.out.println("\n\n\n\n\nComienza registro de chofer");
         try{
             cripta = new Cripta();
             con = ConexionBD.getSessionFactory().openSession();
             System.out.println("Conexion realizada");
             trans = con.beginTransaction();
-            p.setPcontrasenia(cripta.encripta(confirmacion));
-            con.save(p);
+            c.setCcontrasenia(cripta.encripta(confirmacion));
+            con.save(c);
             trans.commit();
         }catch(Exception e){
             trans.rollback();
-            mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "Error con el registro del pasajero", null);
+            mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "Error con el registro del chofer", null);
             System.out.println("Esta es la excepcion "+e.getClass().getName());
             e.printStackTrace();
         }finally{

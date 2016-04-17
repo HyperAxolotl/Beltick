@@ -3,33 +3,25 @@ import java.io.Serializable;
 import javax.faces.application.FacesMessage;
 import org.hibernate.Session;
 import modelo.ConexionBD;
-import modelo.Pasajero;
-import modelo.PerfilPasajero;
+import modelo.Automovil;
 import org.hibernate.Transaction;
-import utiles.Cripta;
 
 
-public class PasajeroL implements Serializable{
+public class AutomovilL implements Serializable{
     private Session con;
     private Transaction trans;
-    private PerfilPasajero perfil = new PerfilPasajero();
-    private Cripta cripta;
     
 
 
     
-    public FacesMessage registrar(Pasajero p, String confirmacion){
+    public FacesMessage registrar(Automovil a, String confirmacion){
         FacesMessage mensaje = null;
-        if(!confirmacion.equals(p.getPcontrasenia())) 
-                return new FacesMessage(FacesMessage.SEVERITY_INFO, "Las contraseñas no coinciden", null);
-        System.out.println("\n\n\n\n\nComienza registro de pasajero");
+        System.out.println("\n\n\n\n\nComienza registro de automovil");
         try{
-            cripta = new Cripta();
             con = ConexionBD.getSessionFactory().openSession();
             System.out.println("Conexion realizada");
             trans = con.beginTransaction();
-            p.setPcontrasenia(cripta.encripta(confirmacion));
-            con.save(p);
+            con.save(a);
             trans.commit();
         }catch(Exception e){
             trans.rollback();
@@ -42,4 +34,5 @@ public class PasajeroL implements Serializable{
         }
      
     }
+   
 }
