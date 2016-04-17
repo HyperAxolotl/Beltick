@@ -65,7 +65,7 @@ public class SesionC implements Serializable {
             pa = sl.verificarDatos(this.p);
             if (pa != null) {
                 FacesContext.getCurrentInstance().getExternalContext()
-                        .getSessionMap().put("pasajero", pa);
+                        .getSessionMap().put("usuario", pa);
                 resultado = "inicio";
             } else 
                 resultado = "error";
@@ -78,8 +78,8 @@ public class SesionC implements Serializable {
             usc = sl.verificarDatos(this.c);
             if (usc != null) {
                 FacesContext.getCurrentInstance().getExternalContext()
-                        .getSessionMap().put("chofer", usc);
-                resultado = "exito";
+                        .getSessionMap().put("usuario", usc);
+                resultado = "inicioChofer";
             } else 
                 resultado = "error";
             } catch (Exception e) {
@@ -92,7 +92,7 @@ public class SesionC implements Serializable {
     public boolean verificarSesion() {
         boolean estado;
         if (FacesContext.getCurrentInstance().getExternalContext()
-                .getSessionMap().get("pasajero") == null) {
+                .getSessionMap().get("usuario") == null) {
             estado = false;
         } else {
             estado = true;

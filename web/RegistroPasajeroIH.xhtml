@@ -3,38 +3,39 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
     <h:head>
         <title>Facelet Title</title>
     </h:head>
+    
     <h:body>
-        <h2>Registro</h2>
         <h:form>
-		<h:panelGrid columns="2">
-		    <h:outputLabel value="Nombre" />
-                    <h:inputText value="#{pasajeroC.pasajero.pnombre}" />
-
-	            <h:outputLabel value="Apellido Paterno" />
-	            <h:inputText value="#{pasajeroC.pasajero.papp}" />
+            <h2>Registro</h2>
+            <h:panelGrid columns="2">
+	    <h:outputLabel value="Nombre" />
+            <h:inputText value="#{pasajeroC.pasajero.pnombre}" />
+            <h:outputLabel value="Apellido Paterno" />
+	    <h:inputText value="#{pasajeroC.pasajero.papp}" />
                         
-                    <h:outputLabel value="Apellido Materno" />
-                    <h:inputText value="#{pasajeroC.pasajero.papm}" />
+            <h:outputLabel value="Apellido Materno" />
+            <h:inputText value="#{pasajeroC.pasajero.papm}" />
                         
-                    <h:outputLabel value="Correo" />
-	            <h:inputText value="#{pasajeroC.pasajero.pcorreo}" />
+            <h:outputLabel value="Correo" />
+	    <h:inputText value="#{pasajeroC.pasajero.pcorreo}" />
                     
-                    <h:outputLabel value="Contraseña" />
-	            <h:inputText value="#{pasajeroC.pasajero.pcontrasenia}" />
+            <h:outputLabel value="Contraseña" />
+	    <h:inputText value="#{pasajeroC.pasajero.pcontrasenia}" />
                     
-                    <h:outputLabel value="Confirmación de Contraseña" />
-	            <h:inputText value="#{pasajeroC.confirmacion}" />
+            <h:outputLabel value="Confirmación de Contraseña" />
+	    <h:inputText value="#{pasajeroC.confirmacion}" />
                         
-                    <h:outputLabel value="Numero de Cuenta" />
-	            <h:inputText value="#{pasajeroC.pasajero.pnoCuenta}" />
+            <h:outputLabel value="Numero de Cuenta" />
+	    <h:inputText value="#{pasajeroC.pasajero.pnoCuenta}" />
                     
-                    <h:outputLabel value="Fecha de Nacimiento" />
-	            <h:inputText value="#{pasajeroC.pasajero.pfechaNac}">
-                        <f:convertDateTime pattern="dd-MM-yyyy"/>
-                    </h:inputText>
+            <h:outputLabel value="Fecha de Nacimiento" />
+	    <h:inputText value="#{pasajeroC.pasajero.pfechaNac}">
+                <f:convertDateTime pattern="dd-MM-yyyy"/>
+            </h:inputText>
                     
                     <!--input type="date" id="dt" onchange="mydate1();" />
                     <input type="text" id="ndt"  onclick="mydate();" />
@@ -62,5 +63,7 @@
                 <h:commandButton value="Registrar" action="#{pasajeroC.registro()}"/>
             </h:form>
     </h:body>
+    
+    
 </html>
 
