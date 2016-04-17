@@ -26,8 +26,8 @@ public class AutomovilL implements Serializable{
             trans.commit();
         }catch(Exception e){
             trans.rollback();
-            mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "Error con el registro del pasajero", null);
-            System.out.println("Esta es la excepcion "+e.getClass().getName());
+            mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "Error con el registro del automovil", null);
+            System.out.println("Esta es la excepcion " + e.getClass().getName());
             e.printStackTrace();
         }finally{
             con.close();

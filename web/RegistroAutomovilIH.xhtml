@@ -21,10 +21,12 @@
                         
                     <h:outputLabel value="Color" />
 	            <h:inputText value="#{automovilC.automovil.color}" />
-                    
+                    <h:outputLabel value="#{sesionC.chofer.ccorreo}" />                  
                    
 		</h:panelGrid>
-                <h:commandButton value="Registrar" action="#{automovilC.registro()}"/>
+                    <h:commandButton value="Registrar" action="#{automovilC.registro()}" >
+                             <f:actionListener binding="#{automovilC.automovil.setChofer(sesionC.chofer)}" />
+                    </h:commandButton>  
             </h:form>
     </h:body>
 </html>

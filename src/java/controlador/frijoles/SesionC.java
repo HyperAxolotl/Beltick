@@ -11,6 +11,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
 import controlador.logica.SesionL;
+import javax.faces.bean.SessionScoped;
 import modelo.Chofer;
 import modelo.Pasajero;
 
@@ -22,7 +23,7 @@ import modelo.Pasajero;
  * @author diana
  */
 @Named(value = "sesionC")
-
+@SessionScoped
 @ManagedBean
 public class SesionC implements Serializable {
 
@@ -67,6 +68,7 @@ public class SesionC implements Serializable {
                 FacesContext.getCurrentInstance().getExternalContext()
                         .getSessionMap().put("usuario", pa);
                 resultado = "inicioPasajero";
+                p = pa;
             } else 
                 resultado = "error";
             } catch (Exception e) {
@@ -80,6 +82,7 @@ public class SesionC implements Serializable {
                 FacesContext.getCurrentInstance().getExternalContext()
                         .getSessionMap().put("usuario", usc);
                 resultado = "inicioChofer";
+                c = usc;
             } else 
                 resultado = "error";
             } catch (Exception e) {
