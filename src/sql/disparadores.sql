@@ -11,7 +11,7 @@ FOR EACH ROW EXECUTE PROCEDURE cr_pperfil();
 
 CREATE or replace FUNCTION cr_cperfil() RETURNS TRIGGER AS $trig_cr_cperfil$
 begin
-INSERT INTO perfil_chofer (pestado,id_chofer) values(false,new.id_chofer);
+INSERT INTO perfil_chofer (cestado,id_chofer) values(false,new.id_chofer);
 return null;
 end;
 $trig_cr_cperfil$ LANGUAGE plpgsql;
