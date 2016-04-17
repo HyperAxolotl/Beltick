@@ -15,6 +15,15 @@
 		<h:messages />
 		
 		<h:panelGrid columns="2">			
+		
+			<h:outputLabel value="Usuario" />
+			<h:inputText value="#{sesionC.pasajero.pnombre}" />
+		
+			<h:outputLabel value="Contraseña" />
+			<h:inputSecret value="#{sesionC.pasajero.pcontrasenia}" />
+			
+			<h:commandButton value="Aceptar" action="#{sesionC.verificarDatos()}" />
+                       
                         <h:button value="Registrar" outcome="RegistroPasajeroIH"/>
 		</h:panelGrid>
 	</h:form>
