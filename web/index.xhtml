@@ -9,7 +9,7 @@
 <body>
 	<h:form>
 				
-		<h1>Iniciar Sesión</h1>
+		<h1>Iniciar Sesión Pasajero</h1>
 		
 		<h:messages />
 		
@@ -23,7 +23,23 @@
 			
 			<h:commandButton value="Aceptar" action="#{sesionC.verificarDatos()}" />
                        
-                        <h:button value="Registrar" outcome="RegistroPasajeroIH"/>
+                        <h:button value="Registrar pasajero" outcome="RegistroPasajeroIH"/>
+		</h:panelGrid>
+                
+                <h1>Iniciar Sesión Chofer</h1>
+                <h:panelGrid columns="2">			
+		
+			<h:outputLabel value="Usuario" />
+			<h:inputText value="#{sesionC.chofer.cnombre}" />
+		
+			<h:outputLabel value="Contraseña" />
+			<h:inputSecret value="#{sesionC.chofer.ccontrasenia}" />
+			
+			<h:commandButton value="Aceptar" action="#{sesionC.verificarDatos()}" >
+                             <f:actionListener binding="#{sesionC.setTipo(true)}" />
+                        </h:commandButton>
+                       
+                        <h:button value="Registrar pasajero" outcome="RegistroPasajeroIH"/>
 		</h:panelGrid>
 	</h:form>
 </body>
@@ -31,8 +47,9 @@
         <title>Beltick</title>
     </h:head>
     <h:body>
-        <h:button value ="Registro" outcome ="RegistroPasajeroIH" />
+        <h:button value ="Registrar chofer" outcome ="RegistroChoferIH" />
         <h:button value="Registro Automovil" outcome="RegistroAutomovilIH" />
+        <h:button value ="sesión chofer" outcome ="RegistroPasajeroIH" />
     </h:body>
 
 </html>
