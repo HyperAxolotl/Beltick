@@ -66,7 +66,7 @@ public class SesionC implements Serializable {
             if (pa != null) {
                 FacesContext.getCurrentInstance().getExternalContext()
                         .getSessionMap().put("usuario", pa);
-                resultado = "inicio";
+                resultado = "inicioPasajero";
             } else 
                 resultado = "error";
             } catch (Exception e) {
