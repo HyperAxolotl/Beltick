@@ -22,8 +22,6 @@
 			<h:inputSecret value="#{sesionC.pasajero.pcontrasenia}" />
 			
 			<h:commandButton value="Aceptar" action="#{sesionC.verificarDatos()}" />
-                       
-                        <h:button value="Registrar pasajero" outcome="RegistroPasajeroIH"/>
 		</h:panelGrid>
                 
                 <h1>Iniciar Sesión Chofer</h1>
@@ -38,8 +36,6 @@
 			<h:commandButton value="Aceptar" action="#{sesionC.verificarDatos()}" >
                              <f:actionListener binding="#{sesionC.setTipo(true)}" />
                         </h:commandButton>
-                       
-                        <h:button value="Registrar pasajero" outcome="RegistroPasajeroIH"/>
 		</h:panelGrid>
 	</h:form>
 </body>
@@ -47,9 +43,10 @@
         <title>Beltick</title>
     </h:head>
     <h:body>
+        <h2> Operaciones </h2>
+        <h:button value="Registrar pasajero" outcome="RegistroPasajeroIH"/>
         <h:button value ="Registrar chofer" outcome ="RegistroChoferIH" />
         <h:button value="Registro Automovil" outcome="RegistroAutomovilIH" />
-        <h:button value ="sesión chofer" outcome ="RegistroPasajeroIH" />
         <h:button value ="Explorar rutas" outcome ="ExplorarRutasIH" />
     </h:body>
 
