@@ -21,6 +21,7 @@ public class AutomovilL implements Serializable{
             con = ConexionBD.getSessionFactory().openSession();
             System.out.println("Conexion realizada");
             trans = con.beginTransaction();
+            //a.setChofer(chofer);
             con.save(a);
             trans.commit();
         }catch(Exception e){

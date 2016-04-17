@@ -11,20 +11,20 @@
         <h:form>
 		<h:panelGrid columns="2">
 		    <h:outputLabel value="Número de identificación" />
-                    <h:inputText value="#{AutomovilC.automovil.noIdentificacion}" />
+                    <h:inputText value="#{automovilC.automovil.noIdentificacion}" />
 
 	            <h:outputLabel value="Modelo" />
-	            <h:inputText value="#{AutomovilC.automovil.modelo}" />
+	            <h:inputText value="#{automovilC.automovil.modelo}" />
                         
                     <h:outputLabel value="Placa" />
-                    <h:inputText value="#{AutomovilC.automovil.placa}" />
+                    <h:inputText value="#{automovilC.automovil.placa}" />
                         
                     <h:outputLabel value="Color" />
-	            <h:inputText value="#{AutomovilC.automovil.color}" />
+	            <h:inputText value="#{automovilC.automovil.color}" />
                     
                    
 		</h:panelGrid>
-                <h:commandButton value="Registrar" action="#{pasajeroC.registro()}"/>
+                <h:commandButton value="Registrar" action="#{automovilC.registro()}"/>
             </h:form>
     </h:body>
 </html>
