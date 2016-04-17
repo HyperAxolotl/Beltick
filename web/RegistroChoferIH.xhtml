@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Bienvenido</title>
+    </h:head>
+    <h:body>
+        <h2>Registro</h2>
+        <h:form>
+		<h:panelGrid columns="2">
+		    <h:outputLabel value="Nombre" />
+                    <h:inputText value="#{choferC.pasajero.pnombre}" />
+
+	            <h:outputLabel value="Apellido Paterno" />
+	            <h:inputText value="#{choferC.pasajero.papp}" />
+                        
+                    <h:outputLabel value="Apellido Materno" />
+                    <h:inputText value="#{choferC.pasajero.papm}" />
+                        
+                    <h:outputLabel value="Correo" />
+	            <h:inputText value="#{choferC.pasajero.pcorreo}" />
+                    
+                    <h:outputLabel value="Contraseña" />
+	            <h:inputText value="#{choferC.pasajero.pcontrasenia}" />
+                    
+                    <h:outputLabel value="Confirmación de Contraseña" />
+	            <h:inputText value="#{choferC.confirmacion}" />
+                        
+                    <h:outputLabel value="Numero de Cuenta" />
+	            <h:inputText value="#{choferC.pasajero.pnoCuenta}" />
+                    
+                    <h:outputLabel value="Numero de Identificación (Licencia)" />
+	            <h:inputText value="#{choferC.pasajero.pnoCuenta}" />
+                    
+                    <h:outputLabel value="Fecha de Nacimiento" />
+	            <h:inputText value="#{choferC.pasajero.pfechaNac}">
+                        <f:convertDateTime pattern="dd-MM-yyyy"/>
+                    </h:inputText>
+                    
+                    <!--input type="date" id="dt" onchange="mydate1();" />
+                    <input type="text" id="ndt"  onclick="mydate();" />
+                    <input type="button" Value="Date" onclick="mydate();" />
+                    <script>
+                        function mydate()
+                        {
+                        /   /alert("");
+                            document.getElementById("dt").hidden=false;
+                            document.getElementById("ndt").hidden=true;
+                            }
+                            function mydate1()
+                            {
+                             d=new Date(document.getElementById("dt").value);
+                            dt=d.getDate();
+                            mn=d.getMonth();
+                            mn++;
+                            yy=d.getFullYear();
+                            document.getElementById("ndt").value=dt+"/"+mn+"/"+yy;
+                            document.getElementById("ndt").hidden=false;
+                            document.getElementById("dt").hidden=true;
+                            }
+                        </script-->
+		</h:panelGrid>
+                <h:commandButton value="Registrar" action="#{choferC.registro()}"/>
+            </h:form>
+    </h:body>
+</html>
