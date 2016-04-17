@@ -42,27 +42,4 @@ public class PasajeroL implements Serializable{
         }
      
     }
-    public boolean generaPerfil(Pasajero p) {
-        boolean exito = false;
-        System.out.println("Comienza generación de perfil");
-        perfil.setPasajero(p);
-        perfil.setPestado(false);
-        try {
-           con = ConexionBD.getSessionFactory().openSession();
-           System.out.println("Conexión exitosa");
-           trans = con.beginTransaction();
-           con.save(perfil);
-           trans.commit();
-           System.out.println("Inserción de perfil en la base exitosa");
-           exito = true;
-        } catch(Exception e) {
-            trans.rollback();
-            e.printStackTrace();
-        }
-        finally {
-            con.close();
-            perfil = new PerfilPasajero();
-            return exito;
-        }
-    }
 }

@@ -39,11 +39,7 @@ public class PasajeroC implements Serializable {
             FacesContext.getCurrentInstance().addMessage(null, mensaje);
             return "";
         }
-        else {
-            if(ayudante.generaPerfil(pasajero))
-               return "exito";
-            return "error";
-        }
+        return "exito";
     }
     
     public void setConfirmacion(String contrasenia){
