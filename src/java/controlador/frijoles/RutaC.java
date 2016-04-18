@@ -7,10 +7,11 @@ import java.io.Serializable;
 import modelo.Ruta;
 import controlador.logica.RutaL;
 import java.util.List;
+import javax.faces.bean.ViewScoped;
 import javax.servlet.http.HttpServletRequest;
 
 @ManagedBean
-@SessionScoped
+@ViewScoped
 public class RutaC {
     
     private Ruta ruta = new Ruta();
