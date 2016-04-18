@@ -8,6 +8,7 @@
     </h:head>
     <h:body>
         <h2>Explorar perfiles</h2>
+        <h:panelGrid columns="2">
         <h:form>
             <h:commandButton actionListener="#{perfilC.listarChoferes()}" value="Listar Choferes" />
             <h:dataTable value="#{perfilC.choferes}" var="pc">
@@ -19,6 +20,7 @@
                 </h:column>
                 </h:dataTable>
         </h:form>
+        
         <h:form>
             <h:commandButton actionListener="#{perfilC.listarPasajeros()}" value="Listar Pasajeros" />
             <h:dataTable value="#{perfilC.pasajeros}" var="pp">
@@ -30,6 +32,7 @@
                 </h:column>
                 </h:dataTable>
         </h:form>
+        </h:panelGrid>
     </h:body>
 </html>
 

@@ -11,10 +11,12 @@
 		<h:panelGrid columns="2">
 			<p>Iniciaste sesión como el usuario: </p>
 
-			<h:outputLabel value="#{sesionC.chofer.ccorreo}" />
-                        <br/>
-			<h:commandButton value="Cerrar Sesión"
+			<h:outputLabel value="#{sesionC.chofer.cnombre}" />
+                        <h:commandButton value="Cerrar Sesión"
 				action="#{sesionC.cerrarSesion()}" />
+                        <br/>
+			
+                        <h:button value="Registro Automovil" outcome="RegistroAutomovilIH" />
 		</h:panelGrid>
 	</h:form>
         
