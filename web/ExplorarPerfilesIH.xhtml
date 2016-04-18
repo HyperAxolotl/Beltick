@@ -8,13 +8,20 @@
     </h:head>
     <h:body>
         <h2>Explorar perfiles</h2>
+        <h:form>
+            <h:panelGrid columns="2">
+                <h:commandButton actionListener="#{perfilC.listarChoferes()}" value="Listar Choferes" />
+                <h:commandButton actionListener="#{perfilC.listarPasajeros()}" value="Listar Pasajeros" />
+            </h:panelGrid>
+        </h:form>    
+        
         <h:panelGrid columns="2">
         <h:form>
-            <h:commandButton actionListener="#{perfilC.listarChoferes()}" value="Listar Choferes" />
+            
             <h:dataTable value="#{perfilC.choferes}" var="pc">
                 <h:column>
                     <f:facet name="header">
-                        <h:outputLabel value="Nombre" />
+                        <h:outputLabel value="Nombre Chofer" />
                     </f:facet>
                     <h:outputLabel value="#{pc.chofer.cnombre}" />
                 </h:column>
@@ -22,11 +29,10 @@
         </h:form>
         
         <h:form>
-            <h:commandButton actionListener="#{perfilC.listarPasajeros()}" value="Listar Pasajeros" />
             <h:dataTable value="#{perfilC.pasajeros}" var="pp">
                 <h:column>
                     <f:facet name="header">
-                        <h:outputLabel value="Nombre" />
+                        <h:outputLabel value="Nombre Pasajero" />
                     </f:facet>
                     <h:outputLabel value="#{pp.pasajero.pnombre}" />
                 </h:column>

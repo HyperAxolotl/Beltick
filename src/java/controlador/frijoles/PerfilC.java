@@ -10,16 +10,17 @@ import modelo.PerfilPasajero;
 import modelo.PerfilChofer;
 import java.util.List;
 import javax.inject.Named;
-import javax.enterprise.context.RequestScoped;
+//import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+//import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 
 /**
  *
  * @author hyperaxolotl
  */
 @ManagedBean
-@RequestScoped
+@ViewScoped
 public class PerfilC {
     private List<PerfilPasajero> pasajeros;
     private List<PerfilChofer> choferes;
