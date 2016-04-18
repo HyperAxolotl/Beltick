@@ -36,9 +36,9 @@ public class AutomovilC implements Serializable {
         mensaje = ayudante.registrar(automovil,confirmacion);
         if(mensaje != null) {
             FacesContext.getCurrentInstance().addMessage(null, mensaje);
-            return "";
+            return "error";
         }
-        return "Terminado";
+        return "exito";
     }
     public String getConfirmacion() {
         return confirmacion;
