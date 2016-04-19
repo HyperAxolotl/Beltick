@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <h:body>
+        <ui:composition template="plantillas/vista1.xhtml">
+            <ui:define name="title">Acerca de nosotros</ui:define>
+            <ui:define name="top">
+                <div class="navbar-wrapper">
+                    <nav class="navbar navbar-inverse navbar-fixed-top">
+                        <div class="container-fluid">
+                            <div class="navbar-header">
+                                <a class="nav-brand">
+                                    <img style="max-width:120px;margin-top: -3px; float: left;" 
+                                         src="resources/imagenes/logobelt.png"
+                                         alt="Beltick by Hyperaxolotl"/>
+                                </a>
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span> 
+                                </button>   
+                            </div>
+
+                            <div class="collapse navbar-collapse">                    
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li><a href="faces/index.xhtml">Pagina Principal</a></li>
+                                    <li><a href="#sobreNosotros">Sobre nosotros</a></li>
+                                    <li><div class="dropdown dropdown-header">
+                                            <button class="btn btn-link dropdown-toggle" style="margin-top: 10px;" type="button" data-toggle="dropdown">
+                                                <b>Registrarse</b>
+                                                <span class="caret"></span></button>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="faces/RegistroPasajeroIH.xhtml" style="color:whitesmoke;">Registrarse como Pasajero</a></li>
+                                                <li><a href="faces/RegistroChoferIH.xhtml" style="color:whitesmoke;">Registrarse como Chofer</a></li> 
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </nav>
+                </div>
+            </ui:define>
+            <ui:define name="content">
+                <h2>¿Qué es Beltick?</h2>
+                <p>
+                    Beltick es un sistema de auto compartido para alumnos de la Facultad de Ciencias.
+                </p>
+                <h2>¿Cómo surgió Beltick?</h2>
+                <p>
+                    Como estudiantes universitarios, diariamente nos transportamos a la  escuela o facultad que nos corresponde. 
+                    Para algunos basta una caminata, para otros una fracción de ruta de camión,
+                    un tramo en auto o un par de líneas del metro, y la  mayoría requiere completar una odisea para llegar. 
+                    Muchos de nosotros compartimos ruta, a veces sin saberlo, 
+                    lo que quizás no compartimos es la cantidad de tiempo que invertimos en el transporte o el dinero que gastamos en ello. 
+                </p>
+                <h2>¿Qué ofrece Beltick?</h2>
+                <p>
+                    Beltick ofrecerá una plataforma para comunicar a los estudiantes que deseen ofrecer su vehículo como transporte escolar, 
+                    para viajar en compañía de sus compañeros, obteniendo una remuneración; y aquellos que deseen viajar más cómodos, 
+                    por un costo más conveniente. Los estudiantes registrados podrán chatear para organizarse, agregarse a una ruta 
+                    y calificar a los compañeros que les comparten un lugar en su auto para la mejora constante del servicio. 
+                </p>
+                
+                <h2>Aviso de privacidad</h2>
+                <p>
+                    En Beltick, con fundamento en la 
+                    Ley Federal de Protección de Datos Personales en Posesión de Particulares (en adelante la “Ley”) 
+                    le informamos lo siguiente:
+                </p>
+
+                <p>
+                    Seguimos todoslos principios que marca la Ley en la recolección 
+                   y manejo de datos personales como son licitud, calidad,
+                    consentimiento, información, finalidad, lealtad, proporcionalidad y responsabilidad.
+                </p>
+
+            
+                <p>El responsable de protección de datos personales de esta solicitud es Beltick.</p>
+
+                <p>Apegado a los términos del artículo 29 de la Ley Usted podrá ejercer sus derechos ARCO 
+                    (acceso, rectificación, cancelación u oposición de su información) 
+                </p>
+
+                <p>El presente aviso de privacidad cumple con los requisitos que marca el artículo 15 y 16 de la Ley.</p>
+
+                <p>Cualquiera de los derechos ARCO será resuleto en un plazo máximo de 20 días,
+                    plazo que podrá ser prorrogable por un plazo igual en caso de existir una causa justificada de Beltick.
+                    Lo anterior, en términos de lo establecido por el artículo 32 de la Ley.</p>
+                <p>Si existe algún cambio en esta política de privacidad informaremos mediante correo electrónico
+                a la dirección proporcionada por el usuario durante su registro</p>
+                <p>Beltick se reserva el derecho de cambiar y actualizar el presente aviso de privacidad. 
+                    No será responsable Beltick, si el aviso de privacidad sufrió algún cambio 
+                    y esta notificación de modificación por error en su cuenta de correo electrónico
+                    no lo recibió el cliente o de transmisión de datos.
+                    De no recibir respuesta alguna en un plazo de 72 horas a partir de enviado, 
+                    se entenderá que acepta de conformidad los cambios citados.</p>
+
+            </ui:define>
+                       
+            
+        </ui:composition>
+    </h:body>
+</html>
+

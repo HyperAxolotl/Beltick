@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="resources/css/default.css"/>
+   
+        <link rel="stylesheet" href="resources/css/vistas.css"/>
+
+        <meta charset="utf-8"/> 
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"/>
+        <script src="resources/js/bootstrap.js"/>
+    </h:head>
+
+    <h:body>
+
+        <div id="top">
+            <ui:insert name="top">
+                <title><ui:insert>Beltick</ui:insert></title>
+                <nav class="navbar navbar-inverse navbar-fixed-top">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <a class="nav-brand">
+                                    <img style="max-width:120px;margin-top: -3px; float: left;" 
+                                         src="resources/imagenes/logobelt.png"
+                                         alt="Beltick by Hyperaxolotl"/>
+                            </a>
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span> 
+                            </button>   
+                        </div>
+                        
+                    </div>
+                    
+                </nav>
+            </ui:insert>
+        </div>
+
+        <div id="content" class="center_content">
+            <ui:insert name="content">
+            s</ui:insert> 
+        </div>
+
+        <div id="bottom">
+            <ui:insert name="bottom">
+                            Creado por Hyperaxolotl
+            </ui:insert>
+        </div>
+
+    </h:body>
+
+</html>
