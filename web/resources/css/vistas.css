@@ -163,7 +163,7 @@ mueve el contenido a la izquierda y justifica el texto*/
     vertical-align: central;
 }
 
-.navbar .nav > li > a : hover {
+.navbar .nav > li > a :hover {
     color : #BFC7BB;
 }
 

@@ -5,79 +5,79 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
-    
-    
-    <h:body>
-        <ui:composition template="plantillas/vista1.xhtml">
-            <ui:define name="top">
-                <ui:define name="title">Beltick: Registro</ui:define>
+  
+  
+  <h:body>
+    <ui:composition template="plantillas/vista1.xhtml">
+      <ui:define name="top">
+        <ui:define name="title">Beltick: Registro</ui:define>
 
-                <div class="navbar-wrapper">
-                    <nav class="navbar navbar-inverse navbar-fixed-top">
-                        <div class="container-fluid">
-                            <div class="navbar-header">
-                                <a class="nav-brand">
-                                    <img style="max-width:120px;margin-top: -3px; float: left;" 
-                                         src="resources/imagenes/logobelt.png"
-                                         alt="Beltick by Hyperaxolotl"/>
-                                </a>
-                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span> 
-                                </button>   
-                            </div>
+        <div class="navbar-wrapper">
+          <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <a class="nav-brand">
+                  <img style="max-width:120px;margin-top: -3px; float: left;" 
+                       src="resources/imagenes/logobelt.png"
+                       alt="Beltick by Hyperaxolotl"/>
+                </a>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span> 
+                </button>   
+              </div>
 
-                            <div class="collapse navbar-collapse">                    
-                                <ul class="nav navbar-nav navbar-right">
-                                    <li><a href="faces/index.xhtml">Pagina Principal</a></li>
-                                    <li><a href="faces/Informacion.xhtml">Sobre nosotros</a></li>
-                                    <li><a href="faces/RegistroChoferIH.xhtml">Registrarse como chofer </a></li>      
-                                </ul>
-                            </div>
-                        </div>
-                    </nav>
-                </div>
-            </ui:define>
-            <ui:define name="content">
-                <section class="container">
-                    <h:form styleClass="form">
-                        <h:panelGrid columns="2">
-                            <h:outputLabel value="Nombre"/>
-                            <p:inputText style="text-align: left;" value="#{pasajeroC.pasajero.pnombre}"/>
-                            <h:outputLabel value="Apellido Paterno" />
-                            <p:inputText style="text-align: left;" value="#{pasajeroC.pasajero.papp}"/>
+              <div class="collapse navbar-collapse">                    
+                <ul class="nav navbar-nav navbar-right">
+                  <li><a href="faces/index.xhtml">Pagina Principal</a></li>
+                  <li><a href="faces/Informacion.xhtml">Sobre nosotros</a></li>
+                  <li><a href="faces/RegistroChoferIH.xhtml">Registrarse como chofer </a></li>      
+                </ul>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </ui:define>
+      <ui:define name="content">
+        <section class="container">
+          <h:form styleClass="form">
+            <h:panelGrid columns="2">
+              <h:outputLabel value="Nombre"/>
+              <p:inputText style="text-align: left;" value="#{pasajeroC.pasajero.pnombre}"/>
+              <h:outputLabel value="Apellido Paterno" />
+              <p:inputText style="text-align: left;" value="#{pasajeroC.pasajero.papp}"/>
 
-                            <h:outputLabel value="Apellido Materno" />
-                            <p:inputText style="text-align: left;" value="#{pasajeroC.pasajero.papm}"/>
+              <h:outputLabel value="Apellido Materno" />
+              <p:inputText style="text-align: left;" value="#{pasajeroC.pasajero.papm}"/>
 
-                            <h:outputLabel value="Correo" />
-                            <p:inputText style="text-align: left;" value="#{pasajeroC.pasajero.pcorreo}"/>
+              <h:outputLabel value="Correo" />
+              <p:inputText style="text-align: left;" value="#{pasajeroC.pasajero.pcorreo}"/>
 
-                            <h:outputLabel value="Contraseña" />
-                            <p:inputText style="text-align: left;" value="#{pasajeroC.pasajero.pcontrasenia}"/>
+              <h:outputLabel value="Contraseña" />
+              <p:inputText style="text-align: left;" value="#{pasajeroC.pasajero.pcontrasenia}"/>
 
-                            <h:outputLabel value="Confirmación de Contraseña" />
-                            <p:inputText style="text-align: left;" value="#{pasajeroC.confirmacion}" />
+              <h:outputLabel value="Confirmación de Contraseña" />
+              <p:inputText style="text-align: left;" value="#{pasajeroC.confirmacion}" />
 
-                            <h:outputLabel value="Numero de Cuenta" />
-                            <p:inputText style="text-align: left;" value="#{pasajeroC.pasajero.pnoCuenta}" />
+              <h:outputLabel value="Numero de Cuenta" />
+              <p:inputText style="text-align: left;" value="#{pasajeroC.pasajero.pnoCuenta}" />
 
-                            <h:outputLabel value="Fecha de Nacimiento" />
-                            <h:inputText style="text-align: left;" value="#{pasajeroC.pasajero.pfechaNac}">
-                                <f:convertDateTime pattern="dd-MM-yyyy"/>
-                            </h:inputText>
-                        </h:panelGrid>
-                        <section class="button">
-                            <h:commandButton style="width:100px; background-color: #9BA895;border-color: #82927B;"
-                                             value="Registrar" action="#{pasajeroC.registro()}"/>
-                        </section>
-                    </h:form>
-                </section>
-            </ui:define>
-        </ui:composition>
-    </h:body>
-    
-    
+              <h:outputLabel value="Fecha de Nacimiento" />
+              <h:inputText style="text-align: left;" value="#{pasajeroC.pasajero.pfechaNac}">
+                <f:convertDateTime pattern="dd-MM-yyyy"/>
+              </h:inputText>
+            </h:panelGrid>
+            <section class="button">
+              <h:commandButton style="width:100px; background-color: #9BA895;border-color: #82927B;"
+                               value="Registrar" action="#{pasajeroC.registro()}"/>
+            </section>
+          </h:form>
+        </section>
+      </ui:define>
+    </ui:composition>
+  </h:body>
+  
+  
 </html>
 
