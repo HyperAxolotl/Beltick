@@ -41,34 +41,46 @@
       <ui:define name="content">
         <section class="container">
           <h:form styleClass="form">
-            <h:panelGrid columns="2">
-              <h:outputLabel value="Nombre"/>
-              <p:inputText style="text-align: left;" value="#{choferC.chofer.cnombre}"/>
-              <h:outputLabel value="Apellido Paterno" />
-              <p:inputText style="text-align: left;" value="#{choferC.chofer.capp}"/>
-
-              <h:outputLabel value="Apellido Materno" />
-              <p:inputText style="text-align: left;" value="#{choferC.chofer.capm}"/>
-
-              <h:outputLabel value="Correo" />
-              <p:inputText style="text-align: left;" value="#{choferC.chofer.ccorreo}"/>
-
-              <h:outputLabel value="Contraseña" />
-              <p:inputText style="text-align: left;" value="#{choferC.chofer.ccontrasenia}"/>
-
-              <h:outputLabel value="Confirmación de Contraseña" />
-              <p:inputText style="text-align: left;" value="#{choferC.confirmacion}" />
-
-              <h:outputLabel value="Numero de Cuenta" />
-              <p:inputText style="text-align: left;" value="#{choferC.chofer.cnoCuenta}" />
-
-              <h:outputLabel value="Numero de Identificación (Licencia)" />
-              <p:inputText style="text-align: left;" value="#{choferC.chofer.cnoId}" />
+            <h:panelGrid columns="3">
+              <p:outputLabel for="nombre" value="Nombre"/>
+              <p:inputText id="nombre" required="true" style="text-align: left;" value="#{choferC.chofer.cnombre}"/>
+              <p:message for="nombre" display="text" />
               
-              <h:outputLabel value="Fecha de Nacimiento" />
-              <h:inputText style="text-align: left;" value="#{choferC.chofer.cfechaNac}">
+              <p:outputLabel for="app" value="Apellido Paterno" />
+              <p:inputText id="app" required="true" style="text-align: left;" value="#{choferC.chofer.capp}"/>
+              <p:message for="app" display="text" />
+
+              <p:outputLabel for="apm" value="Apellido Materno" />
+              <p:inputText id="apm" required="true" style="text-align: left;" value="#{choferC.chofer.capm}"/>
+              <p:message for="apm" display="text" />
+
+              <p:outputLabel for="correo" value="Correo" />
+              <p:inputText id="correo" required="true" style="text-align: left;" value="#{choferC.chofer.ccorreo}"/>
+              <p:message for="correo" display="text" />
+
+              <p:outputLabel for="contrasenia" value="Contraseña" />
+              <p:password id="contrasenia" required="true" style="text-align: left;" value="#{choferC.chofer.ccontrasenia}"
+                          feedback="true" inline="true" promptLabel="Ingresa una contraseña" 
+                          weakLabel="Débil" goodLabel="Medio" strongLabel="Fuerte" />
+              <p:message for="contrasenia" display="text" />
+
+              <p:outputLabel for="contraseniac" value="Confirmación de Contraseña" />
+              <p:password id="contraseniac" required="true" style="text-align: left;" value="#{choferC.confirmacion}" />
+              <p:message for="contraseniac" display="text" />
+
+              <p:outputLabel for="ncuenta" value="Numero de Cuenta" />
+              <p:inputText id="ncuenta" required="true" style="text-align: left;" value="#{choferC.chofer.cnoCuenta}" />
+              <p:message for="ncuenta" display="text" />
+
+              <p:outputLabel for="nid" value="Numero de Identificación (Licencia)" />
+              <p:inputText id="nid" required="true" style="text-align: left;" value="#{choferC.chofer.cnoId}" />
+              <p:message for="nid" display="text" />  
+              
+              <p:outputLabel for="fecha" value="Fecha de Nacimiento" />
+              <p:inputText id="fecha" required="true" style="text-align: left;" value="#{choferC.chofer.cfechaNac}">
                 <f:convertDateTime pattern="dd-MM-yyyy"/>
-              </h:inputText>
+              </p:inputText>
+              <p:message for="fecha" display="text" />
             </h:panelGrid>
             <section class="button">
               <h:commandButton style="width:100px; background-color: #9BA895;border-color: #82927B;" 
