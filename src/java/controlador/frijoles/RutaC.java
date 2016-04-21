@@ -41,14 +41,12 @@ public class RutaC {
         List<LatLng> l = decodePolyline(polyencod);
         for(LatLng coord : l)
             poly.getPaths().add(coord);
-        poly.setStrokeWeight(10);
-        poly.setStrokeColor("#FF9900");
-        poly.setStrokeOpacity(0.7);
-        
+        poly.setStrokeWeight(4);
+        poly.setStrokeColor("#DC143C");
+        poly.setStrokeOpacity(0.7);      
         modeloMapa.addOverlay(poly);
         return modeloMapa;
     }
-    
     
     private List<LatLng> decodePolyline(String encoded) {
  
