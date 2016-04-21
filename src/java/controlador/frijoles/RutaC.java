@@ -24,7 +24,7 @@ public class RutaC {
     private Ruta ruta = new Ruta();
     private RutaL rutaL = new RutaL();
     private List<Ruta> lstRutas;
-    private MapModel modeloMapa  = new DefaultMapModel();;
+    private MapModel modeloMapa;
    
     
     public List<Ruta> getLstRutas() {       
@@ -36,6 +36,7 @@ public class RutaC {
     }
     
     public MapModel getModeloMapa(String polyencod) {  
+        modeloMapa  = new DefaultMapModel();
         Polyline poly = new Polyline();
         List<LatLng> l = decodePolyline(polyencod);
         for(LatLng coord : l)
