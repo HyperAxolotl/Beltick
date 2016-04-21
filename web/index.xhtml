@@ -51,22 +51,22 @@
             <ui:define name="content">
                 <section class="container">
                     <h:form class="form-horizontal">
-                             <h1>Iniciar Sesión Pasajero</h1>
-                             <h:messages />
+                        <h1>Iniciar Sesión Pasajero</h1>
+                        <h:messages />
 
-                             <h:panelGrid columns="2" columnClasses="alignmentCenter">			
+                        <h:panelGrid columns="2" columnClasses="alignmentCenter">			
 
-                                 <h:outputLabel value="Correo " />
-                                 <p:inputText  style="text-align: left;" value="#{sesionC.pasajero.pcorreo}" />
+                            <h:outputLabel value="Correo " />
+                            <p:inputText  style="text-align: left;" value="#{sesionC.pasajero.pcorreo}" />
 
-                                 <h:outputLabel value="Contraseña   " />
-                                 <p:password style="text-align: left;" value="#{sesionC.pasajero.pcontrasenia}" />
-                                 <section name="button">
-                                     <h:commandButton styleClass="btn btn-info" value="Aceptar" action="#{sesionC.verificarDatos()}" />    
-                                 </section>
-                             </h:panelGrid>
-  
-                        
+                            <h:outputLabel value="Contraseña   " />
+                            <p:password style="text-align: left;" value="#{sesionC.pasajero.pcontrasenia}" />
+                            <section name="button">
+                                <h:commandButton styleClass="btn btn-info" value="Aceptar" action="#{sesionC.verificarDatos()}" />    
+                            </section>
+                        </h:panelGrid>
+
+
                         <h1>Iniciar Sesión Chofer</h1>
                         <h:panelGrid columns="2" columnClasses="alignmentCenter">			
 
@@ -80,7 +80,7 @@
                                     <f:actionListener binding="#{sesionC.setTipo(true)}" />
                                 </h:commandButton>
                             </section>    
-                            
+
                         </h:panelGrid>
                     </h:form>
                 </section>
@@ -97,6 +97,8 @@
         </ui:composition>
 
 
+        <br />
+        <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
     </h:body>
 
 </html>

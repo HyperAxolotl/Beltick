@@ -5,78 +5,90 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
-    
-    <h:body>
-        <ui:composition template="plantillas/vista1.xhtml">
-            <ui:define name="top">
-                <ui:define name="title">Beltick: Registro</ui:define>
+  
+  <h:body>
+    <ui:composition template="plantillas/vista1.xhtml">
+      <ui:define name="top">
+        <ui:define name="title">Beltick: Registro</ui:define>
 
-                <div class="navbar-wrapper">
-                    <nav class="navbar navbar-inverse navbar-fixed-top">
-                        <div class="container-fluid">
-                            <div class="navbar-header">
-                                <a class="nav-brand">
-                                    <img style="max-width:120px;margin-top: -3px; float: left;" 
-                                         src="resources/imagenes/logobelt.png"
-                                         alt="Beltick by Hyperaxolotl"/>
-                                </a>
-                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span> 
-                                </button>   
-                            </div>
+        <div class="navbar-wrapper">
+          <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <a class="nav-brand">
+                  <img style="max-width:120px;margin-top: -3px; float: left;" 
+                       src="resources/imagenes/logobelt.png"
+                       alt="Beltick by Hyperaxolotl"/>
+                </a>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span> 
+                </button>   
+              </div>
 
-                            <div class="collapse navbar-collapse">                    
-                                <ul class="nav navbar-nav navbar-right">
-                                    <li><a href="faces/index.xhtml">Pagina Principal</a></li>
-                                    <li><a href="faces/Informacion.xhtml">Sobre nosotros</a></li>
-                                    <li><a href="faces/RegistroPasajeroIH.xhtml">Registrarse como pasajero </a></li>      
-                                </ul>
-                            </div>
-                        </div>
-                    </nav>
-                </div>
-            </ui:define>
-            <ui:define name="content">
-                <section class="container">
-                    <h:form styleClass="form">
-                        <h:panelGrid columns="2">
-                            <h:outputLabel value="Nombre"/>
-                            <p:inputText style="text-align: left;" value="#{choferC.chofer.cnombre}"/>
-                            <h:outputLabel value="Apellido Paterno" />
-                            <p:inputText style="text-align: left;" value="#{choferC.chofer.capp}"/>
+              <div class="collapse navbar-collapse">                    
+                <ul class="nav navbar-nav navbar-right">
+                  <li><a href="faces/index.xhtml">Pagina Principal</a></li>
+                  <li><a href="faces/Informacion.xhtml">Sobre nosotros</a></li>
+                  <li><a href="faces/RegistroPasajeroIH.xhtml">Registrarse como pasajero </a></li>      
+                </ul>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </ui:define>
+      <ui:define name="content">
+        <section class="container">
+          <h:form styleClass="form">
+            <h:panelGrid columns="3">
+              <p:outputLabel for="nombre" value="Nombre"/>
+              <p:inputText id="nombre" required="true" style="text-align: left;" value="#{choferC.chofer.cnombre}"/>
+              <p:message for="nombre" display="text" />
+              
+              <p:outputLabel for="app" value="Apellido Paterno" />
+              <p:inputText id="app" required="true" style="text-align: left;" value="#{choferC.chofer.capp}"/>
+              <p:message for="app" display="text" />
 
-                            <h:outputLabel value="Apellido Materno" />
-                            <p:inputText style="text-align: left;" value="#{choferC.chofer.capm}"/>
+              <p:outputLabel for="apm" value="Apellido Materno" />
+              <p:inputText id="apm" required="true" style="text-align: left;" value="#{choferC.chofer.capm}"/>
+              <p:message for="apm" display="text" />
 
-                            <h:outputLabel value="Correo" />
-                            <p:inputText style="text-align: left;" value="#{choferC.chofer.ccorreo}"/>
+              <p:outputLabel for="correo" value="Correo" />
+              <p:inputText id="correo" required="true" style="text-align: left;" value="#{choferC.chofer.ccorreo}"/>
+              <p:message for="correo" display="text" />
 
-                            <h:outputLabel value="Contraseña" />
-                            <p:inputText style="text-align: left;" value="#{choferC.chofer.ccontrasenia}"/>
+              <p:outputLabel for="contrasenia" value="Contraseña" />
+              <p:password id="contrasenia" required="true" style="text-align: left;" value="#{choferC.chofer.ccontrasenia}"
+                          feedback="true" inline="true" promptLabel="Ingresa una contraseña" 
+                          weakLabel="Débil" goodLabel="Medio" strongLabel="Fuerte" />
+              <p:message for="contrasenia" display="text" />
 
-                            <h:outputLabel value="Confirmación de Contraseña" />
-                            <p:inputText style="text-align: left;" value="#{choferC.confirmacion}" />
+              <p:outputLabel for="contraseniac" value="Confirmación de Contraseña" />
+              <p:password id="contraseniac" required="true" style="text-align: left;" value="#{choferC.confirmacion}" />
+              <p:message for="contraseniac" display="text" />
 
-                            <h:outputLabel value="Numero de Cuenta" />
-                            <p:inputText style="text-align: left;" value="#{choferC.chofer.cnoCuenta}" />
+              <p:outputLabel for="ncuenta" value="Numero de Cuenta" />
+              <p:inputText id="ncuenta" required="true" style="text-align: left;" value="#{choferC.chofer.cnoCuenta}" />
+              <p:message for="ncuenta" display="text" />
 
-                            <h:outputLabel value="Numero de Identificación (Licencia)" />
-                            <p:inputText style="text-align: left;" value="#{choferC.chofer.cnoId}" />
-                            
-                            <h:outputLabel value="Fecha de Nacimiento" />
-                            <h:inputText style="text-align: left;" value="#{choferC.chofer.cfechaNac}">
-                                <f:convertDateTime pattern="dd-MM-yyyy"/>
-                            </h:inputText>
-                        </h:panelGrid>
-                        <section class="button">
-                            <h:commandButton style="width:100px; background-color: #9BA895;border-color: #82927B;" 
-                                             value="Registrar" action="#{choferC.registro()}"/>
-                        </section>
-                    </h:form>
-                </section>
-            </ui:define>
-        </ui:composition>
-    </h:body>
+              <p:outputLabel for="nid" value="Numero de Identificación (Licencia)" />
+              <p:inputText id="nid" required="true" style="text-align: left;" value="#{choferC.chofer.cnoId}" />
+              <p:message for="nid" display="text" />  
+              
+              <p:outputLabel for="fecha" value="Fecha de Nacimiento" />
+              <p:inputText id="fecha" required="true" style="text-align: left;" value="#{choferC.chofer.cfechaNac}">
+                <f:convertDateTime pattern="dd-MM-yyyy"/>
+              </p:inputText>
+              <p:message for="fecha" display="text" />
+            </h:panelGrid>
+            <section class="button">
+              <h:commandButton style="width:100px; background-color: #9BA895;border-color: #82927B;" 
+                               value="Registrar" action="#{choferC.registro()}"/>
+            </section>
+          </h:form>
+        </section>
+      </ui:define>
+    </ui:composition>
+  </h:body>
 </html>
