@@ -15,15 +15,25 @@
       <h:commandButton actionListener="#{rutaC.listar()}" value="Listar Rutas" />
       
       <p:dataTable value="#{rutaC.lstRutas}" var="ruta">
-          <p:column headerText="Id">
-              <h:outputText value="#{ruta.idRuta}" />
-          </p:column>
+          
+        <p:column headerText="Id">
+          <h:outputText value="#{ruta.idRuta}" />
+        </p:column>
+          
 	<p:column>
 	  <f:facet name="header">
 	    <h:outputLabel value="Rutas" />
 	  </f:facet>
-	  <p:gmap id="gmap" center="19.3241874,-99.1789797" zoom="16" type="ROADMAP" style="width:600px;height:400px" model="#{rutaC.getModeloMapa(ruta.mapa)}" />
+	  <p:gmap id="gmap" center="19.3241874,-99.1789797" zoom="14" type="ROADMAP" style="width:300px;height:200px" model="#{rutaC.getModeloMapa(ruta.mapa)}" />
 	</p:column>
+          
+        <!--p:column>
+          <p:commandButton id="pop" type="button" icon="ui-icon-pin-s" value="Vista completa" 
+                           onclick="PF('dlg').show();" />
+          <p:dialog id="gmapDialogo" widgetVar="dlg" width="625" height="400" modal="true">
+            <p:gmap id="gmap" center="19.3241874,-99.1789797" zoom="14" style="width:100%;height:100%" />
+          </p:dialog>  
+        </p:column-->
       </p:dataTable>
     </h:form>
     <h:button value="Inicio" outcome="index"/>
