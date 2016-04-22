@@ -1,6 +1,8 @@
 package controlador.logica;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
+import javax.faces.application.FacesMessage;
 
 import org.hibernate.Session;
 import modelo.ConexionBD;
@@ -25,5 +27,28 @@ public class RutaL implements Serializable{
             e.printStackTrace();
         }
         return lstRutas;
+    }
+    
+    public FacesMessage registrar(Ruta r){
+        FacesMessage mensaje = null;
+        try{
+            con = ConexionBD.getSessionFactory().openSession();
+            trans = con.beginTransaction();
+            Date fecha = new Date();
+            r.setMapa("el}tBlqj|QjKwXiVqJ{MpU");
+            r.setActiva(true);           
+            r.setFechaCreacion(fecha);
+            con.save(r);
+            trans.commit();
+        }catch(Exception e){
+            trans.rollback();
+            mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "Error con el registro del pasajero", null);
+            System.out.println("Esta es la excepcion "+e.getClass().getName());
+            e.printStackTrace();
+        }finally{
+            con.close();
+            return mensaje;
+        }
+     
     }
 }

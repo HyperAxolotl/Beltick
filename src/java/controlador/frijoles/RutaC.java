@@ -9,7 +9,9 @@ import controlador.logica.RutaL;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import org.primefaces.model.map.DefaultMapModel;
 import org.primefaces.model.map.LatLng;
@@ -19,20 +21,37 @@ import org.primefaces.model.map.Polyline;
 
 @ManagedBean
 @ViewScoped
-public class RutaC {
+public class RutaC implements Serializable {
     
     private Ruta ruta = new Ruta();
-    private RutaL rutaL = new RutaL();
+    private RutaL ayudante = new RutaL();
     private List<Ruta> lstRutas;
     private MapModel modeloMapa;
-   
+    private FacesMessage mensaje;
     
+    public Ruta getRuta() {
+        return ruta;
+    }
+
+    public void setRuta(Ruta ruta) {
+        this.ruta = ruta;
+    }
+    
+    public String registro() {
+        mensaje = ayudante.registrar(ruta);
+        if(mensaje != null) {
+            FacesContext.getCurrentInstance().addMessage(null, mensaje);
+            return "error";
+        }
+        return "exito";
+    }
+       
     public List<Ruta> getLstRutas() {       
         return lstRutas;
     }
     
     public void listar() throws Exception {
-        lstRutas = rutaL.listar();
+        lstRutas = ayudante.listar();
     }
     
     public MapModel getModeloMapa(String polyencod) {  

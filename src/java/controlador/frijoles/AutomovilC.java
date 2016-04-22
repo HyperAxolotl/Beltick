@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 @SessionScoped
 public class AutomovilC implements Serializable {
 
-    private Automovil automovil= new Automovil();
+    private Automovil automovil = new Automovil();
     private String confirmacion;
     private AutomovilL ayudante = new AutomovilL();
     private FacesMessage mensaje;
@@ -38,7 +38,7 @@ public class AutomovilC implements Serializable {
             FacesContext.getCurrentInstance().addMessage(null, mensaje);
             return "error";
         }
-        return "exito";
+        return "RegistroRutaIH";
     }
     public String getConfirmacion() {
         return confirmacion;
