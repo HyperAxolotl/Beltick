@@ -1,30 +1,23 @@
 var poly;
-var map;
 
 function initMap() {
-  map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 7,
-    center: {lat: 19.3241874, lng: -99.1789797}
-  });
-
-  poly = new google.maps.Polyline({
-    strokeColor: '#000000',
-    strokeOpacity: 1.0,
-    strokeWeight: 3
-  });
-  poly.setMap(map);
-
-  map.addListener('click', addLatLng);
+    poly = new google.maps.Polyline({
+        strokeColor: '#000000',
+        strokeOpacity: 1.0,
+        strokeWeight: 3
+    });
 }
 
 function addLatLng(event) {
-  var path = poly.getPath();
-  
-  path.push(event.latLng);
+    var path = poly.getPath();
 
-  var marker = new google.maps.Marker({
-    position: event.latLng,
-    title: '#' + path.getLength(),
-    map: map
-  });
+    path.push(event.latLng);
+
+    var marker = new google.maps.Marker({
+        position: event.latLng,
+        title: '#' + path.getLength(),
+    });
+    PF('map').addOverlay(marker);
+    PF('map').addOverlay(poly);
+    document.getElementById('mapa').value = google.maps.geometry.encoding.encodePath(poly.getPath());
 }
