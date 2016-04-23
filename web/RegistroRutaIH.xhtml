@@ -16,9 +16,8 @@
         <p:gmap id="gmap" center="19.3241874,-99.1789797" zoom="13" type="ROADMAP" style="width:500px;height:400px"
                 model="#{rutaC.getModeloMapa()}" onPointClick="addLatLng(event);" widgetVar="map" />
         <h:outputScript library="js" name="RegistroRuta.js" />
-        <script>
-            initMap();
-        </script>
+        <p:commandButton value="Borrar último punto" id="borrar-ultimo" onclick="return borrarUltimo();" />
+        <p:commandButton value="Borrar todo" id="borrar-todo" onclick="return borrarTodo();" />
 
         <h:form>
             <h:panelGrid columns="3">
