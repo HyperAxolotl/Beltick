@@ -54,6 +54,10 @@ public class RutaC implements Serializable {
         lstRutas = ayudante.listar();
     }
     
+    public MapModel getModeloMapa() {
+        return modeloMapa;
+    }
+    
     public MapModel getModeloMapa(String polyencod) {  
         modeloMapa  = new DefaultMapModel();
         Polyline poly = new Polyline();

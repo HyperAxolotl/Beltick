@@ -3,6 +3,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 
 import org.hibernate.Session;
 import modelo.ConexionBD;
@@ -35,7 +36,9 @@ public class RutaL implements Serializable{
             con = ConexionBD.getSessionFactory().openSession();
             trans = con.beginTransaction();
             Date fecha = new Date();
-            r.setMapa("el}tBlqj|QjKwXiVqJ{MpU");
+            String mapa = FacesContext.getCurrentInstance().
+		getExternalContext().getRequestParameterMap().get("mapa");
+            r.setMapa(mapa);
             r.setActiva(true);           
             r.setFechaCreacion(fecha);
             con.save(r);
