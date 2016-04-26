@@ -25,12 +25,31 @@ public class PerfilC {
     private List<PerfilPasajero> pasajeros;
     private List<PerfilChofer> choferes;
     private final PerfilL ayudante = new PerfilL();
+    private boolean mostrarPasajeros;
+    private boolean mostrarChoferes;
     /**
      * Creates a new instance of PerfilC
      */
     public PerfilC() {
     }
 
+    public boolean isMostrarPasajeros() {
+        return mostrarPasajeros;
+    }
+
+    public boolean isMostrarChoferes() {
+        return mostrarChoferes;
+    }
+
+    public void setMostrarPasajeros(boolean mostrarPasajeros) {
+        this.mostrarPasajeros = mostrarPasajeros;
+    }
+
+    public void setMostrarChoferes(boolean mostrarChoferes) {
+        this.mostrarChoferes = mostrarChoferes;
+    }
+    
+    
     public List<PerfilChofer> getChoferes() {
         return choferes;
     }
@@ -48,11 +67,15 @@ public class PerfilC {
     }
     
     public void listarChoferes(){
+        mostrarPasajeros = false;
         choferes = ayudante.listaChoferes();
+        mostrarChoferes = true;
     }
     
     public void listarPasajeros(){
+        mostrarChoferes = false;
         pasajeros = ayudante.listaPasajeros();
+        mostrarPasajeros = true;
     }
     
     
