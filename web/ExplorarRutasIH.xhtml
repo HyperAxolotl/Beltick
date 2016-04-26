@@ -4,39 +4,33 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
-  <h:head>
-    <title>Explorador de rutas</title>
-    <script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript" ></script>
-  </h:head>
-  
-  <h:body>
-    <h2>Explorar rutas</h2>
-    <h:form>
-      <h:commandButton actionListener="#{rutaC.listar()}" value="Listar Rutas" />
-      
-      <p:dataTable value="#{rutaC.lstRutas}" var="ruta">
-          
-        <p:column headerText="Id">
-          <h:outputText value="#{ruta.idRuta}" />
-        </p:column>
-          
-	<p:column>
-	  <f:facet name="header">
-	    <h:outputLabel value="Rutas" />
-	  </f:facet>
-	  <p:gmap id="gmap" center="19.3241874,-99.1789797" zoom="14" type="ROADMAP" style="width:300px;height:200px" model="#{rutaC.getModeloMapa(ruta.mapa)}" />
-	</p:column>
-          
-        <!--p:column>
-          <p:commandButton id="pop" type="button" icon="ui-icon-pin-s" value="Vista completa" 
-                           onclick="PF('dlg').show();" />
-          <p:dialog id="gmapDialogo" widgetVar="dlg" width="625" height="400" modal="true">
-            <p:gmap id="gmap" center="19.3241874,-99.1789797" zoom="14" style="width:100%;height:100%" />
-          </p:dialog>  
-        </p:column-->
-      </p:dataTable>
-    </h:form>
-    <h:button value="Inicio" outcome="index"/>
-  </h:body>
+    <h:head>
+        <title>Explorador de rutas</title>
+        <script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript" ></script>
+    </h:head>
+
+    <h:body>
+        <h2>Explorar rutas</h2>
+        <h:form>
+            <h:commandButton actionListener="#{rutaC.listar()}" value="Listar Rutas" />
+
+            <p:dataTable value="#{rutaC.lstRutas}" var="ruta" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                         paginator="true" rows="10" style="margin-bottom:20px">
+
+                <p:column headerText="Nombre del chofer">
+                    <h:outputText value="#{ruta.automovil.chofer.cnombre}" />
+                </p:column>
+
+                <p:column headerText="Ruta">
+                    <p:gmap id="gmap" center="19.3241874,-99.1789797" zoom="12" type="ROADMAP" style="width:300px;height:200px" model="#{rutaC.getModeloMapa(ruta.mapa)}" />
+                    <p:commandButton value="Expandir" type="button" onclick="PF('dlg#{ruta.idRuta}').show();" />
+                    <p:dialog header="Ruta de #{ruta.automovil.chofer.cnombre}" widgetVar="dlg#{ruta.idRuta}" modal="true" height="400" width="600">
+                        <p:gmap id="gmap-dlg#{ruta.idRuta}" center="19.3241874,-99.1789797" zoom="14" type="ROADMAP" style="width:100%;height:100%" model="#{rutaC.getModeloMapa(ruta.mapa)}" />
+                    </p:dialog>
+                </p:column>
+            </p:dataTable>
+        </h:form>
+        <h:button value="Inicio" outcome="index"/>
+    </h:body>
 </html>
 
