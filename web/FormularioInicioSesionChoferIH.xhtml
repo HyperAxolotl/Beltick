@@ -41,13 +41,14 @@
                                             </ul>
                                         </div>
                                     </li>
+                                    
                                     <li><div class="dropdown dropdown-header">
                                             <button class="btn btn-link dropdown-toggle" style="margin-top: 10px;" type="button" data-toggle="dropdown">
                                                 <b>Iniciar Sesión</b>
                                                 <span class="caret"></span></button>
                                             <ul class="dropdown-menu">
                                                 <li><a href="faces/FormularioInicioSesionChoferIH.xhtml" style="color:whitesmoke;">Iniciar sesión como Chofer</a></li>
-                                                <li><a href="faces/FormularioInicioSesionPasajeroIH.xhtml" style="color:whitesmoke;">Iniciar sesión como Pasajero</a></li> 
+                                                <li><a href="faces/FormularioInicioSesionPasajeroIH.xhtml" style="color:whitesmoke;">Iniciar sesión como Pasajerio</a></li> 
                                             </ul>
                                         </div>
                                     </li>
@@ -59,7 +60,28 @@
                 </div>
             </ui:define>
             <ui:define name="content">
-                
+                <section class="container">
+                    <h:form class="form-horizontal">
+                        
+
+
+                        <h1>Iniciar Sesión Chofer</h1>
+                        <h:panelGrid columns="2" columnClasses="alignmentCenter">			
+
+                            <h:outputLabel value="Correo " />
+                            <p:inputText style="text-align: left;" value="#{sesionC.chofer.ccorreo}" />
+
+                            <h:outputLabel value="Contraseña  " />
+                            <p:password style="text-align: left;" value="#{sesionC.chofer.ccontrasenia}" />
+                            <section name="button">
+                                <h:commandButton  styleClass="btn btn-info" value="Aceptar" action="#{sesionC.verificarDatos()}" >
+                                    <f:actionListener binding="#{sesionC.setTipo(true)}" />
+                                </h:commandButton>
+                            </section>    
+
+                        </h:panelGrid>
+                    </h:form>
+                </section>
                 <div class="container">
                     <h2> Operaciones </h2>
                     <h:button styleClass="btn btn-info" value ="Explorar rutas" outcome ="ExplorarRutasIH" />
