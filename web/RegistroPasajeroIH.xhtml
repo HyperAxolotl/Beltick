@@ -30,9 +30,9 @@
 
               <div class="collapse navbar-collapse">                    
                 <ul class="nav navbar-nav navbar-right">
-                  <li><a href="faces/index.xhtml">Pagina Principal</a></li>
-                  <li><a href="faces/Informacion.xhtml">Sobre nosotros</a></li>
-                  <li><a href="faces/RegistroChoferIH.xhtml">Registrarse como chofer </a></li>      
+                    <li><h:link value="Pagina Principal" outcome="index"/></li>
+                  <li><h:link value="Sobre Nosotros" outcome="Informacion"/></li>
+                  <li><h:link value="Registrarse como Chofer" outcome="RegistroChoferIH"/></li>      
                 </ul>
               </div>
             </div>
@@ -81,7 +81,7 @@
               
             </h:panelGrid>
             <section class="button">
-              <h:commandButton style="width:100px; background-color: #9BA895;border-color: #82927B;"
+              <p:commandButton style="width:100px; background-color: #9BA895;border-color: #82927B;"
                                value="Registrar" action="#{pasajeroC.registro()}"/>
             </section>
           </h:form>

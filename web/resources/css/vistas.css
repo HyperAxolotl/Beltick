@@ -1,4 +1,4 @@
-@import url("bootstrap.css");
+    @import url("bootstrap.css");
 
 * {
     margin:0;
@@ -59,15 +59,17 @@ body{
     text-align: justify;
     margin: 6px;
 }
+/*FIXING THIS*/
 /*cuando el ancho de la ventana del navegador supera los 600px,
-mueve el contenido a la izquierda y justifica el texto*/
+mueve el contenido a la izquierda y justifica el texto
 @media (min-width:600px){
      
     #content {
      text-align: justify;
      padding-left: 35%;   
     }   
-}
+}*/
+
 #content .button input[type=submit]{
     width: 5%;
     background-color: #0277BD;
@@ -141,7 +143,7 @@ mueve el contenido a la izquierda y justifica el texto*/
 
 /*para barra superior*/
 .navbar {
-    background-color: #63775A; /*color axolotl :)*/
+    background-color: #4C1970; 
     color: whitesmoke;
     width: 100%;
     border-radius: 0px;
