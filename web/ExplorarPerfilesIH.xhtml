@@ -2,44 +2,47 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-  <h:head>
-    <title>Beltick</title>
-  </h:head>
-  <h:body>
-    <h2>Explorar perfiles</h2>
-    <h:form>
-      <h:panelGrid columns="2">
-        <h:commandButton actionListener="#{perfilC.listarChoferes()}" value="Listar Choferes" />
-        <h:commandButton actionListener="#{perfilC.listarPasajeros()}" value="Listar Pasajeros" />
-      </h:panelGrid>
-    </h:form>    
-    
-    <h:panelGrid columns="2">
-      <h:form>
-        
-        <h:dataTable value="#{perfilC.choferes}" var="pc">
-          <h:column>
-            <f:facet name="header">
-              <h:outputLabel value="Nombre Chofer" />
-            </f:facet>
-            <h:outputLabel value="#{pc.chofer.cnombre}" />
-          </h:column>
-        </h:dataTable>
-      </h:form>
-      
-      <h:form>
-        <h:dataTable value="#{perfilC.pasajeros}" var="pp">
-          <h:column>
-            <f:facet name="header">
-              <h:outputLabel value="Nombre Pasajero" />
-            </f:facet>
-            <h:outputLabel value="#{pp.pasajero.pnombre}" />
-          </h:column>
-        </h:dataTable>
-      </h:form>
-    </h:panelGrid>
-    <h:button value="Inicio" outcome="index"/>
-  </h:body>
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Beltick</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="plantillas/vista1.xhtml">
+            <ui:define name="content">
+                <h2>Explorar perfiles</h2>
+                <h:form>
+                    <h:panelGrid columns="2">
+                        <h:commandButton actionListener="#{perfilC.listarChoferes()}" value="Listar Choferes" />
+                        <h:commandButton actionListener="#{perfilC.listarPasajeros()}" value="Listar Pasajeros" />
+                    </h:panelGrid>
+                </h:form>    
+
+                <h:panelGrid columns="2">
+                    <h:form>
+
+                        <p:dataTable value="#{perfilC.choferes}" var="pc" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                                     paginator="true" rows="10" style="margin-bottom:20px" rendered="#{perfilC.mostrarChoferes}">
+                            <p:column headerText="Nombre Chofer">
+                                <p:outputLabel value="#{pc.chofer.cnombre}" />
+                            </p:column>
+                        </p:dataTable>
+                    </h:form>
+
+                    <h:form>
+                        <p:dataTable value="#{perfilC.pasajeros}" var="pp" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                                     paginator="true" rows="10" style="margin-bottom:20px" rendered="#{perfilC.mostrarPasajeros}">
+                            <p:column headerText="Nombre Pasajero">
+                                <h:outputLabel value="#{pp.pasajero.pnombre}" />
+                            </p:column>
+                        </p:dataTable>
+                    </h:form>
+                </h:panelGrid>
+                <h:button value="Inicio" outcome="index"/>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+
 </html>
 
