@@ -25,7 +25,7 @@
                 <input type="hidden" id="mapa" name="mapa" value="" />              
 
                 <p:outputLabel for="descripcion" value="Descripción" />
-                <p:inputTextarea id="descripcion" value="#{rutaC.ruta.descripcion}" rows="5" cols="33" counter="display" maxlength="120" counterTemplate="{0}" />
+                <p:inputTextarea id="descripcion" value="#{rutaC.ruta.descripcion}" rows="5" cols="33" counter="display" maxlength="120" counterTemplate="{0}" placeholder="Lista las calles por las que pasas (no tienen que ser todas, sólo avenidas importantes)"/>
                 <h:outputText id="display" />     
             </h:panelGrid>
             <h:commandButton value="Registrar" action="#{rutaC.registro()}" >

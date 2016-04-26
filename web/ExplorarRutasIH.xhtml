@@ -14,10 +14,16 @@
         <h:form>
             <h:commandButton actionListener="#{rutaC.listar()}" value="Listar Rutas" />
 
-            <p:dataTable value="#{rutaC.lstRutas}" var="ruta" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+            <p:dataTable value="#{rutaC.lstRutas}" var="ruta" widgetVar="tablaRutas" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
                          paginator="true" rows="10" style="margin-bottom:20px">
 
-                <p:column headerText="Nombre del chofer">
+                <f:facet name="header">
+                    <p:outputPanel>
+                        <h:outputText value="Filtra" />
+                        <p:inputText id="globalFilter" onkeyup="PF('tablaRutas').filter()" style="width:150px" placeholder="Palabra clave"/>
+                    </p:outputPanel>
+                </f:facet>
+                <p:column headerText="Nombre del chofer" filterBy="#{ruta.automovil.chofer.cnombre}" footerText="contains" filterMatchMode="contains">
                     <h:outputText value="#{ruta.automovil.chofer.cnombre}" />
                 </p:column>
 
@@ -30,7 +36,10 @@
                     </p:dialog>
                 </p:column>
                 
-                
+                <p:column headerText="Calles" filterBy="#{ruta.descripcion}" footerText="contains" filterMatchMode="contains">
+                    <p:outputLabel value="#{ruta.descripcion}"/>
+                </p:column>
+
             </p:dataTable>
         </h:form>
         <h:button value="Inicio" outcome="index"/>
