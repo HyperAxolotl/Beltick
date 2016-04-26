@@ -45,21 +45,25 @@ public class RutaC implements Serializable {
     public List<Ruta> getLstRutas() {
         return lstRutas;
     }
-
-    public void listar(double lat, double lng, double r, boolean b) throws Exception {
+    
+    public void listar() throws Exception {
         lstRutas = ayudante.listar();
-        if (b) {
-            List<Ruta> l = new ArrayList<>();
-            for (Ruta ruta : lstRutas) {
-                for (LatLng latlng : decodePolyline(ruta.getMapa()))
-                    if (haversine(lat, latlng.getLat(), lng, latlng.getLng()) <= r && b) {
-                        l.add(ruta);
-                        b = false;
-                    }
-                b = true;
+    }
+
+    public void listar(double lat, double lng, double r) throws Exception {
+        lstRutas = ayudante.listar();
+        List<Ruta> l = new ArrayList<>();
+        boolean b = true;
+        for (Ruta ruta : lstRutas) {
+            for (LatLng latlng : decodePolyline(ruta.getMapa())) {
+                if (haversine(lat, latlng.getLat(), lng, latlng.getLng()) <= r && b) {
+                    l.add(ruta);
+                    b = false;
+                }
             }
-            lstRutas = l;
+            b = true;
         }
+        lstRutas = l;
     }
 
     public MapModel getModeloMapa() {
