@@ -9,7 +9,26 @@
         <title>Beltick</title>
     </h:head>
     <h:body>
-        <h:outputLabel value="#{perfilC.perfilChofer.chofer.cnombre}" />
+        <h:form rendered="#{perfilC.tipo eq true}">			
+            <h:panelGrid columns="1">
+                <img src="#{perfilC.perfilChofer.cfoto}" class="img-circle" width="150px" height="150px" />
+                <h:outputLabel value="#{perfilC.perfilChofer.chofer.cnombre} #{perfilC.perfilChofer.chofer.capp} #{perfilC.perfilChofer.chofer.capm}" />
+                <h:outputLabel value="#{perfilC.perfilChofer.chofer.ccorreo}"/>
+                <h:outputLabel value="#{perfilC.perfilChofer.chofer.cnoCuenta}"/>
+                <h:outputLabel value="#{perfilC.perfilChofer.chofer.cfechaNac}"/>
+                <!--h:outputLabel value="#{perfilC.perfilChofer.chofer.automovils}"/-->
+            </h:panelGrid>
+        </h:form>
+        <h:form rendered="#{perfilC.tipo eq false}">			
+            <h:panelGrid columns="1">
+                <img src="#{perfilC.perfilPasajero.pfoto}" class="img-circle" width="150px" height="150px" />
+                <h:outputLabel value="#{perfilC.perfilPasajero.pasajero.pnombre} #{perfilC.perfilPasajero.pasajero.papp} #{perfilC.perfilPasajero.pasajero.papm}" />
+                <h:outputLabel value="#{perfilC.perfilPasajero.pasajero.pcorreo}"/>
+                <h:outputLabel value="#{perfilC.perfilPasajero.pasajero.pnoCuenta}"/>
+                <h:outputLabel value="#{perfilC.perfilPasajero.pasajero.pfechaNac}"/>
+            </h:panelGrid>
+        </h:form>
+
     </h:body>
 </html>
 
