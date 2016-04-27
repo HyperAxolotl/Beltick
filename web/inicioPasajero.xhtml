@@ -10,8 +10,8 @@
     <h:outputLabel value="No ha iniciado sesión" rendered="#{sesionC.verificarSesion() eq false}" />
     <h:form rendered="#{sesionC.verificarSesion()}">			
       <h:panelGrid columns="2">
-          <img src="#{sesionC.rutaIMG()}" class="img-circle" width="150px" height="150px" />
-          <!--img src="resources/imagenes/foto_usuario/usuario.png" class="img-circle" width="150px" height="150px" /-->
+          <!--img src="{sesionC.rutaIMG()}" class="img-circle" width="150px" height="150px" /-->
+          <img src="resources/imagenes/foto_usuario/usuario.png" class="img-circle" width="150px" height="150px" />
 	<p>Iniciaste sesión como el usuario: </p>
 
 	<h:outputLabel value="#{sesionC.pasajero.pcorreo}" />
