@@ -24,6 +24,33 @@ public class RutaC implements Serializable {
     private List<Ruta> lstRutas;
     private MapModel modeloMapa;
     private FacesMessage mensaje;
+    private double lat;
+    private double lng;
+    private double radio;
+
+    public double getLat() {
+        return lat;
+    }
+
+    public void setLat(double lat) {
+        this.lat = lat;
+    }
+
+    public double getLng() {
+        return lng;
+    }
+
+    public void setLng(double lng) {
+        this.lng = lng;
+    }
+
+    public double getRadio() {
+        return radio;
+    }
+
+    public void setRadio(double radio) {
+        this.radio = radio;
+    }
 
     public Ruta getRuta() {
         return ruta;
@@ -50,13 +77,13 @@ public class RutaC implements Serializable {
         lstRutas = ayudante.listar();
     }
 
-    public void listar(double lat, double lng, double r) throws Exception {
+    public void listarRadio() throws Exception {
         lstRutas = ayudante.listar();
         List<Ruta> l = new ArrayList<>();
         boolean b = true;
         for (Ruta ruta : lstRutas) {
             for (LatLng latlng : decodePolyline(ruta.getMapa())) {
-                if (haversine(lat, latlng.getLat(), lng, latlng.getLng()) <= r && b) {
+                if (haversine(latlng.getLat(), latlng.getLng()) <= radio && b) {
                     l.add(ruta);
                     b = false;
                 }
@@ -85,14 +112,14 @@ public class RutaC implements Serializable {
     }
 
     //Regresa distancia entre dos puntos en km
-    private double haversine(double lat1, double lat2, double lng1, double lng2) {
+    private double haversine(double lat2, double lng2) {
         int R = 6371;
-        double lat = Math.toRadians(lat2 - lat1);
-        double lng = Math.toRadians(lng2 - lng1);
-        double a = Math.sin(lat / 2) * Math.sin(lat / 2)
-                + Math.cos(Math.toRadians(lat1))
-                + Math.cos(Math.toRadians(lat2))
-                * Math.sin(lng / 2) * Math.sin(lng / 2);
+        double latD = Math.toRadians(lat2 - lat);
+        double lngD = Math.toRadians(lng2 - lng);
+        double a = Math.sin(latD / 2) * Math.sin(latD / 2)
+                + Math.cos(Math.toRadians(lat))
+                * Math.cos(Math.toRadians(lat2))
+                * Math.sin(lngD / 2) * Math.sin(lngD / 2);
         return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     }
 
