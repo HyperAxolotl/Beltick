@@ -9,36 +9,6 @@
 
     <h:body>
         <ui:composition template="plantillas/vista1.xhtml">
-            <ui:define name="top">
-                <ui:define name="title">Beltick: Registro</ui:define>
-
-                <div class="navbar-wrapper">
-                    <nav class="navbar navbar-inverse navbar-fixed-top">
-                        <div class="container-fluid">
-                            <div class="navbar-header">
-                                <a class="nav-brand">
-                                    <img style="max-width:120px;margin-top: -3px; float: left;" 
-                                         src="resources/imagenes/logobelt.png"
-                                         alt="Beltick by Hyperaxolotl"/>
-                                </a>
-                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span> 
-                                </button>   
-                            </div>
-
-                            <div class="collapse navbar-collapse">                    
-                                <ul class="nav navbar-nav navbar-right">
-                                    <li><h:link value="Pagina Principal" outcome="index"/></li>
-                                    <li><h:link value="Sobre Nosotros" outcome="Informacion"/></li>
-                                    <li><h:link value="Registrarse como Chofer" outcome="RegistroChoferIH"/></li>      
-                                </ul>
-                            </div>
-                        </div>
-                    </nav>
-                </div>
-            </ui:define>
             <ui:define name="content">
                 <section class="container">
                     <p:tooltip />
