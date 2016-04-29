@@ -1,14 +1,3 @@
-//function muestraMapa(encoded) {
-//    var poly = new google.maps.Polyline({
-//        strokeColor: '#DC143C',
-//        strokeOpacity: 1.0,
-//        strokeWeight: 3
-//    });
-//    var path = poly.getPath();
-//    path = google.maps.geometry.encoding.decodePath(encoded);
-//    PF('pop-map').addOverlay(poly);
-//    PF('dlg').show();
-//}
 var circulo;
 var latlng;
 
