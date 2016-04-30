@@ -46,9 +46,8 @@
                             <p:message for="ncuenta" display="text" />
 
                             <p:outputLabel for="fecha" value="Fecha de Nacimiento" />
-                            <p:inputText id="fecha" required="true" style="text-align: left;" value="#{pasajeroC.pasajero.pfechaNac}">
-                                <f:convertDateTime pattern="dd-MM-yyyy"/>
-                            </p:inputText>
+                            <p:calendar id="fecha" required="true" style="text-align: left;" pattern="dd-MM-yyyy" mask="true" value="#{pasajeroC.pasajero.pfechaNac}" />
+                    
                             <p:message for="fecha" display="text" />
 
                         </h:panelGrid>
@@ -65,4 +64,3 @@
 
 
 </html>
-

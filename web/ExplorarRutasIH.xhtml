@@ -2,56 +2,63 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Explorador de rutas</title>
-        <script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript" ></script>
     </h:head>
 
     <h:body>
-        <h2>Explorar rutas</h2>
-        Selecciona en el mapa el perímetro dentro del cuál quieres hacer tu búsqueda
+        <ui:composition template="plantillas/vista1.xhtml">
+            <ui:define name="content">
+                <h2>Explorar rutas</h2>
+                Selecciona en el mapa el perímetro dentro del cuál quieres hacer tu búsqueda
 
-        <h:form id="explorarRutas">
-            
-            Radio del perímetro en km: <h:inputText id="radio" value="#{rutaC.radio}" />
-            <p:gmap id="gmap-radio" center="19.3241874,-99.1789797" zoom="12" onPointClick="addCirculo(event);" type="ROADMAP" style="width:300px;height:200px" widgetVar="gmap-radio" />
-            <h:outputScript library="js" name="ExplorarRutas.js" />
-            <h:inputHidden id="lat" value="#{rutaC.lat}" />
-            <h:inputHidden id="lng" value="#{rutaC.lng}" />
-            <h:commandButton  onclick="getVars()" action="#{rutaC.listarRadio()}" value="Listar rutas dentro del perímetro" />
-            <h:commandButton  actionListener="#{rutaC.listar()}" value="Listar todas las rutas" />
-            
-            <p:dataTable value="#{rutaC.lstRutas}" var="ruta" widgetVar="tablaRutas" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
-                         paginator="true" rows="10" style="margin-bottom:20px" rendered="#{rutaC.lstRutas != null}">
+                <h:form id="explorarRutas">
 
-                <f:facet name="header">
-                    <p:outputPanel>
-                        <h:outputText value="Filtra" />
-                        <p:inputText id="globalFilter" onkeyup="PF('tablaRutas').filter()" style="width:150px" placeholder="Palabra clave"/>
-                    </p:outputPanel>
-                </f:facet>
-                <p:column headerText="Nombre del chofer" filterBy="#{ruta.automovil.chofer.cnombre}" footerText="contains" filterMatchMode="contains">
-                    <h:outputText value="#{ruta.automovil.chofer.cnombre}" />
-                </p:column>
+                    Radio del perímetro en km: <h:inputText id="radio" value="#{rutaC.radio}" />
+                    <p:gmap id="gmap-radio" center="19.3241874,-99.1789797" zoom="12" onPointClick="addCirculo(event);" type="ROADMAP" style="width:300px;height:200px" widgetVar="gmap-radio" />
+                    <h:outputScript library="js" name="ExplorarRutas.js" />
+                    <h:inputHidden id="lat" value="#{rutaC.lat}" />
+                    <h:inputHidden id="lng" value="#{rutaC.lng}" />
+                    <h:commandButton  onclick="getVars()" action="#{rutaC.listarRadio()}" value="Listar rutas dentro del perímetro" />
+                    <h:commandButton  actionListener="#{rutaC.listar()}" value="Listar todas las rutas" />
 
-                <p:column headerText="Ruta">
-                    <p:gmap id="gmap" center="19.3241874,-99.1789797" zoom="12" type="ROADMAP" style="width:300px;height:200px" model="#{rutaC.getModeloMapa(ruta.mapa)}" />
-                    <p:commandButton value="Expandir" type="button" onclick="PF('dlg#{ruta.idRuta}').show();" />
-                    <p:commandButton value="Solicitar servicio" type="button" onclick="PF('dlg#{ruta.idRuta}').show();" />
-                    <p:dialog header="Ruta de #{ruta.automovil.chofer.cnombre}" widgetVar="dlg#{ruta.idRuta}" modal="true" height="400" width="600">
-                        <p:gmap id="gmap-dlg#{ruta.idRuta}" center="19.3241874,-99.1789797" zoom="14" type="ROADMAP" style="width:100%;height:100%" model="#{rutaC.getModeloMapa(ruta.mapa)}" />
-                    </p:dialog>
-                </p:column>
+                    <p:dataTable value="#{rutaC.lstRutas}" var="ruta" widgetVar="tablaRutas" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                                 paginator="true" rows="10" style="margin-bottom:20px" rendered="#{rutaC.lstRutas != null}">
 
-                <p:column headerText="Calles" filterBy="#{ruta.descripcion}" footerText="contains" filterMatchMode="contains">
-                    <p:outputLabel value="#{ruta.descripcion}"/>
-                </p:column>
+                        <f:facet name="header">
+                            <p:outputPanel>
+                                <h:outputText value="Filtra" />
+                                <p:inputText id="globalFilter" onkeyup="PF('tablaRutas').filter()" style="width:150px" placeholder="Palabra clave"/>
+                            </p:outputPanel>
+                        </f:facet>
+                        <p:column headerText="Nombre del chofer" filterBy="#{ruta.automovil.chofer.cnombre}" footerText="contains" filterMatchMode="contains">
+                            <h:outputText value="#{ruta.automovil.chofer.cnombre}" />
+                        </p:column>
 
-            </p:dataTable>
-        </h:form>
-        <h:button value="Inicio" outcome="index"/>
+                        <p:column headerText="Ruta">
+                            <p:gmap id="gmap" center="19.3241874,-99.1789797" zoom="12" type="ROADMAP" style="width:300px;height:200px" model="#{rutaC.getModeloMapa(ruta.mapa)}" />
+                            <p:commandButton value="Expandir" type="button" onclick="PF('dlg#{ruta.idRuta}').show();" />
+                            <p:commandButton value="Solicitar servicio" type="button" onclick="PF('dlg#{ruta.idRuta}').show();" />
+                            <p:dialog header="Ruta de #{ruta.automovil.chofer.cnombre}" widgetVar="dlg#{ruta.idRuta}" modal="true" height="400" width="600">
+                                <p:gmap id="gmap-dlg#{ruta.idRuta}" center="19.3241874,-99.1789797" zoom="14" type="ROADMAP" style="width:100%;height:100%" model="#{rutaC.getModeloMapa(ruta.mapa)}" />
+                            </p:dialog>
+                        </p:column>
+
+                        <p:column headerText="Calles" filterBy="#{ruta.descripcion}" footerText="contains" filterMatchMode="contains">
+                            <p:outputLabel value="#{ruta.descripcion}"/>
+                        </p:column>
+
+                    </p:dataTable>
+                </h:form>
+                <h:button value="Inicio" outcome="index"/>
+            </ui:define>
+
+            <ui:define name="bottom">
+                <p></p>
+            </ui:define>
+        </ui:composition>
     </h:body>
 </html>
-

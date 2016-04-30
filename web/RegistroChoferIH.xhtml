@@ -48,9 +48,8 @@
                             <p:message for="nid" display="text" />  
 
                             <p:outputLabel for="fecha" value="Fecha de Nacimiento" />
-                            <p:inputText id="fecha" required="true" style="text-align: left;" value="#{choferC.chofer.cfechaNac}">
-                                <f:convertDateTime pattern="dd-MM-yyyy"/>
-                            </p:inputText>
+                            <p:calendar id="fecha" required="true" style="text-align: left;" pattern="dd-MM-yyyy" mask="true" value="#{choferC.chofer.cfechaNac}" />
+                            
                             <p:message for="fecha" display="text" />
                         </h:panelGrid>
                         <section class="button">
