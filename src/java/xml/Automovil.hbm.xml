@@ -25,6 +25,9 @@
         <property name="color" type="string">
             <column name="color" length="32" not-null="true" />
         </property>
+        <property name="capacidad" type="int">
+            <column name="capacidad" not-null="true" />
+        </property>
         <set name="rutas" table="ruta" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="id_auto" not-null="true" unique="true" />

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 11/04/2016 03:54:24 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated Apr 30, 2016 2:19:23 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelo.Ruta" table="ruta" schema="public" optimistic-lock="version">
         <id name="idRuta" type="int">
@@ -11,7 +11,7 @@
             </generator>
         </id>
         <many-to-one name="automovil" class="modelo.Automovil" fetch="select">
-            <column name="id_auto" not-null="true" />
+            <column name="id_auto" not-null="true" unique="true" />
         </many-to-one>
         <property name="mapa" type="string">
             <column name="mapa" length="256" not-null="true" />
@@ -36,6 +36,12 @@
                 <column name="id_ruta" not-null="true" unique="true" />
             </key>
             <one-to-many class="modelo.Horario" />
+        </set>
+        <set name="solicituds" table="solicitud" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_ruta" not-null="true" />
+            </key>
+            <one-to-many class="modelo.Solicitud" />
         </set>
     </class>
 </hibernate-mapping>

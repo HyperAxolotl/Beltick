@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
 <hibernate-reverse-engineering>
-  <schema-selection match-catalog="beltick" match-schema="public"/>
-  <table-filter match-name="pasajero_ruta"/>
-  <table-filter match-name="chofer"/>
-  <table-filter match-name="perfil_chofer"/>
-  <table-filter match-name="horario"/>
-  <table-filter match-name="perfil_pasajero"/>
+  <schema-selection match-catalog="beltick"/>
   <table-filter match-name="automovil"/>
+  <table-filter match-name="chofer"/>
+  <table-filter match-name="solicitud"/>
+  <table-filter match-name="horario"/>
   <table-filter match-name="pasajero"/>
+  <table-filter match-name="pasajero_ruta"/>
+  <table-filter match-name="perfil_chofer"/>
   <table-filter match-name="ruta"/>
+  <table-filter match-name="perfil_pasajero"/>
 </hibernate-reverse-engineering>

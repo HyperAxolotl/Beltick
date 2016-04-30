@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 11/04/2016 03:54:24 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated Apr 30, 2016 2:19:23 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="modelo.PasajeroRuta" table="pasajero_ruta" schema="public" optimistic-lock="version">
-        <composite-id name="id" class="modelo.PasajeroRutaId">
+    <class name="modelo.Solicitud" table="solicitud" schema="public" optimistic-lock="version">
+        <composite-id name="id" class="modelo.SolicitudId">
             <key-property name="idPasajero" type="int">
                 <column name="id_pasajero" />
             </key-property>
