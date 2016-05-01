@@ -11,6 +11,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
 import controlador.logica.SesionL;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.SessionScoped;
 import modelo.Chofer;
 import modelo.Pasajero;
@@ -30,6 +31,7 @@ public class SesionC implements Serializable {
    private Pasajero p = new Pasajero();
    private Chofer c = new Chofer();
    private boolean tipo;
+   private FacesMessage mensaje;
 
     public Chofer getChofer() {
         return c;
@@ -67,10 +69,14 @@ public class SesionC implements Serializable {
             if (pa != null) {
                 FacesContext.getCurrentInstance().getExternalContext()
                         .getSessionMap().put("usuario", pa);
-                resultado = "PerfilIH";
+                resultado = "inicioPasajero";
                 p = pa;
-            } else 
-                resultado = "error";
+            } else {
+                mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "Correo o contraseña incorrectos", null);
+                FacesContext.getCurrentInstance().addMessage(null, mensaje);
+                resultado = "";
+            }
+           
             } catch (Exception e) {
             throw e;
             }
@@ -81,10 +87,13 @@ public class SesionC implements Serializable {
             if (usc != null) {
                 FacesContext.getCurrentInstance().getExternalContext()
                         .getSessionMap().put("usuario", usc);
-                resultado = "PerfilIH";
+                resultado = "inicioChofer";
                 c = usc;
-            } else 
-                resultado = "error";
+            } else {
+                mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "Correo o contraseña incorrectos", null);
+                FacesContext.getCurrentInstance().addMessage(null, mensaje);
+                resultado = "";
+            }
             } catch (Exception e) {
             throw e;
             }

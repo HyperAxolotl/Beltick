@@ -14,8 +14,8 @@
                         <div class="col-sm-12" align="center">
                             <h:form styleClass="form">
                                 <h2>Iniciar Sesión Pasajero</h2>
-                                <h:messages />
-
+                               
+                                <h:messages infoStyle="color:red" />
                                 <h:panelGrid columns="2" columnClasses="alignmentCenter">			
 
                                     <h:outputLabel value="Correo " />
@@ -23,9 +23,11 @@
 
                                     <h:outputLabel value="Contraseña   " />
                                     <p:password style="text-align: left;" value="#{sesionC.pasajero.pcontrasenia}" />
+                                    
                                     <section name="button">
                                         <h:commandButton styleClass="btn btn-info" value="Aceptar" action="#{sesionC.verificarDatos()}" />    
                                     </section>
+                                    
                                 </h:panelGrid>
                             </h:form>
                         </div>
