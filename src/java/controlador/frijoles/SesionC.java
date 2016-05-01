@@ -67,7 +67,7 @@ public class SesionC implements Serializable {
             if (pa != null) {
                 FacesContext.getCurrentInstance().getExternalContext()
                         .getSessionMap().put("usuario", pa);
-                resultado = "inicioPasajero";
+                resultado = "PerfilIH";
                 p = pa;
             } else 
                 resultado = "error";
@@ -81,7 +81,7 @@ public class SesionC implements Serializable {
             if (usc != null) {
                 FacesContext.getCurrentInstance().getExternalContext()
                         .getSessionMap().put("usuario", usc);
-                resultado = "inicioChofer";
+                resultado = "PerfilIH";
                 c = usc;
             } else 
                 resultado = "error";
@@ -107,7 +107,7 @@ public class SesionC implements Serializable {
     public String cerrarSesion() {
         FacesContext.getCurrentInstance().getExternalContext()
                 .invalidateSession();
-        return "index";
+        return "PaginaPrincipalIH";
     }
     
     

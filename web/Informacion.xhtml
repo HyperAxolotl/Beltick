@@ -3,107 +3,141 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <style> 
+            h1{
+                color:#540739;
+                text-align: center;
+            }
+            h3,h4{
+                color:#3F2354;
+                text-align: center;
+            }
+            p{
+                color:#160A4B;
+                text-align: justify;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <div class="content">
+            <h1>Información general sobre el servicio</h1>
+            <section class="container-fluid">
+                <h3>Condiciones de uso</h3>
+                <p>
+                    Las presentes condiciones regulan el uso de la aplicación Beltick. La aplicación está dirigida 
+                    exclusivamente, por el momento, a estudiantes de la Facultad de Ciencias de la Universidad Nacional Autónoma de México
+                    (UNAM). Los alumnos que estudien en otra facultad, instituto o escuela de la misma universidad 
+                    y que decidan acceder o usar la aplicación lo harán bajo su propia responsabilidad y riesgo. Además deberán
+                    asegurarse de que tal acceso o uso cumpla con la legislación local aplicable.  Al acceder y utilizar esta aplicación
+                    y Sitio Web usted (“Usuario”) reconoce que ha leído y aceptado estas Condiciones Generales de Uso y se compromete a 
+                    cumplir con todos sus términos y condiciones. Asimismo, el Usuario reconoce y acepta que el acceso y uso de esta aplicación y/o 
+                    Sitio Web estará sujeto a las Condiciones Generales de Uso que se encuentren en vigor en el momento en que acceda a la misma.
+                    Beltick se reserva el derecho a cambiar en cualquier momento las presentes condiciones de uso, así como cualesquiera
+                    otras condiciones o particulares que resulten de la aplicación. Asimismo, Beltick se reserva el derecho de suspender, 
+                    interrumpir o dejar de operar la aplicación en cualquier momento.
+                </p>   
+                <h4>Contenidos</h4>
+                <p>
+                    A través de la aplicación, Beltick facilita al Usuario un servicio de auto compartido (en adelante, el “Servicio”).
+                    La aplicación facilita al Usuario el acceso a diversos contenidos, información y datos proporcionados por Beltick 
+                    en relación con el Servicio (en adelante, los “Contenidos”). Beltick se reserva el derecho a modificar en cualquier momento la presentación,
+                    la configuración y ubicación de la aplicación, así como las correspondientes condiciones de acceso y uso. Beltick no garantiza
+                    que los Contenidos proporcionados a través de la aplicación  serán en todo caso correctos, completos o actualizados.
 
-  <h:body>
-    <ui:composition template="plantillas/vista1.xhtml">
-      <ui:define name="title">Acerca de nosotros</ui:define>
-      <ui:define name="top">
-        <div class="navbar-wrapper">
-          <nav class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container-fluid">
-              <div class="navbar-header">
-                <a class="nav-brand">
-                  <img style="max-width:120px;margin-top: -3px; float: left;" 
-                       src="resources/imagenes/logobelt.png"
-                       alt="Beltick by Hyperaxolotl"/>
-                </a>
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span> 
-                </button>   
-              </div>
+                    Beltick actúa en calidad de intermediario en nombre propio en el servicio de auto compartido al Usuario. 
+                    Será responsabilidad exclusiva de los conductores la prestación de los servicios de transporte 
+                    que sean registrados a través de la aplicación y el Servicio desarrollado por Beltick. Beltick únicamente pone a disposición 
+                    del Usuario una herramienta para compartir transporte con otros usuarios. El Usuario 
+                    exonera a Beltick de cualquier responsabilidad derivada del servicio de transporte prestado por los usuarios. 
+                    De igual forma, el Usuario libera de cualquier responsabilidad civil o penal a Beltick derivado del servicio otorgado, ya que
+                    , como se menciona en el presente, el servicio es únicamente proporcionado por otros usuarios y no por
+                    Beltick, quien meramente se conduce como un intermediario.
+                </p>
+                <h4>Acceso y uso</h4>
+                <p>
+                    El acceso a la aplicación estará limitado a alumnos de la Facultad de Ciencias de la UNAM.
+                    Con carácter general, el Usuario podrá acceder a la aplicación  de forma libre y gratuita.
+                    El Usuario reconoce y acepta que el acceso y uso de la aplicación tiene lugar libre y 
+                    conscientemente, bajo su exclusiva responsabilidad. Beltick no será en ningún caso responsable del uso 
+                    que el Usuario y/o terceros pudieran hacer de la aplicación y/o Sitio Web ni de los daños y perjuicios 
+                    que pudieran derivarse del mismo.
 
-              <div class="collapse navbar-collapse">                    
-                <ul class="nav navbar-nav navbar-right">
-                  <li><a href="faces/index.xhtml">Pagina Principal</a></li>
-                  <li><a href="#sobreNosotros">Sobre nosotros</a></li>
-                  <li><div class="dropdown dropdown-header">
-                      <button class="btn btn-link dropdown-toggle" style="margin-top: 10px;" type="button" data-toggle="dropdown">
-                        <b>Registrarse</b>
-                        <span class="caret"></span></button>
-                      <ul class="dropdown-menu">
-                        <li><a href="faces/RegistroPasajeroIH.xhtml" style="color:whitesmoke;">Registrarse como Pasajero</a></li>
-                        <li><a href="faces/RegistroChoferIH.xhtml" style="color:whitesmoke;">Registrarse como Chofer</a></li> 
-                      </ul>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
+                    El Usuario se compromete a hacer un uso adecuado y lícito de la aplicación  de conformidad
+                    con la legislación aplicable, las presentes Condiciones  de Uso y el orden público. 
+                    El Usuario deberá abstenerse de (i) hacer un uso no autorizado o fraudulento de la aplicación; 
+                    (ii) acceder o intentar acceder a recursos restringidos de
+                    la aplicación; (iii) utilizar la aplicación  con fines o efectos ilícitos, 
+                    ilegales, contrarios a lo establecido en las presentes Condiciones de Uso y al
+                    orden público, lesivos de los derechos e intereses de terceros, o que de cualquier forma puedan dañar,
+                    inutilizar o sobrecargar o impedir la normal utilización o disfrute de la aplicación;
+                    (iv) provocar daños en la aplicación  o en los sistemas de sus proveedores o de terceros;
+                    (v) introducir o difundir virus informáticos o cualesquiera otros sistemas físicos o lógicos que sean 
+                    susceptibles de provocar daños en los sistemas de Beltick, de sus proveedores o de terceros, 
+                    (vi) intentar acceder, utilizar y/o manipular los datos de Beltick, terceros proveedores y otros usuarios;
+                    (vii) reproducir o copiar, distribuir, permitir el acceso del público a través de cualquier modalidad de
+                    comunicación pública, transformar o modificar los Contenidos, a menos que se cuente con la autorización 
+                    del titular de los correspondientes derechos o ello esté legalmente permitido; (viii) obtener o intentar
+                    obtener los contenidos empleando para ello medios o procedimientos distintos de los que, según los casos,
+                    se hayan puesto a su disposición a este efecto.
+                </p>
+                <h4>Propiedad intelectual</h4>
+                <p>
+                    Beltick autoriza al Usuario a utilizar, visualizar, imprimir, descargar y almacenar los contenidos y/o 
+                    los elementos insertados en la aplicación exclusivamente para su uso personal, privado y no lucrativo, 
+                    absteniéndose de realizar sobre los mismos cualquier acto de descompilación, ingeniería inversa, modificación,
+                    divulgación o suministro.
 
-          </nav>
+                    Cualquier otro uso o explotación de cualesquiera contenidos y/u otros elementos insertados en la aplicación 
+                    distinto de los aquí expresamente previstos estará sujeto a la autorización previa de Beltick.
+                </p>
+                
+                <h4>Protección de datos</h4>
+                <p>
+                    Los datos personales que proporcione el Usuario por medio del Formulario de Registro se integrarán en un 
+                    fichero de datos personales que es responsabilidad de Beltick. Para más información, leer el Aviso de privacidad
+                    más abajo.
+                </p>
+                <h3>Aviso de privacidad</h3>
+                <p>
+                    En Beltick, con fundamento en la Ley Federal de Protección de Datos 
+                    Personales en Posesión de Particulares (en adelante la “Ley”) 
+                    le informamos lo siguiente:
+                </p>
+
+                <p>
+                    Seguimos todoslos principios que marca la Ley en la recolección 
+                    y manejo de datos personales como son licitud, calidad,
+                    consentimiento, información, finalidad, lealtad, proporcionalidad y responsabilidad.
+                </p>
+
+
+                <p>El responsable de protección de datos personales de esta solicitud es Beltick.</p>
+
+                <p>Apegado a los términos del artículo 29 de la Ley Usted podrá ejercer sus derechos ARCO 
+                    (acceso, rectificación, cancelación u oposición de su información) 
+                </p>
+
+                <p>El presente aviso de privacidad cumple con los requisitos que marca el artículo 15 y 16 de la Ley.</p>
+
+                <p>Cualquiera de los derechos ARCO será resuleto en un plazo máximo de 20 días,
+                    plazo que podrá ser prorrogable por un plazo igual en caso de existir una causa justificada de Beltick.
+                    Lo anterior, en términos de lo establecido por el artículo 32 de la Ley.</p>
+                <p>Si existe algún cambio en esta política de privacidad informaremos mediante correo electrónico
+                    a la dirección proporcionada por el usuario durante su registro</p>
+                <p>Beltick se reserva el derecho de cambiar y actualizar el presente aviso de privacidad. 
+                    No será responsable Beltick, si el aviso de privacidad sufrió algún cambio 
+                    y esta notificación de modificación por error en su cuenta de correo electrónico
+                    no lo recibió el cliente o de transmisión de datos.
+                    De no recibir respuesta alguna en un plazo de 72 horas a partir de enviado, 
+                    se entenderá que acepta de conformidad los cambios citados.</p>                
+            </section>
+            <!--IT'S A TRAP-->
+            <section class="button" align="center">
+                <button type="button" class="btn btn-info" data-dismiss="modal">Aceptar</button>
+            </section>
+
         </div>
-      </ui:define>
-      <ui:define name="content">
-        <h2>¿Qué es Beltick?</h2>
-        <p>
-          Beltick es un sistema de auto compartido para alumnos de la Facultad de Ciencias.
-        </p>
-        <h2>¿Cómo surgió Beltick?</h2>
-        <p>
-          Como estudiantes universitarios, diariamente nos transportamos a la  escuela o facultad que nos corresponde. 
-          Para algunos basta una caminata, para otros una fracción de ruta de camión,
-          un tramo en auto o un par de líneas del metro, y la  mayoría requiere completar una odisea para llegar. 
-          Muchos de nosotros compartimos ruta, a veces sin saberlo, 
-          lo que quizás no compartimos es la cantidad de tiempo que invertimos en el transporte o el dinero que gastamos en ello. 
-        </p>
-        <h2>¿Qué ofrece Beltick?</h2>
-        <p>
-          Beltick ofrecerá una plataforma para comunicar a los estudiantes que deseen ofrecer su vehículo como transporte escolar, 
-          para viajar en compañía de sus compañeros, obteniendo una remuneración; y aquellos que deseen viajar más cómodos, 
-          por un costo más conveniente. Los estudiantes registrados podrán chatear para organizarse, agregarse a una ruta 
-          y calificar a los compañeros que les comparten un lugar en su auto para la mejora constante del servicio. 
-        </p>
-        
-        <h2>Aviso de privacidad</h2>
-        <p>
-          En Beltick, con fundamento en la 
-          Ley Federal de Protección de Datos Personales en Posesión de Particulares (en adelante la “Ley”) 
-          le informamos lo siguiente:
-        </p>
-
-        <p>
-          Seguimos todoslos principios que marca la Ley en la recolección 
-          y manejo de datos personales como son licitud, calidad,
-          consentimiento, información, finalidad, lealtad, proporcionalidad y responsabilidad.
-        </p>
-
-        
-        <p>El responsable de protección de datos personales de esta solicitud es Beltick.</p>
-
-        <p>Apegado a los términos del artículo 29 de la Ley Usted podrá ejercer sus derechos ARCO 
-          (acceso, rectificación, cancelación u oposición de su información) 
-        </p>
-
-        <p>El presente aviso de privacidad cumple con los requisitos que marca el artículo 15 y 16 de la Ley.</p>
-
-        <p>Cualquiera de los derechos ARCO será resuleto en un plazo máximo de 20 días,
-          plazo que podrá ser prorrogable por un plazo igual en caso de existir una causa justificada de Beltick.
-          Lo anterior, en términos de lo establecido por el artículo 32 de la Ley.</p>
-        <p>Si existe algún cambio en esta política de privacidad informaremos mediante correo electrónico
-          a la dirección proporcionada por el usuario durante su registro</p>
-        <p>Beltick se reserva el derecho de cambiar y actualizar el presente aviso de privacidad. 
-          No será responsable Beltick, si el aviso de privacidad sufrió algún cambio 
-          y esta notificación de modificación por error en su cuenta de correo electrónico
-          no lo recibió el cliente o de transmisión de datos.
-          De no recibir respuesta alguna en un plazo de 72 horas a partir de enviado, 
-          se entenderá que acepta de conformidad los cambios citados.</p>
-
-      </ui:define>
-      
-      
-    </ui:composition>
-  </h:body>
+    </h:body>
 </html>
 

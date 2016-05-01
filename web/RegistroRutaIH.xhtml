@@ -11,29 +11,34 @@
     <h:body>
         <ui:composition template="plantillas/vista1.xhtml">
             <ui:define name="content">
-                <h2>Registro Ruta</h2>
-                <p:gmap id="gmap" center="19.3241874,-99.1789797" zoom="13" type="ROADMAP" style="width:500px;height:400px"
-                        model="#{rutaC.getModeloMapa()}" onPointClick="addLatLng(event);" widgetVar="map" />
-                <h:outputScript library="js" name="RegistroRuta.js" />
-                <p:commandButton value="Borrar último punto" id="borrar-ultimo" onclick="return borrarUltimo();" />
-                <p:commandButton value="Borrar todo" id="borrar-todo" onclick="return borrarTodo();" />
+                <section class="container">
+                    <div class="row">
+                        <div class="col-sm-12" align="center">
+                            <h2>Registro Ruta</h2>
+                            <p:gmap id="gmap" center="19.3241874,-99.1789797" zoom="13" type="ROADMAP" style="width:500px;height:400px"
+                                    model="#{rutaC.getModeloMapa()}" onPointClick="addLatLng(event);" widgetVar="map" />
+                            <h:outputScript library="js" name="RegistroRuta.js" />
+                            <p:commandButton value="Borrar último punto" id="borrar-ultimo" onclick="return borrarUltimo();" />
+                            <p:commandButton value="Borrar todo" id="borrar-todo" onclick="return borrarTodo();" />
 
-                <h:form>
-                    <h:panelGrid columns="1">
+                            <h:form>
+                                <h:panelGrid columns="1">
 
-                        <input type="hidden" id="mapa" name="mapa" value="" />              
+                                    <input type="hidden" id="mapa" name="mapa" value="" />              
 
-                        <p:outputLabel for="descripcion" value="Descripción" />
-                        <p:inputTextarea id="descripcion" value="#{rutaC.ruta.descripcion}" rows="5" cols="33" counter="display" maxlength="120" counterTemplate="{0}" placeholder="Lista las calles por las que pasas (no tienen que ser todas, sólo avenidas importantes)"/>
-                        <h:outputText id="display" />     
-                    </h:panelGrid>
-                    
-                    <p:commandButton value="Registrar" action="#{rutaC.registro()}" >
-                        <f:actionListener binding="#{rutaC.ruta.setAutomovil(sesionC.chofer.getAutomovils().iterator().next())}" />
-                    </p:commandButton>
-                </h:form>
+                                    <p:outputLabel for="descripcion" value="Descripción" />
+                                    <p:inputTextarea id="descripcion" value="#{rutaC.ruta.descripcion}" rows="5" cols="33" counter="display" maxlength="120" counterTemplate="{0}" placeholder="Lista las calles por las que pasas (no tienen que ser todas, sólo avenidas importantes)"/>
+                                    <h:outputText id="display" />     
+                                </h:panelGrid>
+
+                                <p:commandButton value="Registrar" action="#{rutaC.registro()}" >
+                                    <f:actionListener binding="#{rutaC.ruta.setAutomovil(sesionC.chofer.getAutomovils().iterator().next())}" />
+                                </p:commandButton>
+                            </h:form>
+                        </div>
+                    </div>
+                </section>
             </ui:define>
-
             <ui:define name="bottom">
                 <p></p>
             </ui:define>

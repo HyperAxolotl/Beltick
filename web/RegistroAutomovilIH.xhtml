@@ -8,37 +8,43 @@
     <h:body>
         <ui:composition template="plantillas/vista1.xhtml">
             <ui:define name="content">
-                <h2>Registro Automovil</h2>
-                <h:form>
-                    <h:panelGrid columns="2">
-                        <h:outputLabel value="Número de identificación" />
-                        <p:inputText value="#{automovilC.automovil.noIdentificacion}" />
+                <section class="container">
+                    <div class="row">
+                        <div class="col-sm-12" align="center">
+                            <h2>Registro Automovil</h2>
+                            <h:form class="form">
+                                <h:panelGrid columns="2">
+                                    <h:outputLabel value="Número de identificación" />
+                                    <p:inputText value="#{automovilC.automovil.noIdentificacion}" />
 
-                        <h:outputLabel value="Modelo" />
-                        <p:inputText value="#{automovilC.automovil.modelo}" />
+                                    <h:outputLabel value="Modelo" />
+                                    <p:inputText value="#{automovilC.automovil.modelo}" />
 
-                        <h:outputLabel value="Placa" />
-                        <p:inputText value="#{automovilC.automovil.placa}" />
+                                    <h:outputLabel value="Placa" />
+                                    <p:inputText value="#{automovilC.automovil.placa}" />
 
-                        <h:outputLabel value="Color" />
-                        <p:inputText value="#{automovilC.automovil.color}" />
-                        
-                        <h:outputLabel value="Capacidad de pasajeros" />
-                        <p:inputText value="#{automovilC.automovil.capacidad}" />
-                        
-                        <h:outputLabel value="#{sesionC.chofer.ccorreo}" />                  
+                                    <h:outputLabel value="Color" />
+                                    <p:inputText value="#{automovilC.automovil.color}" />
 
-                    </h:panelGrid>
-                    <section class="container">
-                        <div class="row">
-                            <div class="col-sm-2">
-                                <h:commandButton styleClass="btn btn-info" value="Registrar" action="#{automovilC.registro()}" >
-                                    <f:actionListener binding="#{automovilC.automovil.setChofer(sesionC.chofer)}" />
-                                </h:commandButton>
-                            </div>    
+                                    <h:outputLabel value="Capacidad de pasajeros" />
+                                    <p:inputText value="#{automovilC.automovil.capacidad}" />
+
+                                    <h:outputLabel value="#{sesionC.chofer.ccorreo}" />                  
+
+                                </h:panelGrid>
+                                <section class="container">
+                                    <div class="row">
+                                        <div class="col-sm-2">
+                                            <h:commandButton styleClass="btn btn-info" value="Registrar" action="#{automovilC.registro()}" >
+                                                <f:actionListener binding="#{automovilC.automovil.setChofer(sesionC.chofer)}" />
+                                            </h:commandButton>
+                                        </div>    
+                                    </div>
+                                </section>
                         </div>
-                    </section>
-                </h:form>
+                    </div>
+                </section>
+                </h:form> 
             </ui:define>
         </ui:composition>
 

@@ -8,81 +8,31 @@
 
     <h:body>
         <ui:composition template="plantillas/vista1.xhtml">
-            <ui:define name="top">
-                <ui:define name="title">Beltick: inicio</ui:define>
-
-                <div class="navbar-wrapper">
-                    <nav class="navbar navbar-inverse navbar-fixed-top">
-                        <div class="container-fluid">
-                            <div class="navbar-header">
-                                <a class="nav-brand">
-                                    <img style="max-width:120px;margin-top: -3px; float: left;" 
-                                         src="resources/imagenes/logobelt.png"
-                                         alt="Beltick by Hyperaxolotl"/>
-                                </a>
-                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span> 
-                                </button>   
-                            </div>
-
-                            <div class="collapse navbar-collapse">                    
-                                <ul class="nav navbar-nav navbar-right">
-                                    <li><a href="faces/index.xhtml">Pagina Principal</a></li>
-                                    <li><a href="faces/Informacion.xhtml">Sobre nosotros</a></li>
-                                    <li><div class="dropdown dropdown-header">
-                                            <button class="btn btn-link dropdown-toggle" style="margin-top: 10px;" type="button" data-toggle="dropdown">
-                                                <b>Registrarse</b>
-                                                <span class="caret"></span></button>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="faces/RegistroPasajeroIH.xhtml" style="color:whitesmoke;">Registrarse como Pasajero</a></li>
-                                                <li><a href="faces/RegistroChoferIH.xhtml" style="color:whitesmoke;">Registrarse como Chofer</a></li> 
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    
-                                    <li><div class="dropdown dropdown-header">
-                                            <button class="btn btn-link dropdown-toggle" style="margin-top: 10px;" type="button" data-toggle="dropdown">
-                                                <b>Iniciar Sesión</b>
-                                                <span class="caret"></span></button>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="faces/FormularioInicioSesionChoferIH.xhtml" style="color:whitesmoke;">Iniciar sesión como Chofer</a></li>
-                                                <li><a href="faces/FormularioInicioSesionPasajeroIH.xhtml" style="color:whitesmoke;">Iniciar sesión como Pasajerio</a></li> 
-                                            </ul>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-                    </nav>
-                </div>
-            </ui:define>
             <ui:define name="content">
                 <section class="container">
-                    <h:form class="form-horizontal">
-                        
+                    <div class="row">
+                        <div class="col-sm-12" align="center">
+                            <h:form class="form">
+                                <h2>Iniciar Sesión Chofer</h2>
+                                <h:panelGrid columns="2" columnClasses="alignmentCenter">			
 
+                                    <h:outputLabel value="Correo " />
+                                    <p:inputText style="text-align: left;" value="#{sesionC.chofer.ccorreo}" />
 
-                        <h1>Iniciar Sesión Chofer</h1>
-                        <h:panelGrid columns="2" columnClasses="alignmentCenter">			
+                                    <h:outputLabel value="Contraseña  " />
+                                    <p:password style="text-align: left;" value="#{sesionC.chofer.ccontrasenia}" />
+                                    <section name="button">
+                                        <h:commandButton  styleClass="btn btn-info" value="Aceptar" action="#{sesionC.verificarDatos()}" >
+                                            <f:actionListener binding="#{sesionC.setTipo(true)}" />
+                                        </h:commandButton>
+                                    </section>    
 
-                            <h:outputLabel value="Correo " />
-                            <p:inputText style="text-align: left;" value="#{sesionC.chofer.ccorreo}" />
-
-                            <h:outputLabel value="Contraseña  " />
-                            <p:password style="text-align: left;" value="#{sesionC.chofer.ccontrasenia}" />
-                            <section name="button">
-                                <h:commandButton  styleClass="btn btn-info" value="Aceptar" action="#{sesionC.verificarDatos()}" >
-                                    <f:actionListener binding="#{sesionC.setTipo(true)}" />
-                                </h:commandButton>
-                            </section>    
-
-                        </h:panelGrid>
-                    </h:form>
+                                </h:panelGrid>
+                            </h:form> 
+                        </div>
+                    </div>
                 </section>
-                
+
             </ui:define>
 
             <ui:define name="bottom">

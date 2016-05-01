@@ -1,12 +1,13 @@
-    @import url("bootstrap.css");
+@import url("bootstrap.css");
 
+/*colorscheme id: #4D51TqxkXw0w0*/
 * {
     margin:0;
     padding: 0;
     box-sizing: border-box;
 }
 body{
- background-color: #dddddd; 
+    background-color: #cfb9de; 
 }
 #top {
     position: relative;
@@ -24,9 +25,12 @@ body{
 }
 #bottom {
     position: relative;
-    background-color: #c2dfef;
+    background-color:#dbcae6;
     padding: 5px;
     margin: 10px 0px 0px 0px;
+    text-align: right;
+    font-family: inherit;
+    font-size: 11px;
 }
 
 #left {
@@ -52,23 +56,17 @@ body{
 
 #content {
     float: inside;
-    padding-top: 10%;
-    position: absolute;
+    position: relative;
+    margin:auto;
+    padding: auto;
+    background-color: #cfb9de;
 }
-#content>p{
+p{
     text-align: justify;
-    margin: 6px;
+    padding: auto;
+    margin: auto;
 }
-/*FIXING THIS*/
-/*cuando el ancho de la ventana del navegador supera los 600px,
-mueve el contenido a la izquierda y justifica el texto
-@media (min-width:600px){
-     
-    #content {
-     text-align: justify;
-     padding-left: 35%;   
-    }   
-}*/
+
 
 #content .button input[type=submit]{
     width: 5%;
@@ -102,21 +100,24 @@ mueve el contenido a la izquierda y justifica el texto
 }
 
 #top a:link, #top a:visited {
-  color: white;
-  font-weight : bold;
-  text-decoration: none;
+    color: white;
+    font-weight : bold;
+    text-decoration: none;
 }
 
 #top a:link:hover, #top a:visited:hover  {
-  color: black;
-  font-weight : bold;
-  text-decoration : underline;
+    color: black;
+    font-weight : bold;
+    text-decoration : underline;
 }
 
 
 .container {
     position: relative;
+    margin: auto;
+    padding: auto;
 }
+
 
 /*para inputs en formularios*/
 .form-horizontal>input{
@@ -132,13 +133,13 @@ mueve el contenido a la izquierda y justifica el texto
 
 
 .alignmentCenter {
- text-align: center;
+    text-align: center;
 }
 .alignmentLeft {
- text-align : left;
+    text-align : left;
 }
 .alignmentRight {
- text-align : right;
+    text-align : right;
 }
 
 /*para barra superior*/
@@ -148,7 +149,7 @@ mueve el contenido a la izquierda y justifica el texto
     width: 100%;
     border-radius: 0px;
     vertical-align: middle;
-    
+
 }
 /*para el logo*/
 .navbar-brand{
@@ -177,12 +178,14 @@ mueve el contenido a la izquierda y justifica el texto
 }
 
 .dropdown-menu{
-    background-color: #63775A;
+    background-color: #4C1970;
 }
 .dropdown-menu>li>a{
+    background-color: #4C1970;
     color:whitesmoke;
 }
 .dropdown-menu > li > a:hover{
+    background-color: #8B4DB8; /*morado claro*/
     color: #63775A;
 }
 
@@ -205,21 +208,29 @@ mueve el contenido a la izquierda y justifica el texto
 
 /*modificación a los botones de bootstrap*/
 .btn-info{
-    background-color: #9BA895;
-    border-color: #82927B;
+    background-color: #81165C; /*morado barney*/
+    border: #81165C;
+    margin: auto;
+    width: 100px;
 }
 .btn-info:hover{
-    background-color: #AFB9AA;
-    border-color: #AFB9AA;
+    background-color: #540739; /*vino(?))*/
+    border: #540739;
+    margin: auto;
+    width: 100px;
 }
 
 .btn-link{
-    background-color: #63775A;
+    background-color: #4C1970; /*morado de la barra*/
     color: whitesmoke;
 }
 
 .btn-link:hover{
-    background-color: #BFC7BB;
+    background-color: #2E0849; /*morado oscuro*/
     color: #BFC7BB;
 }
+
+/*parrafos y encabezados*/
+h2{color:#3F2354;text-align: center;}
+p{color:#160A4B;text-align: justify;}
 
