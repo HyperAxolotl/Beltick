@@ -15,6 +15,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.SessionScoped;
 import modelo.Chofer;
 import modelo.Pasajero;
+import modelo.Horario;
 
 
 
@@ -31,6 +32,7 @@ public class SesionC implements Serializable {
    private Pasajero p = new Pasajero();
    private Chofer c = new Chofer();
    private boolean tipo;
+   private Horario h = new Horario();
    private FacesMessage mensaje;
 
     public Chofer getChofer() {
