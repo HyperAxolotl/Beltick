@@ -16,23 +16,13 @@
                                     <f:facet name="header">
                                         <img src="#{perfilC.perfilChofer.cfoto}" class="img-rounded" height="80px" width="80px"/>
                                     </f:facet>
-                                    <img src="#{perfilC.perfilChofer.cfoto}" class="img-circle" width="150px" height="150px" />
+                                    <!--img src="#{perfilC.perfilChofer.cfoto}" class="img-circle" width="150px" height="150px" /-->
                                     <h:outputLabel value="#{perfilC.perfilChofer.chofer.cnombre} #{perfilC.perfilChofer.chofer.capp} #{perfilC.perfilChofer.chofer.capm}" />
                                     <h:outputLabel value="#{perfilC.perfilChofer.chofer.ccorreo}"/>
-                                    <h:outputLabel value="#{perfilC.perfilChofer.chofer.cnoCuenta}"/>
+                                    <!--h:outputLabel value="#{perfilC.perfilChofer.chofer.cnoCuenta}"/-->
                                     <h:outputLabel value="#{perfilC.perfilChofer.chofer.cfechaNac}"/>    
                                 </p:panelGrid>
                             </div>
-                            <section class="container">
-                                <div class="row">
-                                    <div class="col-sm-8" align="left">
-                                        <h:button value="Registrar automovil" styleClass="btn btn-info" outcome="RegistroAutomovilIH"/>
-                                        <h:button value="Explorar rutas" styleClass="btn btn-info" outcome="ExplorarRutasIH"/>
-                                        <h:button value="Explorar perfiles" styleClass="btn btn-info" outcome="ExplorarPerfilesIH"/>
-                                    </div>
-                                </div>
-                            </section>
-
                         </div>
                     </section>
                 </h:form>
@@ -50,17 +40,6 @@
                                     <h:outputText value="#{perfilC.perfilPasajero.pasajero.pnoCuenta}"/>
                                     <h:outputText value="#{perfilC.perfilPasajero.pasajero.pfechaNac}"/>
                                 </p:panelGrid>
-                            </div>
-                            <div class="col-sm-7">
-                                <div class="row">
-                                    <div class="col-sm-8" align="left">
-                                       
-                                            <p><h:button value="Explorar rutas" styleClass="btn btn-info" outcome="ExplorarRutasIH"/></p>
-                                            <p> </p>
-                                            <p><h:button value="Explorar perfiles" styleClass="btn btn-info" outcome="ExplorarPerfilesIH"/></p>
-                                        
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </section>
