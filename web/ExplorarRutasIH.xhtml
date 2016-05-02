@@ -44,10 +44,45 @@
                                     <p:column headerText="Ruta">
                                         <p:gmap id="gmap" center="19.3241874,-99.1789797" zoom="12" type="ROADMAP" style="width:300px;height:200px" model="#{rutaC.getModeloMapa(ruta.mapa)}" />
                                         <p:commandButton value="Expandir" type="button" onclick="PF('dlg#{ruta.idRuta}').show();" />
-                                        <p:commandButton value="Solicitar servicio" type="button" onclick="PF('dlg#{ruta.idRuta}').show();" />
+                                        <p:commandButton  value="Solicitar servicio" type="button" onclick="PF('dlg2').show();" />
                                         <p:dialog header="Ruta de #{ruta.automovil.chofer.cnombre}" widgetVar="dlg#{ruta.idRuta}" modal="true" height="400" width="600">
                                             <p:gmap id="gmap-dlg#{ruta.idRuta}" center="19.3241874,-99.1789797" zoom="14" type="ROADMAP" style="width:100%;height:100%" model="#{rutaC.getModeloMapa(ruta.mapa)}" />
                                         </p:dialog>
+                                        
+                                        <p:dialog header="Solicitar Servicio" widgetVar="dlg2" showEffect="explode" hideEffect="bounce" height="300" width="600">
+                                                <h:panelGrid columns="2">
+                                    <h:outputLabel value="Lunes" />
+                                    <p:inputText value="#{horarioC.horario.lunes}" />
+
+                                    <h:outputLabel value="Martes" />
+                                    <p:inputText value="#{horarioC.horario.martes}" />
+
+                                    <h:outputLabel value="Miercoles" />
+                                    <p:inputText value="#{horarioC.horario.miercoles}" />
+
+                                    <h:outputLabel value="Jueves" />
+                                    <p:inputText value="#{horarioC.horario.jueves}" />
+
+                                    <h:outputLabel value="Viernes" />
+                                    <p:inputText value="#{horarioC.horario.viernes}" />
+                                    
+                                    <h:outputLabel value="Sábado" />
+                                    <p:inputText value="#{horarioC.horario.sabado}" />
+
+                                    <h:outputLabel value="#{sesionP.pasajero.pcorreo}" />  
+                                    
+                                    <section class="container">
+                                    <div class="row">
+                                        <div class="col-sm-2">
+                                            <h:commandButton styleClass="btn btn-info" value="solicitar" action="#{horarioC.registro()}" >
+                                                <f:actionListener binding="#{horarioC.horario.setHorario(horario)}" />
+                                            </h:commandButton>
+                                        </div>    
+                                    </div>
+                                </section>
+
+                                </h:panelGrid>
+                                        </p:dialog>  
                                     </p:column>
 
                                     <p:column headerText="Calles" filterBy="#{ruta.descripcion}" footerText="contains" filterMatchMode="contains">

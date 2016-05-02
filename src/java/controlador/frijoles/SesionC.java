@@ -17,13 +17,15 @@ import modelo.Chofer;
 import modelo.Pasajero;
 import modelo.PerfilChofer;
 import modelo.PerfilPasajero;
+import modelo.Horario;
+
 
 
 
 
 /**
  *
- * @author diana
+ * @author hyperaxolotl
  */
 @Named(value = "sesionC")
 @SessionScoped
@@ -33,6 +35,7 @@ public class SesionC implements Serializable {
    private Pasajero p = new Pasajero();
    private Chofer c = new Chofer();
    private boolean tipo;
+   private Horario h = new Horario();
    private FacesMessage mensaje;
    private PerfilChofer pc;
    private PerfilPasajero pp;
