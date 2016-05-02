@@ -15,6 +15,8 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.SessionScoped;
 import modelo.Chofer;
 import modelo.Pasajero;
+import modelo.PerfilChofer;
+import modelo.PerfilPasajero;
 
 
 
@@ -32,6 +34,8 @@ public class SesionC implements Serializable {
    private Chofer c = new Chofer();
    private boolean tipo;
    private FacesMessage mensaje;
+   private PerfilChofer pc;
+   private PerfilPasajero pp;
 
     public Chofer getChofer() {
         return c;
@@ -116,8 +120,60 @@ public class SesionC implements Serializable {
     public String cerrarSesion() {
         FacesContext.getCurrentInstance().getExternalContext()
                 .invalidateSession();
+        /* is all of this necessary?*/
+        pp = null;
+        pc = null;
+        c = null;
+        p = null;
         return "PaginaPrincipalIH";
     }
+    
+    /**
+     * True si es chofer, False en caso contrario
+     * 
+     * @return 
+     */
+    public boolean verificarTipo() {
+        String tipo = FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario").getClass().getSimpleName();
+        if(tipo.equals("Chofer"))
+            return true;
+        return false;
+    }
+    
+    public String verPerfil(){
+        if(verificarTipo())
+            return "inicioChofer";
+        return "inicioPasajero";
+    }
+    
+    private void getPerfil(){
+        if(verificarTipo())
+            pc = (PerfilChofer)c.getPerfilChofers().iterator().next();
+        else
+            pp = (PerfilPasajero)p.getPerfilPasajeros().iterator().next();
+    }
+    
+    public String rutaIMG(){
+        getPerfil();
+        if(pc != null) {
+            return pc.getCfoto();
+        }
+        if(pp != null)
+            return pp.getPfoto();
+        return "";
+    }
+    
+    public String descripcion(){
+        getPerfil();
+        if(pc != null) {
+            return pc.getCsobreMi();
+        }
+        if(pp != null)
+            return pp.getPsobreMi();
+        return "";
+    }
+    
+    
     
     
         

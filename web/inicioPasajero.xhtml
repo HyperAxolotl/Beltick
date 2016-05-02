@@ -11,16 +11,12 @@
             <ui:define name="content">
                 <h:outputLabel value="No ha iniciado sesión" rendered="#{sesionC.verificarSesion() eq false}" />
                 <h:form rendered="#{sesionC.verificarSesion()}">			
-                    <h:panelGrid columns="2">
-                        <!--img src="{sesionC.rutaIMG()}" class="img-circle" width="150px" height="150px" /-->
-                        <img src="resources/imagenes/foto_usuario/usuario.png" class="img-circle" width="150px" height="150px" />
-                        <p>Iniciaste sesión como el usuario: </p>
+                    <h:panelGrid columns="1">
+                        <img src="#{sesionC.rutaIMG()}" class="img-circle" width="150px" height="150px" />
+                        <p>Bienvenido:</p>
 
                         <h:outputLabel value="#{sesionC.pasajero.pnombre} #{sesionC.pasajero.papp} #{sesionC.pasajero.papm}" />
-                        <br/>
-
-                        <h:commandButton value="Cerrar Sesión"
-                                         action="#{sesionC.cerrarSesion()}" />
+                        <h:outputLabel value="Sobre mi: #{sesionC.descripcion()}"/>
                     </h:panelGrid>
                 </h:form>
             </ui:define>

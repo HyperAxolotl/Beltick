@@ -10,14 +10,11 @@
             <ui:define name="content">
                 <h:outputLabel value="No ha iniciado sesión" rendered="#{sesionC.verificarSesion() eq false}" />
                 <h:form rendered="#{sesionC.verificarSesion()}">			
-                    <h:panelGrid columns="2">
-                        <p>Iniciaste sesión como el usuario: </p>
-                        <!--img src="{sesionC.rutaIMG()}" class="img-circle" width="150px" height="150px" /-->
-                        <img src="resources/imagenes/foto_usuario/usuario.png" class="img-circle" width="150px" height="150px" />
+                    <h:panelGrid columns="1">
+                        <p>Bienvenido: </p>
+                        <img src="#{sesionC.rutaIMG()}" class="img-circle" width="150px" height="150px" />
                         <h:outputLabel value="#{sesionC.chofer.cnombre} #{sesionC.chofer.capp} #{sesionC.chofer.capm}" />
-                        <h:commandButton value="Cerrar Sesión"
-                                         action="#{sesionC.cerrarSesion()}" />
-                        <br/>
+                        <h:outputLabel value="Sobre mi: #{sesionC.descripcion()}"/>
 
                         <h:button value="Registro Automovil" outcome="RegistroAutomovilIH" />
                     </h:panelGrid>

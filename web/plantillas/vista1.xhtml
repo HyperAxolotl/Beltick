@@ -69,18 +69,29 @@
                                                 </div>
                                             </h:panelGroup>
                                         </li>
+                                         <li>
+                                            <h:panelGroup rendered="#{sesionC.verificarSesion() eq true}">
+                                                <h:link value="Rutas" styleClass="btn btn-info" outcome="ExplorarRutasIH"/>
+                                            </h:panelGroup>
+                                        </li>
+                                         <li>
+                                            <h:panelGroup rendered="#{sesionC.verificarSesion() eq true}">
+                                                <h:link value="Perfiles" styleClass="btn btn-info" outcome="ExplorarPerfilesIH"/>
+                                            </h:panelGroup>
+                                        </li>
                                         <li>
                                             <h:panelGroup rendered="#{sesionC.verificarSesion() eq true}">
-                                                <h:link value="Mi perfil" outcome="PerfilIH" />
+                                                <h:link value="Mi perfil" outcome="#{sesionC.verPerfil()}" />
+
                                             </h:panelGroup>
                                         </li>
                                         <li>
                                             <h:form rendered="#{sesionC.verificarSesion() eq true}">
-                                                <p:commandButton styleClass="btn btn-link" id="command" value="Cerrar Sesión" actionListener="#{sesionC.cerrarSesion()}"
+                                                <p:commandButton styleClass="btn btn-link" id="command" value="Cerrar Sesión" action="#{sesionC.cerrarSesion()}"
                                                                  ajax="false" 
                                                                  style="color:whitesmoke; padding:0px; margin-top: 10px;"
                                                                  icon="glyphicon glyphicon-log-out">
-                                                   
+
                                                 </p:commandButton>
                                             </h:form>
                                         </li>
