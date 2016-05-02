@@ -15,7 +15,8 @@
                         <div class="col-sm-12" align="center">
                             <p:tooltip />
                             <h:form styleClass="form">
-                                <h2>Ingresa tus datos</h2>
+                                <h2>Registro Pasajero</h2>
+                                <h3>Ingresa tus datos</h3>
                                 <!--p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" /-->
                                 <h:panelGrid id="grid" columns="3" cellpadding="5">
                                     <p:outputLabel for="nombre" value="Nombre" />
@@ -86,8 +87,20 @@
                                                 </div>
                                             </div>
                                             <div>
-                                                <p:commandButton styleClass="btn btn-info"
-                                                                 value="Registrar" action="#{pasajeroC.registro()}" update="grid"/>
+                                                <p:dialog id="dialogTest" header="Exito" widgetVar="dlg2" modal="true"  draggable="false"  
+                                                          resizable="false" closable="false" height="100" visible="#{pasajeroC.exito}">
+                                                    <p:messages/>
+                                                    <p:button value="Cerrar" onclick="PF('dlg2').hide()" outcome="PaginaPrincipalIH"/>
+                                                </p:dialog>
+
+                                                <h:panelGrid columns="1" cellpadding="5">
+                                                    <p:commandButton styleClass="btn btn-info" 
+                                                                     value="Registrar" action="#{pasajeroC.registro()}" update="grid,dialogTest" 
+                                                                     onclick="if (#{pasajeroC.exito}) {
+                                                                                 PF('dlg2').show();
+                                                                             }">
+                                                    </p:commandButton>
+                                                </h:panelGrid>
                                             </div>        
                                         </div>
                                     </div>

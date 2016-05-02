@@ -14,7 +14,8 @@
                         <div class="col-sm-12" align="center">
                             <p:tooltip />
                             <h:form styleClass="form">
-                                <h2>Ingresa tus datos</h2>
+                                <h2>Registro Chofer</h2>
+                                <h3>Ingresa tus datos</h3>
                                 <h:panelGrid id="grid" columns="3" cellpadding="5">
                                     <p:outputLabel for="nombre" value="Nombre"/>
                                     <p:inputText id="nombre" required="true" style="text-align: left;" value="#{choferC.chofer.cnombre}"/>
@@ -86,9 +87,21 @@
                                                 </div>
                                             </div>
                                             <div>
-                                                <p:commandButton styleClass="btn btn-info" 
-                                                                 value="Registrar" action="#{choferC.registro()}" update="grid">
-                                                </p:commandButton>
+                                                <p:dialog id="dialogTest" header="Exito" widgetVar="dlg2" modal="true" 
+                                                          resizable="false" closable="false" height="100" visible="#{choferC.exito}">
+                                                    <p:messages/>
+                                                    <p:button value="Cerrar" onclick="PF('dlg2').hide()" outcome="PaginaPrincipalIH"/>
+                                                </p:dialog>
+
+                                                <h:panelGrid columns="1" cellpadding="5">
+                                                    <p:commandButton styleClass="btn btn-info" 
+                                                                     value="Registrar" action="#{choferC.registro()}" update="grid,dialogTest" 
+                                                                     onclick="if (#{choferC.exito}) {
+                                                                                 PF('dlg2').show();
+                                                                             }">
+                                                    </p:commandButton>
+                                                </h:panelGrid>
+
                                             </div>        
                                         </div>
                                     </div>

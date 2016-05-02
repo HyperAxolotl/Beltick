@@ -9,20 +9,26 @@ import javax.faces.application.FacesMessage;
 import modelo.Pasajero;
 import controlador.logica.PasajeroL;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import javax.servlet.http.HttpServletRequest;
 
 
 @ManagedBean
-@RequestScoped
+@ViewScoped
 public class PasajeroC implements Serializable {
 
     private Pasajero pasajero = new Pasajero();
     private String confirmacion;
     private PasajeroL ayudante = new PasajeroL();
     private FacesMessage mensaje;
+    private boolean exito;
     
     
     public PasajeroC() {
+    }
+
+    public boolean isExito() {
+        return exito;
     }
     
     public Pasajero getPasajero() {
@@ -40,7 +46,11 @@ public class PasajeroC implements Serializable {
             FacesContext.getCurrentInstance().addMessage(null, mensaje);
             return "";
         }
-        return "exito";
+        mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "Tu registro fue exitoso... Ya puedes iniciar sesión", null);
+        FacesContext.getCurrentInstance().addMessage(null, mensaje);
+        exito = true;
+        System.out.println("Este es el valor de registro: "+exito);
+        return "";
     }
     
     public void setConfirmacion(String contrasenia){

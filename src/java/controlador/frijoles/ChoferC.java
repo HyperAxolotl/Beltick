@@ -9,17 +9,19 @@ import javax.faces.application.FacesMessage;
 import modelo.Chofer;
 import controlador.logica.ChoferL;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import javax.servlet.http.HttpServletRequest;
 
 
 @ManagedBean
-@RequestScoped
+@ViewScoped
 public class ChoferC implements Serializable {
 
     private Chofer chofer = new Chofer();
     private String confirmacion;
     private ChoferL ayudante = new ChoferL();
     private FacesMessage mensaje;
+    private boolean exito;
     
     
     public ChoferC() {
@@ -32,15 +34,23 @@ public class ChoferC implements Serializable {
     public void setChofer(Chofer chofer) {
         this.chofer = chofer;
     }
+
+    public boolean isExito() {
+        return exito;
+    }
     
     public String registro() {
         mensaje = ayudante.registrar(chofer,confirmacion);
         ayudante = new ChoferL();
         if(mensaje != null) {
-            FacesContext.getCurrentInstance().addMessage(null, mensaje);
+            FacesContext.getCurrentInstance().addMessage("msg", mensaje);
             return "";
         }
-        return "exito";
+        mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "Tu registro fue exitoso... Ya puedes iniciar sesión", null);
+        FacesContext.getCurrentInstance().addMessage(null, mensaje);
+        exito = true;
+        System.out.println("Este es el valor de registro: "+exito);
+        return "";
     }
     
     public void setConfirmacion(String contrasenia){
