@@ -69,6 +69,11 @@
                                                 </div>
                                             </h:panelGroup>
                                         </li>
+                                        <li>
+                                            <h:panelGroup rendered="#{sesionC.verificarSesion() &amp;&amp; sesionC.verificarTipo()}">
+                                                <h:link value="Solicitudes" styleClass="btn btn-info" outcome="AdministrarSolicitudesIH"/>
+                                            </h:panelGroup>
+                                        </li>
                                          <li>
                                             <h:panelGroup rendered="#{sesionC.verificarSesion() eq true}">
                                                 <h:link value="Rutas" styleClass="btn btn-info" outcome="ExplorarRutasIH"/>
