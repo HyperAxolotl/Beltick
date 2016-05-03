@@ -7,9 +7,12 @@ import modelo.Ruta;
 import controlador.logica.RutaL;
 import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import modelo.Pasajero;
+import modelo.Solicitud;
 import org.primefaces.model.map.DefaultMapModel;
 import org.primefaces.model.map.LatLng;
 import org.primefaces.model.map.MapModel;
@@ -17,16 +20,21 @@ import org.primefaces.model.map.Polyline;
 
 @ManagedBean
 @ViewScoped
-public class RutaC implements Serializable {
+public class ExplorarRutasC implements Serializable {
 
-    private Ruta ruta = new Ruta();
-    private RutaL ayudante = new RutaL();
+    private Ruta ruta;
+    private RutaL ayudante;
     private List<Ruta> lstRutas;
     private MapModel modeloMapa;
     private FacesMessage mensaje;
     private double lat;
     private double lng;
     private double radio;
+    
+    public ExplorarRutasC() {
+        ruta = new Ruta();
+        ayudante = new RutaL();
+    }
 
     public double getLat() {
         return lat;
@@ -60,19 +68,10 @@ public class RutaC implements Serializable {
         this.ruta = ruta;
     }
 
-    public String registro() {
-        mensaje = ayudante.registrar(ruta);
-        if (mensaje != null) {
-            FacesContext.getCurrentInstance().addMessage(null, mensaje);
-            return "error";
-        }
-        return "exito";
-    }
-
     public List<Ruta> getLstRutas() {
         return lstRutas;
     }
-    
+
     public void listar() throws Exception {
         lstRutas = ayudante.listar();
     }

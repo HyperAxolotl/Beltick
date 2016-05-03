@@ -16,7 +16,7 @@
                         <div class="col-sm-12" align="center">
                             <h2>Registro Ruta</h2>
                             <p:gmap id="gmap" center="19.3241874,-99.1789797" zoom="13" type="ROADMAP" style="width:500px;height:400px"
-                                    model="#{rutaC.getModeloMapa()}" onPointClick="addLatLng(event);" widgetVar="map" />
+                                    model="#{registroRutaC.getModeloMapa()}" onPointClick="addLatLng(event);" widgetVar="map" />
                             <h:outputScript library="js" name="RegistroRuta.js" />
                             <p:commandButton value="Borrar último punto" id="borrar-ultimo" onclick="return borrarUltimo();" />
                             <p:commandButton value="Borrar todo" id="borrar-todo" onclick="return borrarTodo();" />
@@ -27,20 +27,35 @@
                                     <input type="hidden" id="mapa" name="mapa" value="" />              
 
                                     <p:outputLabel for="descripcion" value="Descripción" />
-                                    <p:inputTextarea id="descripcion" value="#{rutaC.ruta.descripcion}" rows="5" cols="33" counter="display" maxlength="120" counterTemplate="{0}" placeholder="Lista las calles por las que pasas (no tienen que ser todas, sólo avenidas importantes)"/>
-                                    <h:outputText id="display" />     
+                                    <p:inputTextarea id="descripcion" value="#{registroRutaC.ruta.descripcion}" rows="5" cols="33" counter="display" maxlength="120" counterTemplate="{0}" placeholder="Lista las calles por las que pasas (no tienen que ser todas, sólo avenidas importantes)"/>
+                                    <h:outputText id="display" />
+                                    
+                                    <h:outputLabel for="lunes" value="Lunes" />
+                                    <p:spinner id="lunes" value="#{registroRutaC.horario.lunes}" />
+
+                                    <h:outputLabel for="martes" value="Martes" />
+                                    <p:spinner id="martes" value="#{registroRutaC.horario.martes}" />
+
+                                    <h:outputLabel for="miercoles" value="Miercoles" />
+                                    <p:spinner id="miercoles" value="#{registroRutaC.horario.miercoles}" />
+
+                                    <h:outputLabel for="jueves" value="Jueves" />
+                                    <p:spinner id="jueves" value="#{registroRutaC.horario.jueves}" />
+
+                                    <h:outputLabel for="viernes" value="Viernes" />
+                                    <p:spinner id="viernes" value="#{registroRutaC.horario.viernes}" />
+
+                                    <h:outputLabel for="sabado" value="Sábado" />
+                                    <p:spinner id="sabado" value="#{registroRutaC.horario.sabado}" /> 
                                 </h:panelGrid>
 
-                                <p:commandButton value="Registrar" action="#{rutaC.registro()}" >
-                                    <f:actionListener binding="#{rutaC.ruta.setAutomovil(sesionC.chofer.getAutomovils().iterator().next())}" />
+                                <p:commandButton value="Registrar" action="#{registroRutaC.registro()}" >
+                                    <f:actionListener binding="#{registroRutaC.ruta.setAutomovil(sesionC.chofer.getAutomovils().iterator().next())}" />
                                 </p:commandButton>
                             </h:form>
                         </div>
                     </div>
                 </section>
-            </ui:define>
-            <ui:define name="bottom">
-                <p></p>
             </ui:define>
         </ui:composition>
 
