@@ -81,8 +81,10 @@
                                         </li>
                                         <li>
                                             <h:panelGroup rendered="#{sesionC.verificarSesion() eq true}">
-                                                <h:link value="Mi perfil" outcome="#{sesionC.verPerfil()}" />
-
+                                                <h:link value="#{sesionC.chofer.cnombre} #{sesionC.chofer.capp}" rendered="#{sesionC.tipo eq true}"
+                                                        outcome="#{sesionC.verPerfil()}" />
+                                                <h:link value="#{sesionC.pasajero.pnombre} #{sesionC.pasajero.papp}" rendered="#{sesionC.tipo eq false}"
+                                                        outcome="#{sesionC.verPerfil()}" />
                                             </h:panelGroup>
                                         </li>
                                         <li>

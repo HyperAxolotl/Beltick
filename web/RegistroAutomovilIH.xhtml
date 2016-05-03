@@ -12,6 +12,7 @@
                     <div class="row">
                         <div class="col-sm-12" align="center">
                             <h2>Registro Automovil</h2>
+                            <h:messages infoStyle="color:red"/>
                             <h:form class="form">
                                 <h:panelGrid columns="2">
                                     <h:outputLabel value="Número de identificación" />
@@ -35,6 +36,7 @@
                                 <section class="container">
                                     <div class="row">
                                         <div class="col-sm-2">
+                                            
                                             <h:commandButton styleClass="btn btn-info" value="Registrar" action="#{automovilC.registro()}" >
                                                 <f:actionListener binding="#{automovilC.automovil.setChofer(sesionC.chofer)}" />
                                             </h:commandButton>

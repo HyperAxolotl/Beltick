@@ -14,9 +14,9 @@
                         <p>Bienvenido: </p>
                         <img src="#{sesionC.rutaIMG()}" class="img-circle" width="150px" height="150px" />
                         <h:outputLabel value="#{sesionC.chofer.cnombre} #{sesionC.chofer.capp} #{sesionC.chofer.capm}" />
-                        <h:outputLabel value="Sobre mi: #{sesionC.descripcion()}"/>
+                        <!--h:outputLabel value="Sobre mi: #{sesionC.descripcion()}"/-->
 
-                        <h:button value="Registro Automovil" outcome="RegistroAutomovilIH" />
+                        <h:button value="Registro Automovil" outcome="RegistroAutomovilIH" rendered="#{not sesionC.chofer.automovils.iterator().hasNext()}"/>
                     </h:panelGrid>
                 </h:form>
             </ui:define>
