@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Solicitar Servicio</title>
+        <f:metadata>
+            <f:viewParam name="rutaId" value="#{solicitarServicioC.ruta.idRuta}" />
+        </f:metadata>
+    </h:head>
+
+    <h:body>
+        <ui:composition template="plantillas/vista1.xhtml">
+            <ui:define name="content">
+                <section class="container">
+                    <div class="row">
+                        <div class="col-sm-12" align="center">
+                            <h2>Solicitar Servicio</h2>
+
+                            <h:form id="solicitarServicio">
+                                #{solicitarServicioC.init()}
+
+                                Selecciona los días para los que quieres solicitar el servicio: 
+
+                                    <section class="container">
+                                        <div class="row">
+                                            <p:outputLabel for="horario" value="Horario semanal" />
+                                            <p:selectManyCheckbox id="horario" value="#{solicitarServicioC.diasSeleccionados}" layout="grid" columns="2" >
+                                                <f:selectItem itemLabel="Lunes: #{solicitarServicioC.horario.lunes}:00" itemValue="1" itemDisabled="#{solicitarServicioC.horario.lunes == null}" />
+                                                <f:selectItem itemLabel="Martes: #{solicitarServicioC.horario.martes}:00" itemValue="2" itemDisabled="#{solicitarServicioC.horario.martes == null}" />
+                                                <f:selectItem itemLabel="Miércoles: #{solicitarServicioC.horario.miercoles}:00" itemValue="3" itemDisabled="#{solicitarServicioC.horario.miercoles == null}" />
+                                                <f:selectItem itemLabel="Jueves: #{solicitarServicioC.horario.jueves}:00" itemValue="4" itemDisabled="#{solicitarServicioC.horario.jueves == null}" />
+                                                <f:selectItem itemLabel="Viernes: #{solicitarServicioC.horario.viernes}:00" itemValue="5" itemDisabled="#{solicitarServicioC.horario.viernes == null}" />
+                                                <f:selectItem itemLabel="Sábado: #{solicitarServicioC.horario.sabado}:00" itemValue="6" itemDisabled="#{solicitarServicioC.horario.sabado == null}" />
+                                            </p:selectManyCheckbox> 
+                                            <!--<div class="col-sm-2">-->
+                                                <h:commandButton styleClass="btn btn-info" value="solicitar" action="#{solicitarServicioC.solicitar(sesionC.pasajero)}" />
+                                            <!--</div>-->    
+                                        </div>
+                                    </section>
+
+
+                            </h:form>
+                            
+                        </div>
+                    </div>
+                </section>
+
+            </ui:define>
+
+        </ui:composition>
+    </h:body>
+</html>

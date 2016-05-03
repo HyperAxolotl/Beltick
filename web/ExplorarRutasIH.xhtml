@@ -20,16 +20,16 @@
 
                             <h:form id="explorarRutas">
 
-                                Radio del perímetro en km: <h:inputText id="radio" value="#{rutaC.radio}" />
+                                Radio del perímetro en km: <h:inputText id="radio" value="#{explorarRutasC.radio}" />
                                 <p:gmap id="gmap-radio" center="19.3241874,-99.1789797" zoom="12" onPointClick="addCirculo(event);" type="ROADMAP" style="width:300px;height:200px" widgetVar="gmap-radio" />
                                 <h:outputScript library="js" name="ExplorarRutas.js" />
-                                <h:inputHidden id="lat" value="#{rutaC.lat}" />
-                                <h:inputHidden id="lng" value="#{rutaC.lng}" />
-                                <h:commandButton  onclick="getVars()" action="#{rutaC.listarRadio()}" value="Listar rutas dentro del perímetro" />
-                                <h:commandButton  actionListener="#{rutaC.listar()}" value="Listar todas las rutas" />
+                                <h:inputHidden id="lat" value="#{explorarRutasC.lat}" />
+                                <h:inputHidden id="lng" value="#{explorarRutasC.lng}" />
+                                <h:commandButton  onclick="getVars()" action="#{explorarRutasC.listarRadio()}" value="Listar rutas dentro del perímetro" />
+                                <h:commandButton  actionListener="#{explorarRutasC.listar()}" value="Listar todas las rutas" />
 
-                                <p:dataTable value="#{rutaC.lstRutas}" var="ruta" widgetVar="tablaRutas" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
-                                             paginator="true" rows="10" style="margin-bottom:20px" rendered="#{rutaC.lstRutas != null}">
+                                <p:dataTable value="#{explorarRutasC.lstRutas}" var="ruta" widgetVar="tablaRutas" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                                             paginator="true" rows="10" style="margin-bottom:20px" rendered="#{explorarRutasC.lstRutas != null}">
 
                                     <f:facet name="header">
                                         <p:outputPanel>
@@ -42,47 +42,14 @@
                                     </p:column>
 
                                     <p:column headerText="Ruta">
-                                        <p:gmap id="gmap" center="19.3241874,-99.1789797" zoom="12" type="ROADMAP" style="width:300px;height:200px" model="#{rutaC.getModeloMapa(ruta.mapa)}" />
+                                        <p:gmap id="gmap" center="19.3241874,-99.1789797" zoom="12" type="ROADMAP" style="width:300px;height:200px" model="#{explorarRutasC.getModeloMapa(ruta.mapa)}" />
                                         <p:commandButton value="Expandir" type="button" onclick="PF('dlg#{ruta.idRuta}').show();" />
-                                        <p:commandButton  value="Solicitar servicio" type="button" onclick="PF('dlg2').show();" />
+                                        <p:button  value="Solicitar servicio" outcome="SolicitarServicioIH">
+                                            <f:param name="rutaId" value="#{ruta.idRuta}" />
+                                        </p:button>
                                         <p:dialog header="Ruta de #{ruta.automovil.chofer.cnombre}" widgetVar="dlg#{ruta.idRuta}" modal="true" height="400" width="600">
-                                            <p:gmap id="gmap-dlg#{ruta.idRuta}" center="19.3241874,-99.1789797" zoom="14" type="ROADMAP" style="width:100%;height:100%" model="#{rutaC.getModeloMapa(ruta.mapa)}" />
-                                        </p:dialog>
-                                        
-                                        <p:dialog header="Solicitar Servicio" widgetVar="dlg2" showEffect="explode" hideEffect="bounce" height="300" width="600">
-                                                <h:panelGrid columns="2">
-                                    <h:outputLabel value="Lunes" />
-                                    <p:inputText value="#{horarioC.horario.lunes}" />
-
-                                    <h:outputLabel value="Martes" />
-                                    <p:inputText value="#{horarioC.horario.martes}" />
-
-                                    <h:outputLabel value="Miercoles" />
-                                    <p:inputText value="#{horarioC.horario.miercoles}" />
-
-                                    <h:outputLabel value="Jueves" />
-                                    <p:inputText value="#{horarioC.horario.jueves}" />
-
-                                    <h:outputLabel value="Viernes" />
-                                    <p:inputText value="#{horarioC.horario.viernes}" />
-                                    
-                                    <h:outputLabel value="Sábado" />
-                                    <p:inputText value="#{horarioC.horario.sabado}" />
-
-                                    <h:outputLabel value="#{sesionP.pasajero.pcorreo}" />  
-                                    
-                                    <section class="container">
-                                    <div class="row">
-                                        <div class="col-sm-2">
-                                            <h:commandButton styleClass="btn btn-info" value="solicitar" action="#{horarioC.registro()}" >
-                                                <f:actionListener binding="#{horarioC.horario.setHorario(horario)}" />
-                                            </h:commandButton>
-                                        </div>    
-                                    </div>
-                                </section>
-
-                                </h:panelGrid>
-                                        </p:dialog>  
+                                            <p:gmap id="gmap-dlg#{ruta.idRuta}" center="19.3241874,-99.1789797" zoom="14" type="ROADMAP" style="width:100%;height:100%" model="#{explorarRutasC.getModeloMapa(ruta.mapa)}" />
+                                        </p:dialog> 
                                     </p:column>
 
                                     <p:column headerText="Calles" filterBy="#{ruta.descripcion}" footerText="contains" filterMatchMode="contains">

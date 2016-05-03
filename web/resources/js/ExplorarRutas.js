@@ -8,11 +8,11 @@ function addCirculo(event) {
     circulo = new google.maps.Circle({
         strokeColor: '#FF0000',
         strokeOpacity: 0.8,
-        strokeWeight: 2,
+        strokeWeight: 0,
         fillColor: '#FF0000',
         fillOpacity: 0.35,
         center: {lat: latlng.lat(), lng: latlng.lng()},
-        radius: parseFloat(document.getElementById('explorarRutas:radio').value) * 1000
+        radius: parseFloat(document.getElementById('explorarRutas:radio').value) * 1000 *.9
     });
     PF('gmap-radio').addOverlay(circulo);
 }

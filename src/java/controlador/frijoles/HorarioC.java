@@ -42,7 +42,7 @@ public class HorarioC implements Serializable {
     }
     
     public String registro() {
-        mensaje = ayudante.registrar(horario,confirmacion);
+        mensaje = ayudante.registrar(horario);
         if(mensaje != null) {
             FacesContext.getCurrentInstance().addMessage(null, mensaje);
             return "error";
