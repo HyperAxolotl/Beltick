@@ -8,7 +8,12 @@ import javax.faces.application.FacesMessage;
 
 import modelo.Automovil;
 import controlador.logica.AutomovilL;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import modelo.Chofer;
 
 
 @ManagedBean
@@ -38,9 +43,24 @@ public class AutomovilC implements Serializable {
             FacesContext.getCurrentInstance().addMessage(null, mensaje);
             return "";
         }
+         doStuff(automovil);
         return "RegistroRutaIH";
     }
     public String getConfirmacion() {
         return confirmacion;
+    }
+    
+    /**
+     * Temporal en memoria para que el registro de ruta sea exitoso
+     * @param a 
+     */
+    private void doStuff(Automovil a) {
+        Chofer tmp = (Chofer)FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
+        Set<Automovil> s = new HashSet<>();
+        s.add(a);
+        tmp.setAutomovils(s);
+        HttpServletRequest http = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
+        http.getSession().setAttribute("usuario",tmp);
+        System.out.println(((Automovil)tmp.getAutomovils().iterator().next()).getModelo());
     }
 }

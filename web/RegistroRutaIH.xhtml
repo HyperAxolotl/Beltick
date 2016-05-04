@@ -50,7 +50,7 @@
                                 </h:panelGrid>
 
                                 <p:commandButton value="Registrar" action="#{registroRutaC.registro()}" >
-                                    <f:actionListener binding="#{registroRutaC.ruta.setAutomovil(sesionC.chofer.getAutomovils().iterator().next())}" />
+                                    <f:actionListener binding="#{registroRutaC.ruta.setAutomovil(sesionC.cAuto())}" />
                                 </p:commandButton>
                             </h:form>
                         </div>
