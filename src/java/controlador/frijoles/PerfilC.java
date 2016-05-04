@@ -6,6 +6,7 @@
 package controlador.frijoles;
 
 import controlador.logica.PerfilL;
+import java.util.Iterator;
 import modelo.PerfilPasajero;
 import modelo.PerfilChofer;
 import java.util.List;
@@ -17,6 +18,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 //import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
+import modelo.Automovil;
+import modelo.Ruta;
 
 /**
  *
@@ -102,10 +105,10 @@ public class PerfilC {
         this.tipo = tipo;
         if (tipo) {
             perfilChofer = (PerfilChofer)perfil;
-            return "PerfilIH";
+            return "PerfilIH?faces-redirect=true";
         }
         perfilPasajero = (PerfilPasajero)perfil;
-        return "PerfilIH";
+        return "PerfilIH?faces-redirect=true";
     }   
     
     public void borra(){
@@ -114,6 +117,17 @@ public class PerfilC {
         mostrarChoferes = mostrarPasajeros = false;
     }
     
+    public int getIdRuta(){
+        Automovil tmp;
+        Iterator<Automovil> ia = (Iterator<Automovil>)perfilChofer.getChofer().getAutomovils().iterator();
+        if(ia.hasNext()) {
+            tmp = (Automovil)ia.next();
+            Iterator<Ruta> ir = (Iterator<Ruta>)tmp.getRutas().iterator();
+            if(ir.hasNext())
+                return ((Ruta)tmp.getRutas().iterator().next()).getIdRuta();
+        } 
+        return -100;
+    }
 
 
 }
