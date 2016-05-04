@@ -9,12 +9,10 @@ import utiles.Cripta;
 
 
 public class ChoferL implements Serializable{
+    
     private Session con;
     private Transaction trans;
     private Cripta cripta;
-    
-
-
     
     public FacesMessage registrar(Chofer c, String confirmacion){
         FacesMessage mensaje = null;
@@ -23,7 +21,8 @@ public class ChoferL implements Serializable{
         System.out.println("\n\n\n\n\nComienza registro de chofer");
         try{
             cripta = new Cripta();
-            con = ConexionBD.getSessionFactory().openSession();
+            if (con == null || !con.isOpen())
+                con = ConexionBD.getSessionFactory().openSession();
             System.out.println("Conexion realizada");
             trans = con.beginTransaction();
             c.setCcontrasenia(cripta.encripta(confirmacion));

@@ -25,7 +25,8 @@ public class SolicitudL implements Serializable {
 
     public List<Solicitud> listar() throws Exception {
         try {
-            con = ConexionBD.getSessionFactory().openSession();
+            if (con == null || !con.isOpen())
+                con = ConexionBD.getSessionFactory().openSession();
             Criteria cri = con.createCriteria(Solicitud.class);
             lstRutas = cri.list();
         } catch (Exception e) {
@@ -34,10 +35,11 @@ public class SolicitudL implements Serializable {
         return lstRutas;
     }
 
-   public FacesMessage eliminar(Solicitud s) {
+    public FacesMessage eliminar(Solicitud s) {
         FacesMessage mensaje = null;
         try {
-            con = ConexionBD.getSessionFactory().openSession();
+            if (con == null || !con.isOpen())
+                con = ConexionBD.getSessionFactory().openSession();
             trans = con.beginTransaction();
             con.delete(s);
             trans.commit();
@@ -50,11 +52,12 @@ public class SolicitudL implements Serializable {
             return mensaje;
         }
     }
-   
+
     public FacesMessage registrar(Solicitud s) {
         FacesMessage mensaje = null;
         try {
-            con = ConexionBD.getSessionFactory().openSession();
+            if (con == null || !con.isOpen())
+                con = ConexionBD.getSessionFactory().openSession();
             trans = con.beginTransaction();
             PasajeroRuta pr = new PasajeroRuta();
             PasajeroRutaId prid = new PasajeroRutaId();

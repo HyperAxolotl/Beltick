@@ -26,7 +26,8 @@ public class RutaL implements Serializable {
 
     public List<Ruta> listar() throws Exception {
         try {
-            con = ConexionBD.getSessionFactory().openSession();
+            if (con == null || !con.isOpen())
+                con = ConexionBD.getSessionFactory().openSession();
             Criteria cri = con.createCriteria(Ruta.class);
             lstRutas = cri.list();
         } catch (Exception e) {
@@ -38,7 +39,8 @@ public class RutaL implements Serializable {
     public FacesMessage registrar(Ruta r, Horario h) {
         FacesMessage mensaje = null;
         try {
-            con = ConexionBD.getSessionFactory().openSession();
+            if (con == null || !con.isOpen())
+                con = ConexionBD.getSessionFactory().openSession();
             trans = con.beginTransaction();
             Date fecha = new Date();
             String mapa = FacesContext.getCurrentInstance().
@@ -64,7 +66,8 @@ public class RutaL implements Serializable {
     public FacesMessage solicitar(Pasajero p, Ruta r, String[] dias) {
         FacesMessage mensaje = null;
         try {
-            con = ConexionBD.getSessionFactory().openSession();
+            if (con == null || !con.isOpen())
+                con = ConexionBD.getSessionFactory().openSession();
             trans = con.beginTransaction();
             for(String s : dias) {
                 Solicitud sol = new Solicitud();
@@ -89,7 +92,8 @@ public class RutaL implements Serializable {
     }
 
     public Ruta getRuta(int id) {
-        con = ConexionBD.getSessionFactory().openSession();
+        if (con == null || !con.isOpen())
+                con = ConexionBD.getSessionFactory().openSession();
         Query query = con.createQuery("from Ruta where id_ruta = :id ");
         query.setParameter("id", id);
         List<?> list = query.list();

@@ -24,7 +24,8 @@ public class PerfilL {
         Criteria c;
         List<PerfilPasajero> lstPasajeros = null;
         try{
-            con = ConexionBD.getSessionFactory().openSession();
+            if (con == null || !con.isOpen())
+                con = ConexionBD.getSessionFactory().openSession();
             c = con.createCriteria(PerfilPasajero.class);
             c.addOrder(Order.asc("idPpasajero"));
             lstPasajeros = c.list();
@@ -40,7 +41,8 @@ public class PerfilL {
         Criteria c;
         List<PerfilChofer> lstChoferes = null;
         try{
-            con = ConexionBD.getSessionFactory().openSession();
+            if (con == null || !con.isOpen())
+                con = ConexionBD.getSessionFactory().openSession();
             c = con.createCriteria(PerfilChofer.class);
             c.addOrder(Order.asc("idPchofer"));
             lstChoferes = c.list();

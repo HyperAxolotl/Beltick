@@ -14,10 +14,7 @@ public class PasajeroL implements Serializable{
     private Transaction trans;
     private PerfilPasajero perfil = new PerfilPasajero();
     private Cripta cripta;
-    
-
-
-    
+       
     public FacesMessage registrar(Pasajero p, String confirmacion){
         FacesMessage mensaje = null;
         if(!confirmacion.equals(p.getPcontrasenia())) 
@@ -25,7 +22,8 @@ public class PasajeroL implements Serializable{
         System.out.println("\n\n\n\n\nComienza registro de pasajero");
         try{
             cripta = new Cripta();
-            con = ConexionBD.getSessionFactory().openSession();
+            if (con == null || !con.isOpen())
+                con = ConexionBD.getSessionFactory().openSession();
             System.out.println("Conexion realizada");
             trans = con.beginTransaction();
             p.setPcontrasenia(cripta.encripta(confirmacion));

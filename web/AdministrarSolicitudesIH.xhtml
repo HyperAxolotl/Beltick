@@ -19,9 +19,9 @@
 
                             <h:form id="administrarSolicitudes">
 
-                                <h:commandButton  actionListener="#{administrarSolicitudesC.listarSolicitudes(sesionC.chofer)}" value="Listar todas las solicitudes" />
+                                <h:commandButton  actionListener="#{administrarSolicitudesC.listarSolicitudes(sesionC.chofer.idChofer)}" value="Listar todas las solicitudes" />
 
-                                <p:dataTable value="#{administrarSolicitudesC.lstSolicitudes}" var="solicitud" widgetVar="tablaSOlicitudes" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                                <p:dataTable id="tablaSolicitudes" value="#{administrarSolicitudesC.lstSolicitudes}" var="solicitud" widgetVar="tablaSolicitudes" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
                                              paginator="true" rows="10" style="margin-bottom:20px" rendered="#{administrarSolicitudesC.lstSolicitudes != null}">
 
                                     <p:column headerText="Pasajero">
@@ -35,8 +35,8 @@
                                     </p:column>
 
                                     <p:column headerText="Acción">
-                                        <p:commandButton  value="Aceptar" actionListener="#{administrarSolicitudesC.registrarSolicitud(solicitud)}" />
-                                        <p:commandButton  value="Ignorar" actionListener="#{administrarSolicitudesC.eliminarSolicitud(solicitud)}" />
+                                        <p:commandButton  value="Aceptar" update="tablaSolicitudes" actionListener="#{administrarSolicitudesC.registrarSolicitud(solicitud,sesionC.chofer.idChofer)}" />
+                                        <p:commandButton  value="Ignorar" update="tablaSolicitudes" actionListener="#{administrarSolicitudesC.eliminarSolicitud(solicitud,sesionC.chofer.idChofer)}" />
                                     </p:column>
 
                                 </p:dataTable>

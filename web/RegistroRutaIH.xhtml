@@ -4,7 +4,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pe="http://primefaces.org/ui/extensions">
     <h:head>
         <title>Registro Ruta</title>
     </h:head>
@@ -31,22 +32,22 @@
                                     <h:outputText id="display" />
                                     
                                     <h:outputLabel for="lunes" value="Lunes" />
-                                    <p:spinner id="lunes" value="#{registroRutaC.horario.lunes}" />
+                                    <pe:inputNumber id="lunes" value="#{registroRutaC.horario.lunes}" emptyValue="empty" decimalPlaces="0" maxValue="24" />
 
                                     <h:outputLabel for="martes" value="Martes" />
-                                    <p:spinner id="martes" value="#{registroRutaC.horario.martes}" />
+                                    <pe:inputNumber id="martes" value="#{registroRutaC.horario.martes}" emptyValue="empty" decimalPlaces="0" maxValue="24" />
 
                                     <h:outputLabel for="miercoles" value="Miercoles" />
-                                    <p:spinner id="miercoles" value="#{registroRutaC.horario.miercoles}" />
+                                    <pe:inputNumber id="miercoles" value="#{registroRutaC.horario.miercoles}" emptyValue="empty" decimalPlaces="0" maxValue="24" />
 
                                     <h:outputLabel for="jueves" value="Jueves" />
-                                    <p:spinner id="jueves" value="#{registroRutaC.horario.jueves}" />
+                                    <pe:inputNumber id="jueves" value="#{registroRutaC.horario.jueves}" emptyValue="empty" decimalPlaces="0" maxValue="24" />
 
                                     <h:outputLabel for="viernes" value="Viernes" />
-                                    <p:spinner id="viernes" value="#{registroRutaC.horario.viernes}" />
+                                    <pe:inputNumber id="viernes" value="#{registroRutaC.horario.viernes}" emptyValue="empty" decimalPlaces="0" maxValue="24" />
 
                                     <h:outputLabel for="sabado" value="Sábado" />
-                                    <p:spinner id="sabado" value="#{registroRutaC.horario.sabado}" /> 
+                                    <pe:inputNumber id="sabado" value="#{registroRutaC.horario.sabado}" emptyValue="empty" decimalPlaces="0" maxValue="24" /> 
                                 </h:panelGrid>
 
                                 <p:commandButton value="Registrar" action="#{registroRutaC.registro()}" >
