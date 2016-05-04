@@ -4,24 +4,74 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <h:body>
         <ui:composition template="plantillas/vista1.xhtml">
             <ui:define name="content">
                 <style> 
-                    h2{color:#3F2354;text-align: center;}
-                    p{color:#160A4B;text-align: justify;}
-                    pE{color:#160A4B;text-align: center;}
+                    h2{color:white;text-align: center;}
+                    p{color:white;text-align: justify;}
+                    pE{color:white;text-align: center;}
                 </style>
-                
-                <section class="container-fluid">
+
+                <div id="carousel" class="carousel slide" data-ride="carousel">
+                    <!-- Indicadores -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel" data-slide-to="1"></li>
+                    </ol>
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active" align="center">
+                            <img class="first-slide blur-img" src="resources/imagenes/index/3.jpg" alt="First slide" >
+                                <div class="container">
+                                    <div class="carousel-caption">
+                                        <h2>Olvidate del transporte público</h2>
+                                        <pE>
+                                            Beltick es un sistema de auto compartido para alumnos de la Facultad de Ciencias.
+                                        </pE>
+                                        <div align="center">
+                                            <h:button styleClass="btn btn-info" value="Registrate ahora" outcome="RegistroPasajeroIH"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </img>
+                        </div>
+                        <div class="item">
+                            <img class="second-slide blur-img" src="resources/imagenes/index/1.jpg" alt="Second slide" width="1500px">
+                                <div class="container">
+                                    <div class="carousel-caption">
+                                        <h2>Conoce gente nueva</h2>
+                                        <pE>¿Te sientes solitario en tu camino a la facultad?</pE>
+                                    </div>
+                                    <div align="center">
+                                        <h:button styleClass="btn btn-info" value="Registrate como chofer" outcome="RegistroChoferIH"/>
+                                    </div>
+                                </div>
+
+                            </img>
+                        </div>
+                    </div>
+                    <a class="left carousel-control" href="#carousel" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+
+
+
+                <!--section class="container-fluid">
                     <div class="row">
                         <div class="col-md-4" align="center">
                             <img class="img-responsive" src="resources/imagenes/index/car.png"/>
                         </div>
 
-
+                        
                         <div class="col-md-8">
                             <h2>¿Qué es Beltick?</h2>
                             <pE>
@@ -46,7 +96,7 @@
                         </div>
 
                     </div>   
-                </section>
+                </section-->
 
 
             </ui:define>

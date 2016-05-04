@@ -11,7 +11,7 @@ body{
 }
 #top {
     position: relative;
-    background-color: #036fab;
+    background-color: transparent;
     color: white;
     padding: 5px;
     margin: 0px 0px 10px 0px;
@@ -22,8 +22,10 @@ body{
     flex-wrap: wrap;
     margin: auto;
     border: 0;
+    background: transparent;
 }
 #bottom {
+    background-color: #cfb9de;
     position: relative;
     background-color:#dbcae6;
     padding: 5px;
@@ -144,12 +146,13 @@ p{
 
 /*para barra superior*/
 .navbar {
-    background-color: #4C1970; 
+    background: transparent;
+    background-color: transparent;
+    background-color: rgba(76,25,112,0.7); 
     color: whitesmoke;
     width: 100%;
     border-radius: 0px;
     vertical-align: middle;
-
 }
 /*para el logo*/
 .navbar-brand{
@@ -211,21 +214,22 @@ p{
     background-color: #81165C; /*morado barney*/
     border: #81165C;
     margin: auto;
-    width: 100px;
+    min-width: 100px;
 }
-.btn-info:hover{
+.btn-info:hover, .btn-info:active{
     background-color: #540739; /*vino(?))*/
     border: #540739;
     margin: auto;
-    width: 100px;
+    min-width: 100px;
 }
 
 .btn-link{
-    background-color: #4C1970; /*morado de la barra*/
+    background-color: rgba(76,25,112,0.7); /*morado de la barra*/
+    border-radius: 3px;
     color: whitesmoke;
 }
 
-.btn-link:hover{
+.btn-link:hover, .btn-link:active{
     background-color: #2E0849; /*morado oscuro*/
     color: #BFC7BB;
 }
@@ -234,3 +238,17 @@ p{
 h2{color:#3F2354;text-align: center;}
 p{color:#160A4B;text-align: justify;}
 
+
+
+    /*BLUR*/
+.blur-img {
+  -webkit-transition: all 1s ease;
+     -moz-transition: all 1s ease;
+       -o-transition: all 1s ease;
+      -ms-transition: all 1s ease;
+          transition: all 1s ease;
+}
+
+.blur-img:hover {
+  -webkit-filter: blur(5px);
+}
