@@ -13,6 +13,7 @@ import javax.faces.context.FacesContext;
 import controlador.logica.SesionL;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.SessionScoped;
+import modelo.Automovil;
 import modelo.Chofer;
 import modelo.Pasajero;
 import modelo.PerfilChofer;
@@ -174,6 +175,11 @@ public class SesionC implements Serializable {
         if(pp != null)
             return pp.getPsobreMi();
         return "";
+    }
+    
+    public Automovil cAuto(){
+        Chofer tmp = (Chofer)FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
+        return (Automovil)tmp.getAutomovils().iterator().next();
     }
     
     
