@@ -32,22 +32,34 @@
                                     <h:outputText id="display" />
                                     
                                     <h:outputLabel for="lunes" value="Lunes" />
-                                    <pe:inputNumber id="lunes" value="#{registroRutaC.horario.lunes}" emptyValue="empty" decimalPlaces="0" maxValue="24" />
+                                    <p:inputMask id="lunes" value="#{registroRutaC.horario.lunes}" mask="99:99" >
+                                        <f:convertDateTime pattern="HH:mm" />
+                                    </p:inputMask>
 
                                     <h:outputLabel for="martes" value="Martes" />
-                                    <pe:inputNumber id="martes" value="#{registroRutaC.horario.martes}" emptyValue="empty" decimalPlaces="0" maxValue="24" />
+                                    <p:inputMask id="martes" value="#{registroRutaC.horario.martes}" mask="99:99" >
+                                        <f:convertDateTime pattern="HH:mm" />
+                                    </p:inputMask>
 
                                     <h:outputLabel for="miercoles" value="Miercoles" />
-                                    <pe:inputNumber id="miercoles" value="#{registroRutaC.horario.miercoles}" emptyValue="empty" decimalPlaces="0" maxValue="24" />
+                                    <p:inputMask id="miercoles" value="#{registroRutaC.horario.miercoles}" mask="99:99" >
+                                        <f:convertDateTime pattern="HH:mm" />
+                                    </p:inputMask>
 
                                     <h:outputLabel for="jueves" value="Jueves" />
-                                    <pe:inputNumber id="jueves" value="#{registroRutaC.horario.jueves}" emptyValue="empty" decimalPlaces="0" maxValue="24" />
+                                    <p:inputMask id="jueves" value="#{registroRutaC.horario.jueves}" mask="99:99" >
+                                        <f:convertDateTime pattern="HH:mm" />
+                                    </p:inputMask>
 
                                     <h:outputLabel for="viernes" value="Viernes" />
-                                    <pe:inputNumber id="viernes" value="#{registroRutaC.horario.viernes}" emptyValue="empty" decimalPlaces="0" maxValue="24" />
+                                    <p:inputMask id="viernes" value="#{registroRutaC.horario.viernes}" mask="99:99" >
+                                        <f:convertDateTime pattern="HH:mm" />
+                                    </p:inputMask>
 
                                     <h:outputLabel for="sabado" value="Sábado" />
-                                    <pe:inputNumber id="sabado" value="#{registroRutaC.horario.sabado}" emptyValue="empty" decimalPlaces="0" maxValue="24" /> 
+                                    <p:inputMask id="sabado" value="#{registroRutaC.horario.sabado}" mask="99:99" > 
+                                        <f:convertDateTime pattern="HH:mm" />
+                                    </p:inputMask>
                                 </h:panelGrid>
 
                                 <p:commandButton value="Registrar" action="#{registroRutaC.registro()}" >

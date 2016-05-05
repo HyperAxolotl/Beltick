@@ -1,9 +1,8 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 11/04/2016 03:54:24 PM by Hibernate Tools 4.3.1 -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 4, 2016 9:25:35 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="modelo.Chofer" table="chofer" schema="public" optimistic-lock="version">
+    <class name="modelo.Chofer" optimistic-lock="version" schema="public" table="chofer">
         <id name="idChofer" type="int">
             <column name="id_chofer" />
             <generator class="sequence">
@@ -11,40 +10,41 @@
             </generator>
         </id>
         <property name="cnombre" type="string">
-            <column name="cnombre" length="64" not-null="true" />
+            <column length="64" name="cnombre" not-null="true"/>
         </property>
         <property name="capp" type="string">
-            <column name="capp" length="64" not-null="true" />
+            <column length="64" name="capp" not-null="true"/>
         </property>
         <property name="capm" type="string">
-            <column name="capm" length="64" not-null="true" />
+            <column length="64" name="capm" not-null="true"/>
         </property>
         <property name="ccorreo" type="string">
-            <column name="ccorreo" length="128" not-null="true" unique="true" />
+            <column length="128" name="ccorreo" not-null="true" unique="true"/>
         </property>
         <property name="cnoCuenta" type="string">
-            <column name="cno_cuenta" length="9" not-null="true" unique="true" />
+            <column length="9" name="cno_cuenta" not-null="true" unique="true"/>
         </property>
         <property name="cnoId" type="string">
-            <column name="cno_id" length="64" not-null="true" unique="true" />
+            <column length="64" name="cno_id" not-null="true" unique="true"/>
         </property>
         <property name="cfechaNac" type="date">
-            <column name="cfecha_nac" length="13" not-null="true" />
+            <column length="13" name="cfecha_nac" not-null="true"/>
         </property>
         <property name="ccontrasenia" type="string">
-            <column name="ccontrasenia" length="128" not-null="true" />
+            <column length="128" name="ccontrasenia" not-null="true"/>
         </property>
-        <set name="perfilChofers" table="perfil_chofer" inverse="true" lazy="true" fetch="select">
+        <set fetch="select" inverse="true" lazy="true" name="perfilChofers" table="perfil_chofer">
             <key>
-                <column name="id_chofer" not-null="true" unique="true" />
+                <column name="id_chofer" not-null="true" unique="true"/>
             </key>
-            <one-to-many class="modelo.PerfilChofer" />
+            <one-to-many class="modelo.PerfilChofer"/>
         </set>
-        <set name="automovils" table="automovil" inverse="true" lazy="true" fetch="select">
+        <set fetch="select" inverse="true" lazy="true" name="automovils" table="automovil">
             <key>
-                <column name="id_chofer" not-null="true" unique="true" />
+                <column name="id_chofer" not-null="true" unique="true"/>
             </key>
-            <one-to-many class="modelo.Automovil" />
+            <one-to-many class="modelo.Automovil"/>
         </set>
     </class>
 </hibernate-mapping>
+

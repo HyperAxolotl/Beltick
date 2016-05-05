@@ -1,26 +1,28 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 11/04/2016 03:54:24 PM by Hibernate Tools 4.3.1 -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 4, 2016 9:25:35 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="modelo.PerfilChofer" table="perfil_chofer" schema="public" optimistic-lock="version">
+    <class name="modelo.PerfilChofer" optimistic-lock="version" schema="public" table="perfil_chofer">
         <id name="idPchofer" type="int">
             <column name="id_pchofer" />
             <generator class="sequence">
                 <param name="sequence">perfil_chofer_id_pchofer_seq</param>
             </generator>
         </id>
-        <many-to-one name="chofer" class="modelo.Chofer" fetch="select">
-            <column name="id_chofer" not-null="true" unique="true" />
+        <many-to-one class="modelo.Chofer" fetch="select" name="chofer">
+            <column name="id_chofer" not-null="true" unique="true"/>
         </many-to-one>
         <property name="cfoto" type="string">
-            <column name="cfoto" length="256" />
+            <column length="256" name="cfoto"/>
         </property>
         <property name="csobreMi" type="string">
-            <column name="csobre_mi" length="256" />
+            <column length="256" name="csobre_mi"/>
         </property>
         <property name="cestado" type="java.lang.Boolean">
-            <column name="cestado" />
+            <column name="cestado"/>
+        </property>
+        <property name="fechaCreacion" type="timestamp">
+            <column length="29" name="fecha_creacion" not-null="true"/>
         </property>
     </class>
 </hibernate-mapping>

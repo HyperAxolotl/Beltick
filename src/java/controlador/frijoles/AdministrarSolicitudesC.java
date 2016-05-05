@@ -64,9 +64,8 @@ public class AdministrarSolicitudesC implements Serializable {
         lstSolicitudes = l;
     }
     
-    public String mapDia(int dia) {
-        String[] dias = {"Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"};
-        return dias[dia - 1];
+    public String getHora(Solicitud solicitud) throws Exception{
+        return ayudante.getHora(solicitud);
     }
     
 }

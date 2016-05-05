@@ -29,12 +29,12 @@
                                         <div class="row">
                                             <p:outputLabel for="horario" value="Horario semanal" />
                                             <p:selectManyCheckbox id="horario" value="#{solicitarServicioC.diasSeleccionados}" layout="grid" columns="2" >
-                                                <f:selectItem itemLabel="Lunes: #{solicitarServicioC.horario.lunes}:00" itemValue="1" itemDisabled="#{solicitarServicioC.horario.lunes == null}" />
-                                                <f:selectItem itemLabel="Martes: #{solicitarServicioC.horario.martes}:00" itemValue="2" itemDisabled="#{solicitarServicioC.horario.martes == null}" />
-                                                <f:selectItem itemLabel="Miércoles: #{solicitarServicioC.horario.miercoles}:00" itemValue="3" itemDisabled="#{solicitarServicioC.horario.miercoles == null}" />
-                                                <f:selectItem itemLabel="Jueves: #{solicitarServicioC.horario.jueves}:00" itemValue="4" itemDisabled="#{solicitarServicioC.horario.jueves == null}" />
-                                                <f:selectItem itemLabel="Viernes: #{solicitarServicioC.horario.viernes}:00" itemValue="5" itemDisabled="#{solicitarServicioC.horario.viernes == null}" />
-                                                <f:selectItem itemLabel="Sábado: #{solicitarServicioC.horario.sabado}:00" itemValue="6" itemDisabled="#{solicitarServicioC.horario.sabado == null}" />
+                                                <f:selectItem itemLabel="Lunes: #{solicitarServicioC.formateaHora(solicitarServicioC.horario.lunes)}" itemValue="Lunes" itemDisabled="#{solicitarServicioC.horario.lunes == null}" />
+                                                <f:selectItem itemLabel="Martes: #{solicitarServicioC.formateaHora(solicitarServicioC.horario.martes)}" itemValue="Martes" itemDisabled="#{solicitarServicioC.horario.martes == null}" />
+                                                <f:selectItem itemLabel="Miércoles: #{solicitarServicioC.formateaHora(solicitarServicioC.horario.miercoles)}" itemValue="Miércoles" itemDisabled="#{solicitarServicioC.horario.miercoles == null}" />
+                                                <f:selectItem itemLabel="Jueves: #{solicitarServicioC.formateaHora(solicitarServicioC.horario.jueves)}" itemValue="Jueves" itemDisabled="#{solicitarServicioC.horario.jueves == null}" />
+                                                <f:selectItem itemLabel="Viernes: #{solicitarServicioC.formateaHora(solicitarServicioC.horario.viernes)}" itemValue="Viernes" itemDisabled="#{solicitarServicioC.horario.viernes == null}" />
+                                                <f:selectItem itemLabel="Sábado: #{solicitarServicioC.formateaHora(solicitarServicioC.horario.sabado)}" itemValue="Sábado" itemDisabled="#{solicitarServicioC.horario.sabado == null}" />
                                             </p:selectManyCheckbox> 
                                             <!--<div class="col-sm-2">-->
                                                 <h:commandButton styleClass="btn btn-info" value="solicitar" action="#{solicitarServicioC.solicitar(sesionC.pasajero)}" />

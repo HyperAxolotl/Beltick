@@ -1,38 +1,38 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 11/04/2016 03:54:24 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated May 4, 2016 9:25:35 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="modelo.Automovil" table="automovil" schema="public" optimistic-lock="version">
+    <class name="modelo.Automovil" optimistic-lock="version" schema="public" table="automovil">
         <id name="idAutomovil" type="int">
             <column name="id_automovil" />
             <generator class="sequence">
                 <param name="sequence">automovil_id_automovil_seq</param>
             </generator>
         </id>
-        <many-to-one name="chofer" class="modelo.Chofer" fetch="select">
-            <column name="id_chofer" not-null="true" unique="true" />
+        <many-to-one class="modelo.Chofer" fetch="select" name="chofer">
+            <column name="id_chofer" not-null="true" unique="true"/>
         </many-to-one>
         <property name="noIdentificacion" type="string">
-            <column name="no_identificacion" length="64" not-null="true" unique="true" />
+            <column length="64" name="no_identificacion" not-null="true" unique="true"/>
         </property>
         <property name="modelo" type="string">
-            <column name="modelo" length="64" not-null="true" />
+            <column length="64" name="modelo" not-null="true"/>
         </property>
         <property name="placa" type="string">
-            <column name="placa" length="8" not-null="true" unique="true" />
+            <column length="8" name="placa" not-null="true" unique="true"/>
         </property>
         <property name="color" type="string">
-            <column name="color" length="32" not-null="true" />
+            <column length="32" name="color" not-null="true"/>
         </property>
         <property name="capacidad" type="int">
-            <column name="capacidad" not-null="true" />
+            <column name="capacidad" not-null="true"/>
         </property>
-        <set name="rutas" table="ruta" inverse="true" lazy="true" fetch="select">
+        <set fetch="select" inverse="true" lazy="true" name="rutas" table="ruta">
             <key>
-                <column name="id_auto" not-null="true" unique="true" />
+                <column name="id_automovil" not-null="true" unique="true"/>
             </key>
-            <one-to-many class="modelo.Ruta" />
+            <one-to-many class="modelo.Ruta"/>
         </set>
     </class>
 </hibernate-mapping>

@@ -1,5 +1,5 @@
 package modelo;
-// Generated 11/04/2016 03:54:24 PM by Hibernate Tools 4.3.1
+// Generated May 4, 2016 9:25:30 PM by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -21,7 +21,8 @@ public class Automovil implements java.io.Serializable {
     public Automovil() {
     }
 
-    public Automovil(Chofer chofer, String noIdentificacion, String modelo, String placa, String color, int capacidad) {
+    public Automovil(int idAutomovil, Chofer chofer, String noIdentificacion, String modelo, String placa, String color, int capacidad) {
+        this.idAutomovil = idAutomovil;
         this.chofer = chofer;
         this.noIdentificacion = noIdentificacion;
         this.modelo = modelo;
@@ -30,7 +31,8 @@ public class Automovil implements java.io.Serializable {
         this.capacidad = capacidad;
     }
 
-    public Automovil(Chofer chofer, String noIdentificacion, String modelo, String placa, String color, int capacidad, Set rutas) {
+    public Automovil(int idAutomovil, Chofer chofer, String noIdentificacion, String modelo, String placa, String color, int capacidad, Set rutas) {
+        this.idAutomovil = idAutomovil;
         this.chofer = chofer;
         this.noIdentificacion = noIdentificacion;
         this.modelo = modelo;
@@ -40,21 +42,12 @@ public class Automovil implements java.io.Serializable {
         this.rutas = rutas;
     }
 
-    public int getCapacidad() {
-        return capacidad;
-    }
-
-    public void setCapacidad(int capacidad) {
-        this.capacidad = capacidad;
-    }
-
     public int getIdAutomovil() {
         return this.idAutomovil;
     }
 
     public void setIdAutomovil(int idAutomovil) {
         this.idAutomovil = idAutomovil;
-
     }
 
     public Chofer getChofer() {
@@ -95,6 +88,14 @@ public class Automovil implements java.io.Serializable {
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    public int getCapacidad() {
+        return this.capacidad;
+    }
+
+    public void setCapacidad(int capacidad) {
+        this.capacidad = capacidad;
     }
 
     public Set getRutas() {

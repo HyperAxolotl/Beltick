@@ -4,7 +4,8 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pe="http://primefaces.org/ui/extensions">
 
     <h:body>
         <ui:composition template="plantillas/vista1.xhtml">
@@ -19,7 +20,9 @@
                                 <h:panelGrid columns="2" columnClasses="alignmentCenter">			
 
                                     <h:outputLabel value="Correo " />
-                                    <p:inputText  style="text-align: left;" value="#{sesionC.pasajero.pcorreo}" />
+                                    <p:inputText  style="text-align: left;" value="#{sesionC.pasajero.pcorreo}" >
+                                        <pe:keyFilter regEx="/[a-z0-9_\-\.'@]/i" />
+                                    </p:inputText>
 
                                     <h:outputLabel value="Contraseña   " />
                                     <p:password style="text-align: left;" value="#{sesionC.pasajero.pcontrasenia}" />

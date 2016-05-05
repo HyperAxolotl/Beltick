@@ -72,7 +72,7 @@ public class RutaL implements Serializable {
             for(String s : dias) {
                 Solicitud sol = new Solicitud();
                 SolicitudId sid = new SolicitudId();
-                sid.setDia(Integer.parseInt(s));
+                sid.setDia(s);
                 sid.setIdPasajero(p.getIdPasajero());
                 sid.setIdRuta(r.getIdRuta());
                 sol.setId(sid);

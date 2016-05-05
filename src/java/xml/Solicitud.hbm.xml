@@ -1,25 +1,24 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Apr 30, 2016 2:19:23 AM by Hibernate Tools 4.3.1 -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 4, 2016 9:25:35 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="modelo.Solicitud" table="solicitud" schema="public" optimistic-lock="version">
-        <composite-id name="id" class="modelo.SolicitudId">
+    <class name="modelo.Solicitud" optimistic-lock="version" schema="public" table="solicitud">
+        <composite-id class="modelo.SolicitudId" name="id">
             <key-property name="idPasajero" type="int">
-                <column name="id_pasajero" />
+                <column name="id_pasajero"/>
             </key-property>
             <key-property name="idRuta" type="int">
-                <column name="id_ruta" />
+                <column name="id_ruta"/>
             </key-property>
-            <key-property name="dia" type="int">
-                <column name="dia" />
+            <key-property name="dia" type="string">
+                <column length="16" name="dia"/>
             </key-property>
         </composite-id>
-        <many-to-one name="pasajero" class="modelo.Pasajero" update="false" insert="false" fetch="select">
-            <column name="id_pasajero" not-null="true" />
+        <many-to-one class="modelo.Pasajero" fetch="select" insert="false" name="pasajero" update="false">
+            <column name="id_pasajero" not-null="true"/>
         </many-to-one>
-        <many-to-one name="ruta" class="modelo.Ruta" update="false" insert="false" fetch="select">
-            <column name="id_ruta" not-null="true" />
+        <many-to-one class="modelo.Ruta" fetch="select" insert="false" name="ruta" update="false">
+            <column name="id_ruta" not-null="true"/>
         </many-to-one>
     </class>
 </hibernate-mapping>

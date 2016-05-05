@@ -7,7 +7,9 @@ package controlador.frijoles;
 
 import java.io.Serializable;
 import controlador.logica.RutaL;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -81,6 +83,15 @@ public class SolicitarServicioC implements Serializable {
 
     public void setRuta(Ruta ruta) {
         this.ruta = ruta;
+    }
+
+    public String formateaHora(Date hora) {
+        String s = "No disponible";
+        if (hora != null) {
+            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+            s = sdf.format(hora);
+        }
+        return s;
     }
 
 }

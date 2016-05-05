@@ -1,35 +1,34 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 11/04/2016 03:54:24 PM by Hibernate Tools 4.3.1 -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 4, 2016 9:25:35 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="modelo.Horario" table="horario" schema="public" optimistic-lock="version">
+    <class name="modelo.Horario" optimistic-lock="version" schema="public" table="horario">
         <id name="idHorario" type="int">
             <column name="id_horario" />
             <generator class="sequence">
                 <param name="sequence">horario_id_horario_seq</param>
             </generator>
         </id>
-        <many-to-one name="ruta" class="modelo.Ruta" fetch="select">
-            <column name="id_ruta" not-null="true" unique="true" />
+        <many-to-one class="modelo.Ruta" fetch="select" name="ruta">
+            <column name="id_ruta" not-null="true" unique="true"/>
         </many-to-one>
-        <property name="lunes" type="java.lang.Integer">
-            <column name="lunes" />
+        <property name="lunes" type="time">
+            <column length="15" name="lunes"/>
         </property>
-        <property name="martes" type="java.lang.Integer">
-            <column name="martes" />
+        <property name="martes" type="time">
+            <column length="15" name="martes"/>
         </property>
-        <property name="miercoles" type="java.lang.Integer">
-            <column name="miercoles" />
+        <property name="miercoles" type="time">
+            <column length="15" name="miercoles"/>
         </property>
-        <property name="jueves" type="java.lang.Integer">
-            <column name="jueves" />
+        <property name="jueves" type="time">
+            <column length="15" name="jueves"/>
         </property>
-        <property name="viernes" type="java.lang.Integer">
-            <column name="viernes" />
+        <property name="viernes" type="time">
+            <column length="15" name="viernes"/>
         </property>
-        <property name="sabado" type="java.lang.Integer">
-            <column name="sabado" />
+        <property name="sabado" type="time">
+            <column length="15" name="sabado"/>
         </property>
     </class>
 </hibernate-mapping>

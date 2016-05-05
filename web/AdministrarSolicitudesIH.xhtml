@@ -19,7 +19,7 @@
 
                             <h:form id="administrarSolicitudes">
 
-                                <h:commandButton  actionListener="#{administrarSolicitudesC.listarSolicitudes(sesionC.chofer.idChofer)}" value="Listar todas las solicitudes" />
+                                <h:commandButton  actionListener="#{administrarSolicitudesC.listarSolicitudes(sesionC.chofer.idChofer)}" value="Listar todas las solicitudes" rendered="#{sesionC.verificarSesion() &amp;&amp; sesionC.verificarTipo()}" />
 
                                 <p:dataTable id="tablaSolicitudes" value="#{administrarSolicitudesC.lstSolicitudes}" var="solicitud" widgetVar="tablaSolicitudes" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
                                              paginator="true" rows="10" style="margin-bottom:20px" rendered="#{administrarSolicitudesC.lstSolicitudes != null}">
@@ -31,7 +31,7 @@
                                     </p:column>
                                     
                                     <p:column headerText="Dia -> hora">
-                                        <h:outputText value="#{administrarSolicitudesC.mapDia(solicitud.id.dia)} -> #{solicitud.id.dia}:00" />
+                                        <h:outputText value="#{solicitud.id.dia} -> #{administrarSolicitudesC.getHora(solicitud)}" />
                                     </p:column>
 
                                     <p:column headerText="Acción">

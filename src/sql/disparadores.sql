@@ -1,6 +1,6 @@
 CREATE or replace FUNCTION cr_pperfil() RETURNS TRIGGER AS $trig_cr_pperfil$
 begin
-INSERT INTO perfil_pasajero (pestado,id_pasajero) values(false,new.id_pasajero);
+INSERT INTO perfil_pasajero (pestado,id_pasajero,fecha_creacion) values(false,new.id_pasajero,current_timestamp);
 return null;
 end;
 $trig_cr_pperfil$ LANGUAGE plpgsql;
@@ -11,7 +11,7 @@ FOR EACH ROW EXECUTE PROCEDURE cr_pperfil();
 
 CREATE or replace FUNCTION cr_cperfil() RETURNS TRIGGER AS $trig_cr_cperfil$
 begin
-INSERT INTO perfil_chofer (cestado,id_chofer) values(false,new.id_chofer);
+INSERT INTO perfil_chofer (cestado,id_chofer,fecha_creacion) values(false,new.id_chofer,current_timestamp);
 return null;
 end;
 $trig_cr_cperfil$ LANGUAGE plpgsql;

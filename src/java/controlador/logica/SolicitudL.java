@@ -1,6 +1,7 @@
 package controlador.logica;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.faces.application.FacesMessage;
@@ -12,6 +13,7 @@ import modelo.PasajeroRuta;
 import modelo.PasajeroRutaId;
 import modelo.Solicitud;
 import modelo.SolicitudId;
+import org.apache.commons.lang3.StringUtils;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Transaction;
@@ -25,8 +27,9 @@ public class SolicitudL implements Serializable {
 
     public List<Solicitud> listar() throws Exception {
         try {
-            if (con == null || !con.isOpen())
+            if (con == null || !con.isOpen()) {
                 con = ConexionBD.getSessionFactory().openSession();
+            }
             Criteria cri = con.createCriteria(Solicitud.class);
             lstRutas = cri.list();
         } catch (Exception e) {
@@ -38,8 +41,9 @@ public class SolicitudL implements Serializable {
     public FacesMessage eliminar(Solicitud s) {
         FacesMessage mensaje = null;
         try {
-            if (con == null || !con.isOpen())
+            if (con == null || !con.isOpen()) {
                 con = ConexionBD.getSessionFactory().openSession();
+            }
             trans = con.beginTransaction();
             con.delete(s);
             trans.commit();
@@ -56,8 +60,9 @@ public class SolicitudL implements Serializable {
     public FacesMessage registrar(Solicitud s) {
         FacesMessage mensaje = null;
         try {
-            if (con == null || !con.isOpen())
+            if (con == null || !con.isOpen()) {
                 con = ConexionBD.getSessionFactory().openSession();
+            }
             trans = con.beginTransaction();
             PasajeroRuta pr = new PasajeroRuta();
             PasajeroRutaId prid = new PasajeroRutaId();
@@ -77,6 +82,30 @@ public class SolicitudL implements Serializable {
         } finally {
             con.close();
             return mensaje;
+        }
+    }
+
+    public String getHora(Solicitud s) {
+        Date d = null;
+        String st = "";
+        try {
+            if (con == null || !con.isOpen()) {
+                con = ConexionBD.getSessionFactory().openSession();
+            }
+            Query query = con.createQuery("select h." + StringUtils.stripAccents(s.getId().getDia()).toLowerCase()
+                    + " from Solicitud, Horario h, Ruta r where r.idRuta = :idruta");
+            query.setParameter("idruta", s.getId().getIdRuta());
+            List<?> list = query.list();
+            d = (Date) list.get(0);
+            if (d != null) {
+                SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+                st = sdf.format(d);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            con.close();
+            return st;
         }
     }
 }
