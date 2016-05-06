@@ -252,3 +252,13 @@ p{color:#160A4B;text-align: justify;}
 .blur-img:hover {
   -webkit-filter: blur(5px);
 }
+
+/** Growl... Entre la arena y el mar (8)*/
+.ui-growl {
+    position: absolute;
+padding: auto;
+margin: auto;
+right: 77%;
+top: 10%;
+/*background: #540739;*/
+}

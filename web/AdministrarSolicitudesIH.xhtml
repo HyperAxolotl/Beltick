@@ -18,6 +18,7 @@
                             <h2>Administrar Solicitudes</h2>                            
 
                             <h:form id="administrarSolicitudes">
+                                <p:growl id="growl" showDetail="true" sticky="false" life="3000" />
 
                                 <h:commandButton  actionListener="#{administrarSolicitudesC.listarSolicitudes(sesionC.chofer.idChofer)}" value="Listar todas las solicitudes" rendered="#{sesionC.verificarSesion() &amp;&amp; sesionC.verificarTipo()}" />
 
@@ -35,8 +36,8 @@
                                     </p:column>
 
                                     <p:column headerText="Acción">
-                                        <p:commandButton  value="Aceptar" update="tablaSolicitudes" actionListener="#{administrarSolicitudesC.registrarSolicitud(solicitud,sesionC.chofer.idChofer)}" />
-                                        <p:commandButton  value="Ignorar" update="tablaSolicitudes" actionListener="#{administrarSolicitudesC.eliminarSolicitud(solicitud,sesionC.chofer.idChofer)}" />
+                                        <p:commandButton  value="Aceptar" update="@form" actionListener="#{administrarSolicitudesC.registrarSolicitud(solicitud,sesionC.chofer.idChofer)}" />
+                                        <p:commandButton  value="Ignorar" update="@form" actionListener="#{administrarSolicitudesC.eliminarSolicitud(solicitud,sesionC.chofer.idChofer)}" />
                                     </p:column>
 
                                 </p:dataTable>

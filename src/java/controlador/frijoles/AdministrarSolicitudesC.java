@@ -43,15 +43,17 @@ public class AdministrarSolicitudesC implements Serializable {
 
     public void eliminarSolicitud(Solicitud s, int id) throws Exception {
         mensaje = ayudante.eliminar(s);
-        if (mensaje != null) 
-            FacesContext.getCurrentInstance().addMessage(null, mensaje);
+        if (mensaje == null) 
+            mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "La solicitud ha sido eliminada", null);
+        FacesContext.getCurrentInstance().addMessage(null, mensaje);
         listarSolicitudes(id);           
     }
 
     public void registrarSolicitud(Solicitud s, int id) throws Exception {
         mensaje = ayudante.registrar(s);
-        if (mensaje != null)
-            FacesContext.getCurrentInstance().addMessage(null, mensaje);
+        if (mensaje == null)
+            mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "La solicitud ha sido aceptada", null);
+        FacesContext.getCurrentInstance().addMessage(null, mensaje);
         listarSolicitudes(id); 
     }
 
