@@ -11,6 +11,5 @@ session.*
 projectile.cache
 .recentf
 ac-comphist.dat
-/nbproject/*
+/nbproject
 build.xml
-

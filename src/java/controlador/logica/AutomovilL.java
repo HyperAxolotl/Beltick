@@ -5,6 +5,7 @@ import javax.faces.application.FacesMessage;
 import org.hibernate.Session;
 import modelo.ConexionBD;
 import modelo.Automovil;
+import modelo.Chofer;
 import org.hibernate.Transaction;
 
 public class AutomovilL implements Serializable{
@@ -12,21 +13,18 @@ public class AutomovilL implements Serializable{
     private Session con;
     private Transaction trans;
     
-    public FacesMessage registrar(Automovil a, String confirmacion){
+    public FacesMessage registrar(Automovil a, Chofer c){
         FacesMessage mensaje = null;
-        System.out.println("\n\n\n\n\nComienza registro de automovil");
         try{
             if (con == null || !con.isOpen())
                 con = ConexionBD.getSessionFactory().openSession();
-            System.out.println("Conexion realizada");
             trans = con.beginTransaction();
-            //a.setChofer(chofer);
+            c.getAutomovils().add(a);
             con.save(a);
             trans.commit();
         }catch(Exception e){
             trans.rollback();
             mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "Error con el registro del automovil", null);
-            System.out.println("Esta es la excepcion " + e.getClass().getName());
             e.printStackTrace();
         }finally{
             con.close();
