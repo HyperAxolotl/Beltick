@@ -37,7 +37,7 @@
                                     <div class="row">
                                         <div class="col-sm-2">
                                             
-                                            <h:commandButton styleClass="btn btn-info" value="Registrar" action="#{automovilC.registro()}" >
+                                            <h:commandButton styleClass="btn btn-info" value="Registrar" action="#{automovilC.registro(sesionC.chofer)}" >
                                                 <f:actionListener binding="#{automovilC.automovil.setChofer(sesionC.chofer)}" />
                                             </h:commandButton>
                                         </div>    
