@@ -1,8 +1,7 @@
 # Beltick
 
-Instrucciones de intalación
+###Instrucciones de instalación
 
-```
 - Descargar proyecto
 - Crear una nueva base de datos
 - En la carpeta src/sql del proyecto, correr los archivos BaseDatos.sql, restricciones.sql y disparadores.sql en ese orden en la base de datos creada
@@ -17,4 +16,3 @@ Instrucciones de intalación
   - Hibernate 4.3.x
   - Hibernate 4.3.x(JPA2.1)
 Ya se puede correr la aplicación
-```
