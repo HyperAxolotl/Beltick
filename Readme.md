@@ -15,4 +15,4 @@
   - PostgreSQL JDBC Driver
   - Hibernate 4.3.x
   - Hibernate 4.3.x(JPA2.1)
-Ya se puede correr la aplicación
+- Ya se puede correr la aplicación
