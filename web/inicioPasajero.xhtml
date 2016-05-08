@@ -6,7 +6,7 @@
       xmlns:p="http://primefaces.org/ui">
 
     <h:head></h:head>
-    <body>
+    <h:body>
         <ui:composition template="plantillas/vista1.xhtml">
             <ui:define name="content">
                 <h:outputLabel value="No ha iniciado sesión" rendered="#{sesionC.verificarSesion() eq false}" />
@@ -21,7 +21,7 @@
                 </h:form>
             </ui:define>
         </ui:composition>
-    </body>
+    </h:body>
 </html>
 
 

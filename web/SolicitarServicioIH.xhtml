@@ -8,7 +8,7 @@
     <h:head>
         <title>Solicitar Servicio</title>
         <f:metadata>
-            <f:viewParam name="rutaId" value="#{solicitarServicioC.ruta.idRuta}" />
+            <f:event type="preRenderView" listener="#{solicitarServicioC.init}" />
         </f:metadata>
     </h:head>
 
@@ -21,7 +21,6 @@
                             <h2>Solicitar Servicio</h2>
 
                             <h:form id="solicitarServicio">
-                                #{solicitarServicioC.init()}
 
                                 Selecciona los días para los que quieres solicitar el servicio: 
 
