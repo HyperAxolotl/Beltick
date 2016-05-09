@@ -19,10 +19,15 @@ public class AdministrarSolicitudesC implements Serializable {
     private SolicitudL ayudante;
     private FacesMessage mensaje;
     private List<Solicitud> lstSolicitudes;
-    
-    public AdministrarSolicitudesC() {
+    private Chofer chofer;
+
+    public AdministrarSolicitudesC() throws Exception{
         solicitud = new Solicitud();
         ayudante = new SolicitudL();
+        if (FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario").getClass().getSimpleName().equals("Chofer")) {
+            chofer = (Chofer) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
+            listarSolicitudes();
+        }
     }
 
     public Solicitud getSolicitud() {
@@ -43,31 +48,35 @@ public class AdministrarSolicitudesC implements Serializable {
 
     public void eliminarSolicitud(Solicitud s, int id) throws Exception {
         mensaje = ayudante.eliminar(s);
-        if (mensaje == null) 
+        if (mensaje == null) {
             mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "La solicitud ha sido eliminada", null);
+        }
         FacesContext.getCurrentInstance().addMessage(null, mensaje);
-        listarSolicitudes(id);           
+        listarSolicitudes();
     }
 
     public void registrarSolicitud(Solicitud s, int id) throws Exception {
         mensaje = ayudante.registrar(s);
-        if (mensaje == null)
+        if (mensaje == null) {
             mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "La solicitud ha sido aceptada", null);
+        }
         FacesContext.getCurrentInstance().addMessage(null, mensaje);
-        listarSolicitudes(id); 
+        listarSolicitudes();
     }
 
-    public void listarSolicitudes(int idChofer) throws Exception {
+    public void listarSolicitudes() throws Exception {
         lstSolicitudes = ayudante.listar();
         List<Solicitud> l = new ArrayList<>();
-        for (Solicitud s : lstSolicitudes)
-            if (s.getRuta().getAutomovil().getChofer().getIdChofer() == idChofer)
+        for (Solicitud s : lstSolicitudes) {
+            if (s.getRuta().getAutomovil().getChofer().getIdChofer() == chofer.getIdChofer()) {
                 l.add(s);
+            }
+        }
         lstSolicitudes = l;
     }
-    
-    public String getHora(Solicitud solicitud) throws Exception{
+
+    public String getHora(Solicitud solicitud) throws Exception {
         return ayudante.getHora(solicitud);
     }
-    
+
 }

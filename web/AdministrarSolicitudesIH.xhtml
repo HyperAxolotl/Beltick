@@ -20,10 +20,10 @@
                             <h:form id="administrarSolicitudes">
                                 <p:growl id="growl" showDetail="true" sticky="false" life="3000" />
 
-                                <h:commandButton  actionListener="#{administrarSolicitudesC.listarSolicitudes(sesionC.chofer.idChofer)}" value="Listar todas las solicitudes" rendered="#{sesionC.verificarSesion() &amp;&amp; sesionC.verificarTipo()}" />
-
-                                <p:dataTable id="tablaSolicitudes" value="#{administrarSolicitudesC.lstSolicitudes}" var="solicitud" widgetVar="tablaSolicitudes" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
-                                             paginator="true" rows="10" style="margin-bottom:20px" rendered="#{administrarSolicitudesC.lstSolicitudes != null}">
+                                <p:dataTable id="tablaSolicitudes" value="#{administrarSolicitudesC.lstSolicitudes}" 
+                                             var="solicitud" widgetVar="tablaSolicitudes" rendered="#{sesionC.verificarSesion() &amp;&amp; sesionC.verificarTipo()}" 
+                                             paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                                             paginator="true" rows="10" style="margin-bottom:20px" >
 
                                     <p:column headerText="Pasajero">
                                         <h:outputText value="#{solicitud.pasajero.pnombre} #{solicitud.pasajero.papp} #{solicitud.pasajero.papm}" />
