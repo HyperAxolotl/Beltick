@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
@@ -20,11 +21,11 @@ import org.hibernate.Transaction;
 import org.hibernate.criterion.Order;
 
 public class SolicitudL implements Serializable {
-
+    
     private Session con;
     private Transaction trans;
     private List<Solicitud> lstRutas;
-
+    
     public List<Solicitud> listar() throws Exception {
         try {
             if (con == null || !con.isOpen()) {
@@ -37,7 +38,7 @@ public class SolicitudL implements Serializable {
         }
         return lstRutas;
     }
-
+    
     public FacesMessage eliminar(Solicitud s) {
         FacesMessage mensaje = null;
         try {
@@ -56,7 +57,7 @@ public class SolicitudL implements Serializable {
             return mensaje;
         }
     }
-
+    
     public FacesMessage registrar(Solicitud s) {
         FacesMessage mensaje = null;
         try {
@@ -73,7 +74,13 @@ public class SolicitudL implements Serializable {
             pr.setPasajero(s.getPasajero());
             pr.setRuta(s.getRuta());
             con.save(pr);
-            con.delete(s);
+            Set set = s.getPasajero().getSolicituds();
+            for (Object o : set) {
+                Solicitud sol = (Solicitud) o;
+                if (sol.getId().getDia().equals(s.getId().getDia())) {
+                    con.delete(sol);
+                }
+            }            
             trans.commit();
         } catch (Exception e) {
             trans.rollback();
@@ -84,7 +91,7 @@ public class SolicitudL implements Serializable {
             return mensaje;
         }
     }
-
+    
     public String getHora(Solicitud s) {
         Date d = null;
         String st = "";
@@ -108,7 +115,7 @@ public class SolicitudL implements Serializable {
             return st;
         }
     }
-
+    
     public boolean verificarDisponibilidad(int idr, String d) {
         boolean b = true;
         try {

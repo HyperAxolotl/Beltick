@@ -10,6 +10,7 @@ import controlador.logica.RutaL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Set;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -17,8 +18,10 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import modelo.Horario;
 import modelo.Pasajero;
+import modelo.PasajeroRuta;
 import modelo.Ruta;
 import modelo.Solicitud;
+import org.apache.commons.lang3.StringUtils;
 
 @ManagedBean
 @ViewScoped
@@ -93,6 +96,26 @@ public class SolicitarServicioC implements Serializable {
             s = sdf.format(hora);
         }
         return s;
+    }
+    
+    //Regresa true si un pasajero ya tiene una ruta registrada para el dia recibido como parametro
+    //o una solicitud para ese pasajero ese mismo dia
+    public boolean noDisponible(Pasajero pasajero, String dia) {
+        boolean b = false;
+        Set s = pasajero.getPasajeroRutas();
+        for(Object o : s) {
+            PasajeroRuta pr = (PasajeroRuta)o;
+            if(StringUtils.stripAccents(pr.getId().getDia()).toLowerCase().equals(dia))
+                b = true;
+        }
+        s = pasajero.getSolicituds();
+        for(Object o : s) {
+            Solicitud pr = (Solicitud)o;
+            if(StringUtils.stripAccents(pr.getId().getDia()).toLowerCase().equals(dia)
+                    && pr.getId().getIdRuta() == horario.getRuta().getIdRuta())
+                b = true;
+        }
+        return b;
     }
 
 }

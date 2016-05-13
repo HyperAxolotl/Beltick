@@ -3,6 +3,7 @@ package modelo;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -46,7 +47,7 @@ public class Solicitud implements java.io.Serializable {
         this.id = id;
     }
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "id_pasajero", nullable = false, insertable = false, updatable = false)
     public Pasajero getPasajero() {
         return this.pasajero;

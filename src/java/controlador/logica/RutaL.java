@@ -79,6 +79,7 @@ public class RutaL implements Serializable {
                 sol.setPasajero(p);
                 sol.setRuta(r);
                 con.save(sol);
+                p.getSolicituds().add(sol);
             }
             trans.commit();
         } catch (Exception e) {
