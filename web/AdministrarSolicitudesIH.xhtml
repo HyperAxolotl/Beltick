@@ -26,7 +26,7 @@
                                              paginator="true" rows="10" style="margin-bottom:20px" >
 
                                     <p:column headerText="Pasajero">
-                                        <h:outputText value="#{solicitud.pasajero.pnombre} #{solicitud.pasajero.papp} #{solicitud.pasajero.papm}" />
+                                        <h:outputText value="#{solicitud.pasajero.pnombre}" />
                                         <br/>
                                         <h:outputText value="#{solicitud.pasajero.pcorreo}" />
                                     </p:column>
@@ -36,8 +36,10 @@
                                     </p:column>
 
                                     <p:column headerText="Acción">
-                                        <p:commandButton  value="Aceptar" update="@form" actionListener="#{administrarSolicitudesC.registrarSolicitud(solicitud,sesionC.chofer.idChofer)}" />
-                                        <p:commandButton  value="Ignorar" update="@form" actionListener="#{administrarSolicitudesC.eliminarSolicitud(solicitud,sesionC.chofer.idChofer)}" />
+                                        <p:commandButton  value="Aceptar" update="@form" disabled="#{administrarSolicitudesC.verificarDisponibilidad(solicitud.id.idRuta,solicitud.id.dia) eq false}"
+                                                          actionListener="#{administrarSolicitudesC.registrarSolicitud(solicitud,sesionC.chofer.idChofer)}" />
+                                        <p:commandButton  value="Ignorar" update="@form" 
+                                                          actionListener="#{administrarSolicitudesC.eliminarSolicitud(solicitud,sesionC.chofer.idChofer)}" />
                                     </p:column>
 
                                 </p:dataTable>

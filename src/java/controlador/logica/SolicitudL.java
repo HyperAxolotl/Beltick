@@ -108,4 +108,27 @@ public class SolicitudL implements Serializable {
             return st;
         }
     }
+
+    public boolean verificarDisponibilidad(int idr, String d) {
+        boolean b = true;
+        try {
+            if (con == null || !con.isOpen()) {
+                con = ConexionBD.getSessionFactory().openSession();
+            }
+            Query query = con.createQuery("select a.capacidad from Automovil a,Ruta r,PasajeroRuta pr "
+                    + "where r.idRuta = :idruta AND pr.id.dia = :dia");
+            query.setParameter("dia", d);
+            query.setParameter("idruta", idr);
+            List<?> list = query.list();
+            if (list.size() > 0) {
+                b = list.size() < (Integer) list.get(0);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            b = false;
+        } finally {
+            con.close();
+            return b;
+        }
+    }
 }

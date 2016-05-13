@@ -14,7 +14,7 @@
                 <column length="16" name="dia"/>
             </key-property>
         </composite-id>
-        <many-to-one class="modelo.Pasajero" fetch="select" insert="false" name="pasajero" update="false">
+        <many-to-one class="modelo.Pasajero" fetch="join" insert="false" name="pasajero" update="false">
             <column name="id_pasajero" not-null="true"/>
         </many-to-one>
         <many-to-one class="modelo.Ruta" fetch="select" insert="false" name="ruta" update="false">

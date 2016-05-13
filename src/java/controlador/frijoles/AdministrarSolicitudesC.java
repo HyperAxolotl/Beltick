@@ -6,10 +6,15 @@ import javax.faces.bean.ViewScoped;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import modelo.Automovil;
 import modelo.Chofer;
+import modelo.PasajeroRuta;
 import modelo.Solicitud;
+import org.apache.commons.lang3.StringUtils;
+import org.hibernate.Hibernate;
 
 @ManagedBean
 @ViewScoped
@@ -77,6 +82,11 @@ public class AdministrarSolicitudesC implements Serializable {
 
     public String getHora(Solicitud solicitud) throws Exception {
         return ayudante.getHora(solicitud);
+    }
+    
+    //Regresa true si aun hay espacio en el coche del chofer en el dia recibido como parametro
+    public boolean verificarDisponibilidad(int b, String c) {
+        return ayudante.verificarDisponibilidad(b,c);
     }
 
 }
