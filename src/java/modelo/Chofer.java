@@ -150,7 +150,7 @@ public class Chofer implements java.io.Serializable {
         this.ccontrasenia = ccontrasenia;
     }
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "chofer")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "chofer")
     public Set getPerfilChofers() {
         return this.perfilChofers;
     }

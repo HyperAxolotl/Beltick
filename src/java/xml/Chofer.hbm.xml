@@ -33,7 +33,7 @@
         <property name="ccontrasenia" type="string">
             <column length="128" name="ccontrasenia" not-null="true"/>
         </property>
-        <set fetch="select" inverse="true" lazy="true" name="perfilChofers" table="perfil_chofer">
+        <set fetch="join" inverse="true" lazy="false" name="perfilChofers" table="perfil_chofer">
             <key>
                 <column name="id_chofer" not-null="true" unique="true"/>
             </key>

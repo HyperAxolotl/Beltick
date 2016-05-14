@@ -157,7 +157,7 @@ public class Pasajero implements java.io.Serializable {
         this.solicituds = solicituds;
     }
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "pasajero")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "pasajero")
     public Set getPerfilPasajeros() {
         return this.perfilPasajeros;
     }

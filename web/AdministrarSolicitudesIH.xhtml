@@ -26,7 +26,7 @@
                                              paginator="true" rows="10" style="margin-bottom:20px" >
 
                                     <p:column headerText="Pasajero">
-                                        <h:outputText value="#{solicitud.pasajero.pnombre}" />
+                                        <h:commandLink value="#{solicitud.pasajero.pnombre}" action="#{perfilC.muestraPerfil(solicitud.pasajero.perfilPasajeros.iterator().next(), false)}" />
                                         <br/>
                                         <h:outputText value="#{solicitud.pasajero.pcorreo}" />
                                     </p:column>
