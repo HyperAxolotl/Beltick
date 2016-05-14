@@ -50,7 +50,7 @@ public class RegistroRutaC implements Serializable {
         mensaje = ayudante.registrar(ruta, horario);
         if (mensaje != null) {
             FacesContext.getCurrentInstance().addMessage(null, mensaje);
-            return "error";
+            return "";
         }
         mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "Tu ruta se registró exitosamente", null);
         FacesContext.getCurrentInstance().addMessage(null, mensaje);

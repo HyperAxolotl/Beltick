@@ -77,7 +77,7 @@ public class SesionC implements Serializable {
             if (pa != null) {
                 FacesContext.getCurrentInstance().getExternalContext()
                         .getSessionMap().put("usuario", pa);
-                resultado = "inicioPasajero";
+                resultado = "inicioPasajero?faces-redirect=true";
                 p = pa;
             } else {
                 mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "Correo o contraseña incorrectos", null);
@@ -95,7 +95,7 @@ public class SesionC implements Serializable {
             if (usc != null) {
                 FacesContext.getCurrentInstance().getExternalContext()
                         .getSessionMap().put("usuario", usc);
-                resultado = "inicioChofer";
+                resultado = "inicioChofer?faces-redirect=true";
                 c = usc;
             } else {
                 mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "Correo o contraseña incorrectos", null);
@@ -129,7 +129,7 @@ public class SesionC implements Serializable {
         pc = null;
         c = null;
         p = null;
-        return "PaginaPrincipalIH";
+        return "PaginaPrincipalIH?faces-redirect=true";
     }
     
     /**
@@ -146,8 +146,8 @@ public class SesionC implements Serializable {
     
     public String verPerfil(){
         if(verificarTipo())
-            return "inicioChofer";
-        return "inicioPasajero";
+            return "inicioChofer?faces-redirect=true";
+        return "inicioPasajero?faces-redirect=true";
     }
     
     private void getPerfil(){

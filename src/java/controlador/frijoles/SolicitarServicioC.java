@@ -33,6 +33,7 @@ public class SolicitarServicioC implements Serializable {
     private Solicitud solicitud;
     private FacesMessage mensaje;
     private Horario horario;
+    private boolean exito;
 
     public SolicitarServicioC() {
         horario = new Horario();
@@ -44,6 +45,10 @@ public class SolicitarServicioC implements Serializable {
 
     public Horario getHorario() {
         return horario;
+    }
+
+    public boolean isExito() {
+        return exito;
     }
 
     public void setHorario(Horario horario) {
@@ -62,9 +67,12 @@ public class SolicitarServicioC implements Serializable {
         mensaje = ayudante.solicitar(pasajero, ruta, diasSeleccionados);
         if (mensaje != null) {
             FacesContext.getCurrentInstance().addMessage(null, mensaje);
-            return "error";
+            return "";
         }
-        return "exito";
+        mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "Tu solicitud fue enviada con éxito... Espera la confirmación del chofer", null);
+        FacesContext.getCurrentInstance().addMessage(null, mensaje);
+        exito = true;
+        return "";
     }
 
     @PostConstruct

@@ -24,26 +24,39 @@
 
                                 Selecciona los días para los que quieres solicitar el servicio: 
 
-                                    <section class="container">
-                                        <div class="row">
-                                            <p:outputLabel for="horario" value="Horario semanal" />
-                                            <p:selectManyCheckbox id="horario" value="#{solicitarServicioC.diasSeleccionados}" layout="grid" columns="2" >
-                                                <f:selectItem itemLabel="Lunes: #{solicitarServicioC.formateaHora(solicitarServicioC.horario.lunes)}" itemValue="Lunes" itemDisabled="#{solicitarServicioC.horario.lunes == null || solicitarServicioC.noDisponible(sesionC.pasajero,'lunes')}" />
-                                                <f:selectItem itemLabel="Martes: #{solicitarServicioC.formateaHora(solicitarServicioC.horario.martes)}" itemValue="Martes" itemDisabled="#{solicitarServicioC.horario.martes == null || solicitarServicioC.noDisponible(sesionC.pasajero,'martes')}" />
-                                                <f:selectItem itemLabel="Miércoles: #{solicitarServicioC.formateaHora(solicitarServicioC.horario.miercoles)}" itemValue="Miércoles" itemDisabled="#{solicitarServicioC.horario.miercoles == null || solicitarServicioC.noDisponible(sesionC.pasajero,'miercoles')}" />
-                                                <f:selectItem itemLabel="Jueves: #{solicitarServicioC.formateaHora(solicitarServicioC.horario.jueves)}" itemValue="Jueves" itemDisabled="#{solicitarServicioC.horario.jueves == null || solicitarServicioC.noDisponible(sesionC.pasajero,'jueves')}" />
-                                                <f:selectItem itemLabel="Viernes: #{solicitarServicioC.formateaHora(solicitarServicioC.horario.viernes)}" itemValue="Viernes" itemDisabled="#{solicitarServicioC.horario.viernes == null || solicitarServicioC.noDisponible(sesionC.pasajero,'viernes')}" />
-                                                <f:selectItem itemLabel="Sábado: #{solicitarServicioC.formateaHora(solicitarServicioC.horario.sabado)}" itemValue="Sábado" itemDisabled="#{solicitarServicioC.horario.sabado == null || solicitarServicioC.noDisponible(sesionC.pasajero,'sabado')}" />
-                                            </p:selectManyCheckbox> 
-                                            <!--<div class="col-sm-2">-->
-                                                <h:commandButton styleClass="btn btn-info" value="solicitar" action="#{solicitarServicioC.solicitar(sesionC.pasajero)}" />
-                                            <!--</div>-->    
-                                        </div>
-                                    </section>
+                                <section class="container">
+                                    <div class="row">
+                                        <p:outputLabel for="horario" value="Horario semanal" />
+                                        <p:selectManyCheckbox id="horario" value="#{solicitarServicioC.diasSeleccionados}" layout="grid" columns="2" >
+                                            <f:selectItem itemLabel="Lunes: #{solicitarServicioC.formateaHora(solicitarServicioC.horario.lunes)}" itemValue="Lunes" itemDisabled="#{solicitarServicioC.horario.lunes == null || solicitarServicioC.noDisponible(sesionC.pasajero,'lunes')}" />
+                                            <f:selectItem itemLabel="Martes: #{solicitarServicioC.formateaHora(solicitarServicioC.horario.martes)}" itemValue="Martes" itemDisabled="#{solicitarServicioC.horario.martes == null || solicitarServicioC.noDisponible(sesionC.pasajero,'martes')}" />
+                                            <f:selectItem itemLabel="Miércoles: #{solicitarServicioC.formateaHora(solicitarServicioC.horario.miercoles)}" itemValue="Miércoles" itemDisabled="#{solicitarServicioC.horario.miercoles == null || solicitarServicioC.noDisponible(sesionC.pasajero,'miercoles')}" />
+                                            <f:selectItem itemLabel="Jueves: #{solicitarServicioC.formateaHora(solicitarServicioC.horario.jueves)}" itemValue="Jueves" itemDisabled="#{solicitarServicioC.horario.jueves == null || solicitarServicioC.noDisponible(sesionC.pasajero,'jueves')}" />
+                                            <f:selectItem itemLabel="Viernes: #{solicitarServicioC.formateaHora(solicitarServicioC.horario.viernes)}" itemValue="Viernes" itemDisabled="#{solicitarServicioC.horario.viernes == null || solicitarServicioC.noDisponible(sesionC.pasajero,'viernes')}" />
+                                            <f:selectItem itemLabel="Sábado: #{solicitarServicioC.formateaHora(solicitarServicioC.horario.sabado)}" itemValue="Sábado" itemDisabled="#{solicitarServicioC.horario.sabado == null || solicitarServicioC.noDisponible(sesionC.pasajero,'sabado')}" />
+                                        </p:selectManyCheckbox> 
+                                        <!--<div class="col-sm-2">-->
+
+                                        <p:dialog id="dialogTest" header="Exito" widgetVar="dlg2" modal="true"  draggable="false"  
+                                                  resizable="false" closable="false" height="100" visible="#{solicitarServicioC.exito}">
+                                            <p:messages/>
+                                            <p:button value="Cerrar" onclick="PF('dlg2').hide()" outcome="PaginaPrincipalIH"/>
+                                        </p:dialog>
+                                        
+                                        <h:messages/>
+                                        
+                                        <h:commandButton styleClass="btn btn-info" value="solicitar" action="#{solicitarServicioC.solicitar(sesionC.pasajero)}" onclick="if (#{solicitarServicioC.exito}) {
+                                                    PF('dlg2').show();
+                                                }" >
+                                            <f:param name="rutaId" value="#{solicitarServicioC.ruta.idRuta}" />
+                                        </h:commandButton>
+                                        <!--</div>-->    
+                                    </div>
+                                </section>
 
 
                             </h:form>
-                            
+
                         </div>
                     </div>
                 </section>
