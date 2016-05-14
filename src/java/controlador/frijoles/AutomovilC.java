@@ -41,7 +41,7 @@ public class AutomovilC implements Serializable {
             FacesContext.getCurrentInstance().addMessage(null, mensaje);
             return "";
         }
-        return "RegistroRutaIH";
+        return "RegistroRutaIH?faces-redirect=true";
     }
 
     public String getConfirmacion() {

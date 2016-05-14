@@ -25,12 +25,18 @@ public class RegistroRutaC implements Serializable {
     private Horario horario = new Horario();
     private FacesMessage mensaje;
     private MapModel modeloMapa;
+    private boolean exito;
 
     public RegistroRutaC() {
         ruta = new Ruta();
         ayudante = new RutaL();
         horario = new Horario();
     }
+
+    public boolean isExito() {
+        return exito;
+    }
+    
 
     public Ruta getRuta() {
         return ruta;
@@ -46,7 +52,10 @@ public class RegistroRutaC implements Serializable {
             FacesContext.getCurrentInstance().addMessage(null, mensaje);
             return "error";
         }
-        return "exito";
+        mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "Tu ruta se registró exitosamente", null);
+        FacesContext.getCurrentInstance().addMessage(null, mensaje);
+        exito = true;
+        return "";
     }
 
     public Horario getHorario() {
