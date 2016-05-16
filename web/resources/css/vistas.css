@@ -122,7 +122,7 @@ p{
 
 
 /*para inputs en formularios*/
-.form-horizontal>input{
+.form> .input{
     position: relative;
     width: 100%;
     padding: 10px 20px;
@@ -261,4 +261,10 @@ margin: auto;
 right: 77%;
 top: 10%;
 /*background: #540739;*/
+}
+
+.container-form{
+    position: relative;
+    padding: 45%;
+    background: 
 }

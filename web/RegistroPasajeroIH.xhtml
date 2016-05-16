@@ -10,53 +10,57 @@
     <h:body>
         <ui:composition template="plantillas/vista1.xhtml">
             <ui:define name="content">
-                <section class="container">
+                <div class="container">
                     <div class="row">
                         <div class="col-sm-12" align="center">
                             <p:tooltip />
                             <h:form styleClass="form">
-                                <h2>Registro Pasajero</h2>
-                                <h3>Ingresa tus datos</h3>
+                                <div class="form-group" style="margin-top:0px;">
+                                    <h2>Registro de Pasajero</h2>
+                                    <h3>Ingresa tus datos</h3>
+                                    <h:panelGrid id="grid" columns="3" cellpadding="5">
+                                        <p:outputLabel for="nombre" value="Nombre" />
+                                        <p:inputText  styleClass="form-control input-sm" id="nombre" required="true" style="text-align: left;" value="#{pasajeroC.pasajero.pnombre}" />
+                                        <p:message for="nombre" display="text"/>
+
+                                        <p:outputLabel for="app" value="Apellido Paterno" />
+                                        <p:inputText  styleClass="form-control input-sm" id="app" required="true" style="text-align: left; " value="#{pasajeroC.pasajero.papp}"/>
+                                        <p:message for="app" display="text"/>
+
+                                        <p:outputLabel for="apm" value="Apellido Materno" />
+                                        <p:inputText styleClass="form-control input-sm"  id="apm" required="true" style="text-align: left;" value="#{pasajeroC.pasajero.papm}"/>
+                                        <p:message for="apm" display="text"/>
+
+                                        <p:outputLabel for="correo" value="Correo" />
+                                        <p:inputText  styleClass="form-control input-sm" id="correo" required="true" style="text-align: left;" value="#{pasajeroC.pasajero.pcorreo}"/>
+                                        <p:message for="correo" display="text"/>
+
+                                        <p:outputLabel for="contrasenia" value="Contraseña" />
+                                        <p:password   styleClass="form-control input-sm" id="contrasenia" required="true" style="text-align: left;" value="#{pasajeroC.pasajero.pcontrasenia}" 
+                                                      feedback="true" inline="true" promptLabel="Ingresa una contraseña" 
+                                                      weakLabel="Débil" goodLabel="Medio" strongLabel="Fuerte" />
+                                        <p:message for="contrasenia" display="text"/>
+
+                                        <p:outputLabel for="contraseniac" value="Confirmación de Contraseña" />
+                                        <p:password styleClass="form-control input-sm"  id="contraseniac" required="true" style="text-align: left;" value="#{pasajeroC.confirmacion}" />
+                                        <p:message for="contraseniac" display="text" />
+
+                                        <p:outputLabel for="ncuenta" value="Numero de Cuenta" />
+                                        <p:inputText  styleClass="form-control input-sm"  id="ncuenta" required="true" style="text-align: left;" value="#{pasajeroC.pasajero.pnoCuenta}" />
+                                        <p:message for="ncuenta" display="text" />
+
+                                        <p:outputLabel for="fecha" value="Fecha de Nacimiento" />
+                                        <p:calendar  id="fecha" required="true" style="text-align: left; height: 10px;" pattern="dd-MM-yyyy" mask="true" value="#{pasajeroC.pasajero.pfechaNac}" />
+
+                                        <p:message for="fecha" display="text" />
+
+                                    </h:panelGrid>
+
+                                </div>
+
                                 <!--p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" /-->
-                                <h:panelGrid id="grid" columns="3" cellpadding="5">
-                                    <p:outputLabel for="nombre" value="Nombre" />
-                                    <p:inputText id="nombre" required="true" style="text-align: left;" value="#{pasajeroC.pasajero.pnombre}" />
-                                    <p:message for="nombre" display="text"/>
-
-                                    <p:outputLabel for="app" value="Apellido Paterno" />
-                                    <p:inputText id="app" required="true" style="text-align: left; " value="#{pasajeroC.pasajero.papp}"/>
-                                    <p:message for="app" display="text"/>
-
-                                    <p:outputLabel for="apm" value="Apellido Materno" />
-                                    <p:inputText id="apm" required="true" style="text-align: left;" value="#{pasajeroC.pasajero.papm}"/>
-                                    <p:message for="apm" display="text"/>
-
-                                    <p:outputLabel for="correo" value="Correo" />
-                                    <p:inputText id="correo" required="true" style="text-align: left;" value="#{pasajeroC.pasajero.pcorreo}"/>
-                                    <p:message for="correo" display="text"/>
-
-                                    <p:outputLabel for="contrasenia" value="Contraseña" />
-                                    <p:password id="contrasenia" required="true" style="text-align: left;" value="#{pasajeroC.pasajero.pcontrasenia}" 
-                                                feedback="true" inline="true" promptLabel="Ingresa una contraseña" 
-                                                weakLabel="Débil" goodLabel="Medio" strongLabel="Fuerte" />
-                                    <p:message for="contrasenia" display="text"/>
-
-                                    <p:outputLabel for="contraseniac" value="Confirmación de Contraseña" />
-                                    <p:password id="contraseniac" required="true" style="text-align: left;" value="#{pasajeroC.confirmacion}" />
-                                    <p:message for="contraseniac" display="text" />
-
-                                    <p:outputLabel for="ncuenta" value="Numero de Cuenta" />
-                                    <p:inputText id="ncuenta" required="true" style="text-align: left;" value="#{pasajeroC.pasajero.pnoCuenta}" />
-                                    <p:message for="ncuenta" display="text" />
-
-                                    <p:outputLabel for="fecha" value="Fecha de Nacimiento" />
-                                    <p:calendar id="fecha" required="true" style="text-align: left;" pattern="dd-MM-yyyy" mask="true" value="#{pasajeroC.pasajero.pfechaNac}" />
-
-                                    <p:message for="fecha" display="text" />
-
-                                </h:panelGrid>
-                                <p:separator />
-                                <section class="container">
+                                <p:separator/>
+                                <div class="container">
                                     <div class="row">
                                         <div class="col-sm-12" align="center">
 
@@ -104,11 +108,11 @@
                                             </div>        
                                         </div>
                                     </div>
-                                </section>
+                                </div>
                             </h:form>
                         </div>
                     </div>
-                </section>
+                </div>
             </ui:define>
         </ui:composition>
     </h:body>
