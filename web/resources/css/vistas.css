@@ -24,25 +24,6 @@ body{
     border: 0;
     background: transparent;
 }
-#bottome {
-    /*background-color: #cfb9de;
-    /*position: relative;*
-    
-    position: absolute;
-    bottom: 8px;
-    
-    background-color:red;/*#dbcae6*
-    padding: 5px;
-    margin: 10px 0px 0px 0px;
-    text-align: right;
-    font-family: inherit;
-    font-size: 11px;*/
-    position:absolute;
-    bottom:0;
-    width:100%;
-    height:60px;   /* Height of the footer */
-    background:#6cf;
-}
 
 #left {
     float: left;
@@ -68,8 +49,8 @@ body{
 #content {
     float: inside;
     position: relative;
-    margin:auto;
-    padding: auto;
+    margin:0px;
+    padding: 0px;
     background-color: #cfb9de;
 }
 p{
@@ -264,8 +245,7 @@ p{color:#160A4B;text-align: justify;}
 
 /** Growl... Entre la arena y el mar (8)*/
 .ui-growl {
-    position: absolute;
-<<<<<<< HEAD
+position: absolute;
 padding: auto;
 margin: auto;
 right: 77%;
@@ -273,15 +253,8 @@ top: 10%;
 /*background: #540739;*/
 }
 
-.container-form{
-    position: relative;
-    padding: 45%;
-    background: 
-=======
-    padding: auto;
-    margin: auto;
-    right: 77%;
-    top: 10%;
-    /*background: #540739;*/
->>>>>>> ff4dbe1470c9bebefce61d6496678c7494ffe025
+
+.carousel, .slide{
+    padding-top: 0px;
+    margin-top: 0px;
 }
