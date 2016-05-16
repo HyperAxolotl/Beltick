@@ -13,59 +13,49 @@
             <ui:define name="content">
                 <section class="container">
                     <div class="row">
-                        <h2>Explorar perfiles</h2>
-                        <div class="col-sm-12" align="center">
-                        </div>
-                        <div class="col-lg-12" align="right">
-                            <h:form>
-                                <h:panelGrid columns="4">
-                                    <h:commandLink actionListener="#{perfilC.listarChoferes()}" value="Choferes" style="font-size: 30px" />
-                                    <h:outputLabel value=" | " style="font-size: 30px"/>  
-                                    <h:commandLink actionListener="#{perfilC.listarPasajeros()}" value="Pasajeros" style="font-size: 30px" />
-                                </h:panelGrid>
-                            </h:form>  
-                        </div>
-                        <div class="col-sm-12" align="center">
-
-
-
-                            <h:panelGrid columns="2">
-                                <h:form>
-
-                                    <p:dataTable value="#{perfilC.choferes}" var="pc" widgetVar="tablaChoferes" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
-                                                 paginator="true" rows="10" style="margin-bottom:20px" rendered="#{perfilC.mostrarChoferes}">
-                                        <f:facet name="header">
-                                            <p:outputPanel>
-                                                <h:outputText value="Filtrar Choferes" />
-                                                <p:inputText id="globalFilter" onkeyup="PF('tablaChoferes').filter()" style="width:150px" placeholder="Palabra clave"/>
-                                            </p:outputPanel>
-                                        </f:facet>
-                                        <p:column headerText="Nombre Chofer" filterBy="#{pc.chofer.cnombre}"  footerText="" filterMatchMode="contains">
-                                            <p:commandLink value="#{pc.chofer.cnombre} #{pc.chofer.capp}" action="#{perfilC.muestraPerfil(pc,true)}"/>
-                                        </p:column>
-                                        <p:column headerText="Correo" filterBy="#{pc.chofer.ccorreo}" filterMatchMode="contains">
-                                            <p:outputLabel value="#{pc.chofer.ccorreo}" />
-                                        </p:column>
-                                    </p:dataTable>
-                                </h:form>
-
-                                <h:form>
-                                    <p:dataTable value="#{perfilC.pasajeros}" var="pp" widgetVar="tablaPasajeros" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
-                                                 paginator="true" rows="10" style="margin-bottom:20px" rendered="#{perfilC.mostrarPasajeros}">
-                                        <f:facet name="header">
-                                            <p:outputPanel>
-                                                <h:outputText value="Filtrar Pasajeros" />
-                                                <p:inputText id="globalFilter" onkeyup="PF('tablaPasajeros').filter()" style="width:150px" placeholder="Palabra clave"/>
-                                            </p:outputPanel>
-                                        </f:facet>
-                                        <p:column headerText="Nombre Pasajero" filterBy="#{pp.pasajero.pnombre} #{pp.pasajero.papp}"  footerText="" filterMatchMode="contains">
-                                            <p:commandLink value="#{pp.pasajero.pnombre} #{pp.pasajero.papp}" action="#{perfilC.muestraPerfil(pp,false)}" />
-                                        </p:column>
-                                        <p:column headerText="Correo" filterBy="#{pp.pasajero.pcorreo}"  footerText="" filterMatchMode="contains">
-                                            <p:outputLabel value="#{pp.pasajero.pcorreo}" />
-                                        </p:column>
-                                    </p:dataTable>
-                                </h:form>
+                        <!--h2>Explorar perfiles</h2-->                       
+                        <div class="col-sm-12" align="center" >
+                            <h:panelGrid columns="1">
+                                <p:tabView>
+                                    <p:tab title="Choferes">
+                                        <h:form>
+                                            <p:dataTable value="#{perfilC.choferes}" paginatorPosition="bottom" var="pc" widgetVar="tablaChoferes" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                                                         paginator="true" rows="7" style="margin-bottom:20px">
+                                                <f:facet name="header">
+                                                    <p:outputPanel>
+                                                        <h:outputText value="Filtrar Choferes"/>
+                                                        <p:inputText id="globalFilter" onkeyup="PF('tablaChoferes').filter()" style="width:150px" placeholder="Palabra clave"/>
+                                                    </p:outputPanel>
+                                                </f:facet>
+                                                <p:column headerText="Nombre Chofer" filterBy="#{pc.chofer.cnombre}"  footerText="" filterMatchMode="contains">
+                                                    <p:commandLink value="#{pc.chofer.cnombre} #{pc.chofer.capp}" action="#{perfilC.muestraPerfil(pc,true)}"/>
+                                                </p:column>
+                                                <p:column headerText="Correo" filterBy="#{pc.chofer.ccorreo}" filterMatchMode="contains">
+                                                    <p:outputLabel value="#{pc.chofer.ccorreo}" />
+                                                </p:column>
+                                            </p:dataTable>
+                                        </h:form>
+                                    </p:tab>
+                                    <p:tab title="Pasajeros">
+                                        <h:form>
+                                            <p:dataTable value="#{perfilC.pasajeros}" paginatorPosition="bottom" var="pp" widgetVar="tablaPasajeros" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                                                         paginator="true" rows="7" style="margin-bottom:20px">
+                                                <f:facet name="header">
+                                                    <p:outputPanel>
+                                                        <h:outputText value="Filtrar Pasajeros" />
+                                                        <p:inputText id="globalFilter" onkeyup="PF('tablaPasajeros').filter()" style="width:150px" placeholder="Palabra clave"/>
+                                                    </p:outputPanel>
+                                                </f:facet>
+                                                <p:column headerText="Nombre Pasajero" filterBy="#{pp.pasajero.pnombre} #{pp.pasajero.papp}"  footerText="" filterMatchMode="contains">
+                                                    <p:commandLink value="#{pp.pasajero.pnombre} #{pp.pasajero.papp}" action="#{perfilC.muestraPerfil(pp,false)}" />
+                                                </p:column>
+                                                <p:column headerText="Correo" filterBy="#{pp.pasajero.pcorreo}"  footerText="" filterMatchMode="contains">
+                                                    <p:outputLabel value="#{pp.pasajero.pcorreo}" />
+                                                </p:column>
+                                            </p:dataTable>
+                                        </h:form>
+                                    </p:tab>
+                                </p:tabView>
                             </h:panelGrid>
                         </div>
                     </div>

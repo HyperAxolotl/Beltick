@@ -21,7 +21,7 @@
                             <h:outputScript library="js" name="RegistroRuta.js" />
 
 
-                            <h:form id="forme" styleClass="form">
+                            <h:form id="forma" styleClass="form">
                                 <p:commandButton value="Borrar último punto" id="borrar-ultimo" onclick="return borrarUltimo();" />
                                 <p:commandButton value="Borrar todo" id="borrar-todo" onclick="return borrarTodo();" />
                                 <h:panelGrid columns="1">
@@ -61,15 +61,15 @@
                                     <p:inputMask id="sabado" value="#{registroRutaC.horario.sabado}" mask="99:99" > 
                                         <f:convertDateTime pattern="HH:mm" />
                                     </p:inputMask>
-                                    <h:messages/>
+                                    <h:messages infoStyle="color:red"/>
                                 </h:panelGrid>
                                 <p:dialog id="dialogTest" header="Exito" widgetVar="dlg2" modal="true"  draggable="false"  
                                           resizable="false" closable="false" height="100" visible="#{registroRutaC.exito}">
-                                    <p:messages/>
+                                    <p:messages />
                                     <p:button value="Cerrar" onclick="PF('dlg2').hide()" outcome="PaginaPrincipalIH"/>
                                 </p:dialog>
 
-                                <p:commandButton value="Registrar" action="#{registroRutaC.registro()}" update="dialogTest,forme" 
+                                <p:commandButton value="Registrar" action="#{registroRutaC.registro()}" update="dialogTest,forma" 
                                                  onclick="if (#{pasajeroC.exito}) {
                                                              PF('dlg2').show();
                                                          }" >

@@ -44,7 +44,7 @@
                                     <p:column headerText="Ruta">
                                         <p:gmap id="gmap" center="19.3241874,-99.1789797" zoom="12" type="ROADMAP" style="width:300px;height:200px" model="#{explorarRutasC.getModeloMapa(ruta.mapa)}" />
                                         <p:commandButton value="Expandir" type="button" onclick="PF('dlg#{ruta.idRuta}').show();" />
-                                        <p:button  value="Solicitar servicio" outcome="SolicitarServicioIH">
+                                        <p:button  value="Solicitar servicio" outcome="SolicitarServicioIH" rendered="#{sesionC.tipo eq false}">
                                             <f:param name="rutaId" value="#{ruta.idRuta}" />
                                         </p:button>
                                         <p:dialog header="Ruta de #{ruta.automovil.chofer.cnombre}" widgetVar="dlg#{ruta.idRuta}" modal="true" height="400" width="600">

@@ -11,7 +11,7 @@
                 <h:form rendered="#{perfilC.tipo eq true}">
                     <section class="container">
                         <div class="row">
-                            
+
                             <div class="col-sm-4" align="left">
                                 <p:panelGrid columns="1">  
                                     <f:facet name="header">
@@ -22,12 +22,10 @@
                                     <h:outputLabel value="#{perfilC.perfilChofer.chofer.ccorreo}"/>
                                     <h:outputLabel value="#{perfilC.perfilChofer.chofer.cnoCuenta}"/>
                                     <h:outputLabel value="#{perfilC.perfilChofer.chofer.cfechaNac}"/>  
+                                    <p:button  value="Solicitar servicio" outcome="SolicitarServicioIH" rendered="#{not (perfilC.getIdRuta() eq -100) and sesionC.tipo eq false}">
+                                        <f:param name="rutaId" value="#{perfilC.getIdRuta()}" />
+                                    </p:button>
                                 </p:panelGrid>
-                            </div>
-                            <div class="col-sm-4" align="right">
-                                <p:button  value="Solicitar servicio" outcome="SolicitarServicioIH" rendered="false">
-                                    <f:param name="rutaId" value="#{perfilC.getIdRuta()}" />
-                                </p:button>
                             </div>
                         </div>
                     </section>
