@@ -22,7 +22,7 @@
                                     <h:outputLabel value="#{perfilC.perfilChofer.chofer.ccorreo}"/>
                                     <h:outputLabel value="#{perfilC.perfilChofer.chofer.cnoCuenta}"/>
                                     <h:outputLabel value="#{perfilC.perfilChofer.chofer.cfechaNac}"/>  
-                                    <p:button  value="Solicitar servicio" outcome="SolicitarServicioIH" rendered="#{not (perfilC.getIdRuta() eq -100)}">
+                                    <p:button  value="Solicitar servicio" outcome="SolicitarServicioIH" rendered="#{not (perfilC.getIdRuta() eq -100) and sesionC.tipo eq false}">
                                         <f:param name="rutaId" value="#{perfilC.getIdRuta()}" />
                                     </p:button>
                                 </p:panelGrid>

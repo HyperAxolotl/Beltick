@@ -32,8 +32,6 @@ public class PerfilC {
     private List<PerfilPasajero> pasajeros;
     private List<PerfilChofer> choferes;
     private final PerfilL ayudante = new PerfilL();
-    private boolean mostrarPasajeros;
-    private boolean mostrarChoferes;
     private boolean tipo;
     private PerfilChofer perfilChofer;
     private PerfilPasajero perfilPasajero;
@@ -51,25 +49,9 @@ public class PerfilC {
     public PerfilPasajero getPerfilPasajero() {
         return perfilPasajero;
     }
-    
+
     public PerfilChofer getPerfilChofer() {
         return perfilChofer;
-    }
-
-    public boolean isMostrarPasajeros() {
-        return mostrarPasajeros;
-    }
-
-    public boolean isMostrarChoferes() {
-        return mostrarChoferes;
-    }
-
-    public void setMostrarPasajeros(boolean mostrarPasajeros) {
-        this.mostrarPasajeros = mostrarPasajeros;
-    }
-
-    public void setMostrarChoferes(boolean mostrarChoferes) {
-        this.mostrarChoferes = mostrarChoferes;
     }
 
     public List<PerfilChofer> getChoferes() {
@@ -88,46 +70,41 @@ public class PerfilC {
         this.pasajeros = pasajeros;
     }
 
-    public void listarChoferes() {
-        mostrarPasajeros = false;
+    @PostConstruct
+    public void listar() {
         choferes = ayudante.listaChoferes();
-        mostrarChoferes = true;
+        pasajeros = ayudante.listaPasajeros();
+    }
+
+    public void listarChoferes() {
+        choferes = ayudante.listaChoferes();
     }
 
     public void listarPasajeros() {
-        mostrarChoferes = false;
         pasajeros = ayudante.listaPasajeros();
-        mostrarPasajeros = true;
     }
 
     public String muestraPerfil(Object perfil, boolean tipo) {
-        mostrarChoferes = mostrarPasajeros = false;
         this.tipo = tipo;
         if (tipo) {
-            perfilChofer = (PerfilChofer)perfil;
+            perfilChofer = (PerfilChofer) perfil;
             return "PerfilIH?faces-redirect=true";
         }
-        perfilPasajero = (PerfilPasajero)perfil;
+        perfilPasajero = (PerfilPasajero) perfil;
         return "PerfilIH?faces-redirect=true";
-    }   
-    
-    public void borra(){
-        pasajeros = null;
-        choferes = null;
-        mostrarChoferes = mostrarPasajeros = false;
     }
     
-    public int getIdRuta(){
+    public int getIdRuta() {
         Automovil tmp;
-        Iterator<Automovil> ia = (Iterator<Automovil>)perfilChofer.getChofer().getAutomovils().iterator();
-        if(ia.hasNext()) {
-            tmp = (Automovil)ia.next();
-            Iterator<Ruta> ir = (Iterator<Ruta>)tmp.getRutas().iterator();
-            if(ir.hasNext())
-                return ((Ruta)tmp.getRutas().iterator().next()).getIdRuta();
-        } 
+        Iterator<Automovil> ia = (Iterator<Automovil>) perfilChofer.getChofer().getAutomovils().iterator();
+        if (ia.hasNext()) {
+            tmp = (Automovil) ia.next();
+            Iterator<Ruta> ir = (Iterator<Ruta>) tmp.getRutas().iterator();
+            if (ir.hasNext()) {
+                return ((Ruta) tmp.getRutas().iterator().next()).getIdRuta();
+            }
+        }
         return -100;
     }
-
 
 }
