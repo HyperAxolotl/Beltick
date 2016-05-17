@@ -19,6 +19,7 @@ public class AutomovilL implements Serializable{
             if (con == null || !con.isOpen())
                 con = ConexionBD.getSessionFactory().openSession();
             trans = con.beginTransaction();
+            a.setPlaca(a.getPlaca().toUpperCase());
             c.getAutomovils().add(a);
             con.save(a);
             trans.commit();
