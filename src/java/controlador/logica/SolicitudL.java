@@ -100,7 +100,7 @@ public class SolicitudL implements Serializable {
                 con = ConexionBD.getSessionFactory().openSession();
             }
             Query query = con.createQuery("select h." + StringUtils.stripAccents(s.getId().getDia()).toLowerCase()
-                    + " from Solicitud, Horario h, Ruta r where r.idRuta = :idruta");
+                    + " from Solicitud, Ruta r, Horario h where r.idRuta = :idruta");
             query.setParameter("idruta", s.getId().getIdRuta());
             List<?> list = query.list();
             d = (Date) list.get(0);

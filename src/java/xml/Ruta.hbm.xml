@@ -10,7 +10,7 @@
                 <param name="sequence">ruta_id_ruta_seq</param>
             </generator>
         </id>
-        <many-to-one name="automovil" class="modelo.Automovil" fetch="select">
+        <many-to-one name="automovil" class="modelo.Automovil" fetch="join">
             <column name="id_automovil" not-null="true" unique="true" />
         </many-to-one>
         <property name="mapa" type="string">
@@ -37,7 +37,7 @@
             </key>
             <one-to-many class="modelo.Boletin" />
         </set>
-        <set name="horarios" table="horario" inverse="true" lazy="false" fetch="select">
+        <set name="horarios" table="horario" inverse="true" lazy="false" fetch="join">
             <key>
                 <column name="id_ruta" not-null="true" unique="true" />
             </key>

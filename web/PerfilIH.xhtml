@@ -24,6 +24,9 @@
                                     <p:button  value="Solicitar servicio" outcome="SolicitarServicioIH" rendered="#{not (perfilC.getIdRuta() eq -100) and sesionC.tipo eq false}">
                                         <f:param name="rutaId" value="#{perfilC.getIdRuta()}" />
                                     </p:button>
+                                    <p:button  value="Ir a ruta" outcome="RutaIH">
+                                        <f:param name="rutaId" value="#{perfilC.getIdRuta()}" />
+                                    </p:button>
                                 </p:panelGrid>
                             </div>
                         </div>

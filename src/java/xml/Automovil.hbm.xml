@@ -10,7 +10,7 @@
                 <param name="sequence">automovil_id_automovil_seq</param>
             </generator>
         </id>
-        <many-to-one class="modelo.Chofer" fetch="select" name="chofer">
+        <many-to-one class="modelo.Chofer" fetch="join" name="chofer">
             <column name="id_chofer" not-null="true" unique="true"/>
         </many-to-one>
         <property name="noIdentificacion" type="string">

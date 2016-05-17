@@ -68,7 +68,7 @@ public class Automovil implements java.io.Serializable {
         this.idAutomovil = idAutomovil;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_chofer", unique = true, nullable = false)
     public Chofer getChofer() {
         return this.chofer;

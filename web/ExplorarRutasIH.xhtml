@@ -47,6 +47,9 @@
                                         <p:button  value="Solicitar servicio" outcome="SolicitarServicioIH" rendered="#{sesionC.tipo eq false}">
                                             <f:param name="rutaId" value="#{ruta.idRuta}" />
                                         </p:button>
+                                        <p:button value="Ir a ruta" outcome="RutaIH" >
+                                            <f:param name="rutaId" value="#{ruta.idRuta}" />
+                                        </p:button>
                                         <p:dialog header="Ruta de #{ruta.automovil.chofer.cnombre}" widgetVar="dlg#{ruta.idRuta}" modal="true" height="400" width="600">
                                             <p:gmap id="gmap-dlg#{ruta.idRuta}" center="19.3241874,-99.1789797" zoom="14" type="ROADMAP" style="width:100%;height:100%" model="#{explorarRutasC.getModeloMapa(ruta.mapa)}" />
                                         </p:dialog> 

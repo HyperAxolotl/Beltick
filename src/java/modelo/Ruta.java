@@ -70,7 +70,7 @@ public class Ruta implements java.io.Serializable {
         this.idRuta = idRuta;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_automovil", unique = true, nullable = false)
     public Automovil getAutomovil() {
         return this.automovil;
@@ -135,7 +135,7 @@ public class Ruta implements java.io.Serializable {
         this.boletins = boletins;
     }
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "ruta")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "ruta")
     public Set getHorarios() {
         return this.horarios;
     }
