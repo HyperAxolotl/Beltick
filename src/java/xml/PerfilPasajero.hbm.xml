@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated May 4, 2016 9:25:35 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated May 16, 2016 1:45:58 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelo.PerfilPasajero" optimistic-lock="version" schema="public" table="perfil_pasajero">
         <id name="idPpasajero" type="int">
@@ -9,12 +9,12 @@
                 <param name="sequence">perfil_pasajero_id_ppasajero_seq</param>
             </generator>
         </id>
+        <many-to-one class="modelo.Imagen" fetch="select" name="imagen">
+            <column name="pfoto"/>
+        </many-to-one>
         <many-to-one class="modelo.Pasajero" fetch="select" name="pasajero">
             <column name="id_pasajero" not-null="true" unique="true"/>
         </many-to-one>
-        <property name="pfoto" type="string">
-            <column length="256" name="pfoto"/>
-        </property>
         <property name="psobreMi" type="string">
             <column length="256" name="psobre_mi"/>
         </property>
@@ -23,6 +23,9 @@
         </property>
         <property name="fechaCreacion" type="timestamp">
             <column length="29" name="fecha_creacion" not-null="true"/>
+        </property>
+        <property name="clave" type="string">
+            <column length="32" name="clave" unique="true"/>
         </property>
     </class>
 </hibernate-mapping>

@@ -1,5 +1,5 @@
 package modelo;
-// Generated May 7, 2016 1:06:44 AM by Hibernate Tools 4.3.1
+// Generated May 16, 2016 9:29:08 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -31,6 +31,7 @@ public class Ruta implements java.io.Serializable {
     private boolean activa;
     private Date fechaCreacion;
     private Set pasajeroRutas = new HashSet(0);
+    private Set boletins = new HashSet(0);
     private Set horarios = new HashSet(0);
     private Set solicituds = new HashSet(0);
 
@@ -45,7 +46,7 @@ public class Ruta implements java.io.Serializable {
         this.fechaCreacion = fechaCreacion;
     }
 
-    public Ruta(int idRuta, Automovil automovil, String mapa, String descripcion, boolean activa, Date fechaCreacion, Set pasajeroRutas, Set horarios, Set solicituds) {
+    public Ruta(int idRuta, Automovil automovil, String mapa, String descripcion, boolean activa, Date fechaCreacion, Set pasajeroRutas, Set boletins, Set horarios, Set solicituds) {
         this.idRuta = idRuta;
         this.automovil = automovil;
         this.mapa = mapa;
@@ -53,6 +54,7 @@ public class Ruta implements java.io.Serializable {
         this.activa = activa;
         this.fechaCreacion = fechaCreacion;
         this.pasajeroRutas = pasajeroRutas;
+        this.boletins = boletins;
         this.horarios = horarios;
         this.solicituds = solicituds;
     }
@@ -122,6 +124,15 @@ public class Ruta implements java.io.Serializable {
 
     public void setPasajeroRutas(Set pasajeroRutas) {
         this.pasajeroRutas = pasajeroRutas;
+    }
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "ruta")
+    public Set getBoletins() {
+        return this.boletins;
+    }
+
+    public void setBoletins(Set boletins) {
+        this.boletins = boletins;
     }
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "ruta")

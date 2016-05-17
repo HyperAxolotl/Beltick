@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
 
     <h:head></h:head>
     <h:body>
@@ -12,7 +13,7 @@
                 <h:form rendered="#{sesionC.verificarSesion()}">			
                     <h:panelGrid columns="1">
                         <p>Bienvenido: </p>
-                        <img src="#{sesionC.rutaIMG()}" class="img-circle" width="150px" height="150px" />
+                        <p:graphicImage library="imagenes" name="foto_usuario/usuario.png" class="img-circle" width="150px" height="150px" />
                         <h:outputLabel value="#{sesionC.chofer.cnombre} #{sesionC.chofer.capp} #{sesionC.chofer.capm}" />
                         <!--h:outputLabel value="Sobre mi: #{sesionC.descripcion()}"/-->
 

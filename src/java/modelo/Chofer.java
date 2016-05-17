@@ -1,5 +1,5 @@
 package modelo;
-// Generated May 7, 2016 1:06:44 AM by Hibernate Tools 4.3.1
+// Generated May 16, 2016 1:45:53 AM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -34,6 +34,10 @@ public class Chofer implements java.io.Serializable {
     private String cnoId;
     private Date cfechaNac;
     private String ccontrasenia;
+    private Set calificacionPasajeros = new HashSet(0);
+    private Set mensajePasajeros = new HashSet(0);
+    private Set calificacionChofers = new HashSet(0);
+    private Set mensajeChofers = new HashSet(0);
     private Set perfilChofers = new HashSet(0);
     private Set automovils = new HashSet(0);
 
@@ -52,7 +56,7 @@ public class Chofer implements java.io.Serializable {
         this.ccontrasenia = ccontrasenia;
     }
 
-    public Chofer(int idChofer, String cnombre, String capp, String capm, String ccorreo, String cnoCuenta, String cnoId, Date cfechaNac, String ccontrasenia, Set perfilChofers, Set automovils) {
+    public Chofer(int idChofer, String cnombre, String capp, String capm, String ccorreo, String cnoCuenta, String cnoId, Date cfechaNac, String ccontrasenia, Set calificacionPasajeros, Set mensajePasajeros, Set calificacionChofers, Set mensajeChofers, Set perfilChofers, Set automovils) {
         this.idChofer = idChofer;
         this.cnombre = cnombre;
         this.capp = capp;
@@ -62,6 +66,10 @@ public class Chofer implements java.io.Serializable {
         this.cnoId = cnoId;
         this.cfechaNac = cfechaNac;
         this.ccontrasenia = ccontrasenia;
+        this.calificacionPasajeros = calificacionPasajeros;
+        this.mensajePasajeros = mensajePasajeros;
+        this.calificacionChofers = calificacionChofers;
+        this.mensajeChofers = mensajeChofers;
         this.perfilChofers = perfilChofers;
         this.automovils = automovils;
     }
@@ -148,6 +156,42 @@ public class Chofer implements java.io.Serializable {
 
     public void setCcontrasenia(String ccontrasenia) {
         this.ccontrasenia = ccontrasenia;
+    }
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "chofer")
+    public Set getCalificacionPasajeros() {
+        return this.calificacionPasajeros;
+    }
+
+    public void setCalificacionPasajeros(Set calificacionPasajeros) {
+        this.calificacionPasajeros = calificacionPasajeros;
+    }
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "chofer")
+    public Set getMensajePasajeros() {
+        return this.mensajePasajeros;
+    }
+
+    public void setMensajePasajeros(Set mensajePasajeros) {
+        this.mensajePasajeros = mensajePasajeros;
+    }
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "chofer")
+    public Set getCalificacionChofers() {
+        return this.calificacionChofers;
+    }
+
+    public void setCalificacionChofers(Set calificacionChofers) {
+        this.calificacionChofers = calificacionChofers;
+    }
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "chofer")
+    public Set getMensajeChofers() {
+        return this.mensajeChofers;
+    }
+
+    public void setMensajeChofers(Set mensajeChofers) {
+        this.mensajeChofers = mensajeChofers;
     }
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "chofer")

@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 16, 2016 9:29:14 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Boletin" table="boletin" schema="public" optimistic-lock="version">
+        <id name="idBoletin" type="int">
+            <column name="id_boletin" />
+            <generator class="sequence">
+                <param name="sequence">boletin_id_boletin_seq</param>
+            </generator>
+        </id>
+        <many-to-one name="ruta" class="modelo.Ruta" fetch="select">
+            <column name="id_ruta" not-null="true" />
+        </many-to-one>
+        <property name="titulo" type="string">
+            <column name="titulo" length="128" not-null="true" />
+        </property>
+        <property name="contenido" type="string">
+            <column name="contenido" not-null="true" />
+        </property>
+        <property name="fecha" type="timestamp">
+            <column name="fecha" length="29" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

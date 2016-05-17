@@ -158,12 +158,12 @@ public class SesionC implements Serializable {
     }
     
     public String rutaIMG(){
-        getPerfil();
-        if(pc != null) {
-            return pc.getCfoto();
-        }
-        if(pp != null)
-            return pp.getPfoto();
+//        getPerfil();
+//        if(pc != null) {
+//            return pc.getCfoto();
+//        }
+//        if(pp != null)
+//            return pp.getPfoto();
         return "";
     }
     

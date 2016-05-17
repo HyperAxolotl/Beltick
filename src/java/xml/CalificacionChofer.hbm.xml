@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 16, 2016 1:45:58 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.CalificacionChofer" optimistic-lock="version" schema="public" table="calificacion_chofer">
+        <id name="idCalificacionc" type="int">
+            <column name="id_calificacionc"/>
+            <generator class="sequence">
+                <param name="sequence">calificacion_chofer_id_calificacionc_seq</param>
+            </generator>            
+        </id>
+        <many-to-one class="modelo.Chofer" fetch="select" name="chofer">
+            <column name="id_chofer" not-null="true"/>
+        </many-to-one>
+        <many-to-one class="modelo.Pasajero" fetch="select" name="pasajero">
+            <column name="id_pasajero" not-null="true"/>
+        </many-to-one>
+        <property name="calificacion" type="int">
+            <column name="calificacion" not-null="true"/>
+        </property>
+        <property name="descripcion" type="string">
+            <column length="256" name="descripcion"/>
+        </property>
+        <property name="fecha" type="timestamp">
+            <column length="29" name="fecha" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

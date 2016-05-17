@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 16, 2016 1:45:58 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Imagen" optimistic-lock="version" schema="public" table="imagen">
+        <id name="idImagen" type="int">
+            <column name="id_imagen"/>
+            <generator class="sequence">
+                <param name="sequence">imagen_id_imagen_seq</param>
+            </generator> 
+        </id>
+        <property name="nombre" type="string">
+            <column length="128" name="nombre"/>
+        </property>
+        <property name="imagen" type="binary">
+            <column name="imagen" not-null="true"/>
+        </property>
+        <set fetch="select" inverse="true" lazy="true" name="perfilChofers" table="perfil_chofer">
+            <key>
+                <column name="cfoto"/>
+            </key>
+            <one-to-many class="modelo.PerfilChofer"/>
+        </set>
+        <set fetch="select" inverse="true" lazy="true" name="perfilPasajeros" table="perfil_pasajero">
+            <key>
+                <column name="pfoto"/>
+            </key>
+            <one-to-many class="modelo.PerfilPasajero"/>
+        </set>
+    </class>
+</hibernate-mapping>

@@ -8,13 +8,19 @@
     <property name="hibernate.connection.username">hyperaxolotl</property>
     <property name="hibernate.connection.password">pancho</property>
     <mapping resource="xml/Automovil.hbm.xml"/>
-    <mapping resource="xml/PerfilPasajero.hbm.xml"/>
-    <mapping resource="xml/PasajeroRuta.hbm.xml"/>
+    <mapping resource="xml/Boletin.hbm.xml"/>
     <mapping resource="xml/Solicitud.hbm.xml"/>
     <mapping resource="xml/Chofer.hbm.xml"/>
-    <mapping resource="xml/Ruta.hbm.xml"/>
-    <mapping resource="xml/Horario.hbm.xml"/>
     <mapping resource="xml/PerfilChofer.hbm.xml"/>
+    <mapping resource="xml/CalificacionChofer.hbm.xml"/>
+    <mapping resource="xml/CalificacionPasajero.hbm.xml"/>
+    <mapping resource="xml/Imagen.hbm.xml"/>
     <mapping resource="xml/Pasajero.hbm.xml"/>
+    <mapping resource="xml/PerfilPasajero.hbm.xml"/>
+    <mapping resource="xml/PasajeroRuta.hbm.xml"/>
+    <mapping resource="xml/MensajePasajero.hbm.xml"/>
+    <mapping resource="xml/Ruta.hbm.xml"/>
+    <mapping resource="xml/MensajeChofer.hbm.xml"/>
+    <mapping resource="xml/Horario.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

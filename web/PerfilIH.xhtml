@@ -15,9 +15,8 @@
                             <div class="col-sm-4" align="left">
                                 <p:panelGrid columns="1">  
                                     <f:facet name="header">
-                                        <img src="#{perfilC.perfilChofer.cfoto}" class="img-rounded" height="80px" width="80px"/>
-                                    </f:facet>
-                                    <!--img src="#{perfilC.perfilChofer.cfoto}" class="img-circle" width="150px" height="150px" /-->
+                                        <p:graphicImage library="imagenes" name="foto_usuario/usuario.png" class="img-circle" width="80px" height="80px" />
+                                    </f:facet>                                
                                     <h:outputLabel value="#{perfilC.perfilChofer.chofer.cnombre} #{perfilC.perfilChofer.chofer.capp} #{perfilC.perfilChofer.chofer.capm}" />
                                     <h:outputLabel value="#{perfilC.perfilChofer.chofer.ccorreo}"/>
                                     <h:outputLabel value="#{perfilC.perfilChofer.chofer.cnoCuenta}"/>
@@ -37,7 +36,7 @@
                             <div class="col-sm-3" align="left">
                                 <p:panelGrid columns="1">  
                                     <f:facet name="header">
-                                        <img src="#{perfilC.perfilChofer.cfoto}" class="img-rounded" height="80px" width="80px"/>
+                                        <p:graphicImage library="imagenes" name="foto_usuario/usuario.png" class="img-circle" width="80px" height="80px" />
                                     </f:facet>
                                     <h:outputText value="#{perfilC.perfilPasajero.pasajero.pnombre} #{perfilC.perfilPasajero.pasajero.papp} #{perfilC.perfilPasajero.pasajero.papm}" />
                                     <h:outputText value="#{perfilC.perfilPasajero.pasajero.pcorreo}"/>

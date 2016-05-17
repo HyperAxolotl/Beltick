@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated May 4, 2016 9:25:35 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated May 16, 2016 1:45:58 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelo.Pasajero" optimistic-lock="version" schema="public" table="pasajero">
         <id name="idPasajero" type="int">
@@ -31,11 +31,29 @@
         <property name="pcontrasenia" type="string">
             <column length="128" name="pcontrasenia" not-null="true"/>
         </property>
+        <set fetch="select" inverse="true" lazy="true" name="calificacionChofers" table="calificacion_chofer">
+            <key>
+                <column name="id_pasajero" not-null="true"/>
+            </key>
+            <one-to-many class="modelo.CalificacionChofer"/>
+        </set>
         <set fetch="select" inverse="true" lazy="true" name="pasajeroRutas" table="pasajero_ruta">
             <key>
                 <column name="id_pasajero" not-null="true"/>
             </key>
             <one-to-many class="modelo.PasajeroRuta"/>
+        </set>
+        <set fetch="select" inverse="true" lazy="true" name="mensajePasajeros" table="mensaje_pasajero">
+            <key>
+                <column name="id_pasajero" not-null="true"/>
+            </key>
+            <one-to-many class="modelo.MensajePasajero"/>
+        </set>
+        <set fetch="select" inverse="true" lazy="true" name="mensajeChofers" table="mensaje_chofer">
+            <key>
+                <column name="id_pasajero" not-null="true"/>
+            </key>
+            <one-to-many class="modelo.MensajeChofer"/>
         </set>
         <set fetch="join" inverse="true" lazy="false" name="solicituds" table="solicitud">
             <key>
@@ -48,6 +66,12 @@
                 <column name="id_pasajero" not-null="true" unique="true"/>
             </key>
             <one-to-many class="modelo.PerfilPasajero"/>
+        </set>
+        <set fetch="select" inverse="true" lazy="true" name="calificacionPasajeros" table="calificacion_pasajero">
+            <key>
+                <column name="id_pasajero" not-null="true"/>
+            </key>
+            <one-to-many class="modelo.CalificacionPasajero"/>
         </set>
     </class>
 </hibernate-mapping>
