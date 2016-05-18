@@ -5,6 +5,7 @@ import org.hibernate.Session;
 import modelo.ConexionBD;
 import modelo.Pasajero;
 import modelo.PerfilPasajero;
+import org.hibernate.Query;
 import org.hibernate.Transaction;
 import utiles.Cripta;
 
@@ -35,9 +36,25 @@ public class PasajeroL implements Serializable{
             System.out.println("Esta es la excepcion "+e.getClass().getName());
             e.printStackTrace();
         }finally{
+            //con.update(p);
             con.close();
             return mensaje;
         }
-     
+    }
+    
+    public PerfilPasajero getPerfilPasajero(int id) {
+        PerfilPasajero pp = null;
+        try {
+            if (con == null || !con.isOpen())
+                con = ConexionBD.getSessionFactory().openSession();
+            String hql = "FROM PerfilPasajero WHERE pasajero.idPasajero = '" + id + "'";
+            Query query = con.createQuery(hql);
+            if (!query.list().isEmpty()) {
+                pp = (PerfilPasajero) query.list().get(0);
+            }
+        } catch (Exception e) {
+            System.err.println("Error con la obtención del perfil del pasajero para la obtencion de la clave autogenerada de activacion de cuenta.");
+        }
+        return pp;
     }
 }

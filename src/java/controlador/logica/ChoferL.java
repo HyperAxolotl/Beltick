@@ -4,6 +4,8 @@ import javax.faces.application.FacesMessage;
 import org.hibernate.Session;
 import modelo.ConexionBD;
 import modelo.Chofer;
+import modelo.PerfilChofer;
+import org.hibernate.Query;
 import org.hibernate.Transaction;
 import utiles.Cripta;
 
@@ -38,5 +40,21 @@ public class ChoferL implements Serializable{
             return mensaje;
         }
      
+    }
+    
+    public PerfilChofer getPerfilChofer(int id) {
+        PerfilChofer pc = null;
+        try {
+            if (con == null || !con.isOpen())
+                con = ConexionBD.getSessionFactory().openSession();
+            String hql = "FROM PerfilChofer WHERE chofer.idChofer= '" + id + "'";
+            Query query = con.createQuery(hql);
+            if (!query.list().isEmpty()) {
+                pc = (PerfilChofer) query.list().get(0);
+            }
+        } catch (Exception e) {
+            System.err.println("Error con la obtención del perfil del chofer para la obtencion de la clave autogenerada de activacion de cuenta.");
+        }
+        return pc;
     }
 }

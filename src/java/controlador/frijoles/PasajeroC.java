@@ -11,6 +11,8 @@ import controlador.logica.PasajeroL;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ViewScoped;
 import javax.servlet.http.HttpServletRequest;
+import modelo.PerfilPasajero;
+import utiles.Cartero;
 
 
 @ManagedBean
@@ -42,14 +44,17 @@ public class PasajeroC implements Serializable {
     public String registro() {
         mensaje = ayudante.registrar(pasajero,confirmacion);
         ayudante = new PasajeroL();
+        //System.out.println("Clave del perfil es: "+((PerfilPasajero)pasajero.getPerfilPasajeros().iterator().next()).getClave());
+        Cartero cartero = new Cartero(ayudante.getPerfilPasajero(pasajero.getIdPasajero()));
         if(mensaje != null) {
             FacesContext.getCurrentInstance().addMessage(null, mensaje);
             return "";
         }
-        mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "Tu registro fue exitoso... Ya puedes iniciar sesión", null);
+        mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "Tu registro fue exitoso... Revisa en tu bandeja el correo de activación de tu cuenta.", null);
         FacesContext.getCurrentInstance().addMessage(null, mensaje);
         exito = true;
         System.out.println("Este es el valor de registro: "+exito);
+        cartero.entrega();
         return "";
     }
     
