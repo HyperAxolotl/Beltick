@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated May 16, 2016 1:45:58 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated May 17, 2016 4:03:51 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelo.Chofer" optimistic-lock="version" schema="public" table="chofer">
         <id name="idChofer" type="int">
-            <column name="id_chofer" />
+            <column name="id_chofer"/>
             <generator class="sequence">
                 <param name="sequence">chofer_id_chofer_seq</param>
             </generator>
@@ -68,6 +68,12 @@
                 <column name="id_chofer" not-null="true" unique="true"/>
             </key>
             <one-to-many class="modelo.Automovil"/>
+        </set>
+        <set fetch="select" inverse="true" lazy="true" name="notificacionChofers" table="notificacion_chofer">
+            <key>
+                <column name="id_chofer" not-null="true"/>
+            </key>
+            <one-to-many class="modelo.NotificacionChofer"/>
         </set>
     </class>
 </hibernate-mapping>

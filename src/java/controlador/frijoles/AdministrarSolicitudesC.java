@@ -54,8 +54,8 @@ public class AdministrarSolicitudesC implements Serializable {
         this.lstSolicitudes = lstSolicitudes;
     }
 
-    public void eliminarSolicitud(Solicitud s, int id) throws Exception {
-        mensaje = ayudante.eliminar(s);
+    public void eliminarSolicitud(Solicitud s) throws Exception {
+        mensaje = ayudante.eliminar(s,chofer);
         if (mensaje == null) {
             mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "La solicitud ha sido eliminada", null);
         }
@@ -63,8 +63,8 @@ public class AdministrarSolicitudesC implements Serializable {
         listarSolicitudes();
     }
 
-    public void registrarSolicitud(Solicitud s, int id) throws Exception {
-        mensaje = ayudante.registrar(s);
+    public void registrarSolicitud(Solicitud s) throws Exception {
+        mensaje = ayudante.registrar(s,chofer);
         if (mensaje == null) {
             mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "La solicitud ha sido aceptada", null);
         }

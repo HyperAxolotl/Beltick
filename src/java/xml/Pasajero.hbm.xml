@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated May 16, 2016 1:45:58 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated May 17, 2016 4:03:51 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelo.Pasajero" optimistic-lock="version" schema="public" table="pasajero">
         <id name="idPasajero" type="int">
-            <column name="id_pasajero" />
-            <!--generator class="increment"/-->
+            <column name="id_pasajero"/>
             <generator class="sequence">
                 <param name="sequence">pasajero_id_pasajero_seq</param>
             </generator>
@@ -36,6 +35,12 @@
                 <column name="id_pasajero" not-null="true"/>
             </key>
             <one-to-many class="modelo.CalificacionChofer"/>
+        </set>
+        <set fetch="select" inverse="true" lazy="true" name="notificacionPasajeros" table="notificacion_pasajero">
+            <key>
+                <column name="id_pasajero" not-null="true"/>
+            </key>
+            <one-to-many class="modelo.NotificacionPasajero"/>
         </set>
         <set fetch="select" inverse="true" lazy="true" name="pasajeroRutas" table="pasajero_ruta">
             <key>

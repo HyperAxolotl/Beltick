@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 18, 2016 12:59:11 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.NotificacionChofer" optimistic-lock="version" schema="public" table="notificacion_chofer">
+        <id name="idNotificacionc" type="int">
+            <column name="id_notificacionc"/>
+            <generator class="sequence">
+                <param name="sequence">notificacion_chofer_id_notificacionc_seq</param>
+            </generator>
+        </id>
+        <many-to-one class="modelo.Chofer" fetch="select" name="chofer">
+            <column name="id_chofer" not-null="true"/>
+        </many-to-one>
+        <property name="titulo" type="string">
+            <column length="64" name="titulo" not-null="true"/>
+        </property>
+        <property name="contenido" type="string">
+            <column length="256" name="contenido" not-null="true"/>
+        </property>
+        <property name="fecha" type="timestamp">
+            <column length="29" name="fecha" not-null="true"/>
+        </property>
+        <property name="visto" type="boolean">
+            <column name="visto" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

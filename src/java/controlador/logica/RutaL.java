@@ -6,15 +6,20 @@ import java.util.Date;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import modelo.Automovil;
+import modelo.Chofer;
 
 import org.hibernate.Session;
 import modelo.ConexionBD;
 import modelo.Horario;
+import modelo.NotificacionChofer;
+import modelo.NotificacionPasajero;
 import modelo.Pasajero;
 import modelo.Ruta;
 import modelo.Solicitud;
 import modelo.SolicitudId;
 import org.hibernate.Criteria;
+import org.hibernate.Hibernate;
 import org.hibernate.Query;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Order;
@@ -31,8 +36,9 @@ public class RutaL implements Serializable {
 
     public List<Ruta> listar() throws Exception {
         try {
-            if (con == null || !con.isOpen())
+            if (con == null || !con.isOpen()) {
                 con = ConexionBD.getSessionFactory().openSession();
+            }
             Criteria cri = con.createCriteria(Ruta.class);
             lstRutas = cri.list();
         } catch (Exception e) {
@@ -44,8 +50,9 @@ public class RutaL implements Serializable {
     public FacesMessage registrar(Ruta r, Horario h) {
         FacesMessage mensaje = null;
         try {
-            if (con == null || !con.isOpen())
+            if (con == null || !con.isOpen()) {
                 con = ConexionBD.getSessionFactory().openSession();
+            }
             trans = con.beginTransaction();
             Date fecha = new Date();
             String mapa = FacesContext.getCurrentInstance().
@@ -71,10 +78,11 @@ public class RutaL implements Serializable {
     public FacesMessage solicitar(Pasajero p, Ruta r, String[] dias) {
         FacesMessage mensaje = null;
         try {
-            if (con == null || !con.isOpen())
+            if (con == null || !con.isOpen()) {
                 con = ConexionBD.getSessionFactory().openSession();
+            }
             trans = con.beginTransaction();
-            for(String s : dias) {
+            for (String s : dias) {
                 Solicitud sol = new Solicitud();
                 SolicitudId sid = new SolicitudId();
                 sid.setDia(s);
@@ -85,6 +93,17 @@ public class RutaL implements Serializable {
                 sol.setRuta(r);
                 con.save(sol);
                 p.getSolicituds().add(sol);
+                NotificacionChofer nc = new NotificacionChofer();
+                nc.setTitulo("Solicitud de servicio");
+                nc.setContenido(String.format("Tienes una nueva solicitud de servicio "
+                        + "de parte del pasajero %s para el día %s", p.getPnombre(), sid.getDia()));
+                Date fecha = new Date();
+                nc.setFecha(fecha);
+                Automovil a = (Automovil)con.get(Automovil.class,r.getAutomovil().getIdAutomovil());
+                Chofer ch = (Chofer)con.get(Chofer.class,a.getChofer().getIdChofer());
+                nc.setChofer(ch);
+                nc.setVisto(false);
+                con.save(nc);
             }
             trans.commit();
         } catch (Exception e) {
@@ -98,8 +117,9 @@ public class RutaL implements Serializable {
     }
 
     public Ruta getRuta(int id) {
-        if (con == null || !con.isOpen())
-                con = ConexionBD.getSessionFactory().openSession();
+        if (con == null || !con.isOpen()) {
+            con = ConexionBD.getSessionFactory().openSession();
+        }
         Query query = con.createQuery("from Ruta where id_ruta = :id ");
         query.setParameter("id", id);
         List<?> list = query.list();
@@ -107,7 +127,7 @@ public class RutaL implements Serializable {
         con.close();
         return r;
     }
-    
+
     public MapModel getModeloMapa(String polyencod) {
         MapModel modeloMapa = new DefaultMapModel();
         Polyline poly = new Polyline();
@@ -121,7 +141,7 @@ public class RutaL implements Serializable {
         modeloMapa.addOverlay(poly);
         return modeloMapa;
     }
-    
+
     public List<LatLng> decodePolyline(String encoded) {
 
         List<LatLng> poly = new ArrayList<>();
@@ -155,10 +175,11 @@ public class RutaL implements Serializable {
 
         return poly;
     }
-    
+
     public void actualiza(Ruta ruta) {
-         if (con == null || !con.isOpen())
-                con = ConexionBD.getSessionFactory().openSession();
-         con.update(ruta);
+        if (con == null || !con.isOpen()) {
+            con = ConexionBD.getSessionFactory().openSession();
+        }
+        con.update(ruta);
     }
 }

@@ -1,5 +1,5 @@
 package modelo;
-// Generated May 16, 2016 1:45:53 AM by Hibernate Tools 4.3.1
+// Generated May 17, 2016 4:03:46 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -40,6 +40,7 @@ public class Chofer implements java.io.Serializable {
     private Set mensajeChofers = new HashSet(0);
     private Set perfilChofers = new HashSet(0);
     private Set automovils = new HashSet(0);
+    private Set notificacionChofers = new HashSet(0);
 
     public Chofer() {
     }
@@ -56,7 +57,7 @@ public class Chofer implements java.io.Serializable {
         this.ccontrasenia = ccontrasenia;
     }
 
-    public Chofer(int idChofer, String cnombre, String capp, String capm, String ccorreo, String cnoCuenta, String cnoId, Date cfechaNac, String ccontrasenia, Set calificacionPasajeros, Set mensajePasajeros, Set calificacionChofers, Set mensajeChofers, Set perfilChofers, Set automovils) {
+    public Chofer(int idChofer, String cnombre, String capp, String capm, String ccorreo, String cnoCuenta, String cnoId, Date cfechaNac, String ccontrasenia, Set calificacionPasajeros, Set mensajePasajeros, Set calificacionChofers, Set mensajeChofers, Set perfilChofers, Set automovils, Set notificacionChofers) {
         this.idChofer = idChofer;
         this.cnombre = cnombre;
         this.capp = capp;
@@ -72,6 +73,7 @@ public class Chofer implements java.io.Serializable {
         this.mensajeChofers = mensajeChofers;
         this.perfilChofers = perfilChofers;
         this.automovils = automovils;
+        this.notificacionChofers = notificacionChofers;
     }
 
     @Id
@@ -210,6 +212,15 @@ public class Chofer implements java.io.Serializable {
 
     public void setAutomovils(Set automovils) {
         this.automovils = automovils;
+    }
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "chofer")
+    public Set getNotificacionChofers() {
+        return this.notificacionChofers;
+    }
+
+    public void setNotificacionChofers(Set notificacionChofers) {
+        this.notificacionChofers = notificacionChofers;
     }
 
 }

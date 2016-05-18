@@ -1,4 +1,4 @@
-package controlador.logica;
+    package controlador.logica;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
@@ -7,9 +7,11 @@ import java.util.List;
 import java.util.Set;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import modelo.Chofer;
 
 import org.hibernate.Session;
 import modelo.ConexionBD;
+import modelo.NotificacionPasajero;
 import modelo.PasajeroRuta;
 import modelo.PasajeroRutaId;
 import modelo.Solicitud;
@@ -39,14 +41,23 @@ public class SolicitudL implements Serializable {
         return lstRutas;
     }
     
-    public FacesMessage eliminar(Solicitud s) {
+    public FacesMessage eliminar(Solicitud s, Chofer ch) {
         FacesMessage mensaje = null;
         try {
             if (con == null || !con.isOpen()) {
                 con = ConexionBD.getSessionFactory().openSession();
             }
             trans = con.beginTransaction();
+            NotificacionPasajero np = new NotificacionPasajero();
+            np.setTitulo("Solicitud rechazada");
+            np.setContenido(String.format("Tu solicitud de servicio al chofer %s "
+                    + "para el dia %s ha sido rechazada",ch.getCnombre(),s.getId().getDia()));
+            Date fecha = new Date();
+            np.setFecha(fecha);
+            np.setPasajero(s.getPasajero());
+            np.setVisto(false);
             con.delete(s);
+            con.save(np);
             trans.commit();
         } catch (Exception e) {
             trans.rollback();
@@ -58,7 +69,7 @@ public class SolicitudL implements Serializable {
         }
     }
     
-    public FacesMessage registrar(Solicitud s) {
+    public FacesMessage registrar(Solicitud s, Chofer ch) {
         FacesMessage mensaje = null;
         try {
             if (con == null || !con.isOpen()) {
@@ -80,7 +91,16 @@ public class SolicitudL implements Serializable {
                 if (sol.getId().getDia().equals(s.getId().getDia())) {
                     con.delete(sol);
                 }
-            }            
+            }    
+            NotificacionPasajero np = new NotificacionPasajero();
+            np.setTitulo("Solicitud aceptada");
+            np.setContenido(String.format("Tu solicitud de servicio al chofer %s "
+                    + "para el dia %s ha sido aceptada",ch.getCnombre(),pr.getId().getDia()));
+            Date fecha = new Date();
+            np.setFecha(fecha);
+            np.setPasajero(pr.getPasajero());
+            np.setVisto(false);
+            con.save(np);
             trans.commit();
         } catch (Exception e) {
             trans.rollback();

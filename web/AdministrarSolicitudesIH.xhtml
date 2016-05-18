@@ -37,9 +37,9 @@
 
                                     <p:column headerText="Acción">
                                         <p:commandButton  value="Aceptar" update="@form" disabled="#{administrarSolicitudesC.verificarDisponibilidad(solicitud) eq false}"
-                                                          actionListener="#{administrarSolicitudesC.registrarSolicitud(solicitud,sesionC.chofer.idChofer)}" />
+                                                          actionListener="#{administrarSolicitudesC.registrarSolicitud(solicitud)}" />
                                         <p:commandButton  value="Ignorar" update="@form" 
-                                                          actionListener="#{administrarSolicitudesC.eliminarSolicitud(solicitud,sesionC.chofer.idChofer)}" />
+                                                          actionListener="#{administrarSolicitudesC.eliminarSolicitud(solicitud)}" />
                                     </p:column>
 
                                 </p:dataTable>

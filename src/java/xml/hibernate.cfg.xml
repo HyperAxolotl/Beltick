@@ -16,11 +16,13 @@
     <mapping resource="xml/CalificacionPasajero.hbm.xml"/>
     <mapping resource="xml/Imagen.hbm.xml"/>
     <mapping resource="xml/Pasajero.hbm.xml"/>
+    <mapping resource="xml/NotificacionPasajero.hbm.xml"/>
     <mapping resource="xml/PerfilPasajero.hbm.xml"/>
     <mapping resource="xml/PasajeroRuta.hbm.xml"/>
     <mapping resource="xml/MensajePasajero.hbm.xml"/>
     <mapping resource="xml/Ruta.hbm.xml"/>
-    <mapping resource="xml/MensajeChofer.hbm.xml"/>
+    <mapping resource="xml/NotificacionChofer.hbm.xml"/>
     <mapping resource="xml/Horario.hbm.xml"/>
+    <mapping resource="xml/MensajeChofer.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>
