@@ -36,7 +36,7 @@
                                     </p:column>
 
                                     <p:column headerText="Acción">
-                                        <p:commandButton  value="Aceptar" update="@form" disabled="#{administrarSolicitudesC.verificarDisponibilidad(solicitud.id.idRuta,solicitud.id.dia) eq false}"
+                                        <p:commandButton  value="Aceptar" update="@form" disabled="#{administrarSolicitudesC.verificarDisponibilidad(solicitud) eq false}"
                                                           actionListener="#{administrarSolicitudesC.registrarSolicitud(solicitud,sesionC.chofer.idChofer)}" />
                                         <p:commandButton  value="Ignorar" update="@form" 
                                                           actionListener="#{administrarSolicitudesC.eliminarSolicitud(solicitud,sesionC.chofer.idChofer)}" />
