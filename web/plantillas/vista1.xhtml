@@ -107,6 +107,11 @@
                                                 <p:button value="Notificaciones" styleClass="btn btn-info" outcome="NotificacionesIH"/>
                                             </h:panelGroup>
                                         </li>
+                                        <li>
+                                            <h:panelGroup rendered="#{sesionC.verificarSesion()}">
+                                                <p:button value="Mensajes" styleClass="btn btn-info" outcome="MostrarMensajesIH"/>
+                                            </h:panelGroup>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>

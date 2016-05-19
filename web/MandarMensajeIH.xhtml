@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Mandar mensaje</title>
+        <f:metadata>
+            <f:event type="preRenderView" listener="#{mandarMensajeC.init}" />
+        </f:metadata>
+    </h:head>
+
+    <h:body>
+        <ui:composition template="plantillas/vista1.xhtml">
+            <ui:define name="content">
+                <section class="container">
+                    <div class="row">
+                        <div class="col-sm-12" align="center">
+                            <h2>Mandar mensaje</h2>                            
+
+                            <h:form id="mensaje">
+                                <h:panelGrid columns="1" rendered="#{sesionC.verificarSesion() &amp;&amp; sesionC.verificarTipo()}">             
+
+                                    <p:outputLabel value="Mensaje para #{mandarMensajeC.pasajero.pnombre}" />
+                                    
+                                    <p:outputLabel for="asuntoP" value="Asunto" />
+                                    <p:inputText id="asuntoP" value="#{mandarMensajeC.mensajeP.asunto}" maxlength="64" />
+
+                                    <p:outputLabel for="contenidoP" value="Contenido" />
+                                    <p:inputTextarea id="contenidoP" value="#{mandarMensajeC.mensajeP.contenido}" />
+                                    
+                                    <p:commandButton value="Enviar" action="#{mandarMensajeC.registroMensajeP(sesionC.chofer)}" />
+
+                                    <h:messages infoStyle="color:red"/>
+                                </h:panelGrid>
+                                
+                                <h:panelGrid columns="1" rendered="#{sesionC.verificarSesion() &amp;&amp; sesionC.verificarTipo() eq false}">             
+
+                                    <p:outputLabel value="Mensaje para #{mandarMensajeC.chofer.cnombre}" />
+                                    
+                                    <p:outputLabel for="asuntoC" value="Asunto" />
+                                    <p:inputText id="asuntoC" value="#{mandarMensajeC.mensajeC.asunto}" maxlength="64" />
+
+                                    <p:outputLabel for="contenidoC" value="Contenido" />
+                                    <p:inputTextarea id="contenidoC" value="#{mandarMensajeC.mensajeC.contenido}" />
+
+                                    <p:commandButton value="Enviar" action="#{mandarMensajeC.registroMensajeC(sesionC.pasajero)}" />
+                                    <h:messages infoStyle="color:red"/>
+                                </h:panelGrid>
+                            </h:form>
+
+                        </div>
+                    </div>
+                </section>
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

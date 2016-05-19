@@ -6,7 +6,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>Notificaciones</title>
+        <title>Mensajes</title>
     </h:head>
 
     <h:body>
@@ -15,42 +15,50 @@
                 <section class="container">
                     <div class="row">
                         <div class="col-sm-12" align="center">
-                            <h2>Notificaciones</h2>                            
+                            <h2>Mensajes</h2>                            
 
-                            <h:form id="notificaciones">
+                            <h:form id="mensajes">
 
-                                <p:dataTable id="tablaNotificacionesC" value="#{notificacionC.lstNotificacionesC}" 
-                                             var="notificacion" widgetVar="tablaNotificacionesC" rendered="#{sesionC.verificarSesion() &amp;&amp; sesionC.verificarTipo()}" 
+                                <p:dataTable id="tablaMensajesC" value="#{mostrarMensajesC.lstMensajesC}" 
+                                             var="mensaje" widgetVar="tablaMensajesC" rendered="#{sesionC.verificarSesion() &amp;&amp; sesionC.verificarTipo()}" 
                                              rows="10" style="margin-bottom:20px" >
 
+                                    <p:column headerText="Pasajero">
+                                        <h:outputText value="#{mensaje.pasajero.pnombre}" />
+                                    </p:column>
+                                    
                                     <p:column headerText="Titulo">
-                                        <h:outputText value="#{notificacion.titulo}" />
+                                        <h:outputText value="#{mensaje.asunto}" />
                                     </p:column>
                                     
                                     <p:column headerText="Contenido">
-                                        <h:outputText value="#{notificacion.contenido}" />
+                                        <h:outputText value="#{mensaje.contenido}" />
                                     </p:column>
                                     
                                     <p:column headerText="Fecha">
-                                        <h:outputText value="#{notificacion.fecha}" />
+                                        <h:outputText value="#{mensaje.fecha}" />
                                     </p:column>
                                     
                                 </p:dataTable>
                                 
-                                <p:dataTable id="tablaNotificacionesP" value="#{notificacionC.lstNotificacionesP}" 
-                                             var="notificacion" widgetVar="tablaNotificacionesP" rendered="#{sesionC.verificarSesion() &amp;&amp; sesionC.verificarTipo() eq false}" 
+                                <p:dataTable id="tablaMensajesP" value="#{mostrarMensajesC.lstMensajesP}" 
+                                             var="mensaje" widgetVar="tablaMensajesP" rendered="#{sesionC.verificarSesion() &amp;&amp; sesionC.verificarTipo() eq false}" 
                                              rows="10" style="margin-bottom:20px" >
 
+                                    <p:column headerText="Chofer">
+                                        <h:outputText value="#{mensaje.chofer.cnombre}" />
+                                    </p:column>
+                                    
                                     <p:column headerText="Titulo">
-                                        <h:outputText value="#{notificacion.titulo}" />
+                                        <h:outputText value="#{mensaje.asunto}" />
                                     </p:column>
                                     
                                     <p:column headerText="Contenido">
-                                        <h:outputText value="#{notificacion.contenido}" />
+                                        <h:outputText value="#{mensaje.contenido}" />
                                     </p:column>
                                     
                                     <p:column headerText="Fecha">
-                                        <h:outputText value="#{notificacion.fecha}" />
+                                        <h:outputText value="#{mensaje.fecha}" />
                                     </p:column>
                                     
                                 </p:dataTable>

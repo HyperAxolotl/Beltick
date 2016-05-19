@@ -27,6 +27,9 @@
                                     <p:button  value="Ir a ruta" outcome="RutaIH">
                                         <f:param name="rutaId" value="#{perfilC.getIdRuta()}" />
                                     </p:button>
+                                    <p:button  value="Mandar mensaje" outcome="MandarMensajeIH" rendered="#{sesionC.verificarTipo() eq false}">
+                                        <f:param name="choferId" value="#{perfilC.perfilChofer.chofer.idChofer}" />
+                                    </p:button>
                                 </p:panelGrid>
                             </div>
                         </div>
@@ -45,6 +48,9 @@
                                     <h:outputText value="#{perfilC.perfilPasajero.pasajero.pcorreo}"/>
                                     <h:outputText value="#{perfilC.perfilPasajero.pasajero.pnoCuenta}"/>
                                     <h:outputText value="#{perfilC.perfilPasajero.pasajero.pfechaNac}"/>
+                                    <p:button  value="Mandar mensaje" outcome="MandarMensajeIH" rendered="#{sesionC.verificarTipo()}">
+                                        <f:param name="pasajeroId" value="#{perfilC.perfilPasajero.pasajero.idPasajero}" />
+                                    </p:button>
                                 </p:panelGrid>
                             </div>
                         </div>
