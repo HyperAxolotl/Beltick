@@ -38,7 +38,9 @@
                                         </p:outputPanel>
                                     </f:facet>
                                     <p:column headerText="Nombre del chofer" filterBy="#{ruta.automovil.chofer.cnombre}" footerText="contains" filterMatchMode="contains">
-                                        <h:commandLink value="#{ruta.automovil.chofer.cnombre}" action="#{perfilC.muestraPerfil(ruta.automovil.chofer.perfilChofers.iterator().next(), true)}" />
+                                        <p:link value="#{ruta.automovil.chofer.cnombre}" outcome="PerfilChoferIH">
+                                            <f:param name="choferId" value="#{ruta.automovil.chofer.idChofer}" />
+                                        </p:link>
                                     </p:column>
 
                                     <p:column headerText="Ruta">

@@ -74,26 +74,30 @@
                                                 <h:link value="Solicitudes" styleClass="btn btn-info" outcome="AdministrarSolicitudesIH"/>
                                             </h:panelGroup>
                                         </li>
-                                         <li>
-                                            <h:panelGroup rendered="#{sesionC.verificarSesion() eq true}">
+                                        <li>
+                                            <h:panelGroup rendered="#{sesionC.verificarSesion()}">
                                                 <h:link value="Rutas" styleClass="btn btn-info" outcome="ExplorarRutasIH"/>
                                             </h:panelGroup>
                                         </li>
-                                         <li>
-                                            <h:panelGroup rendered="#{sesionC.verificarSesion() eq true}">
+                                        <li>
+                                            <h:panelGroup rendered="#{sesionC.verificarSesion()}">
                                                 <h:link value="Perfiles" styleClass="btn btn-info" outcome="ExplorarPerfilesIH"/>
                                             </h:panelGroup>
                                         </li>
                                         <li>
-                                            <h:panelGroup rendered="#{sesionC.verificarSesion() eq true}">
-                                                <h:link value="#{sesionC.chofer.cnombre} #{sesionC.chofer.capp}" rendered="#{sesionC.tipo eq true}"
-                                                        outcome="#{sesionC.verPerfil()}" />
-                                                <h:link value="#{sesionC.pasajero.pnombre} #{sesionC.pasajero.papp}" rendered="#{sesionC.tipo eq false}"
-                                                        outcome="#{sesionC.verPerfil()}" />
+                                            <h:panelGroup rendered="#{sesionC.verificarSesion()}">
+                                                <p:link value="#{sesionC.chofer.cnombre} #{sesionC.chofer.capp}" rendered="#{sesionC.verificarTipo()}"
+                                                        outcome="PerfilChoferIH" >
+                                                    <f:param name="choferId" value="#{sesionC.chofer.idChofer}" />
+                                                </p:link>
+                                                <p:link value="#{sesionC.pasajero.pnombre} #{sesionC.pasajero.papp}" rendered="#{sesionC.verificarTipo() eq false}"
+                                                        outcome="PerfilPasajeroIH" >
+                                                    <f:param name="pasajeroId" value="#{sesionC.pasajero.idPasajero}" />
+                                                </p:link>
                                             </h:panelGroup>
                                         </li>
                                         <li>
-                                            <h:form rendered="#{sesionC.verificarSesion() eq true}">
+                                            <h:form rendered="#{sesionC.verificarSesion()}">
                                                 <p:commandButton styleClass="btn btn-link" id="command" value="Cerrar Sesión" action="#{sesionC.cerrarSesion()}"
                                                                  ajax="false" 
                                                                  style="color:whitesmoke; padding:0px; margin-top: 10px;"

@@ -28,7 +28,9 @@
                                                     </p:outputPanel>
                                                 </f:facet>
                                                 <p:column headerText="Nombre Chofer" filterBy="#{pc.chofer.cnombre}"  footerText="" filterMatchMode="contains">
-                                                    <p:commandLink value="#{pc.chofer.cnombre} #{pc.chofer.capp}" action="#{perfilC.muestraPerfil(pc,true)}"/>
+                                                    <p:link value="#{pc.chofer.cnombre} #{pc.chofer.capp}" outcome="PerfilChoferIH" >
+                                                        <f:param name="choferId" value="#{pc.chofer.idChofer}" />
+                                                    </p:link>
                                                 </p:column>
                                                 <p:column headerText="Correo" filterBy="#{pc.chofer.ccorreo}" filterMatchMode="contains">
                                                     <p:outputLabel value="#{pc.chofer.ccorreo}" />
@@ -47,7 +49,9 @@
                                                     </p:outputPanel>
                                                 </f:facet>
                                                 <p:column headerText="Nombre Pasajero" filterBy="#{pp.pasajero.pnombre} #{pp.pasajero.papp}"  footerText="" filterMatchMode="contains">
-                                                    <p:commandLink value="#{pp.pasajero.pnombre} #{pp.pasajero.papp}" action="#{perfilC.muestraPerfil(pp,false)}" />
+                                                    <p:link value="#{pp.pasajero.pnombre} #{pp.pasajero.papp}" outcome="PerfilPasajeroIH" >
+                                                        <f:param name="pasajeroId" value="#{pp.pasajero.idPasajero}" />
+                                                    </p:link>
                                                 </p:column>
                                                 <p:column headerText="Correo" filterBy="#{pp.pasajero.pcorreo}"  footerText="" filterMatchMode="contains">
                                                     <p:outputLabel value="#{pp.pasajero.pcorreo}" />

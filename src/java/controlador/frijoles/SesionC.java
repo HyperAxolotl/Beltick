@@ -71,7 +71,7 @@ public class SesionC implements Serializable {
                 if (pa != null) {
                     FacesContext.getCurrentInstance().getExternalContext()
                             .getSessionMap().put("usuario", pa);
-                    resultado = "inicioPasajero?faces-redirect=true";
+                    resultado = "PerfilPasajeroIH?faces-redirect=true&pasajeroId=" + pa.getIdPasajero();
                     p = pa;
                 } else {
                     mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "Correo o contraseña incorrectos", null);
@@ -89,7 +89,7 @@ public class SesionC implements Serializable {
                 if (usc != null) {
                     FacesContext.getCurrentInstance().getExternalContext()
                             .getSessionMap().put("usuario", usc);
-                    resultado = "inicioChofer?faces-redirect=true";
+                    resultado = "PerfilChoferIH?faces-redirect=true&choferId=" + usc.getIdChofer();
                     c = usc;
                 } else {
                     mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "Correo o contraseña incorrectos", null);
@@ -178,6 +178,11 @@ public class SesionC implements Serializable {
     public Automovil cAuto() {
         Chofer tmp = (Chofer) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
         return (Automovil) tmp.getAutomovils().iterator().next();
+    }
+    
+    public boolean tieneAuto() {
+        Chofer tmp = (Chofer) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
+        return tmp.getAutomovils().size() > 0;
     }
 
 }
