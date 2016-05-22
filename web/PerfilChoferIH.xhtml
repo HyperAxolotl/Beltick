@@ -15,7 +15,7 @@
     <h:body>
         <ui:composition template="plantillas/vista1.xhtml">
             <ui:define name="content">
-                <h:form>			
+                <h:form>
                     <section class="container">
                         <div class="rogue">
                             <div class="col-sm-3" align="center" id="borde">
@@ -36,21 +36,21 @@
                                     <p:separator styleClass="separadorP"/>
                                 </b:panelGrid>
                                 <div>
-                                    <b:button look="primary" tooltip="Solicitar Servicio" size="extra-large" value="" iconAwesome="map-marker" outcome="SolicitarServicioIH" rendered="#{sesionC.verificarTipo() eq false and perfilChoferC.tieneRuta()}">
+                                    <p:button icon="fa fa-automobile" value="Solicitar Servicio" outcome="SolicitarServicioIH" rendered="#{sesionC.verificarTipo() eq false and perfilChoferC.tieneRuta()}">
                                         <f:param name="rutaId" value="#{perfilChoferC.getIdRuta()}" />
-                                    </b:button>
-                                    <b:button  look="primary" tooltip="Mandar mensaje" value="" outcome="MandarMensajeIH" icon="send" rendered="#{sesionC.verificarTipo() eq false}" >
+                                    </p:button>
+                                    <p:button  icon="fa fa-send" value="Mandar mensaje" outcome="MandarMensajeIH" rendered="#{sesionC.verificarTipo() eq false}" >
                                         <f:param name="choferId" value="#{perfilChoferC.chofer.idChofer}" />
-                                    </b:button>
-                                    <b:button look="primary" tooltip="Ir a ruta" value="" outcome="RutaIH" iconAwesome="compass" rendered="#{perfilChoferC.tieneRuta()}">
+                                    </p:button>
+                                    <p:button icon="fa fa-compass" value="Ir a ruta" outcome="RutaIH" rendered="#{perfilChoferC.tieneRuta()}">
                                         <f:param name="rutaId" value="#{perfilChoferC.getIdRuta()}" />
-                                    </b:button>
+                                    </p:button>
                                 </div>
                             </div>
                             <div class="col-sm-3" id="bordo">
                                 <h:panelGrid columns="1">
-                                    <b:tabView>
-                                        <b:tab title="Personal" style-class="pestania">
+                                    <p:tabView>
+                                        <p:tab title="Personal">
                                             <h:form>
                                                 <h3>Sobre mi:</h3>
                                                 <h4><h:outputText value="#{perfilChoferC.perfil.csobreMi}"/></h4> <!--rendered="{perfilChoferC.sobreMi-->
@@ -59,14 +59,14 @@
                                                 <h:outputText value="Usuario desde: #{perfilChoferC.fechaReg()}" styleClass="minord"/>
                                                 <p:separator styleClass="separadorT"/>
                                             </h:form>
-                                        </b:tab>
-                                        <b:tab title="Ruta" style-class="pestania">
+                                        </p:tab>
+                                        <p:tab title="Ruta">
 
-                                        </b:tab>
-                                        <b:tab title="Auto" style-class="pestania">
-                                            <b:button look="danger" value="Registra tu auto" iconAwesome="automobile" outcome="RegistroAutomovilIH" 
+                                        </p:tab>
+                                        <p:tab title="Auto" >
+                                            <p:button value="Registra tu auto"  outcome="RegistroAutomovilIH" 
                                                       rendered="#{sesionC.verificarTipo() and sesionC.chofer.idChofer == perfilChoferC.chofer.idChofer and sesionC.tieneAuto() eq false}" />
-                                            <h:form style="text-align: right;">
+                                            <h:form style="text-align: right;" rendered="#{perfilChoferC.tieneRuta()}">
                                                 <h3>Modelo</h3>             
                                                 <h:outputText value="Marca: #{perfilChoferC.auto.modelo}"/>   
                                                 <p:separator styleClass="separadorT"/>
@@ -79,16 +79,16 @@
                                                 <h3>Color</h3>
                                                 <h:outputText value="#{perfilChoferC.auto.color}"/> 
                                             </h:form>
-                                        </b:tab>
-                                    </b:tabView>
+                                        </p:tab>
+                                    </p:tabView>
                                 </h:panelGrid>
                             </div>
 
                             <div class="col-sm-3" id="bordoM" align="right">
-                                <h:form>
+                                <h:form rendered="#{perfilChoferC.tieneRuta()}">
                                     <h3 align="center">Mapa</h3>
                                     <p:gmap id="gmap" center="19.3241874,-99.1789797" zoom="12" type="ROADMAP" style="width:500px;height:400px" model="#{perfilChoferC.getModeloMapa()}" />
-                                    <b:button iconAwesome="search" look="primary" value="Expandir" onclick="PF('dlg').show();" style="align-content: center;" />
+                                    <p:commandButton icon="fa fa-search-plus" value="Expandir" onclick="PF('dlg').show();" style="align-content: center;"/>
                                     <p:dialog header="Ruta de " widgetVar="dlg" modal="true" height="500px" width="1000px">
                                         <p:gmap id="gmap-dlg" center="19.3241874,-99.1789797" zoom="12" type="ROADMAP" style="width:100%;height:100%" model="#{perfilChoferC.getModeloMapa()}" />
                                     </p:dialog>

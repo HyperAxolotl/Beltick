@@ -39,7 +39,8 @@ public class PerfilChoferC {
         System.out.println("Perfil...");
         perfil = (PerfilChofer)chofer.getPerfilChofers().iterator().next();
         System.out.println("Auto...");
-        auto = ayudante.getAutomovil(id);
+        if(tieneRuta())
+            auto = ayudante.getAutomovil(id);
     }
 
     public Automovil getAuto() {
