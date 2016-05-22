@@ -46,13 +46,13 @@ body{
     width: 150px;
 }
 
-#content {
+/*#content {
     float: inside;
     position: relative;
     margin:0px;
     padding: 0px;
     background-color: #cfb9de;
-}
+}*/
 p{
     text-align: justify;
     padding: auto;
@@ -245,16 +245,95 @@ p{color:#160A4B;text-align: justify;}
 
 /** Growl... Entre la arena y el mar (8)*/
 .ui-growl {
-position: absolute;
-padding: auto;
-margin: auto;
-right: 77%;
-top: 10%;
-/*background: #540739;*/
+    position: absolute;
+    padding: auto;
+    margin: auto;
+    right: 77%;
+    top: 10%;
+    /*background: #540739;*/
 }
 
 
 .carousel, .slide{
     padding-top: 0px;
     margin-top: 0px;
+}
+
+/*Carlos*/
+.imagene {
+    border-radius: 15px;
+    border:2px solid #0277BD;
+    top: 10%;
+}
+
+#borde{
+    padding-top: 10px;
+    /*background-color:  #dddddd;*/
+    height: 570px;
+    border-color: #0277BD;
+}
+
+#bordo {
+    border-color: #160A4B;
+    border-width: 10px;
+    padding-top: 70px;
+    padding-left: 40px; 
+    /*background-color: #99ccff;*/
+    height: 560px;   
+}
+
+#bordoM {
+    border-color: #000;
+    border-width: 10px;
+    padding-top: 57px;
+    padding-left: 40px; 
+/*    background-color: #99ccff;*/
+    height: 560px; 
+    width: 550px;
+}
+
+#bordoT{
+    border-color: #160A4B;
+    border-width: 10px;
+    padding-top: 10px;
+    padding-left: 30px; 
+    /*background-color: #99ccff;*/
+    
+    height: 560px; 
+    width: 100px;
+}
+.separadorP {
+    border-color: #0277BD;
+    background-color: #0277BD;
+    height:0px;
+    width: 230px;
+}
+
+separadorP > .separadorT {
+    width: 100px;
+}
+
+.data {
+    font-size: x-large;
+}
+
+.minord {
+    position: relative;
+    font-size: large;
+}
+
+#opPerfil{
+    width: 50%;
+    margin: 0 auto; 
+}
+
+.rogue{
+    padding-top: 45px;
+}
+
+.pestania{
+}
+
+.serFeliz{
+    text-align: right;
 }
