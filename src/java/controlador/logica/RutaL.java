@@ -117,15 +117,17 @@ public class RutaL implements Serializable {
     }
 
     public Ruta getRuta(int id) {
-        if (con == null || !con.isOpen()) {
-            con = ConexionBD.getSessionFactory().openSession();
+        Ruta r = null;
+        try{
+            if (con == null || !con.isOpen())
+                con = ConexionBD.getSessionFactory().openSession();
+            r = (Ruta)con.get(Ruta.class,id);
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            con.close();
+            return r;
         }
-        Query query = con.createQuery("from Ruta where id_ruta = :id ");
-        query.setParameter("id", id);
-        List<?> list = query.list();
-        Ruta r = (Ruta) list.get(0);
-        con.close();
-        return r;
     }
 
     public MapModel getModeloMapa(String polyencod) {
@@ -175,11 +177,72 @@ public class RutaL implements Serializable {
 
         return poly;
     }
-
+    
     public void actualiza(Ruta ruta) {
         if (con == null || !con.isOpen()) {
             con = ConexionBD.getSessionFactory().openSession();
         }
         con.update(ruta);
     }
+
+    public FacesMessage actualizarRuta(Ruta r) {
+        FacesMessage mensaje = null;
+        try{
+            if (con == null || !con.isOpen())
+                con = ConexionBD.getSessionFactory().openSession();
+            trans = con.beginTransaction();
+            con.update(r);
+            trans.commit();
+        }catch(Exception e){
+            trans.rollback();
+            mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "Error al actualizar horario", null);
+            e.printStackTrace();
+        }finally{
+            con.close();
+            return mensaje;
+        }
+    }
+    
+    public Ruta getAutomovilRuta(int automovilId) {
+        Ruta a = null;
+        try {
+            if (con == null || !con.isOpen())
+                con = ConexionBD.getSessionFactory().openSession();
+            String hql = "FROM Ruta WHERE automovil.idAutomovil= :id";
+            Query query = con.createQuery(hql);
+            query.setParameter("id", automovilId);
+            if (!query.list().isEmpty()) {
+                a = (Ruta) query.list().get(0);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            con.close();
+            return a;
+        }
+    }
+    
+    public FacesMessage actualizar(Ruta r) {
+        FacesMessage mensaje = null;
+        try {
+            if (con == null || !con.isOpen()) {
+                con = ConexionBD.getSessionFactory().openSession();
+            }
+            trans = con.beginTransaction();
+            String mapa = FacesContext.getCurrentInstance().
+                    getExternalContext().getRequestParameterMap().get("mapa");
+            r.setMapa(mapa);
+            con.update(r);
+            trans.commit();
+        } catch (Exception e) {
+            trans.rollback();
+            mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "Error al actualizar la ruta", null);
+            e.printStackTrace();
+        } finally {
+            con.close();
+            return mensaje;
+        }
+
+    }
+    
 }

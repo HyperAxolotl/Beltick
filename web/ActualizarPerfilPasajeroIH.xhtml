@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Perfil pasajero</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="plantillas/vista1.xhtml">
+            <ui:define name="content">
+                <h:form>			
+                    <section class="container">
+                        <p:tabView>
+                            <p:tab title="Perfil">
+                                <p:panelGrid columns="2">  
+
+                                    <h:outputLabel for="nombre" value="Imagen:" />
+                                    <p:graphicImage library="imagenes" name="foto_usuario/usuario.png" width="80px" height="80px" />
+
+                                    <h:outputLabel for="nombre" value="Nombre:" />
+                                    <p:inplace id="nombre" editor="true" >
+                                        <p:inputText value="#{actualizarPerfilPasajeroC.pasajero.pnombre}" required="true" label="text" />
+                                    </p:inplace>
+
+                                    <h:outputLabel for="apellidop" value="Apellido paterno:" />
+                                    <p:inplace id="apellidop" editor="true" >
+                                        <p:inputText value="#{actualizarPerfilPasajeroC.pasajero.papp}" required="true" label="text" />
+                                    </p:inplace>
+
+                                    <h:outputLabel for="apellidom" value="Apellido materno:" />
+                                    <p:inplace id="apellidom" editor="true" >
+                                        <p:inputText value="#{actualizarPerfilPasajeroC.pasajero.papm}" required="true" label="text" />
+                                    </p:inplace>
+
+                                    <h:outputLabel for="correo" value="Correo:" />
+                                    <p:inplace id="correo" editor="true" >
+                                        <p:inputText value="#{actualizarPerfilPasajeroC.pasajero.pcorreo}" required="true" label="text" />
+                                    </p:inplace>
+
+                                    <h:outputLabel for="numcuenta" value="Numero de cuenta:" />
+                                    <p:inplace id="numcuenta" editor="true" >
+                                        <p:inputText value="#{actualizarPerfilPasajeroC.pasajero.pnoCuenta}" required="true" label="text" />
+                                    </p:inplace>
+
+                                    <p:outputLabel for="fecha" value="Fecha de Nacimiento" />
+                                    <p:inplace id="fecha" label="#{actualizarPerfilPasajeroC.fecha}" effectSpeed="fast" editor="true">
+                                        <p:calendar value="#{actualizarPerfilPasajeroC.pasajero.pfechaNac}" pattern="dd-MM-yyyy" mask="true">
+                                            <f:convertDateTime pattern="dd-MM-yyyy" />
+                                        </p:calendar>
+                                        <!--<h:message for="fecha"/>-->
+                                    </p:inplace>
+
+                                    <p:outputLabel for="sobremi" value="Sobre mi" />
+                                    <p:inplace id="sobremi" editor="true" emptyLabel="Describete" >
+                                        <p:inputTextarea value="#{actualizarPerfilPasajeroC.perfil.psobreMi}" label="text" />
+                                    </p:inplace>
+
+                                </p:panelGrid>
+                                <h:commandButton styleClass="btn btn-info" value="Aceptar" action="#{actualizarPerfilPasajeroC.actualizarPasajero()}" />
+                            </p:tab>
+
+                            <p:tab title="Rutas">
+                               
+                            </p:tab>
+
+                        </p:tabView>
+                    </section>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

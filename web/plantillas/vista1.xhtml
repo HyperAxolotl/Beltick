@@ -122,6 +122,16 @@
                                                 <p:button value="Mensajes" styleClass="btn btn-info" outcome="MostrarMensajesIH"/>
                                             </h:panelGroup>
                                         </li>
+                                        <li>
+                                            <h:panelGroup rendered="#{sesionC.verificarSesion() and sesionC.verificarTipo()}">
+                                                <p:button value="Editar perfil" styleClass="btn btn-info" outcome="ActualizarPerfilChoferIH"/>
+                                            </h:panelGroup>
+                                        </li>
+                                        <li>
+                                            <h:panelGroup rendered="#{sesionC.verificarSesion() and sesionC.verificarTipo() eq false}">
+                                                <p:button value="Editar perfil" styleClass="btn btn-info" outcome="ActualizarPerfilPasajeroIH"/>
+                                            </h:panelGroup>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>

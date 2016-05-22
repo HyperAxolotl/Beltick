@@ -6,6 +6,7 @@
 package controlador.logica;
 
 import java.util.List;
+import modelo.Automovil;
 import modelo.Chofer;
 import modelo.ConexionBD;
 import modelo.Pasajero;
@@ -61,6 +62,39 @@ public class PerfilL {
         }
 
     }
+    
+    public Automovil getAutomovil(int id){
+         if (con == null || !con.isOpen()) {
+            con = ConexionBD.getSessionFactory().openSession();
+        }
+        Query query = con.createQuery("from Chofer where idChofer = "+id);
+        List<?> list = query.list();
+        if(list.isEmpty()) {
+            con.close();
+            return null;
+        }
+        Chofer c = (Chofer)list.get(0);
+        Automovil a = (Automovil)c.getAutomovils().iterator().next();
+        con.close();
+        return a;
+    }
+    
+    public Ruta getRuta(int id){
+         if (con == null || !con.isOpen()) {
+            con = ConexionBD.getSessionFactory().openSession();
+        }
+        Query query = con.createQuery("from Ruta where id_automovil = "+id);
+        List<?> list = query.list();
+        if(list.isEmpty()) {
+            con.close();
+            System.out.println("No hay ruta para el auto "+id);
+            return null;
+        }
+        Ruta r = (Ruta)list.get(0);
+        con.close();
+        System.out.println("Ruta para el auto "+id);
+        return r;
+    }
 
     public Pasajero getPasajero(int id) {
         if (con == null || !con.isOpen()) {
@@ -86,7 +120,7 @@ public class PerfilL {
             if (con == null || !con.isOpen()) {
                 con = ConexionBD.getSessionFactory().openSession();
             }
-            Query query = con.createQuery("select r from Chofer c, Automovil, Ruta r where c.idChofer = :id");
+            Query query = con.createQuery("select r from Chofer c join c.automovils a join a.rutas r where c.idChofer = :id");
             query.setParameter("id", c.getIdChofer());
             List<?> list = query.list();
             b = !list.isEmpty();
