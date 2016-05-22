@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Servicios Realizados</title>
+    </h:head>
+
+    <h:body>
+        <ui:composition template="plantillas/vista1.xhtml">
+            <ui:define name="content">
+                <section class="container">
+                    <div class="row">
+                        <div class="col-sm-12" align="center">
+                            <h2>Servicios Realizados</h2>                            
+
+                            <h:form id="serviciosRealizados">
+                                <p:growl id="growl" showDetail="true" sticky="false" life="3000" />
+
+                                <p:dataTable id="tablaServicios" value="#{serviciosRealizadosC.servicio(chofer)}" 
+                                             var="servicio" widgetVar="tablaServicios" rendered="#{sesionC.verificarSesion() &amp;&amp; sesionC.verificarTipo()}" 
+                                             paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                                             paginator="true" rows="10" style="margin-bottom:20px" >
+
+                                    <p:column headerText="Pasajero">
+                                        <p:link value="#{serviciosRealizadosC.pasajero.pnombre}" outcome="PerfilPasajeroIH" >
+                                            <f:param name="pasajeroId" value="#{serviciosRealizadosC.pasajero.idPasajero}" />
+                                        </p:link>
+                                        <br/>
+                                        <h:outputText value="#{solicitud.pasajero.pcorreo}" />
+                                    </p:column> 
+
+
+
+                                    <p:column headerText="Acción">
+
+
+                                        <p:rating value="#{ratingView.rating1}" />
+
+                                        <p:commandButton  value="Comentar" type=" button" onclick="PF('dlg1').show();" />
+                                        <p:dialog header="Comenta" widgetVar="dlg1" minHeight="40">
+                                            <p:inputTextarea id="descripcion" value="#{registroRutaC.ruta.descripcion}" rows="5" cols="33" counter="display" maxlength="120" counterTemplate="{0}" placeholder=""/>
+                                            <h:outputText id="display" />
+                                            <p:commandButton value="Enviar Comentario" action="#{registroRutaC.registro()}" update="dialogTest,@form" 
+                                                             onclick="if (#{pasajeroC.exito}) {
+                                                                         PF('dlg2').show();
+                                                                     }" >
+                                                <f:actionListener binding="#{registroRutaC.ruta.setAutomovil(sesionC.cAuto())}" />
+                                            </p:commandButton>
+                                            <p:dialog id="dialogTest" header="Exito" widgetVar="dlg2" modal="true"  draggable="false"  
+                                                      resizable="false" closable="false" height="100" visible="#{registroRutaC.exito}">
+                                                <p:messages />
+                                                <p:button value="Cerrar" onclick="PF('dlg2').hide()" outcome="PaginaPrincipalIH"/>
+                                            </p:dialog>
+                                        </p:dialog>
+
+                                    </p:column>
+
+                                </p:dataTable>
+                            </h:form>
+
+                        </div>
+                    </div>
+                </section>
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

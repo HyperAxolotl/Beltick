@@ -69,6 +69,7 @@
                                                 </div>
                                             </h:panelGroup>
                                         </li>
+                                        
                                         <li>
                                             <h:panelGroup rendered="#{sesionC.verificarSesion() &amp;&amp; sesionC.verificarTipo()}">
                                                 <h:link value="Solicitudes" styleClass="btn btn-info" outcome="AdministrarSolicitudesIH"/>
@@ -77,6 +78,11 @@
                                         <li>
                                             <h:panelGroup rendered="#{sesionC.verificarSesion()}">
                                                 <h:link value="Rutas" styleClass="btn btn-info" outcome="ExplorarRutasIH"/>
+                                            </h:panelGroup>
+                                        </li>
+                                        <li>
+                                            <h:panelGroup rendered="#{sesionC.verificarSesion()}">
+                                                <h:link value="Servicios Realizados" styleClass="btn btn-info" outcome="ServiciosRealizados"/>
                                             </h:panelGroup>
                                         </li>
                                         <li>
