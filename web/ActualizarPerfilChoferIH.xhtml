@@ -1,0 +1,176 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Perfil chofer</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="plantillas/vista1.xhtml">
+            <ui:define name="content">
+                <h:form>			
+                    <section class="container">
+                        <p:tabView>
+                            <p:tab title="Perfil">
+                                <p:panelGrid columns="2">  
+
+                                    <h:outputLabel for="nombre" value="Imagen:" />
+                                    <p:graphicImage library="imagenes" name="foto_usuario/usuario.png" width="80px" height="80px" />
+
+                                    <h:outputLabel for="nombre" value="Nombre:" />
+                                    <p:inplace id="nombre" editor="true" >
+                                        <p:inputText value="#{actualizarPerfilChoferC.chofer.cnombre}" required="true" label="text" />
+                                    </p:inplace>
+
+                                    <h:outputLabel for="apellidop" value="Apellido paterno:" />
+                                    <p:inplace id="apellidop" editor="true" >
+                                        <p:inputText value="#{actualizarPerfilChoferC.chofer.capp}" required="true" label="text" />
+                                    </p:inplace>
+
+                                    <h:outputLabel for="apellidom" value="Apellido materno:" />
+                                    <p:inplace id="apellidom" editor="true" >
+                                        <p:inputText value="#{actualizarPerfilChoferC.chofer.capm}" required="true" label="text" />
+                                    </p:inplace>
+
+                                    <h:outputLabel for="correo" value="Correo:" />
+                                    <p:inplace id="correo" editor="true" >
+                                        <p:inputText value="#{actualizarPerfilChoferC.chofer.ccorreo}" required="true" label="text" />
+                                    </p:inplace>
+
+                                    <h:outputLabel for="numcuenta" value="Numero de cuenta:" />
+                                    <p:inplace id="numcuenta" editor="true" >
+                                        <p:inputText value="#{actualizarPerfilChoferC.chofer.cnoCuenta}" required="true" label="text" />
+                                    </p:inplace>
+
+                                    <p:outputLabel for="nid" value="Numero de Identificación (Licencia)" />
+                                    <p:inplace id="nid" editor="true" >
+                                        <p:inputText value="#{actualizarPerfilChoferC.chofer.cnoId}" required="true" label="text" />
+                                    </p:inplace>
+
+                                    <p:outputLabel for="fecha" value="Fecha de Nacimiento" />
+                                    <p:inplace id="fecha" label="#{actualizarPerfilChoferC.fecha}" effectSpeed="fast" editor="true">
+                                        <p:calendar value="#{actualizarPerfilChoferC.chofer.cfechaNac}" pattern="dd-MM-yyyy" mask="true">
+                                            <f:convertDateTime pattern="dd-MM-yyyy" />
+                                        </p:calendar>
+                                        <!--<h:message for="fecha"/>-->
+                                    </p:inplace>
+
+                                    <p:outputLabel for="sobremi" value="Sobre mi" />
+                                    <p:inplace id="sobremi" editor="true" emptyLabel="Describete" >
+                                        <p:inputTextarea value="#{actualizarPerfilChoferC.perfil.csobreMi}" label="text" />
+                                    </p:inplace>
+
+                                </p:panelGrid>
+                                <h:commandButton styleClass="btn btn-info" value="Aceptar" action="#{actualizarPerfilChoferC.actualizarChofer()}" />
+                            </p:tab>
+
+                            <p:tab title="Automóvil">
+                                <p:panelGrid columns="2">
+
+                                    <h:outputLabel for="num" value="Número de identificación" />
+                                    <p:inplace id="num" editor="true" >
+                                        <p:inputText value="#{actualizarPerfilChoferC.automovil.noIdentificacion}" required="true" label="text" />
+                                    </p:inplace>
+
+                                    <h:outputLabel for="modelo" value="Modelo" />
+                                    <p:inplace id="modelo" editor="true" >
+                                        <p:inputText value="#{actualizarPerfilChoferC.automovil.modelo}" required="true" />
+                                    </p:inplace>
+
+                                    <h:outputLabel for="placa" value="Placa" />
+                                    <p:inplace id="placa" editor="true" >
+                                        <p:inputMask value="#{actualizarPerfilChoferC.automovil.placa}" mask="*99-aaa" required="true" />
+                                    </p:inplace>
+
+                                    <h:outputLabel for="color" value="Color" />
+                                    <p:inplace id="color" editor="true" >
+                                        <p:inputText value="#{actualizarPerfilChoferC.automovil.color}" required="true" />
+                                    </p:inplace>
+
+                                    <h:outputLabel for="capacidad" value="Capacidad de pasajeros" />
+                                    <p:inplace id="capacidad" editor="true" >
+                                        <p:inputText value="#{actualizarPerfilChoferC.automovil.capacidad}" required="true" />
+                                    </p:inplace>
+
+                                </p:panelGrid>
+                                <h:commandButton styleClass="btn btn-info" value="Aceptar" action="#{actualizarPerfilChoferC.actualizarAutomovil()}" />
+                            </p:tab>
+
+                            <p:tab title="Ruta">
+
+                                <p:gmap id="gmap" center="19.3241874,-99.1789797" zoom="13" type="ROADMAP" style="width:500px;height:400px"
+                                        model="#{actualizarPerfilChoferC.modeloMapa}" onPointClick="addLatLng(event);" widgetVar="map" />
+                                <h:outputScript library="js" name="RegistroRuta.js" />
+
+                                <p:commandButton value="Borrar último punto" id="borrar-ultimo" onclick="return borrarUltimo();" />
+                                <p:commandButton value="Borrar todo" id="borrar-todo" onclick="return borrarTodo();" />
+
+
+                                <input type="hidden" id="mapa" name="mapa" value="" />              
+                                <br></br>
+                                <p:outputLabel for="descripcion" value="Descripción" />
+                                <p:inplace id="descripcion" editor="true" emptyLabel="Describe tu ruta">
+                                    <p:inputTextarea value="#{actualizarPerfilChoferC.ruta.descripcion}" rows="5" cols="33" counter="display" maxlength="120" counterTemplate="{0}"/>
+                                    <h:outputText id="display" />
+                                </p:inplace>
+                                <br></br>
+                                <h:commandButton styleClass="btn btn-info" value="Aceptar" action="#{actualizarPerfilChoferC.actualizarRuta()}" />
+
+                            </p:tab>
+                            <p:tab title="Horario">
+                                <p:panelGrid columns="2"> 
+                                    <p:outputLabel for="lunes" value="Lunes" />
+                                    <p:inplace id="lunes" effectSpeed="fast" editor="true" emptyLabel="Campo vacío">
+                                        <p:inputMask  value="#{actualizarPerfilChoferC.horario.lunes}" mask="99:99" >
+                                            <f:convertDateTime pattern="HH:mm" />
+                                        </p:inputMask>
+                                    </p:inplace>
+
+                                    <h:outputLabel for="martes" value="Martes" />
+                                    <p:inplace id="masrtes" effectSpeed="fast" editor="true" emptyLabel="Campo vacío">
+                                        <p:inputMask id="martes" value="#{actualizarPerfilChoferC.horario.martes}" mask="99:99" >
+                                            <f:convertDateTime pattern="HH:mm" />
+                                        </p:inputMask>
+                                    </p:inplace>
+
+                                    <h:outputLabel for="miercoles" value="Miercoles" />
+                                    <p:inplace id="miercoles" effectSpeed="fast" editor="true" emptyLabel="Campo vacío">
+                                        <p:inputMask value="#{actualizarPerfilChoferC.horario.miercoles}" mask="99:99" >
+                                            <f:convertDateTime pattern="HH:mm" />
+                                        </p:inputMask>
+                                    </p:inplace>
+
+                                    <h:outputLabel for="jueves" value="Jueves" />
+                                    <p:inplace id="jueves" effectSpeed="fast" editor="true" emptyLabel="Campo vacío">
+                                        <p:inputMask value="#{actualizarPerfilChoferC.horario.jueves}" mask="99:99" >
+                                            <f:convertDateTime pattern="HH:mm" />
+                                        </p:inputMask>
+                                    </p:inplace>
+
+                                    <h:outputLabel for="viernes" value="Viernes" />
+                                    <p:inplace id="viernes" effectSpeed="fast" editor="true" emptyLabel="Campo vacío">
+                                        <p:inputMask value="#{actualizarPerfilChoferC.horario.viernes}" mask="99:99" >
+                                            <f:convertDateTime pattern="HH:mm" />
+                                        </p:inputMask>
+                                    </p:inplace>
+
+                                    <h:outputLabel for="sabado" value="Sábado" />
+                                    <p:inplace id="sabado" effectSpeed="fast" editor="true" emptyLabel="Campo vacío">
+                                        <p:inputMask value="#{actualizarPerfilChoferC.horario.sabado}" mask="99:99" > 
+                                            <f:convertDateTime pattern="HH:mm" />
+                                        </p:inputMask>
+                                    </p:inplace>
+                                    
+                                </p:panelGrid>
+                                <h:commandButton styleClass="btn btn-info" value="Aceptar" action="#{actualizarPerfilChoferC.actualizarHorario()}" />
+                            </p:tab>
+                        </p:tabView>
+                    </section>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

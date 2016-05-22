@@ -57,4 +57,22 @@ public class ChoferL implements Serializable{
         }
         return pc;
     }
+    
+    public FacesMessage actualizarChofer(Chofer c) {
+        FacesMessage mensaje = null;
+        try{
+            if (con == null || !con.isOpen())
+                con = ConexionBD.getSessionFactory().openSession();
+            trans = con.beginTransaction();
+            con.merge(c);
+            trans.commit();
+        }catch(Exception e){
+            trans.rollback();
+            mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "Error al actualizar perfil", null);
+            e.printStackTrace();
+        }finally{
+            con.close();
+            return mensaje;
+        }
+    }
 }

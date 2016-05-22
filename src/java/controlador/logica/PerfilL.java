@@ -120,7 +120,7 @@ public class PerfilL {
             if (con == null || !con.isOpen()) {
                 con = ConexionBD.getSessionFactory().openSession();
             }
-            Query query = con.createQuery("select r from Chofer c, Automovil, Ruta r where c.idChofer = :id");
+            Query query = con.createQuery("select r from Chofer c join c.automovils a join a.rutas r where c.idChofer = :id");
             query.setParameter("id", c.getIdChofer());
             List<?> list = query.list();
             b = !list.isEmpty();
