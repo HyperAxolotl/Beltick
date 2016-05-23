@@ -1,0 +1,50 @@
+.ui-menu, .ui-menu .ui-menu-child {
+    background: #0f0f0f;
+    border: 0px;
+    color: white;
+}
+
+.ui-menuitem-link.ui-submenu-link.ui-corner-all.ui-state-hover,
+.ui-menuitem-link.ui-corner-all.ui-state-hover {
+    background: #eef3f6;
+}
+
+.barra-nav a {
+    color: white;
+}
+
+.ui-datatable thead th, .ui-datatable tbody td, .ui-datatable tfoot td, .ui-datatable tfoot th {
+    border-width: 0px;
+}
+
+.ui-datatable thead th {
+    background: #21c0c6;
+    color: #fefefe;
+    text-shadow: none;
+}
+
+.ui-state-default.ui-filter-column, .ui-paginator.ui-paginator-bottom.ui-widget-header.ui-corner-bottom {
+    border: 0px;
+    background: #dee4e4;
+}
+
+.ui-datatable-header.ui-widget-header.ui-corner-top {
+    background: #21c0c6;
+}
+
+.ui-state-default.ui-corner-top.ui-tabs-selected.ui-state-active a {
+    color: #000;
+}
+
+.ui-state-default.ui-corner-top {
+    background: #e6dddd;
+}
+
+.ui-tabs.ui-widget.ui-widget-content.ui-corner-all.ui-hidden-container.ui-tabs-top {
+    border: 0px;
+}
+
+.ui-tabs-nav.ui-helper-reset.ui-helper-clearfix.ui-widget-header.ui-corner-all {
+    background: #fff;
+}
+

@@ -6,9 +6,7 @@
     padding: 0;
     box-sizing: border-box;
 }
-body{
-    background-color: #cfb9de; 
-}
+
 #top {
     position: relative;
     background-color: transparent;

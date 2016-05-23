@@ -20,131 +20,54 @@
         </h:head>
 
         <h:body>
-            <div id="top">
-                <ui:insert name="top">
-                    <div class="navbar-wrapper">
-                        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-                            <div class="container-fluid">
-                                <div class="navbar-header">
-                                    <a class="nav-brand">
-                                        <h:link outcome="PaginaPrincipalIH">
-                                            <img style="max-width:120px;margin-top: 10px; float: left;" 
-                                                 src="resources/imagenes/logobelt.png"/>
-                                        </h:link>
-                                    </a>
-                                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span> 
-                                    </button>   
-                                </div>
+            <f:facet name="last">
+                <h:outputStylesheet library="css" name="pf-override.css" />
+            </f:facet>
+            <ui:insert name="top">
 
-                                <div class="collapse navbar-collapse">                    
-                                    <ul class="nav navbar-nav navbar-right">                                        
-                                        <li>
-                                            <h:panelGroup rendered="#{sesionC.verificarSesion() eq false}">
-                                                <div class="dropdown dropdown-header">
-                                                    <button class="btn btn-link dropdown-toggle" style="margin-top: 10px;color: whitesmoke;" type="button" data-toggle="dropdown">
-                                                        <b>Registrarse</b>
-                                                        <span class="glyphicon glyphicon-user">   
-                                                        </span></button>
-                                                    <ul class="dropdown-menu">
-                                                        <li><p:link value="Registrarse como pasajero" outcome="RegistroPasajeroIH" style="color:whitesmoke;"/></li>
-                                                        <li><p:link value="Registrarse como chofer" outcome="RegistroChoferIH" style="color:whitesmoke;"/></li> 
-                                                    </ul>
-                                                </div>
-                                            </h:panelGroup>
-                                        </li>
-                                        <li>
-                                            <h:panelGroup rendered="#{sesionC.verificarSesion() eq false}">
-                                                <div class="dropdown dropdown-header">
-                                                    <button class="btn btn-link dropdown-toggle"  style="margin-top: 10px;color:whitesmoke;" type="button" data-toggle="dropdown">
-                                                        <b>Iniciar Sesión</b>
-                                                        <span class="glyphicon glyphicon-log-in"></span>
-                                                    </button>
-                                                    <ul class="dropdown-menu">
-                                                        <li><p:link value="Iniciar sesión como pasajero" outcome="FormularioInicioSesionPasajeroIH" style="color:whitesmoke;"/></li>
-                                                        <li><p:link value="Iniciar sesión como chofer" outcome="FormularioInicioSesionChoferIH" style="color:whitesmoke;"/></li> 
-                                                    </ul>
-                                                </div>
-                                            </h:panelGroup>
-                                        </li>
-                                        
-                                        <li>
-                                            <h:panelGroup rendered="#{sesionC.verificarSesion() &amp;&amp; sesionC.verificarTipo()}">
-                                                <h:link value="Solicitudes" styleClass="btn btn-info" outcome="AdministrarSolicitudesIH"/>
-                                            </h:panelGroup>
-                                        </li>
-                                        <li>
-                                            <h:panelGroup rendered="#{sesionC.verificarSesion()}">
-                                                <h:link value="Rutas" styleClass="btn btn-info" outcome="ExplorarRutasIH"/>
-                                            </h:panelGroup>
-                                        </li>
-                                        <li>
-                                            <h:panelGroup rendered="#{sesionC.verificarSesion()}">
-                                                <h:link value="Servicios Realizados" styleClass="btn btn-info" outcome="ServiciosRealizados"/>
-                                            </h:panelGroup>
-                                        </li>
-                                        <li>
-                                            <h:panelGroup rendered="#{sesionC.verificarSesion()}">
-                                                <h:link value="Perfiles" styleClass="btn btn-info" outcome="ExplorarPerfilesIH"/>
-                                            </h:panelGroup>
-                                        </li>
-                                        <li>
-                                            <h:panelGroup rendered="#{sesionC.verificarSesion()}">
-                                                <p:link value="#{sesionC.chofer.cnombre} #{sesionC.chofer.capp}" rendered="#{sesionC.verificarTipo()}"
-                                                        outcome="PerfilChoferIH" >
-                                                    <f:param name="choferId" value="#{sesionC.chofer.idChofer}" />
-                                                </p:link>
-                                                <p:link value="#{sesionC.pasajero.pnombre} #{sesionC.pasajero.papp}" rendered="#{sesionC.verificarTipo() eq false}"
-                                                        outcome="PerfilPasajeroIH" >
-                                                    <f:param name="pasajeroId" value="#{sesionC.pasajero.idPasajero}" />
-                                                </p:link>
-                                            </h:panelGroup>
-                                        </li>
-                                        <li>
-                                            <h:form rendered="#{sesionC.verificarSesion()}">
-                                                <p:commandButton styleClass="btn btn-link" id="command" value="Cerrar Sesión" action="#{sesionC.cerrarSesion()}"
-                                                                 ajax="false" 
-                                                                 style="color:whitesmoke; padding:0px; margin-top: 10px;"
-                                                                 icon="glyphicon glyphicon-log-out">
+                <h:form>
+                    <p:menubar styleClass="barra-nav">
+                        <p:menuitem style="margin-top:-20px">
+                            <h:link outcome="PaginaPrincipalIH">
+                                <h:graphicImage library="imagenes" name="logobelt.png" style="max-width:120px;float:left;margin-right:88.3%;"/>
+                            </h:link>
+                        </p:menuitem>
+                        <p:menuitem value="Explorar rutas" outcome="ExplorarRutasIH" rendered="#{sesionC.verificarSesion()}" />
+                        <p:menuitem value="Explorar perfiles" outcome="ExplorarPerfilesIH" rendered="#{sesionC.verificarSesion()}" />
+                        <p:menuitem icon="fa fa-bell" outcome="NotificacionesIH" rendered="#{sesionC.verificarSesion()}" />
+                        <p:submenu style="float:right;" label="#{sesionC.chofer.cnombre} #{sesionC.chofer.capp}" rendered="#{sesionC.verificarSesion() and sesionC.verificarTipo()}" icon="fa fa-user">
+                            <p:menuitem value="Mi perfil" outcome="PerfilChoferIH">
+                                <f:param name="choferId" value="#{sesionC.chofer.idChofer}" />
+                            </p:menuitem>
+                            <p:menuitem value="Mensajes recibidos" outcome="MostrarMensajesIH" />
+                            <p:menuitem value="Administrar solicitudes" outcome="AdministrarSolicitudesIH" />
+                            <p:menuitem value="Servicios Realizados" outcome="ServiciosRealizados" />
+                            <p:menuitem value="Editar perfil" outcome="ActualizarPerfilChoferIH" />
+                            <p:menuitem value="Cerrar Sesión" action="#{sesionC.cerrarSesion()}" ajax="false" />
+                        </p:submenu>
+                        <p:submenu style="float:right;" icon="fa fa-user" rendered="#{sesionC.verificarSesion() and sesionC.verificarTipo() eq false}">
+                            <p:menuitem value="Mi perfil" outcome="PerfilPasajeroIH" >
+                                <f:param name="pasajeroId" value="#{sesionC.pasajero.idPasajero}" />
+                            </p:menuitem>
+                            <p:menuitem value="Mensajes recibidos" outcome="MostrarMensajesIH" />
+                            <p:menuitem value="Editar perfil" outcome="ActualizarPerfilPasajeroIH" />
+                            <p:menuitem value="Cerrar Sesión" action="#{sesionC.cerrarSesion()}" ajax="false" /> 
+                        </p:submenu>
+                        
+                        <p:submenu style="float:right;" label="Registarse" icon="fa fa-user" rendered="#{sesionC.verificarSesion() eq false}">
+                            <p:menuitem value="Registarse como pasajero" outcome="RegistroPasajeroIH"/>
+                            <p:menuitem value="Registarse como chofer" outcome="RegistroChoferIH"/>
+                        </p:submenu>
+                        <p:submenu style="float:right;" label="Iniciar sesión" icon="fa fa-sign-in" rendered="#{sesionC.verificarSesion() eq false}">
+                            <p:menuitem value="Iniciar sesión como pasajero" outcome="FormularioInicioSesionPasajeroIH" />
+                            <p:menuitem value="Iniciar sesión como chofer" outcome="FormularioInicioSesionChoferIH" />
+                        </p:submenu>
+                    </p:menubar>
+                </h:form>
+            </ui:insert>
+            <ui:insert name="content">
 
-                                                </p:commandButton>
-                                            </h:form>
-                                        </li>
-                                        <li>
-                                            <h:panelGroup rendered="#{sesionC.verificarSesion()}">
-                                                <p:button value="Notificaciones" styleClass="btn btn-info" outcome="NotificacionesIH"/>
-                                            </h:panelGroup>
-                                        </li>
-                                        <li>
-                                            <h:panelGroup rendered="#{sesionC.verificarSesion()}">
-                                                <p:button value="Mensajes" styleClass="btn btn-info" outcome="MostrarMensajesIH"/>
-                                            </h:panelGroup>
-                                        </li>
-                                        <li>
-                                            <h:panelGroup rendered="#{sesionC.verificarSesion() and sesionC.verificarTipo()}">
-                                                <p:button value="Editar perfil" styleClass="btn btn-info" outcome="ActualizarPerfilChoferIH"/>
-                                            </h:panelGroup>
-                                        </li>
-                                        <li>
-                                            <h:panelGroup rendered="#{sesionC.verificarSesion() and sesionC.verificarTipo() eq false}">
-                                                <p:button value="Editar perfil" styleClass="btn btn-info" outcome="ActualizarPerfilPasajeroIH"/>
-                                            </h:panelGroup>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                        </nav>
-                    </div>
-                </ui:insert>
-            </div>
-            <div id="content">
-                <ui:insert name="content">
-
-                </ui:insert> 
-            </div>
+            </ui:insert> 
         </h:body>
     </f:view>
 </html>
