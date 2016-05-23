@@ -35,7 +35,7 @@
                         <p:menuitem value="Explorar rutas" outcome="ExplorarRutasIH" rendered="#{sesionC.verificarSesion()}" />
                         <p:menuitem value="Explorar perfiles" outcome="ExplorarPerfilesIH" rendered="#{sesionC.verificarSesion()}" />
                         <p:menuitem icon="fa fa-bell" outcome="NotificacionesIH" rendered="#{sesionC.verificarSesion()}" />
-                        <p:submenu style="float:right;" label="#{sesionC.chofer.cnombre} #{sesionC.chofer.capp}" rendered="#{sesionC.verificarSesion() and sesionC.verificarTipo()}" icon="fa fa-user">
+                        <p:submenu style="float:right;" rendered="#{sesionC.verificarSesion() and sesionC.verificarTipo()}" icon="fa fa-user">
                             <p:menuitem value="Mi perfil" outcome="PerfilChoferIH">
                                 <f:param name="choferId" value="#{sesionC.chofer.idChofer}" />
                             </p:menuitem>

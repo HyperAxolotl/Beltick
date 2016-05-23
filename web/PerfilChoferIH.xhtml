@@ -4,8 +4,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:b="http://bootsfaces.net/ui">
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Perfil chofer</title>
         <f:metadata>
@@ -25,7 +24,7 @@
                                 <p:tooltip id="toolTipTrack" for="imagene" value="#{perfilChoferC.chofer.cnombre} #{perfilChoferC.chofer.capp} #{perfilChoferC.chofer.capm}" />
                                 <h:outputText value=""/>
                                 <!--/f:facet-->
-                                <b:panelGrid columns="1">         
+                                <h:panelGrid columns="1">         
                                     <h4> <h:outputText value="Chofer: #{perfilChoferC.chofer.cnombre} #{perfilChoferC.chofer.capp} #{perfilChoferC.chofer.capm}" styleClass="data"/> </h4>
                                     <p:separator styleClass="separadorP"/>
                                     <h:outputText value="#{perfilChoferC.chofer.ccorreo}" styleClass="minord"/>
@@ -34,16 +33,10 @@
                                     <p:separator styleClass="separadorP"/>
                                     <h:outputText value="Calificacion" styleClass="minord"/>
                                     <p:separator styleClass="separadorP"/>
-                                </b:panelGrid>
+                                </h:panelGrid>
                                 <div>
-                                    <p:button icon="fa fa-automobile" value="Solicitar Servicio" outcome="SolicitarServicioIH" rendered="#{sesionC.verificarTipo() eq false and perfilChoferC.tieneRuta()}">
-                                        <f:param name="rutaId" value="#{perfilChoferC.getIdRuta()}" />
-                                    </p:button>
                                     <p:button  icon="fa fa-send" value="Mandar mensaje" outcome="MandarMensajeIH" rendered="#{sesionC.verificarTipo() eq false}" >
                                         <f:param name="choferId" value="#{perfilChoferC.chofer.idChofer}" />
-                                    </p:button>
-                                    <p:button icon="fa fa-compass" value="Ir a ruta" outcome="RutaIH" rendered="#{perfilChoferC.tieneRuta()}">
-                                        <f:param name="rutaId" value="#{perfilChoferC.getIdRuta()}" />
                                     </p:button>
                                 </div>
                             </div>
@@ -92,6 +85,12 @@
                                     <p:dialog header="Ruta de " widgetVar="dlg" modal="true" height="500px" width="1000px">
                                         <p:gmap id="gmap-dlg" center="19.3241874,-99.1789797" zoom="12" type="ROADMAP" style="width:100%;height:100%" model="#{perfilChoferC.getModeloMapa()}" />
                                     </p:dialog>
+                                    <p:button icon="fa fa-automobile" value="Solicitar Servicio" outcome="SolicitarServicioIH" rendered="#{sesionC.verificarTipo() eq false and perfilChoferC.tieneRuta()}">
+                                        <f:param name="rutaId" value="#{perfilChoferC.getIdRuta()}" />
+                                    </p:button>
+                                    <p:button icon="fa fa-compass" value="Explorar" outcome="RutaIH" rendered="#{perfilChoferC.tieneRuta()}">
+                                        <f:param name="rutaId" value="#{perfilChoferC.getIdRuta()}" />
+                                    </p:button>
                                 </h:form>
                             </div>
                         </div>

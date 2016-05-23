@@ -277,13 +277,14 @@ p{color:#160A4B;text-align: justify;}
     padding-top: 70px;
     padding-left: 40px; 
     /*background-color: #99ccff;*/
-    height: 560px;   
+    height: 560px;  
+    width: 305px;
 }
 
 #bordoM {
     border-color: #000;
     border-width: 10px;
-    padding-top: 57px;
+    padding-top: 10px;
     padding-left: 40px; 
 /*    background-color: #99ccff;*/
     height: 560px; 
@@ -326,7 +327,7 @@ separadorP > .separadorT {
 }
 
 .rogue{
-    padding-top: 45px;
+    padding-top: 25px;
 }
 
 .pestania{
