@@ -152,4 +152,24 @@ public class PerfilL {
         }
     }
 
+    public boolean verificarPasajero(Chofer chofer, Pasajero p) {
+        boolean b = false;
+        try {
+            if (con == null || !con.isOpen()) {
+                con = ConexionBD.getSessionFactory().openSession();
+            }
+            Query query = con.createQuery("from Chofer c join c.automovils a join a.rutas r "
+                    + "join r.pasajeroRutas pr where c.idChofer = :idC and pr.pasajero.idPasajero = :idP");
+            query.setParameter("idC", chofer.getIdChofer());
+            query.setParameter("idP", p.getIdPasajero());
+            List<?> list = query.list();
+            b = list.size() > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            con.close();
+            return b;
+        }
+    }
+
 }

@@ -31,13 +31,19 @@
                                     <p:separator styleClass="separadorP"/>
                                     <h:outputText value="N° Cuenta: #{perfilChoferC.chofer.cnoCuenta}" styleClass="minord"/>
                                     <p:separator styleClass="separadorP"/>
-                                    <h:outputText value="Calificacion" styleClass="minord"/>
+                                    <p:rating value="#{perfilChoferC.getCalificacion()}" stars="10" readonly="true"/>
+
                                     <p:separator styleClass="separadorP"/>
                                 </h:panelGrid>
                                 <div>
                                     <p:button  icon="fa fa-send" value="Mandar mensaje" outcome="MandarMensajeIH" rendered="#{sesionC.verificarTipo() eq false}" >
                                         <f:param name="choferId" value="#{perfilChoferC.chofer.idChofer}" />
                                     </p:button>
+
+                                </div>
+                                <div>
+                                    <p:commandButton value="Califica" rendered="#{sesionC.verificarTipo() eq false and perfilChoferC.verificarPasajero(sesionC.pasajero)}"
+                                                     onclick="PF('dlg#{ruta.idRuta}').show();" />
                                 </div>
                             </div>
                             <div class="col-sm-3" id="bordo">
@@ -95,6 +101,16 @@
                             </div>
                         </div>
                     </section>
+                    <p:dialog header="Califica a #{perfilChoferC.chofer.cnombre}" widgetVar="dlg" modal="true" height="400" width="600">
+                        <p:rating value="#{perfilChoferC.calificacionChofer.calificacion}" stars="10" />
+                        <br></br>
+                        <p:outputLabel for="descripcion" value="Descripción" />
+                        <p:inputTextarea id="descripcion" value="#{perfilChoferC.calificacionChofer.descripcion}" />
+                        <br></br>
+                        <p:commandButton value="Calificar" actionListener="#{perfilChoferC.calificar(sesionC.pasajero)}" onclick="PF('dlg').hide()" update="@form">
+                            <f:param name="choferId" value="#{perfilChoferC.chofer.idChofer}" />
+                        </p:commandButton>
+                    </p:dialog> 
                 </h:form>
             </ui:define>
         </ui:composition>

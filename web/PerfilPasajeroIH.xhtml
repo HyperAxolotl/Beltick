@@ -26,10 +26,24 @@
                                     <h:outputText value="#{perfilPasajeroC.pasajero.pcorreo}"/>
                                     <h:outputText value="#{perfilPasajeroC.pasajero.pnoCuenta}"/>
                                     <h:outputText value="#{perfilPasajeroC.pasajero.pfechaNac}"/>
-                                    <p:button  value="Mandar mensaje" outcome="MandarMensajeIH" rendered="#{sesionC.verificarTipo()}">
+                                    <p:rating value="#{perfilPasajeroC.getCalificacion()}" readonly="true" stars="10" />
+                                    <p:commandButton value="Califica" rendered="#{sesionC.verificarTipo() and perfilPasajeroC.verificarPasajero(sesionC.chofer)}"
+                                                     onclick="PF('dlg').show();" />
+                                    <p:separator styleClass="separadorP"/>
+                                    <p:button value="Mandar mensaje" outcome="MandarMensajeIH" rendered="#{sesionC.verificarTipo()}">
                                         <f:param name="pasajeroId" value="#{perfilPasajeroC.pasajero.idPasajero}" />
                                     </p:button>
                                 </p:panelGrid>
+                                <p:dialog header="Califica a #{perfilPasajeroC.pasajero.pnombre}" widgetVar="dlg" modal="true" height="400" width="600">
+                                    <p:rating value="#{perfilPasajeroC.calificacionPasajero.calificacion}" stars="10" />
+                                    <br></br>
+                                    <p:outputLabel for="descripcion" value="Descripción" />
+                                    <p:inputTextarea id="descripcion" value="#{perfilPasajeroC.calificacionPasajero.descripcion}" />
+                                    <br></br>
+                                    <p:commandButton value="Calificar" actionListener="#{perfilPasajeroC.calificar(sesionC.chofer)}" onclick="PF('dlg').hide()" update="@form">
+                                        <f:param name="pasajeroId" value="#{perfilPasajeroC.pasajero.idPasajero}" />
+                                    </p:commandButton>
+                                </p:dialog> 
                             </div>
                         </div>
                     </section>

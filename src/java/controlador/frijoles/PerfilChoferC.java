@@ -1,5 +1,6 @@
 package controlador.frijoles;
 
+import controlador.logica.CalificacionL;
 import controlador.logica.PerfilL;
 import controlador.logica.RutaL;
 import java.text.SimpleDateFormat;
@@ -11,7 +12,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import modelo.Automovil;
+import modelo.CalificacionChofer;
 import modelo.Chofer;
+import modelo.Pasajero;
 import modelo.PerfilChofer;
 import modelo.Ruta;
 import org.primefaces.model.map.MapModel;
@@ -23,14 +26,19 @@ public class PerfilChoferC {
 
     private Chofer chofer;
     private PerfilL ayudante;
+    private CalificacionL calificacionL;
     private PerfilChofer perfil;
     private Automovil auto;
     private RutaL rutaL = new RutaL();
+    private CalificacionChofer calificacionChofer;
     
     public PerfilChoferC() {
         chofer = new Chofer();
         ayudante = new PerfilL();
+        calificacionL = new CalificacionL();
+        calificacionChofer = new CalificacionChofer();
     }
+    
     //@PostConstruct
     public void init() {
         System.out.println("Chofer..."); 
@@ -78,6 +86,14 @@ public class PerfilChoferC {
     public void setChofer(Chofer chofer) {
         this.chofer = chofer;
     }
+
+    public CalificacionChofer getCalificacionChofer() {
+        return calificacionChofer;
+    }
+
+    public void setCalificacionChofer(CalificacionChofer calificacionChofer) {
+        this.calificacionChofer = calificacionChofer;
+    }
     
     public String fechaReg(){
         SimpleDateFormat dt1 = new SimpleDateFormat("dd-MM-yyyy");
@@ -88,4 +104,16 @@ public class PerfilChoferC {
         return perfil.getCsobreMi().equals("");
     }
     
+    public int getCalificacion() {
+        return calificacionL.getCalificacionChofer(chofer);
+    }
+    
+    public boolean verificarPasajero(Pasajero p) {
+        return ayudante.verificarPasajero(chofer,p);
+    }
+    
+    public String calificar(Pasajero p) {
+        calificacionL.calificarChofer(calificacionChofer,p,chofer);
+        return "PerfilChoferIH";
+    }
 }
