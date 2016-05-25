@@ -67,8 +67,23 @@
                                                 <p:separator styleClass="separadorT"/>
                                             </h:form>
                                         </p:tab>
-                                        <p:tab title="Ruta">
-
+                                        <p:tab title="Horario">
+                                            <h:form rendered="#{perfilChoferC.tieneRuta()}">
+                                                <p:panelGrid columns="2"> 
+                                                    <h:outputLabel value="Lunes" />
+                                                    <h:outputLabel value="#{perfilChoferC.formateaHora(perfilChoferC.horario.lunes)}"/>
+                                                    <h:outputLabel value="Martes"/>
+                                                    <h:outputLabel value="#{perfilChoferC.formateaHora(perfilChoferC.horario.martes)}"/>
+                                                    <h:outputLabel value="Miércoles"/>
+                                                    <h:outputLabel value="#{perfilChoferC.formateaHora(perfilChoferC.horario.miercoles)}"/>
+                                                    <h:outputLabel value="Jueves"/>
+                                                    <h:outputLabel value="#{perfilChoferC.formateaHora(perfilChoferC.horario.jueves)}"/>
+                                                    <h:outputLabel value="Viernes"/>
+                                                    <h:outputLabel value="#{perfilChoferC.formateaHora(perfilChoferC.horario.viernes)}"/>
+                                                    <h:outputLabel value="Sábado"/>
+                                                    <h:outputLabel value="#{perfilChoferC.formateaHora(perfilChoferC.horario.sabado)}"/>
+                                                </p:panelGrid>
+                                            </h:form>
                                         </p:tab>
                                         <p:tab title="Auto" >
                                             <p:button value="Registra tu auto"  outcome="RegistroAutomovilIH" 

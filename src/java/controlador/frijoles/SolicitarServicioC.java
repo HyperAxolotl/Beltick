@@ -5,6 +5,7 @@
  */
 package controlador.frijoles;
 
+import controlador.logica.HorarioL;
 import java.io.Serializable;
 import controlador.logica.RutaL;
 import java.text.SimpleDateFormat;
@@ -33,10 +34,12 @@ public class SolicitarServicioC implements Serializable {
     private Solicitud solicitud;
     private FacesMessage mensaje;
     private Horario horario;
+    private HorarioL horarioL;
     private boolean exito;
 
     public SolicitarServicioC() {
         horario = new Horario();
+        horarioL = new HorarioL();
         ruta = new Ruta();
         ayudante = new RutaL();
         solicitud = new Solicitud();
@@ -98,12 +101,7 @@ public class SolicitarServicioC implements Serializable {
     }
 
     public String formateaHora(Date hora) {
-        String s = "No disponible";
-        if (hora != null) {
-            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-            s = sdf.format(hora);
-        }
-        return s;
+        return horarioL.formateaHora(hora);
     }
     
     //Regresa true si un pasajero ya tiene una ruta registrada para el dia recibido como parametro

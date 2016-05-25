@@ -1,6 +1,7 @@
 package controlador.frijoles;
 
 import controlador.logica.CalificacionL;
+import controlador.logica.HorarioL;
 import controlador.logica.PerfilL;
 import controlador.logica.RutaL;
 import java.io.ByteArrayInputStream;
@@ -16,6 +17,7 @@ import modelo.Automovil;
 import modelo.CalificacionChofer;
 import modelo.Chofer;
 import modelo.Imagen;
+import modelo.Horario;
 import modelo.Pasajero;
 import modelo.PerfilChofer;
 import modelo.Ruta;
@@ -36,24 +38,30 @@ public class PerfilChoferC {
     private RutaL rutaL = new RutaL();
     private CalificacionChofer calificacionChofer;
     private Imagen imagen;
-
+    private Horario horario;
+    private HorarioL horarioL;
+    
     public PerfilChoferC() {
         chofer = new Chofer();
         ayudante = new PerfilL();
         calificacionL = new CalificacionL();
         calificacionChofer = new CalificacionChofer();
+        horarioL = new HorarioL();
+        imagen = new Imagen();
     }
 
     @PostConstruct
     public void init() {
-        System.out.println("Chofer...");
+        System.out.print("Chofer...");
         int id = Integer.parseInt(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("choferId"));
         chofer = ayudante.getChofer(id);
-        System.out.println("Perfil...");
+        System.out.print("Perfil...");
         perfil = (PerfilChofer) chofer.getPerfilChofers().iterator().next();
-        System.out.println("Auto...");
+        System.out.print("Auto...");
         if (tieneRuta()) {
             auto = ayudante.getAutomovil(id);
+            System.out.println("Horario...");
+            horario = extraeHorario();
         }
         imagen = ayudante.getImagenChofer(chofer.getIdChofer());
     }
@@ -66,6 +74,10 @@ public class PerfilChoferC {
         this.imagen = imagen;
     }
 
+    public Horario getHorario() {
+        return horario;
+    }
+    
     public Automovil getAuto() {
         return auto;
     }
@@ -138,5 +150,13 @@ public class PerfilChoferC {
 
     public boolean verificarImagen() {
         return ayudante.getImagenChofer(chofer.getIdChofer()) != null;
+    }
+    
+    public Horario extraeHorario() {
+        return (Horario)getRuta().getHorarios().iterator().next();
+    }
+    
+    public String formateaHora(Date hora) {
+        return horarioL.formateaHora(hora);
     }
 }

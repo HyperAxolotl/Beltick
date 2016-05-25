@@ -30,6 +30,7 @@ public class PerfilPasajeroC {
         ayudante = new PerfilL();
         calificacionL = new CalificacionL();
         calificacionPasajero = new CalificacionPasajero();
+        imagen = new Imagen();
     }
 
     @PostConstruct
