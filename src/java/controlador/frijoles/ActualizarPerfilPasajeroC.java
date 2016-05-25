@@ -10,8 +10,10 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import modelo.Chofer;
+import modelo.Imagen;
 import modelo.Pasajero;
 import modelo.PerfilPasajero;
+import org.primefaces.model.UploadedFile;
 
 @Named(value = "actualizarPerfilPasajeroC")
 @ManagedBean
@@ -24,6 +26,7 @@ public class ActualizarPerfilPasajeroC {
     private PerfilPasajeroL perfilL;
     private String fecha;
     private FacesMessage mensaje;
+    private UploadedFile archivo;
 
     public ActualizarPerfilPasajeroC() {
         pasajeroL = new PasajeroL();
@@ -33,6 +36,14 @@ public class ActualizarPerfilPasajeroC {
         perfil = perfilL.getPerfilPasajero(pasajero.getIdPasajero());
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         fecha = sdf.format(pasajero.getPfechaNac());
+    }
+
+    public UploadedFile getArchivo() {
+        return archivo;
+    }
+
+    public void setArchivo(UploadedFile archivo) {
+        this.archivo = archivo;
     }
 
     public Pasajero getPasajero() {
@@ -60,8 +71,14 @@ public class ActualizarPerfilPasajeroC {
     }
 
     public String actualizarPasajero() {
+        Imagen imagen = null;
+        if (archivo != null) {
+            imagen = new Imagen();
+            imagen.setImagen(archivo.getContents());
+            imagen.setNombre(archivo.getFileName());
+        }
         mensaje = pasajeroL.actualizarPasajero(pasajero);
-        mensaje = perfilL.actualizarPerfilPasajero(perfil);
+        mensaje = perfilL.actualizarPerfilPasajero(perfil, imagen);
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         fecha = sdf.format(pasajero.getPfechaNac());
         if (mensaje != null) {

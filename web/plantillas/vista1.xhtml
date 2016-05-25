@@ -42,7 +42,7 @@
                             <p:menuitem value="Mensajes recibidos" outcome="MostrarMensajesIH" />
                             <p:menuitem value="Administrar solicitudes" outcome="AdministrarSolicitudesIH" />
                             <p:menuitem value="Editar perfil" outcome="ActualizarPerfilChoferIH" />
-                            <p:menuitem value="Cerrar Sesión" action="#{sesionC.cerrarSesion()}" ajax="false" />
+                            <p:menuitem value="Cerrar Sesión" action="#{sesionC.cerrarSesion()}" />
                         </p:submenu>
                         <p:submenu style="float:right;" icon="fa fa-user" rendered="#{sesionC.verificarSesion() and sesionC.verificarTipo() eq false}">
                             <p:menuitem value="Mi perfil" outcome="PerfilPasajeroIH" >

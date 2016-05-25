@@ -11,6 +11,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
 import controlador.logica.SesionL;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.SessionScoped;
 import modelo.Automovil;
@@ -115,15 +118,15 @@ public class SesionC implements Serializable {
         return estado;
     }
 
-    public String cerrarSesion() {
+    public void cerrarSesion() {
         FacesContext.getCurrentInstance().getExternalContext()
                 .invalidateSession();
-        /* is all of this necessary?*/
-        pp = null;
-        pc = null;
-        c = null;
-        p = null;
-        return "PaginaPrincipalIH?faces-redirect=true";
+        try {
+            FacesContext.getCurrentInstance().getExternalContext().redirect("PaginaPrincipalIH.xhtml");
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
     /**
@@ -179,7 +182,7 @@ public class SesionC implements Serializable {
         Chofer tmp = (Chofer) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
         return (Automovil) tmp.getAutomovils().iterator().next();
     }
-    
+
     public boolean tieneAuto() {
         Chofer tmp = (Chofer) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
         return tmp.getAutomovils().size() > 0;
