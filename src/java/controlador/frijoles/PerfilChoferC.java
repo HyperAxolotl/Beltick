@@ -14,6 +14,7 @@ import javax.faces.context.FacesContext;
 import modelo.Automovil;
 import modelo.CalificacionChofer;
 import modelo.Chofer;
+import modelo.Horario;
 import modelo.Pasajero;
 import modelo.PerfilChofer;
 import modelo.Ruta;
@@ -31,6 +32,7 @@ public class PerfilChoferC {
     private Automovil auto;
     private RutaL rutaL = new RutaL();
     private CalificacionChofer calificacionChofer;
+    private Horario horario;
     
     public PerfilChoferC() {
         chofer = new Chofer();
@@ -44,12 +46,21 @@ public class PerfilChoferC {
         System.out.println("Chofer..."); 
         int id = Integer.parseInt(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("choferId"));
         chofer = ayudante.getChofer(id);
-        System.out.println("Perfil...");
+        System.out.print("Perfil...");
         perfil = (PerfilChofer)chofer.getPerfilChofers().iterator().next();
-        System.out.println("Auto...");
-        if(tieneRuta())
+        System.out.print("Auto...");
+        if(tieneRuta()) {
             auto = ayudante.getAutomovil(id);
+            System.out.println("Horario...");
+            horario = extraeHorario();
+        }
     }
+
+    public Horario getHorario() {
+        return horario;
+    }
+    
+    
 
     public Automovil getAuto() {
         return auto;
@@ -115,5 +126,9 @@ public class PerfilChoferC {
     public String calificar(Pasajero p) {
         calificacionL.calificarChofer(calificacionChofer,p,chofer);
         return "PerfilChoferIH";
+    }
+    
+    public Horario extraeHorario() {
+        return (Horario)getRuta().getHorarios().iterator().next();
     }
 }

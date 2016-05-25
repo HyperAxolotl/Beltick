@@ -75,7 +75,7 @@ public class SolicitarServicioC implements Serializable {
         return "";
     }
 
-    @PostConstruct
+    //@PostConstruct
     public void init() {
         ruta = ayudante.getRuta(Integer.parseInt(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("rutaId")));
         horario = (Horario) ruta.getHorarios().iterator().next();

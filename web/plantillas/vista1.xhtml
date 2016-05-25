@@ -36,7 +36,7 @@
                         <p:menuitem value="Explorar perfiles" outcome="ExplorarPerfilesIH" rendered="#{sesionC.verificarSesion()}" />
                         <p:menuitem icon="fa fa-bell" outcome="NotificacionesIH" rendered="#{sesionC.verificarSesion()}" />
                         <p:submenu style="float:right;" rendered="#{sesionC.verificarSesion() and sesionC.verificarTipo()}" icon="fa fa-user">
-                            <p:menuitem value="Mi perfil" outcome="PerfilChoferIH">
+                            <p:menuitem value="Mi perfil: #{sesionC.chofer.cnombre}" outcome="PerfilChoferIH">
                                 <f:param name="choferId" value="#{sesionC.chofer.idChofer}" />
                             </p:menuitem>
                             <p:menuitem value="Mensajes recibidos" outcome="MostrarMensajesIH" />
@@ -45,7 +45,7 @@
                             <p:menuitem value="Cerrar Sesión" action="#{sesionC.cerrarSesion()}" ajax="false" />
                         </p:submenu>
                         <p:submenu style="float:right;" icon="fa fa-user" rendered="#{sesionC.verificarSesion() and sesionC.verificarTipo() eq false}">
-                            <p:menuitem value="Mi perfil" outcome="PerfilPasajeroIH" >
+                            <p:menuitem value="Mi perfil: #{sesionC.pasajero.pnombre}" outcome="PerfilPasajeroIH" >
                                 <f:param name="pasajeroId" value="#{sesionC.pasajero.idPasajero}" />
                             </p:menuitem>
                             <p:menuitem value="Mensajes recibidos" outcome="MostrarMensajesIH" />
