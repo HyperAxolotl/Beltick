@@ -72,7 +72,7 @@ public class ActualizarPerfilPasajeroC {
 
     public String actualizarPasajero() {
         Imagen imagen = null;
-        if (archivo != null) {
+        if (archivo.getSize() > 0) {
             imagen = new Imagen();
             imagen.setImagen(archivo.getContents());
             imagen.setNombre(archivo.getFileName());

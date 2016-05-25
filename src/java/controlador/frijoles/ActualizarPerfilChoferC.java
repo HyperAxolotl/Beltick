@@ -127,7 +127,7 @@ public class ActualizarPerfilChoferC {
 
     public String actualizarChofer() {
         Imagen imagen = null;
-        if (archivo != null) {
+        if (archivo.getSize() > 0) {
             imagen = new Imagen();
             imagen.setImagen(archivo.getContents());
             imagen.setNombre(archivo.getFileName());

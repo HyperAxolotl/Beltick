@@ -1,6 +1,7 @@
 package controlador.logica;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.faces.application.FacesMessage;
 import modelo.ConexionBD;
 import modelo.Horario;
@@ -43,6 +44,12 @@ public class PerfilChoferL implements Serializable {
             }
             trans = con.beginTransaction();
             if (i != null) {
+                Query query = con.createQuery("select img from PerfilChofer p join p.imagen "
+                        + "img where p.idPchofer = " + p.getIdPchofer());
+                List<Imagen> l = query.list();
+                if (!l.isEmpty()) {
+                    con.delete(l.get(0));
+                }
                 con.save(i);
                 p.setImagen(i);
             }

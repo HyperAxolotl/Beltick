@@ -4,7 +4,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pe="http://primefaces.org/ui/extensions">
     <h:body>
         <ui:composition template="plantillas/vista1.xhtml">
             <ui:define name="content">
@@ -12,37 +13,34 @@
                     <div class="row">
                         <div class="col-sm-12" align="center">
                             <h2>Registro Automovil</h2>
-                            <h:messages infoStyle="color:red"/>
-                            <h:form class="form">
-                                <h:panelGrid columns="2">
-                                    <h:outputLabel value="Número de identificación" />
-                                    <p:inputText value="#{automovilC.automovil.noIdentificacion}" />
+                            <!--<h:messages infoStyle="color:red"/>-->
+                            <h:form class="form" id="auto">
+                                <h:panelGrid columns="3">
+                                    <h:outputLabel for="noId" value="Número de identificación" />
+                                    <p:inputText id="noId" value="#{automovilC.automovil.noIdentificacion}" required="true"/>
+                                    <p:message for="noId" display="text" />
 
-                                    <h:outputLabel value="Modelo" />
-                                    <p:inputText value="#{automovilC.automovil.modelo}" />
+                                    <h:outputLabel for="modelo" value="Modelo" />
+                                    <p:inputText id="modelo" value="#{automovilC.automovil.modelo}" required="true"/>
+                                    <p:message for="modelo" display="text" />
 
-                                    <h:outputLabel value="Placa" />
-                                    <p:inputMask value="#{automovilC.automovil.placa}" mask="*99-aaa"/>
+                                    <h:outputLabel for="placa" value="Placa" />
+                                    <p:inputMask id="placa" value="#{automovilC.automovil.placa}" mask="*99-aaa" required="true"/>
+                                    <p:message for="placa" display="text" />
 
-                                    <h:outputLabel value="Color" />
-                                    <p:inputText value="#{automovilC.automovil.color}" />
+                                    <h:outputLabel for="color" value="Color" />
+                                    <p:inputText id="color" value="#{automovilC.automovil.color}" required="true"/>
+                                    <p:message for="color" display="text" />
 
-                                    <h:outputLabel value="Capacidad de pasajeros" />
-                                    <p:inputText value="#{automovilC.automovil.capacidad}" />
-
-                                    <h:outputLabel value="#{sesionC.chofer.ccorreo}" />                  
-
+                                    <h:outputLabel for="capacidad" value="Capacidad de pasajeros" />
+                                    <pe:inputNumber id="capacidad" value="#{automovilC.automovil.capacidad}" emptyValue="empty" required="true" decimalPlaces="0"/>    
+                                    <p:message for="capacidad" display="text" />
+                                    
+                                    <h:outputText value=""/>
+                                    <h:commandButton styleClass="btn btn-info" value="Registrar" action="#{automovilC.registro(sesionC.chofer)}" >
+                                        <f:actionListener binding="#{automovilC.automovil.setChofer(sesionC.chofer)}" />
+                                    </h:commandButton>
                                 </h:panelGrid>
-                                <section class="container">
-                                    <div class="row">
-                                        <div class="col-sm-2">
-                                            
-                                            <h:commandButton styleClass="btn btn-info" value="Registrar" action="#{automovilC.registro(sesionC.chofer)}" >
-                                                <f:actionListener binding="#{automovilC.automovil.setChofer(sesionC.chofer)}" />
-                                            </h:commandButton>
-                                        </div>    
-                                    </div>
-                                </section>
                             </h:form> 
                         </div>
                     </div>

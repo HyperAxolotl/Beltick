@@ -25,7 +25,7 @@
         <property name="color" type="string">
             <column length="32" name="color" not-null="true"/>
         </property>
-        <property name="capacidad" type="int">
+        <property name="capacidad" type="java.lang.Integer">
             <column name="capacidad" not-null="true"/>
         </property>
         <set fetch="select" inverse="true" lazy="true" name="rutas" table="ruta">
