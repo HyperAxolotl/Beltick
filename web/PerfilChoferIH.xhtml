@@ -124,13 +124,13 @@
                             </div>
                         </div>
                     </section>
-                    <p:dialog header="Califica a #{perfilChoferC.chofer.cnombre}" widgetVar="dlg" modal="true" height="400" width="600">
+                    <p:dialog header="Califica a #{perfilChoferC.chofer.cnombre}" widgetVar="dlgc" modal="true" height="400" width="600">
                         <p:rating value="#{perfilChoferC.calificacionChofer.calificacion}" stars="10" />
                         <br></br>
                         <p:outputLabel for="descripcion" value="Descripción" />
                         <p:inputTextarea id="descripcion" value="#{perfilChoferC.calificacionChofer.descripcion}" />
                         <br></br>
-                        <p:commandButton value="Calificar" actionListener="#{perfilChoferC.calificar(sesionC.pasajero)}" onclick="PF('dlg').hide()" update="@form">
+                        <p:commandButton value="Calificar" actionListener="#{perfilChoferC.calificar(sesionC.pasajero)}" onclick="PF('dlgc').hide()" update="@form">
                             <f:param name="choferId" value="#{perfilChoferC.chofer.idChofer}" />
                         </p:commandButton>
                     </p:dialog> 
