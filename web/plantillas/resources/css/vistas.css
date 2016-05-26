@@ -1,0 +1,338 @@
+@import url("bootstrap.css");
+
+/*colorscheme id: #4D51TqxkXw0w0*/
+* {
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#top {
+    position: relative;
+    background-color: transparent;
+    color: white;
+    padding: 5px;
+    margin: 0px 0px 10px 0px;
+}
+
+#top > .navbar-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    border: 0;
+    background: transparent;
+}
+
+#left {
+    float: left;
+    background-color: #ece3a5;
+    padding: 5px;
+    width: 150px;
+}
+
+#left > p{
+    text-align: justify;
+    margin: 5px;
+}
+#left > h2{
+    text-align: center;
+}
+#right {
+    float: right;
+    background-color: #ece3a5;
+    padding: 5px;
+    width: 150px;
+}
+
+/*#content {
+    float: inside;
+    position: relative;
+    margin:0px;
+    padding: 0px;
+    background-color: #cfb9de;
+}*/
+p{
+    text-align: justify;
+    padding: auto;
+    margin: auto;
+}
+
+
+#content .button input[type=submit]{
+    width: 5%;
+    background-color: #0277BD;
+    color: white;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+.center_content {
+    padding-top: 100px;
+    position:absolute;
+    text-align: center;
+    background-color: #dddddd;
+}
+
+.left_content {
+    background-color: #dddddd;
+    padding: 5px;
+    margin-left: 170px;
+}
+
+.right_content {
+    position: absolute;
+    background-color: #dddddd;
+    padding: 5px;
+    margin: 0px 170px 0px 170px;
+}
+
+#top a:link, #top a:visited {
+    color: white;
+    font-weight : bold;
+    text-decoration: none;
+}
+
+#top a:link:hover, #top a:visited:hover  {
+    color: black;
+    font-weight : bold;
+    text-decoration : underline;
+}
+
+
+.container {
+    position: relative;
+    margin: auto;
+    padding: auto;
+}
+
+
+/*para inputs en formularios*/
+.form> .input{
+    position: relative;
+    width: 100%;
+    padding: 10px 20px;
+    margin: 9px 0;
+    display: inline-block;
+    border: 1px solid #ECEFF1;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+
+.alignmentCenter {
+    text-align: center;
+}
+.alignmentLeft {
+    text-align : left;
+}
+.alignmentRight {
+    text-align : right;
+}
+
+/*para barra superior*/
+.navbar {
+    background: transparent;
+    background-color: transparent;
+    background-color: rgba(76,25,112,0.7); 
+    color: whitesmoke;
+    width: 100%;
+    border-radius: 0px;
+    vertical-align: middle;
+}
+/*para el logo*/
+.navbar-brand{
+    padding-top:-20%;
+    padding-left: -10%;
+    padding-bottom: -20%;
+}
+
+/*para el logo*/
+.nav-brand>img {
+    padding: 15px;
+    width: auto;
+    position:relative;
+    vertical-align: central;
+}
+
+.navbar .nav > li > a :hover {
+    color : #BFC7BB;
+}
+
+/*abre menu*/
+.dropdown  {
+    padding-top: 0px;
+    padding-left: -10%;
+    color:whitesmoke;
+}
+
+.dropdown-menu{
+    background-color: #4C1970;
+}
+.dropdown-menu>li>a{
+    background-color: #4C1970;
+    color:whitesmoke;
+}
+.dropdown-menu > li > a:hover{
+    background-color: #8B4DB8; /*morado claro*/
+    color: #63775A;
+}
+
+.form {
+    border-radius: 5px;
+    padding: 30px;
+}
+
+/*might not work*/
+.form input[type=text], .form input[type=password]{
+    text-align: center;
+    width: 100%;
+    padding: 10px 20px;
+    margin: 9px 0;
+    display: inline-block;
+    border: 1px solid #ECEFF1;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/*modificación a los botones de bootstrap*/
+.btn-info{
+    background-color: #81165C; /*morado barney*/
+    border: #81165C;
+    margin: auto;
+    min-width: 100px;
+}
+.btn-info:hover, .btn-info:active{
+    background-color: #540739; /*vino(?))*/
+    border: #540739;
+    margin: auto;
+    min-width: 100px;
+}
+
+.btn-link{
+    background-color: rgba(76,25,112,0.7); /*morado de la barra*/
+    border-radius: 3px;
+    color: whitesmoke;
+}
+
+.btn-link:hover, .btn-link:active{
+    background-color: #2E0849; /*morado oscuro*/
+    color: #BFC7BB;
+}
+
+/*parrafos y encabezados*/
+h2{color:#3F2354;text-align: center;}
+p{color:#160A4B;text-align: justify;}
+
+
+
+/*BLUR*/
+.blur-img {
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+}
+
+.blur-img:hover {
+    -webkit-filter: blur(5px);
+}
+
+/** Growl... Entre la arena y el mar (8)*/
+.ui-growl {
+    position: absolute;
+    padding: auto;
+    margin: auto;
+    right: 77%;
+    top: 10%;
+    /*background: #540739;*/
+}
+
+
+.carousel, .slide{
+    padding-top: 0px;
+    margin-top: 0px;
+}
+
+/*Carlos*/
+.imagene {
+    border-radius: 15px;
+    border:2px solid #0277BD;
+    top: 10%;
+}
+
+#borde{
+    padding-top: 10px;
+    /*background-color:  #dddddd;*/
+    height: 570px;
+    border-color: #0277BD;
+}
+
+#bordo {
+    border-color: #160A4B;
+    border-width: 10px;
+    padding-top: 70px;
+    padding-left: 40px; 
+    /*background-color: #99ccff;*/
+    height: 560px;  
+    width: 305px;
+}
+
+#bordoM {
+    border-color: #000;
+    border-width: 10px;
+    padding-top: 10px;
+    padding-left: 40px; 
+/*    background-color: #99ccff;*/
+    height: 560px; 
+    width: 550px;
+}
+
+#bordoT{
+    border-color: #160A4B;
+    border-width: 10px;
+    padding-top: 10px;
+    padding-left: 30px; 
+    /*background-color: #99ccff;*/
+    
+    height: 560px; 
+    width: 100px;
+}
+.separadorP {
+    border-color: #0277BD;
+    background-color: #0277BD;
+    height:0px;
+    width: 230px;
+}
+
+separadorP > .separadorT {
+    width: 100px;
+}
+
+.data {
+    font-size: x-large;
+}
+
+.minord {
+    position: relative;
+    font-size: large;
+}
+
+#opPerfil{
+    width: 50%;
+    margin: 0 auto; 
+}
+
+.rogue{
+    padding-top: 25px;
+}
+
+.pestania{
+}
+
+.serFeliz{
+    text-align: right;
+}
