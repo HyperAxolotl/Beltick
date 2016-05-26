@@ -47,34 +47,6 @@ public class RutaL implements Serializable {
         return lstRutas;
     }
 
-    public FacesMessage registrar(Ruta r, Horario h) {
-        FacesMessage mensaje = null;
-        try {
-            if (con == null || !con.isOpen()) {
-                con = ConexionBD.getSessionFactory().openSession();
-            }
-            trans = con.beginTransaction();
-            Date fecha = new Date();
-            String mapa = FacesContext.getCurrentInstance().
-                    getExternalContext().getRequestParameterMap().get("mapa");
-            r.setMapa(mapa);
-            r.setActiva(true);
-            r.setFechaCreacion(fecha);
-            con.save(r);
-            h.setRuta(r);
-            con.save(h);
-            trans.commit();
-        } catch (Exception e) {
-            trans.rollback();
-            mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "Error con el registro de la ruta", null);
-            e.printStackTrace();
-        } finally {
-            con.close();
-            return mensaje;
-        }
-
-    }
-
     public FacesMessage solicitar(Pasajero p, Ruta r, String[] dias) {
         FacesMessage mensaje = null;
         try {

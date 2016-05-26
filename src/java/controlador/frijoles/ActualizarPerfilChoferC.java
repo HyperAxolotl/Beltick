@@ -5,6 +5,7 @@ import controlador.logica.ChoferL;
 import controlador.logica.HorarioL;
 import controlador.logica.PerfilChoferL;
 import controlador.logica.RutaL;
+import java.io.ByteArrayInputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.annotation.PostConstruct;
@@ -17,8 +18,10 @@ import javax.faces.context.FacesContext;
 import modelo.Automovil;
 import modelo.Chofer;
 import modelo.Horario;
+import modelo.Imagen;
 import modelo.PerfilChofer;
 import modelo.Ruta;
+import org.primefaces.model.UploadedFile;
 import org.primefaces.model.map.DefaultMapModel;
 import org.primefaces.model.map.MapModel;
 
@@ -26,7 +29,7 @@ import org.primefaces.model.map.MapModel;
 @ManagedBean
 @ViewScoped
 public class ActualizarPerfilChoferC {
-    
+
     private Chofer chofer;
     private Automovil automovil;
     private Horario horario;
@@ -40,9 +43,10 @@ public class ActualizarPerfilChoferC {
     private FacesMessage mensaje;
     private String fecha;
     private MapModel modeloMapa;
+    private UploadedFile archivo;
 
     public ActualizarPerfilChoferC() {
-        chofer = (Chofer)FacesContext.getCurrentInstance().getExternalContext()
+        chofer = (Chofer) FacesContext.getCurrentInstance().getExternalContext()
                 .getSessionMap().get("usuario");
         choferL = new ChoferL();
         automovilL = new AutomovilL();
@@ -51,10 +55,18 @@ public class ActualizarPerfilChoferC {
         perfilL = new PerfilChoferL();
         automovil = automovilL.getAutomovil(chofer.getIdChofer());
         ruta = rutaL.getAutomovilRuta(automovil.getIdAutomovil());
-        horario = horarioL.getHorario(ruta.getIdRuta()); 
+        horario = horarioL.getHorario(ruta.getIdRuta());
         perfil = perfilL.getPerfilChofer(chofer.getIdChofer());
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         fecha = sdf.format(chofer.getCfechaNac());
+    }
+
+    public UploadedFile getArchivo() {
+        return archivo;
+    }
+
+    public void setArchivo(UploadedFile archivo) {
+        this.archivo = archivo;
     }
 
     public MapModel getModeloMapa() {
@@ -64,7 +76,7 @@ public class ActualizarPerfilChoferC {
     public void setModeloMapa(MapModel modeloMapa) {
         this.modeloMapa = modeloMapa;
     }
-    
+
     public Chofer getChofer() {
         return chofer;
     }
@@ -112,10 +124,16 @@ public class ActualizarPerfilChoferC {
     public void setAutomovil(Automovil automovil) {
         this.automovil = automovil;
     }
-    
+
     public String actualizarChofer() {
+        Imagen imagen = null;
+        if (archivo.getSize() > 0) {
+            imagen = new Imagen();
+            imagen.setImagen(archivo.getContents());
+            imagen.setNombre(archivo.getFileName());
+        }
         mensaje = choferL.actualizarChofer(chofer);
-        mensaje = perfilL.actualizarPerfilChofer(perfil);
+        mensaje = perfilL.actualizarPerfilChofer(perfil, imagen);
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         fecha = sdf.format(chofer.getCfechaNac());
         if (mensaje != null) {
@@ -137,7 +155,7 @@ public class ActualizarPerfilChoferC {
         FacesContext.getCurrentInstance().addMessage(null, mensaje);
         return "";
     }
-    
+
     public String actualizarRuta() {
         mensaje = rutaL.actualizar(ruta);
         modeloMapa = new DefaultMapModel();
@@ -149,7 +167,7 @@ public class ActualizarPerfilChoferC {
         FacesContext.getCurrentInstance().addMessage(null, mensaje);
         return "";
     }
-    
+
     public String actualizarHorario() {
         mensaje = horarioL.actualizarHorario(horario);
         if (mensaje != null) {

@@ -9,6 +9,7 @@ import java.util.List;
 import modelo.Automovil;
 import modelo.Chofer;
 import modelo.ConexionBD;
+import modelo.Imagen;
 import modelo.Pasajero;
 import modelo.PerfilChofer;
 import modelo.PerfilPasajero;
@@ -77,6 +78,38 @@ public class PerfilL {
         Automovil a = (Automovil)c.getAutomovils().iterator().next();
         con.close();
         return a;
+    }
+    
+    public Imagen getImagenChofer(int idChofer){
+         if (con == null || !con.isOpen()) {
+            con = ConexionBD.getSessionFactory().openSession();
+        }
+        Query query = con.createQuery("select img from Chofer c join c.perfilChofers p join p.imagen "
+                + "img where c.idChofer = " + idChofer);
+        List<Imagen> list = query.list();
+        if(list.isEmpty()) {
+            con.close();
+            return null;
+        }
+        Imagen img = list.get(0);
+        con.close();
+        return img;
+    }
+    
+    public Imagen getImagenPasajero(int idPasajero){
+         if (con == null || !con.isOpen()) {
+            con = ConexionBD.getSessionFactory().openSession();
+        }
+        Query query = con.createQuery("select img from Pasajero p join p.perfilPasajeros pp join pp.imagen "
+                + "img where p.idPasajero = " + idPasajero);
+        List<Imagen> list = query.list();
+        if(list.isEmpty()) {
+            con.close();
+            return null;
+        }
+        Imagen img = list.get(0);
+        con.close();
+        return img;
     }
     
     public Ruta getRuta(int id){

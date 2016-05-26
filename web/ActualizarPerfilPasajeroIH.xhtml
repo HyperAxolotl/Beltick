@@ -11,14 +11,14 @@
     <h:body>
         <ui:composition template="plantillas/vista2.xhtml">
             <ui:define name="content">
-                <h:form>			
+                <h:form enctype="multipart/form-data">			
                     <section class="container">
                         <p:tabView>
                             <p:tab title="Perfil">
                                 <p:panelGrid columns="2">  
 
-                                    <h:outputLabel for="nombre" value="Imagen:" />
-                                    <p:graphicImage library="imagenes" name="foto_usuario/usuario.png" width="80px" height="80px" />
+                                    <p:outputLabel for="imagen" value="Imágen" />
+                                    <p:fileUpload id="imagen" value="#{actualizarPerfilPasajeroC.archivo}" mode="simple" label="Subir imágen" cancelLabel="Cancelar" sizeLimit="1024" />
 
                                     <h:outputLabel for="nombre" value="Nombre:" />
                                     <p:inplace id="nombre" editor="true" >

@@ -1,6 +1,8 @@
 package controlador.logica;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.faces.application.FacesMessage;
 import modelo.Chofer;
 import modelo.ConexionBD;
@@ -50,5 +52,14 @@ public class HorarioL implements Serializable {
             con.close();
             return a;
         }
+    }
+    
+    public String formateaHora(Date hora) {
+        String s = "No disponible";
+        if (hora != null) {
+            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+            s = sdf.format(hora);
+        }
+        return s;
     }
 }
