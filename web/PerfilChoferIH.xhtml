@@ -26,10 +26,10 @@
                                     <p:graphicImage id="imagene" library="imagenes" name="foto_usuario/usuario.png" width="230px" height="230px"  styleClass="imagene"/>
                                     <p:tooltip id="toolTip" for="imagene" value="#{perfilChoferC.chofer.cnombre} #{perfilChoferC.chofer.capp} #{perfilChoferC.chofer.capm}" />
                                 </c:if>
-                                <c:otherwise>
+                                <c:if test="#{perfilChoferC.verificarImagen()}" >
                                     <o:graphicImage id="img" value="#{imagenC.getImagen(perfilChoferC.imagen.idImagen)}" height="230px" width="230px" />
                                     <p:tooltip id="toolTipTrack" for="img" value="#{perfilChoferC.chofer.cnombre} #{perfilChoferC.chofer.capp} #{perfilChoferC.chofer.capm}" />
-                                </c:otherwise>
+                                </c:if>
                                 <h:outputText value=""/>
                                 <!--/f:facet-->
                                 <h:panelGrid columns="1">         
