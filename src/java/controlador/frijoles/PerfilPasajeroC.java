@@ -2,6 +2,7 @@ package controlador.frijoles;
 
 import controlador.logica.CalificacionL;
 import controlador.logica.PerfilL;
+import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
@@ -17,7 +18,7 @@ import modelo.Pasajero;
 @Named(value = "perfilPasajeroC")
 @ManagedBean
 @ViewScoped
-public class PerfilPasajeroC {
+public class PerfilPasajeroC implements Serializable {
 
     private Pasajero pasajero;
     private CalificacionL calificacionL;

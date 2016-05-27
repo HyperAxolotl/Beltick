@@ -142,29 +142,12 @@ public class SesionC implements Serializable {
         return false;
     }
 
-    public String verPerfil() {
-        if (verificarTipo()) {
-            return "inicioChofer?faces-redirect=true";
-        }
-        return "inicioPasajero?faces-redirect=true";
-    }
-
     private void getPerfil() {
         if (verificarTipo()) {
             pc = (PerfilChofer) c.getPerfilChofers().iterator().next();
         } else {
             pp = (PerfilPasajero) p.getPerfilPasajeros().iterator().next();
         }
-    }
-
-    public String rutaIMG() {
-//        getPerfil();
-//        if(pc != null) {
-//            return pc.getCfoto();
-//        }
-//        if(pp != null)
-//            return pp.getPfoto();
-        return "";
     }
 
     public String descripcion() {

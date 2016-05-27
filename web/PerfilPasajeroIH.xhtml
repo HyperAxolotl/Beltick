@@ -25,17 +25,19 @@
                                         <p:graphicImage id="imagene" library="imagenes" name="foto_usuario/usuario.png" width="230px" height="230px"  styleClass="imagene"/>
                                         <p:tooltip id="toolTip" for="imagene" value="#{perfilPasajeroC.pasajero.pnombre} #{perfilPasajeroC.pasajero.papp} #{perfilPasajeroC.pasajero.papm}" />
                                     </c:if>
-                                    <c:otherwise>
+                                    <c:if test="#{perfilPasajeroC.verificarImagen()}">
                                         <o:graphicImage id="img" value="#{imagenC.getImagen(perfilPasajeroC.imagen.idImagen)}" height="230px" width="230px" />
                                         <p:tooltip id="toolTipTrack" for="img" value="#{perfilPasajeroC.pasajero.pnombre} #{perfilPasajeroC.pasajero.papp} #{perfilPasajeroC.pasajero.papm}" />
-                                    </c:otherwise>
+                                    </c:if>
                                     <h:outputText value="#{perfilPasajeroC.pasajero.pnombre} #{perfilPasajeroC.pasajero.papp} #{perfilPasajeroC.pasajero.papm}" />
                                     <h:outputText value="#{perfilPasajeroC.pasajero.pcorreo}"/>
                                     <h:outputText value="#{perfilPasajeroC.pasajero.pnoCuenta}"/>
                                     <h:outputText value="#{perfilPasajeroC.pasajero.pfechaNac}"/>
                                     <p:rating value="#{perfilPasajeroC.getCalificacion()}" readonly="true" stars="10" />
                                     <p:commandButton value="Califica" rendered="#{sesionC.verificarTipo() and perfilPasajeroC.verificarPasajero(sesionC.chofer)}"
-                                                     onclick="PF('dlg').show();" />
+                                                     onclick="PF('dlg').show();">
+                                        <f:param name="pasajeroId" value="#{perfilPasajeroC.pasajero.idPasajero}" />
+                                    </p:commandButton>
                                     <p:separator styleClass="separadorP"/>
                                     <p:button value="Mandar mensaje" outcome="MandarMensajeIH" rendered="#{sesionC.verificarTipo()}">
                                         <f:param name="pasajeroId" value="#{perfilPasajeroC.pasajero.idPasajero}" />

@@ -1,6 +1,7 @@
 package controlador.frijoles;
 
 import controlador.logica.PerfilL;
+import java.io.Serializable;
 import modelo.PerfilPasajero;
 import modelo.PerfilChofer;
 import java.util.List;
@@ -14,7 +15,7 @@ import javax.faces.bean.ViewScoped;
  */
 @ManagedBean
 @ViewScoped
-public class PerfilC {
+public class PerfilC implements Serializable {
 
     private List<PerfilPasajero> pasajeros;
     private List<PerfilChofer> choferes;

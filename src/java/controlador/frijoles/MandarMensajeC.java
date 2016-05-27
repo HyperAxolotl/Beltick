@@ -1,6 +1,7 @@
 package controlador.frijoles;
 
 import controlador.logica.MensajeL;
+import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
@@ -17,7 +18,7 @@ import modelo.Pasajero;
 @Named(value = "mandarMensajeC")
 @ManagedBean
 @ViewScoped
-public class MandarMensajeC {
+public class MandarMensajeC implements Serializable {
 
     private MensajeChofer mensajeC;
     private MensajePasajero mensajeP;

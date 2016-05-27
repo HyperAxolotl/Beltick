@@ -5,6 +5,7 @@ import controlador.logica.HorarioL;
 import controlador.logica.PerfilL;
 import controlador.logica.RutaL;
 import java.io.ByteArrayInputStream;
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.annotation.PostConstruct;
@@ -28,7 +29,7 @@ import org.primefaces.model.map.MapModel;
 @Named(value = "perfilChoferC")
 @ManagedBean
 @ViewScoped
-public class PerfilChoferC {
+public class PerfilChoferC implements Serializable {
 
     private Chofer chofer;
     private PerfilL ayudante;

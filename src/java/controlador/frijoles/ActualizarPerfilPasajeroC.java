@@ -2,6 +2,7 @@ package controlador.frijoles;
 
 import controlador.logica.PasajeroL;
 import controlador.logica.PerfilPasajeroL;
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
@@ -18,7 +19,7 @@ import org.primefaces.model.UploadedFile;
 @Named(value = "actualizarPerfilPasajeroC")
 @ManagedBean
 @ViewScoped
-public class ActualizarPerfilPasajeroC {
+public class ActualizarPerfilPasajeroC implements Serializable {
 
     private Pasajero pasajero;
     private PerfilPasajero perfil;

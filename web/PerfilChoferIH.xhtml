@@ -51,7 +51,9 @@
                                 </div>
                                 <div>
                                     <p:commandButton value="Califica" rendered="#{sesionC.verificarTipo() eq false and perfilChoferC.verificarPasajero(sesionC.pasajero)}"
-                                                     onclick="PF('dlg#{ruta.idRuta}').show();" />
+                                                     onclick="PF('dlgc').show();" >
+                                        <f:param name="choferId" value="#{perfilChoferC.chofer.idChofer}" />
+                                    </p:commandButton>
                                 </div>
                             </div>
                             <div class="col-sm-3" id="bordo">
@@ -110,8 +112,10 @@
                                 <h:form rendered="#{perfilChoferC.tieneRuta()}">
                                     <h3 align="center">Mapa</h3>
                                     <p:gmap id="gmap" center="19.3241874,-99.1789797" zoom="12" type="ROADMAP" style="width:500px;height:400px" model="#{perfilChoferC.getModeloMapa()}" />
-                                    <p:commandButton icon="fa fa-search-plus" value="Expandir" onclick="PF('dlg').show();" style="align-content: center;"/>
-                                    <p:dialog header="Ruta de " widgetVar="dlg" modal="true" height="500px" width="1000px">
+                                    <p:commandButton icon="fa fa-search-plus" value="Expandir" onclick="PF('dlg').show();" style="align-content: center;">
+                                        <f:param name="choferId" value="#{perfilChoferC.chofer.idChofer}" />
+                                    </p:commandButton>
+                                    <p:dialog header="Ruta de #{perfilChoferC.chofer.cnombre}" widgetVar="dlg" modal="true" height="500px" width="1000px">
                                         <p:gmap id="gmap-dlg" center="19.3241874,-99.1789797" zoom="12" type="ROADMAP" style="width:100%;height:100%" model="#{perfilChoferC.getModeloMapa()}" />
                                     </p:dialog>
                                     <p:button icon="fa fa-automobile" value="Solicitar Servicio" outcome="SolicitarServicioIH" rendered="#{sesionC.verificarTipo() eq false and perfilChoferC.tieneRuta()}">
