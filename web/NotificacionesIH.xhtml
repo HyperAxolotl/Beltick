@@ -19,6 +19,7 @@
 
                             <h:form id="notificaciones">
 
+                                <h:outputText value="Tienes #{sesionC.notificacionesNuevas} notificaciones nuevas" style="color: lightseagreen;"/>
                                 <p:dataTable id="tablaNotificacionesC" value="#{notificacionC.lstNotificacionesC}" 
                                              var="notificacion" widgetVar="tablaNotificacionesC" rendered="#{sesionC.verificarSesion() &amp;&amp; sesionC.verificarTipo()}" 
                                              rows="10" style="margin-bottom:20px" >

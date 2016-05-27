@@ -1,7 +1,11 @@
-.ui-menu, .ui-menu .ui-menu-child {
+.ui-menu {
     background: #0f0f0f;
     border: 0px;
     color: white;
+}
+
+.ui-menu.ui-menu-child {
+    background: none;
 }
 
 .ui-menuitem-link.ui-submenu-link.ui-corner-all.ui-state-hover,
@@ -48,3 +52,6 @@
     background: #fff;
 }
 
+.ui-menu.ui-menubar.ui-widget.ui-widget-content.ui-corner-all.ui-helper-clearfix.barra-nav {
+    background: none;
+}

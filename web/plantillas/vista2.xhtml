@@ -26,6 +26,7 @@
             <ui:insert name="top">
 
                 <h:form>
+                    
                     <p:menubar styleClass="barra-nav" autoDisplay="false">
                         <p:menuitem style="margin-top:-20px" >
                             <h:link outcome="PaginaPrincipalIH">
@@ -34,7 +35,7 @@
                         </p:menuitem>
                         <p:menuitem style="position: absolute; right: 100px;" value="Explorar rutas" outcome="ExplorarRutasIH" rendered="#{sesionC.verificarSesion()}" />
                         <p:menuitem style="position: absolute; right: 225px;" value="Explorar perfiles" outcome="ExplorarPerfilesIH" rendered="#{sesionC.verificarSesion()}" />
-                        <p:menuitem style="position: absolute; right: 60px;" icon="fa fa-bell" outcome="NotificacionesIH" rendered="#{sesionC.verificarSesion()}" />
+                        <p:menuitem style="position: absolute; right: 60px;" icon="fa fa-bell" action="#{sesionC.notificacionesVistas()}" rendered="#{sesionC.verificarSesion()}" />
                         <p:submenu style="float:right;" rendered="#{sesionC.verificarSesion() and sesionC.verificarTipo()}" icon="fa fa-user">
                             <p:menuitem value="Mi perfil: #{sesionC.chofer.cnombre}" outcome="PerfilChoferIH">
                                 <f:param name="choferId" value="#{sesionC.chofer.idChofer}" />
@@ -63,6 +64,7 @@
                         </p:submenu>
                     </p:menubar>
                 </h:form>
+                <h:graphicImage library="imagenes" name="circulo.png" style="width:27px;height:21px;position: absolute; right: 55px;top:0px;" rendered="#{sesionC.verificarNotificacionesNuevas()}"/>
             </ui:insert>
             <ui:insert name="content">
 
