@@ -42,6 +42,7 @@
                             <h:link outcome="PaginaPrincipalIH">
                                 <h:graphicImage library="imagenes" name="logobelt.png" style="max-width:140px;float:left;margin-top: 13px;"/>
                             </h:link>
+
                         </a>
                     </div>
                     <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
@@ -50,7 +51,7 @@
                             <p:menubar styleClass="barra-nav" autoDisplay="false">
                                 <p:menuitem style="position: absolute; right: 100px;" value="Explorar rutas" outcome="ExplorarRutasIH" rendered="#{sesionC.verificarSesion()}" />
                                 <p:menuitem style="position: absolute; right: 225px;" value="Explorar perfiles" outcome="ExplorarPerfilesIH" rendered="#{sesionC.verificarSesion()}" />
-                                <p:menuitem style="position: absolute; right: 60px;" icon="fa fa-bell" outcome="NotificacionesIH" rendered="#{sesionC.verificarSesion()}" />
+                                <p:menuitem style="position: absolute; right: 60px;" icon="fa fa-bell" action="#{sesionC.notificacionesVistas()}" rendered="#{sesionC.verificarSesion()}" />
                                 <p:submenu style="float:right;" rendered="#{sesionC.verificarSesion() and sesionC.verificarTipo()}" icon="fa fa-user">
                                     <p:menuitem value="Mi perfil: #{sesionC.chofer.cnombre}" outcome="PerfilChoferIH">
                                         <f:param name="choferId" value="#{sesionC.chofer.idChofer}" />
@@ -80,11 +81,11 @@
                             </p:menubar>
                         </h:form>
 
-
+                        <h:graphicImage library="imagenes" name="circulo.png" style="width:27px;height:21px;position: absolute; right: 70px;top:0px; z-index: 10;" rendered="#{sesionC.verificarNotificacionesNuevas()}"/>
                     </div>
                 </div>
             </nav>
-            
+
             <ui:insert name="top">
 
 
@@ -92,7 +93,7 @@
             <ui:insert name="content">
 
             </ui:insert> 
-            
+
         </h:body>
     </f:view>
 </html>
