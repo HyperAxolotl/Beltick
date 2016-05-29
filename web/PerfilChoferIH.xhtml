@@ -31,8 +31,12 @@
                                     <p:separator styleClass="separadorP"/>
                                     <h:outputText value="N° Cuenta: #{perfilChoferC.chofer.cnoCuenta}" styleClass="minord"/>
                                     <p:separator styleClass="separadorP"/>
-                                    <p:rating value="#{perfilChoferC.getCalificacion()}" stars="10" readonly="true"/>
-
+                                    <p:rating value="#{perfilChoferC.getCalificacion()}" stars="10" readonly="true"/> 
+                                    
+                                    <p:commandButton actionListener="#{perfilChoferC.listarCalificaciones()}" id="estrellas" onclick="PF('califs').show();" icon="fa fa-plus"> 
+                                        <f:param name="choferId" value="#{perfilChoferC.chofer.idChofer}" />
+                                    </p:commandButton> 
+                                    
                                     <p:separator styleClass="separadorP"/>
                                 </h:panelGrid>
                                 <div>
@@ -102,7 +106,7 @@
                                 <h:form rendered="#{perfilChoferC.tieneRuta()}">
                                     <h3 align="center">Mapa</h3>
                                     <p:gmap id="gmap" center="19.3241874,-99.1789797" zoom="12" type="ROADMAP" style="width:500px;height:400px" model="#{perfilChoferC.getModeloMapa()}" />
-                                    <p:commandButton icon="fa fa-search-plus" value="Expandir" onclick="PF('dlg').show();" style="align-content: center;"/>
+                                    <p:commandButton icon="fa fa-search-plus" value="Expandir" onclick="PF('califs').show();" style="align-content: center;"/>
                                     <p:dialog header="Ruta de " widgetVar="dlg" modal="true" height="500px" width="1000px">
                                         <p:gmap id="gmap-dlg" center="19.3241874,-99.1789797" zoom="12" type="ROADMAP" style="width:100%;height:100%" model="#{perfilChoferC.getModeloMapa()}" />
                                     </p:dialog>
@@ -116,6 +120,7 @@
                             </div>
                         </div>
                     </section>
+
                     <p:dialog header="Califica a #{perfilChoferC.chofer.cnombre}" widgetVar="dlg" modal="true" height="400" width="600">
                         <p:rating value="#{perfilChoferC.calificacionChofer.calificacion}" stars="10" />
                         <br></br>
@@ -126,6 +131,27 @@
                             <f:param name="choferId" value="#{perfilChoferC.chofer.idChofer}" />
                         </p:commandButton>
                     </p:dialog> 
+                    <!--Aqui comienza-->
+                    <p:dialog modal="true" widgetVar="califs" draggable="false" hideEffect="fade" style="align-content: center;" closable="true" rendered="true" height="500px" width="500px">
+                        <!--h:outputText value="Exito!!"/-->
+                        <p:dataTable value="#{perfilChoferC.calificaciones}" paginator="true" paginatorPosition="bottom" var="cc" rows="3">
+                            <p:column headerText="Nombre Pasajero">
+                                <p:link value="#{cc.pasajero.pnombre} #{cc.pasajero.papp}" outcome="PerfilPasajeroIH" >
+                                    <f:param name="pasajeroId" value="#{cc.pasajero.idPasajero}" />
+                                </p:link>
+                            </p:column>
+                            <p:column headerText="Descripción"> 
+                                <p:outputLabel value="#{cc.descripcion}"/>
+                            </p:column>
+                            <p:column headerText="Calificación"> 
+                                <p:rating value="#{cc.calificacion}" stars="5" cancel="false"/>
+                            </p:column>
+                            <p:column headerText="Fecha"> 
+                                <p:outputLabel value="#{perfilChoferC.formateoDia(cc.fecha)}"/>
+                            </p:column>
+                        </p:dataTable>
+                    </p:dialog>
+                    <!--Aqui termina-->
                 </h:form>
             </ui:define>
         </ui:composition>

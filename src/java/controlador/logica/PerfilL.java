@@ -62,39 +62,6 @@ public class PerfilL {
         }
 
     }
-    
-    public Automovil getAutomovil(int id){
-         if (con == null || !con.isOpen()) {
-            con = ConexionBD.getSessionFactory().openSession();
-        }
-        Query query = con.createQuery("from Chofer where idChofer = "+id);
-        List<?> list = query.list();
-        if(list.isEmpty()) {
-            con.close();
-            return null;
-        }
-        Chofer c = (Chofer)list.get(0);
-        Automovil a = (Automovil)c.getAutomovils().iterator().next();
-        con.close();
-        return a;
-    }
-    
-    public Ruta getRuta(int id){
-         if (con == null || !con.isOpen()) {
-            con = ConexionBD.getSessionFactory().openSession();
-        }
-        Query query = con.createQuery("from Ruta where id_automovil = "+id);
-        List<?> list = query.list();
-        if(list.isEmpty()) {
-            con.close();
-            System.out.println("No hay ruta para el auto "+id);
-            return null;
-        }
-        Ruta r = (Ruta)list.get(0);
-        con.close();
-        System.out.println("Ruta para el auto "+id);
-        return r;
-    }
 
     public Pasajero getPasajero(int id) {
         if (con == null || !con.isOpen()) {
@@ -103,53 +70,6 @@ public class PerfilL {
         Pasajero p = (Pasajero) con.get(Pasajero.class, id);
         con.close();
         return p;
-    }
-
-    public Chofer getChofer(int id) {
-        if (con == null || !con.isOpen()) {
-            con = ConexionBD.getSessionFactory().openSession();
-        }
-        Chofer ch = (Chofer) con.get(Chofer.class, id);
-        con.close();
-        return ch;
-    }
-
-    public boolean tieneRuta(Chofer c) {
-        boolean b = false;
-        try {
-            if (con == null || !con.isOpen()) {
-                con = ConexionBD.getSessionFactory().openSession();
-            }
-            Query query = con.createQuery("select r from Chofer c join c.automovils a join a.rutas r where c.idChofer = :id");
-            query.setParameter("id", c.getIdChofer());
-            List<?> list = query.list();
-            b = !list.isEmpty();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            con.close();
-            return b;
-        }
-    }
-
-    public int getIdRuta(Chofer c) {
-        int id = -1;
-        try {
-            if (con == null || !con.isOpen()) {
-                con = ConexionBD.getSessionFactory().openSession();
-            }
-            Query query = con.createQuery("select r.idRuta from Chofer c join c.automovils a join a.rutas r where c.idChofer = :id");
-            query.setParameter("id", c.getIdChofer());
-            List<?> list = query.list();
-            if (!list.isEmpty()) {
-                id = (Integer) list.get(0);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            con.close();
-            return id;
-        }
     }
 
     public boolean verificarPasajero(Chofer chofer, Pasajero p) {

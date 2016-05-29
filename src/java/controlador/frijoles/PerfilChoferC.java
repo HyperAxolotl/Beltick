@@ -1,10 +1,12 @@
 package controlador.frijoles;
 
 import controlador.logica.CalificacionL;
+import controlador.logica.PerfilChoferL;
 import controlador.logica.PerfilL;
 import controlador.logica.RutaL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
@@ -26,17 +28,20 @@ import org.primefaces.model.map.MapModel;
 public class PerfilChoferC {
 
     private Chofer chofer;
-    private PerfilL ayudante;
+    private PerfilChoferL ayudante;
     private CalificacionL calificacionL;
     private PerfilChofer perfil;
+    private PerfilL perfilL;
     private Automovil auto;
     private RutaL rutaL = new RutaL();
     private CalificacionChofer calificacionChofer;
     private Horario horario;
+    private List<CalificacionChofer> calificaciones;
     
     public PerfilChoferC() {
         chofer = new Chofer();
-        ayudante = new PerfilL();
+        ayudante = new PerfilChoferL();
+        perfilL = new PerfilL();
         calificacionL = new CalificacionL();
         calificacionChofer = new CalificacionChofer();
     }
@@ -59,8 +64,11 @@ public class PerfilChoferC {
     public Horario getHorario() {
         return horario;
     }
-    
-    
+
+    public List<CalificacionChofer> getCalificaciones() {
+        calificaciones = ayudante.listarCalificaciones(chofer.getIdChofer());
+        return calificaciones;
+    }
 
     public Automovil getAuto() {
         return auto;
@@ -120,7 +128,7 @@ public class PerfilChoferC {
     }
     
     public boolean verificarPasajero(Pasajero p) {
-        return ayudante.verificarPasajero(chofer,p);
+        return perfilL.verificarPasajero(chofer,p);
     }
     
     public String calificar(Pasajero p) {
@@ -130,5 +138,16 @@ public class PerfilChoferC {
     
     public Horario extraeHorario() {
         return (Horario)getRuta().getHorarios().iterator().next();
+    }
+    
+    public String formateoDia(Date d){
+        SimpleDateFormat dt1 = new SimpleDateFormat("dd-MM-yyyy");
+        return dt1.format(d);
+    }
+    
+    /**Deprecated xd*/
+    public void listarCalificaciones() {
+        calificaciones = ayudante.listarCalificaciones(chofer.getIdChofer());
+        System.out.println("Estamos aqui...");
     }
 }
