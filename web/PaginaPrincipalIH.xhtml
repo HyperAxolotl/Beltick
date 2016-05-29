@@ -63,7 +63,9 @@
                             <div class="col-lg-8 col-lg-offset-2">
                                 <h2>Beltick</h2>
                                 <p class="intro-text" >Olvidate del transporte público</p>
-                                <a href="RegistroPasajeroIH.xhtml" class="btn btn-default btn-lg">Registrate como pasajero</a>
+                                <c:if test="#{!sesionC.verificarSesion()}">
+                                    <a href="RegistroPasajeroIH.xhtml" class="btn btn-default btn-lg">Registrate como pasajero</a>
+                                </c:if>
                             </div>
                         </div>
                     </div>

@@ -84,5 +84,9 @@ public class AdministrarSolicitudesC implements Serializable {
     public boolean verificarDisponibilidad(Solicitud s) {
         return ayudante.verificarDisponibilidad(s.getId().getIdRuta(), s.getId().getDia());
     }
+    
+    public String getPasajeroNombre(Solicitud s) {
+        return ayudante.getPasajeroNombre(s);
+    }
 
 }

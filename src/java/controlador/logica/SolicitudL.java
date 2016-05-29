@@ -193,4 +193,25 @@ public class SolicitudL implements Serializable {
             return b;
         }
     }
+    
+    public String getPasajeroNombre(Solicitud s) {
+        String b = "";
+        try {
+            if (con == null || !con.isOpen()) {
+                con = ConexionBD.getSessionFactory().openSession();
+            }
+            Query query = con.createQuery("select p.pnombre from Pasajero p "
+                    + "where p.idPasajero = :id");
+            query.setParameter("id", s.getId().getIdPasajero());
+            List<String> list = query.list();
+            if (list.size() > 0) {
+                b = list.get(0);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            con.close();
+            return b;
+        }
+    }
 }

@@ -47,7 +47,7 @@ public class Solicitud implements java.io.Serializable {
         this.id = id;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_pasajero", nullable = false, insertable = false, updatable = false)
     public Pasajero getPasajero() {
         return this.pasajero;
