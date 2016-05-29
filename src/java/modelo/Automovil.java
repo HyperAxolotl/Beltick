@@ -30,13 +30,13 @@ public class Automovil implements java.io.Serializable {
     private String modelo;
     private String placa;
     private String color;
-    private int capacidad;
+    private Integer capacidad;
     private Set rutas = new HashSet(0);
 
     public Automovil() {
     }
 
-    public Automovil(int idAutomovil, Chofer chofer, String noIdentificacion, String modelo, String placa, String color, int capacidad) {
+    public Automovil(int idAutomovil, Chofer chofer, String noIdentificacion, String modelo, String placa, String color, Integer capacidad) {
         this.idAutomovil = idAutomovil;
         this.chofer = chofer;
         this.noIdentificacion = noIdentificacion;
@@ -46,7 +46,7 @@ public class Automovil implements java.io.Serializable {
         this.capacidad = capacidad;
     }
 
-    public Automovil(int idAutomovil, Chofer chofer, String noIdentificacion, String modelo, String placa, String color, int capacidad, Set rutas) {
+    public Automovil(int idAutomovil, Chofer chofer, String noIdentificacion, String modelo, String placa, String color, Integer capacidad, Set rutas) {
         this.idAutomovil = idAutomovil;
         this.chofer = chofer;
         this.noIdentificacion = noIdentificacion;
@@ -115,11 +115,11 @@ public class Automovil implements java.io.Serializable {
     }
 
     @Column(name = "capacidad", nullable = false)
-    public int getCapacidad() {
+    public Integer getCapacidad() {
         return this.capacidad;
     }
 
-    public void setCapacidad(int capacidad) {
+    public void setCapacidad(Integer capacidad) {
         this.capacidad = capacidad;
     }
 

@@ -4,7 +4,9 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:o="http://omnifaces.org/ui">
     <h:head>
         <title>Perfil chofer</title>
         <f:metadata>
@@ -12,7 +14,7 @@
         </f:metadata>
     </h:head>
     <h:body>
-        <ui:composition template="plantillas/vista1.xhtml">
+        <ui:composition template="plantillas/vista2.xhtml">
             <ui:define name="content">
                 <h:form>
                     <section class="container">
@@ -20,8 +22,14 @@
                             <div class="col-sm-3" align="center" id="borde">
                                 <!--p:panelGrid columns="1"-->  
                                 <!--f:facet name="header"-->
-                                <p:graphicImage id="imagene" library="imagenes" name="foto_usuario/usuario.png" width="230px" height="230px"  styleClass="imagene"/>
-                                <p:tooltip id="toolTipTrack" for="imagene" value="#{perfilChoferC.chofer.cnombre} #{perfilChoferC.chofer.capp} #{perfilChoferC.chofer.capm}" />
+                                <c:if test="#{perfilChoferC.verificarImagen() eq false}" >
+                                    <p:graphicImage id="imagene" library="imagenes" name="foto_usuario/usuario.png" width="230px" height="230px"  styleClass="imagene"/>
+                                    <p:tooltip id="toolTip" for="imagene" value="#{perfilChoferC.chofer.cnombre} #{perfilChoferC.chofer.capp} #{perfilChoferC.chofer.capm}" />
+                                </c:if>
+                                <c:if test="#{perfilChoferC.verificarImagen()}" >
+                                    <o:graphicImage id="img" value="#{imagenC.getImagen(perfilChoferC.imagen.idImagen)}" height="230px" width="230px" />
+                                    <p:tooltip id="toolTipTrack" for="img" value="#{perfilChoferC.chofer.cnombre} #{perfilChoferC.chofer.capp} #{perfilChoferC.chofer.capm}" />
+                                </c:if>
                                 <h:outputText value=""/>
                                 <!--/f:facet-->
                                 <h:panelGrid columns="1">         
@@ -47,7 +55,9 @@
                                 </div>
                                 <div>
                                     <p:commandButton value="Califica" rendered="#{sesionC.verificarTipo() eq false and perfilChoferC.verificarPasajero(sesionC.pasajero)}"
-                                                     onclick="PF('dlg#{ruta.idRuta}').show();" />
+                                                     onclick="PF('dlgc').show();" >
+                                        <f:param name="choferId" value="#{perfilChoferC.chofer.idChofer}" />
+                                    </p:commandButton>
                                 </div>
                             </div>
                             <div class="col-sm-3" id="bordo">
@@ -67,17 +77,17 @@
                                             <h:form rendered="#{perfilChoferC.tieneRuta()}">
                                                 <p:panelGrid columns="2"> 
                                                     <h:outputLabel value="Lunes" />
-                                                    <h:outputLabel value="#{solicitarServicioC.formateaHora(perfilChoferC.horario.lunes)}"/>
+                                                    <h:outputLabel value="#{perfilChoferC.formateaHora(perfilChoferC.horario.lunes)}"/>
                                                     <h:outputLabel value="Martes"/>
-                                                    <h:outputLabel value="#{solicitarServicioC.formateaHora(perfilChoferC.horario.martes)}"/>
+                                                    <h:outputLabel value="#{perfilChoferC.formateaHora(perfilChoferC.horario.martes)}"/>
                                                     <h:outputLabel value="Miércoles"/>
-                                                    <h:outputLabel value="#{solicitarServicioC.formateaHora(perfilChoferC.horario.miercoles)}"/>
+                                                    <h:outputLabel value="#{perfilChoferC.formateaHora(perfilChoferC.horario.miercoles)}"/>
                                                     <h:outputLabel value="Jueves"/>
-                                                    <h:outputLabel value="#{solicitarServicioC.formateaHora(perfilChoferC.horario.jueves)}"/>
+                                                    <h:outputLabel value="#{perfilChoferC.formateaHora(perfilChoferC.horario.jueves)}"/>
                                                     <h:outputLabel value="Viernes"/>
-                                                    <h:outputLabel value="#{solicitarServicioC.formateaHora(perfilChoferC.horario.viernes)}"/>
+                                                    <h:outputLabel value="#{perfilChoferC.formateaHora(perfilChoferC.horario.viernes)}"/>
                                                     <h:outputLabel value="Sábado"/>
-                                                    <h:outputLabel value="#{solicitarServicioC.formateaHora(perfilChoferC.horario.sabado)}"/>
+                                                    <h:outputLabel value="#{perfilChoferC.formateaHora(perfilChoferC.horario.sabado)}"/>
                                                 </p:panelGrid>
                                             </h:form>
                                         </p:tab>
@@ -106,8 +116,10 @@
                                 <h:form rendered="#{perfilChoferC.tieneRuta()}">
                                     <h3 align="center">Mapa</h3>
                                     <p:gmap id="gmap" center="19.3241874,-99.1789797" zoom="12" type="ROADMAP" style="width:500px;height:400px" model="#{perfilChoferC.getModeloMapa()}" />
-                                    <p:commandButton icon="fa fa-search-plus" value="Expandir" onclick="PF('califs').show();" style="align-content: center;"/>
-                                    <p:dialog header="Ruta de " widgetVar="dlg" modal="true" height="500px" width="1000px">
+                                    <p:commandButton icon="fa fa-search-plus" value="Expandir" onclick="PF('dlg').show();" style="align-content: center;">
+                                        <f:param name="choferId" value="#{perfilChoferC.chofer.idChofer}" />
+                                    </p:commandButton>
+                                    <p:dialog header="Ruta de #{perfilChoferC.chofer.cnombre}" widgetVar="dlg" modal="true" height="500px" width="1000px">
                                         <p:gmap id="gmap-dlg" center="19.3241874,-99.1789797" zoom="12" type="ROADMAP" style="width:100%;height:100%" model="#{perfilChoferC.getModeloMapa()}" />
                                     </p:dialog>
                                     <p:button icon="fa fa-automobile" value="Solicitar Servicio" outcome="SolicitarServicioIH" rendered="#{sesionC.verificarTipo() eq false and perfilChoferC.tieneRuta()}">
@@ -121,13 +133,13 @@
                         </div>
                     </section>
 
-                    <p:dialog header="Califica a #{perfilChoferC.chofer.cnombre}" widgetVar="dlg" modal="true" height="400" width="600">
+                    <p:dialog header="Califica a #{perfilChoferC.chofer.cnombre}" widgetVar="dlgc" modal="true" height="400" width="600">
                         <p:rating value="#{perfilChoferC.calificacionChofer.calificacion}" stars="10" />
                         <br></br>
                         <p:outputLabel for="descripcion" value="Descripción" />
                         <p:inputTextarea id="descripcion" value="#{perfilChoferC.calificacionChofer.descripcion}" />
                         <br></br>
-                        <p:commandButton value="Calificar" actionListener="#{perfilChoferC.calificar(sesionC.pasajero)}" onclick="PF('dlg').hide()" update="@form">
+                        <p:commandButton value="Calificar" actionListener="#{perfilChoferC.calificar(sesionC.pasajero)}" onclick="PF('dlgc').hide()" update="@form">
                             <f:param name="choferId" value="#{perfilChoferC.chofer.idChofer}" />
                         </p:commandButton>
                     </p:dialog> 

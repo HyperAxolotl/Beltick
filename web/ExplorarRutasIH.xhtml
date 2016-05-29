@@ -6,11 +6,13 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
+        <link href="resources/css/bootstrap.css" rel="stylesheet"/>
         <title>Explorador de rutas</title>
+        
     </h:head>
 
     <h:body>
-        <ui:composition template="plantillas/vista1.xhtml">
+        <ui:composition template="plantillas/vista2.xhtml">
             <ui:define name="content">
                 <section class="container">
                     <div class="row">
@@ -21,12 +23,12 @@
                             <h:form id="explorarRutas">
 
                                 Radio del perímetro en km: <h:inputText id="radio" value="#{explorarRutasC.radio}" />
-                                <p:gmap id="gmap-radio" center="19.3241874,-99.1789797" zoom="12" onPointClick="addCirculo(event);" type="ROADMAP" style="width:300px;height:200px" widgetVar="gmap-radio" />
+                                <p:gmap id="gmap-radio" center="19.3241874,-99.1789797" zoom="12" onPointClick="addCirculo(event);" type="ROADMAP" style="width:700px;height:500px" widgetVar="gmap-radio" />
                                 <h:outputScript library="js" name="ExplorarRutas.js" />
                                 <h:inputHidden id="lat" value="#{explorarRutasC.lat}" />
                                 <h:inputHidden id="lng" value="#{explorarRutasC.lng}" />
-                                <h:commandButton  onclick="getVars()" action="#{explorarRutasC.listarRadio()}" value="Listar rutas dentro del perímetro" />
-                                <h:commandButton  actionListener="#{explorarRutasC.listar()}" value="Listar todas las rutas" />
+                                <h:commandButton class="btn btn-default btn-lg" onclick="getVars()" action="#{explorarRutasC.listarRadio()}" value="Listar rutas dentro del perímetro" />
+                                <h:commandButton class="btn btn-default btn-lg" actionListener="#{explorarRutasC.listar()}" value="Listar todas las rutas" />
 
                                 <p:dataTable value="#{explorarRutasC.lstRutas}" var="ruta" widgetVar="tablaRutas" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
                                              paginator="true" rows="10" style="margin-bottom:20px" rendered="#{explorarRutasC.lstRutas != null}">
@@ -63,7 +65,7 @@
 
                                 </p:dataTable>
                             </h:form>
-                            <h:button value="Inicio" outcome="PaginaPrincipalIH"/>
+                            <h:button class="btn btn-default btn-lg" value="Inicio" outcome="PaginaPrincipalIH"/>
                         </div>
                     </div>
                 </section>

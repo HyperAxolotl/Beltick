@@ -5,12 +5,18 @@
  */
 package controlador.frijoles;
 
+import controlador.logica.NotificacionL;
+import controlador.logica.PerfilChoferL;
+import controlador.logica.PerfilPasajeroL;
 import javax.inject.Named;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
 import controlador.logica.SesionL;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.SessionScoped;
 import modelo.Automovil;
@@ -29,13 +35,24 @@ import modelo.Horario;
 @ManagedBean
 public class SesionC implements Serializable {
 
-    private Pasajero p = new Pasajero();
-    private Chofer c = new Chofer();
+    private Pasajero p;
+    private Chofer c;
     private boolean tipo;
-    private Horario h = new Horario();
+    private Horario h;
     private FacesMessage mensaje;
     private PerfilChofer pc;
     private PerfilPasajero pp;
+    private SesionL ayudante;
+    private NotificacionL notificacionL;
+    private int notificacionesNuevas;
+
+    public SesionC() {
+        ayudante = new SesionL();
+        notificacionL = new NotificacionL();
+        p = new Pasajero();
+        c = new Chofer();
+        h = new Horario();
+    }
 
     public Chofer getChofer() {
         return c;
@@ -61,13 +78,20 @@ public class SesionC implements Serializable {
         this.p = p;
     }
 
+    public int getNotificacionesNuevas() {
+        return notificacionesNuevas;
+    }
+
+    public void setNotificacionesNuevas(int notificacionesNuevas) {
+        this.notificacionesNuevas = notificacionesNuevas;
+    }
+    
     public String verificarDatos() throws Exception {
-        SesionL sl = new SesionL();
         String resultado;
         if (tipo == false) {
             Pasajero pa;
             try {
-                pa = sl.verificarDatos(this.p);
+                pa = ayudante.verificarDatos(this.p);
                 if (pa != null) {
                     FacesContext.getCurrentInstance().getExternalContext()
                             .getSessionMap().put("usuario", pa);
@@ -85,7 +109,7 @@ public class SesionC implements Serializable {
         } else {
             Chofer usc;
             try {
-                usc = sl.verificarDatos(this.c);
+                usc = ayudante.verificarDatos(this.c);
                 if (usc != null) {
                     FacesContext.getCurrentInstance().getExternalContext()
                             .getSessionMap().put("usuario", usc);
@@ -115,15 +139,15 @@ public class SesionC implements Serializable {
         return estado;
     }
 
-    public String cerrarSesion() {
+    public void cerrarSesion() {
         FacesContext.getCurrentInstance().getExternalContext()
                 .invalidateSession();
-        /* is all of this necessary?*/
-        pp = null;
-        pc = null;
-        c = null;
-        p = null;
-        return "PaginaPrincipalIH?faces-redirect=true";
+        try {
+            FacesContext.getCurrentInstance().getExternalContext().redirect("PaginaPrincipalIH.xhtml");
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
     /**
@@ -139,29 +163,14 @@ public class SesionC implements Serializable {
         return false;
     }
 
-    public String verPerfil() {
-        if (verificarTipo()) {
-            return "inicioChofer?faces-redirect=true";
-        }
-        return "inicioPasajero?faces-redirect=true";
-    }
-
     private void getPerfil() {
         if (verificarTipo()) {
-            pc = (PerfilChofer) c.getPerfilChofers().iterator().next();
+            PerfilChoferL pL = new PerfilChoferL();
+            pc = pL.getPerfilChofer(c.getIdChofer());
         } else {
-            pp = (PerfilPasajero) p.getPerfilPasajeros().iterator().next();
+            PerfilPasajeroL pL = new PerfilPasajeroL();
+            pp = pL.getPerfilPasajero(p.getIdPasajero());
         }
-    }
-
-    public String rutaIMG() {
-//        getPerfil();
-//        if(pc != null) {
-//            return pc.getCfoto();
-//        }
-//        if(pp != null)
-//            return pp.getPfoto();
-        return "";
     }
 
     public String descripcion() {
@@ -176,13 +185,34 @@ public class SesionC implements Serializable {
     }
 
     public Automovil cAuto() {
-        Chofer tmp = (Chofer) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
-        return (Automovil) tmp.getAutomovils().iterator().next();
+        return ayudante.cAuto(c);
     }
-    
+
     public boolean tieneAuto() {
-        Chofer tmp = (Chofer) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
-        return tmp.getAutomovils().size() > 0;
+        return ayudante.tieneAuto(c);
+    }
+
+    public boolean verificarNotificacionesNuevas() {
+        if (verificarSesion()) {
+            if (verificarTipo()) {
+                return ayudante.verificarNotificacionesChofer(c);
+            }
+            return ayudante.verificarNotificacionesPasajero(p);
+        }
+        return false;
+    }
+
+    public String notificacionesVistas() {
+        if (verificarSesion()) {
+            System.out.println("NOTIFICACIONES VISTAS");
+            if (verificarTipo()) {
+                notificacionesNuevas = ayudante.notificacionChoferVista(c);
+            } else {
+                notificacionesNuevas = ayudante.notificacionPasajeroVista(p);
+            }
+            return "NotificacionesIH?faces-redirect=true";
+        }
+        return "";
     }
 
 }

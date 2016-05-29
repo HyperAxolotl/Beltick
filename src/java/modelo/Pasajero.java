@@ -194,7 +194,7 @@ public class Pasajero implements java.io.Serializable {
         this.mensajeChofers = mensajeChofers;
     }
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "pasajero")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "pasajero")
     public Set getSolicituds() {
         return this.solicituds;
     }
@@ -203,7 +203,7 @@ public class Pasajero implements java.io.Serializable {
         this.solicituds = solicituds;
     }
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "pasajero")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "pasajero")
     public Set getPerfilPasajeros() {
         return this.perfilPasajeros;
     }

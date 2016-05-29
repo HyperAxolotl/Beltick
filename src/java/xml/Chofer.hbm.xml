@@ -57,7 +57,7 @@
             </key>
             <one-to-many class="modelo.MensajeChofer"/>
         </set>
-        <set fetch="join" inverse="true" lazy="false" name="perfilChofers" table="perfil_chofer">
+        <set fetch="select" inverse="true" lazy="true" name="perfilChofers" table="perfil_chofer">
             <key>
                 <column name="id_chofer" not-null="true" unique="true"/>
             </key>

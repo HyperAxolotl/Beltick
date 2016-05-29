@@ -9,17 +9,17 @@
         <title>Perfil chofer</title>
     </h:head>
     <h:body>
-        <ui:composition template="plantillas/vista1.xhtml">
+        <ui:composition template="plantillas/vista2.xhtml">
             <ui:define name="content">
-                <h:form>			
+                <h:form enctype="multipart/form-data">			
                     <section class="container">
                         <p:tabView>
                             <p:tab title="Perfil">
                                 <p:panelGrid columns="2">  
 
-                                    <h:outputLabel for="nombre" value="Imagen:" />
-                                    <p:graphicImage library="imagenes" name="foto_usuario/usuario.png" width="80px" height="80px" />
-
+                                    <p:outputLabel for="imagen" value="Imágen" />
+                                    <p:fileUpload id="imagen" value="#{actualizarPerfilChoferC.archivo}" mode="simple" label="Subir imágen" cancelLabel="Cancelar" sizeLimit="1024" />
+                                    
                                     <h:outputLabel for="nombre" value="Nombre:" />
                                     <p:inplace id="nombre" editor="true" >
                                         <p:inputText value="#{actualizarPerfilChoferC.chofer.cnombre}" required="true" label="text" />
@@ -67,7 +67,7 @@
                                 <h:commandButton styleClass="btn btn-info" value="Aceptar" action="#{actualizarPerfilChoferC.actualizarChofer()}" />
                             </p:tab>
 
-                            <p:tab title="Automóvil">
+                            <p:tab title="Automóvil" rendered="#{actualizarPerfilChoferC.automovil != null}">
                                 <p:panelGrid columns="2">
 
                                     <h:outputLabel for="num" value="Número de identificación" />
@@ -99,7 +99,7 @@
                                 <h:commandButton styleClass="btn btn-info" value="Aceptar" action="#{actualizarPerfilChoferC.actualizarAutomovil()}" />
                             </p:tab>
 
-                            <p:tab title="Ruta">
+                            <p:tab title="Ruta" rendered="#{actualizarPerfilChoferC.ruta != null}">
 
                                 <p:gmap id="gmap" center="19.3241874,-99.1789797" zoom="13" type="ROADMAP" style="width:500px;height:400px"
                                         model="#{actualizarPerfilChoferC.modeloMapa}" onPointClick="addLatLng(event);" widgetVar="map" />
@@ -120,7 +120,7 @@
                                 <h:commandButton styleClass="btn btn-info" value="Aceptar" action="#{actualizarPerfilChoferC.actualizarRuta()}" />
 
                             </p:tab>
-                            <p:tab title="Horario">
+                            <p:tab title="Horario" rendered="#{actualizarPerfilChoferC.horario != null}">
                                 <p:panelGrid columns="2"> 
                                     <p:outputLabel for="lunes" value="Lunes" />
                                     <p:inplace id="lunes" effectSpeed="fast" editor="true" emptyLabel="Campo vacío">

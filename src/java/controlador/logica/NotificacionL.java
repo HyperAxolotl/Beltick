@@ -45,5 +45,5 @@ public class NotificacionL implements Serializable {
         }
         return lstNotificacionesP;
     }
-    
+
 }

@@ -6,6 +6,7 @@
 package controlador.frijoles;
 
 import controlador.logica.ConfirmacionL;
+import java.io.Serializable;
 import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.inject.Named;
@@ -19,7 +20,7 @@ import javax.faces.context.FacesContext;
  */
 @Named(value = "confirmacionC")
 @RequestScoped
-public class ConfirmacionC {
+public class ConfirmacionC implements Serializable {
     private boolean  tipo;
     private int idPerfil;
     private String clave; 

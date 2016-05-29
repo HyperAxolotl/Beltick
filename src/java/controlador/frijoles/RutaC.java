@@ -1,6 +1,7 @@
 package controlador.frijoles;
 
 import controlador.logica.BoletinL;
+import controlador.logica.PasajeroL;
 import controlador.logica.RutaL;
 import java.io.Serializable;
 import java.util.List;
@@ -72,13 +73,17 @@ public class RutaC implements Serializable {
     }
 
     public boolean verificarMiembro(boolean b, Chofer c, Pasajero p) {
-        if(b)
-            return ruta.getAutomovil().getChofer().getIdChofer() == c.getIdChofer();
+        if(b) {
+            Chofer ch = rutaL.getChofer(ruta.getIdRuta());
+            if(ch == null)
+                return false;
+            return ch.getIdChofer() == c.getIdChofer();
+        }
         else {
-            Set s = p.getPasajeroRutas();
-            for(Object o : s) {
-                PasajeroRuta pr = (PasajeroRuta) o;
-                if(pr.getRuta().getIdRuta() == ruta.getIdRuta())
+            PasajeroL pL = new PasajeroL();
+            List<PasajeroRuta> l = pL.listaRutas(p);
+            for(PasajeroRuta pr : l) {
+                if(pr.getId().getIdRuta() == ruta.getIdRuta())
                     return true;
             }
         }

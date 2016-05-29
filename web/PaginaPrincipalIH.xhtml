@@ -7,98 +7,101 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
-    <h:body>
+    <h:head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="description" content=""/>
+        <meta name="author" content=""/>
+        <title>Beltick</title>
+    </h:head>
+
+    <h:body id="page-top" >
+
         <ui:composition template="plantillas/vista1.xhtml">
             <ui:define name="content">
-                <style> 
-                    h2{color:white;text-align: center;}
-                    p{color:white;text-align: justify;}
-                    pE{color:white;text-align: center;}
-                </style>
+                <header class="intro">
+                    <div class="intro-body">
+                        <div class="container">
+                            <div class="navbar-header">
 
-                <div id="carousel" class="carousel slide" data-ride="carousel" style="padding-top:0px;margin-top:0px;">
-                    <!-- Indicadores -->
-                    <ol class="carousel-indicators">
-                        <li data-target="#carousel" data-slide-to="0" class="active"></li>
-                        <li data-target="#carousel" data-slide-to="1"></li>
-                    </ol>
-                    <div class="carousel-inner" role="listbox">
-                        <div class="item active" align="center">
-                            <img class="first-slide blur-img" src="resources/imagenes/index/3.jpg" alt="First slide" height="70%" width="70%">
-                                <div class="container">
-                                    <div class="carousel-caption">
-                                        <h2>Olvidate del transporte público</h2>
-                                        <pE>
-                                            Beltick es un sistema de auto compartido para alumnos de la Facultad de Ciencias.
-                                        </pE>
-                                    </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-8 col-md-offset-2">
+                                    <h1 class=" brand-heading">Beltick</h1>
+                                    <p class="intro intro-text">
+                                        Beltick es un sistema de auto compartido para alumnos de la Facultad de Ciencias.
+
+                                    </p>
+                                    <a href="#about" class="btn btn-circle page-scroll">
+                                        <i class="fa fa-angle-double-down animated"></i>
+                                    </a>
+
                                 </div>
-                            </img>
-                        </div>
-                        <div class="item">
-                            <div class="item active" align="center">
-                                <img class="second-slide blur-img" src="resources/imagenes/index/1.jpg" alt="Second slide" height="70%" width="70%">
-                                    <div class="container">
-                                        <div class="carousel-caption">
-                                            <h2>Conoce gente nueva</h2>
-                                            <pE>¿Te sientes solitario en tu camino a la facultad?</pE>
-                                        </div>
-                                    </div>
-
-                                </img>
                             </div>
                         </div>
                     </div>
-                    <a class="left carousel-control" href="#carousel" role="button" data-slide="prev">
-                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="right carousel-control" href="#carousel" role="button" data-slide="next">
-                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </div>
+                </header>
 
-
-
-                <!--section class="container-fluid">
+                <section id="about" class="container content-section text-center">
                     <div class="row">
-                        <div class="col-md-4" align="center">
-                            <img class="img-responsive" src="resources/imagenes/index/car.png"/>
-                        </div>
-
-                        
-                        <div class="col-md-8">
-                            <h2>¿Qué es Beltick?</h2>
-                            <pE>
-                                Beltick es un sistema de auto compartido para alumnos de la Facultad de Ciencias.
-                            </pE>
+                        <div class="col-lg-8 col-lg-offset-2">
                             <h2>¿Cómo surgió Beltick?</h2>
-                            <p>
-                                Como estudiantes universitarios, diariamente nos transportamos a la  escuela o facultad que nos corresponde. 
+                            <p class = "intro-text">    Como estudiantes universitarios, diariamente nos transportamos a la  escuela o facultad que nos corresponde. 
                                 Para algunos basta una caminata, para otros una fracción de ruta de camión,
                                 un tramo en auto o un par de líneas del metro, y la  mayoría requiere completar una odisea para llegar. 
                                 Muchos de nosotros compartimos ruta, a veces sin saberlo, 
-                                lo que quizás no compartimos es la cantidad de tiempo que invertimos en el transporte o el dinero que gastamos en ello. 
-                            </p>
+                                lo que quizás no compartimos es la cantidad de tiempo que invertimos en el transporte o el dinero que gastamos en ello. </p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="download" class="content-section text-center">
+                    <div class="download-section">
+                        <div class="container">
+                            <div class="col-lg-8 col-lg-offset-2">
+                                <h2>Beltick</h2>
+                                <p class="intro-text" >Olvidate del transporte público</p>
+                                <c:if test="#{!sesionC.verificarSesion()}">
+                                    <a href="RegistroPasajeroIH.xhtml" class="btn btn-default btn-lg">Registrate como pasajero</a>
+                                </c:if>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="contact" class="container content-section text-center">
+                    <div class="row">
+                        <div class="col-lg-8 col-lg-offset-2">
                             <h2>¿Qué ofrece Beltick?</h2>
-                            <p>
-                                Beltick ofrecerá una plataforma para comunicar a los estudiantes que deseen ofrecer su vehículo como transporte escolar, 
+                            <p class="intro-text">Beltick ofrecerá una plataforma para comunicar a los estudiantes que deseen ofrecer su vehículo como transporte escolar, 
                                 para viajar en compañía de sus compañeros, obteniendo una remuneración; y aquellos que deseen viajar más cómodos, 
                                 por un costo más conveniente. Los estudiantes registrados podrán chatear para organizarse, agregarse a una ruta 
-                                y calificar a los compañeros que les comparten un lugar en su auto para la mejora constante del servicio. 
+                                y calificar a los compañeros que les comparten un lugar en su auto para la mejora constante del servicio. </p>
+                            <p><a href="mailto:beltick@hyperaxolot.com">beltick@hyperaxolt.com</a>
                             </p>
+                            <ul class="list-inline banner-social-buttons">
+                                <li>
+                                    <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
+                                </li>
 
+                                <li>
+                                    <a href="https://plus.google.com/+Startbootstrap/posts" class="btn btn-default btn-lg"><i class="fa fa-google-plus fa-fw"></i> <span class="network-name">Google+</span></a>
+                                </li>
+                            </ul>
                         </div>
-
-                    </div>   
-                </section-->
-
-
+                    </div>
+                </section>
+                <!--<div id="map"></div>-->
+                <!--<p:gmap id="map" center="19.3241874,-99.1789797" zoom="14" type="ROADMAP" />-->
+                <footer>
+                    <div class="container text-center">
+                        <p class="intro-text">Copyright  Hyperaxolotl 2016</p>
+                    </div>
+                </footer>
             </ui:define>
-
         </ui:composition>
     </h:body>
 
 </html>
-

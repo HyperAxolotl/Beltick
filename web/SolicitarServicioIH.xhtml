@@ -13,7 +13,7 @@
     </h:head>
 
     <h:body>
-        <ui:composition template="plantillas/vista1.xhtml">
+        <ui:composition template="plantillas/vista2.xhtml">
             <ui:define name="content">
                 <section class="container">
                     <div class="row">
@@ -28,12 +28,12 @@
                                     <div class="row">
                                         <p:outputLabel for="horario" value="Horario semanal" />
                                         <p:selectManyCheckbox id="horario" value="#{solicitarServicioC.diasSeleccionados}" layout="grid" columns="2" >
-                                            <f:selectItem itemLabel="Lunes: #{solicitarServicioC.formateaHora(solicitarServicioC.horario.lunes)}" itemValue="Lunes" itemDisabled="#{solicitarServicioC.horario.lunes == null || solicitarServicioC.noDisponible(sesionC.pasajero,'lunes')}" />
-                                            <f:selectItem itemLabel="Martes: #{solicitarServicioC.formateaHora(solicitarServicioC.horario.martes)}" itemValue="Martes" itemDisabled="#{solicitarServicioC.horario.martes == null || solicitarServicioC.noDisponible(sesionC.pasajero,'martes')}" />
-                                            <f:selectItem itemLabel="Miércoles: #{solicitarServicioC.formateaHora(solicitarServicioC.horario.miercoles)}" itemValue="Miércoles" itemDisabled="#{solicitarServicioC.horario.miercoles == null || solicitarServicioC.noDisponible(sesionC.pasajero,'miercoles')}" />
-                                            <f:selectItem itemLabel="Jueves: #{solicitarServicioC.formateaHora(solicitarServicioC.horario.jueves)}" itemValue="Jueves" itemDisabled="#{solicitarServicioC.horario.jueves == null || solicitarServicioC.noDisponible(sesionC.pasajero,'jueves')}" />
-                                            <f:selectItem itemLabel="Viernes: #{solicitarServicioC.formateaHora(solicitarServicioC.horario.viernes)}" itemValue="Viernes" itemDisabled="#{solicitarServicioC.horario.viernes == null || solicitarServicioC.noDisponible(sesionC.pasajero,'viernes')}" />
-                                            <f:selectItem itemLabel="Sábado: #{solicitarServicioC.formateaHora(solicitarServicioC.horario.sabado)}" itemValue="Sábado" itemDisabled="#{solicitarServicioC.horario.sabado == null || solicitarServicioC.noDisponible(sesionC.pasajero,'sabado')}" />
+                                            <f:selectItem itemLabel="Lunes: #{solicitarServicioC.formateaHora(solicitarServicioC.horario.lunes)}" itemValue="Lunes" itemDisabled="#{solicitarServicioC.horario.lunes == null || solicitarServicioC.noDisponible(sesionC.pasajero,'Lunes')}" />
+                                            <f:selectItem itemLabel="Martes: #{solicitarServicioC.formateaHora(solicitarServicioC.horario.martes)}" itemValue="Martes" itemDisabled="#{solicitarServicioC.horario.martes == null || solicitarServicioC.noDisponible(sesionC.pasajero,'Martes')}" />
+                                            <f:selectItem itemLabel="Miércoles: #{solicitarServicioC.formateaHora(solicitarServicioC.horario.miercoles)}" itemValue="Miércoles" itemDisabled="#{solicitarServicioC.horario.miercoles == null || solicitarServicioC.noDisponible(sesionC.pasajero,'Miércoles')}" />
+                                            <f:selectItem itemLabel="Jueves: #{solicitarServicioC.formateaHora(solicitarServicioC.horario.jueves)}" itemValue="Jueves" itemDisabled="#{solicitarServicioC.horario.jueves == null || solicitarServicioC.noDisponible(sesionC.pasajero,'Jueves')}" />
+                                            <f:selectItem itemLabel="Viernes: #{solicitarServicioC.formateaHora(solicitarServicioC.horario.viernes)}" itemValue="Viernes" itemDisabled="#{solicitarServicioC.horario.viernes == null || solicitarServicioC.noDisponible(sesionC.pasajero,'Viernes')}" />
+                                            <f:selectItem itemLabel="Sábado: #{solicitarServicioC.formateaHora(solicitarServicioC.horario.sabado)}" itemValue="Sábado" itemDisabled="#{solicitarServicioC.horario.sabado == null || solicitarServicioC.noDisponible(sesionC.pasajero,'Sábado')}" />
                                         </p:selectManyCheckbox> 
                                         <!--<div class="col-sm-2">-->
 

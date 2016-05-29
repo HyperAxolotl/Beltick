@@ -10,7 +10,7 @@
     </h:head>
 
     <h:body>
-        <ui:composition template="plantillas/vista1.xhtml">
+        <ui:composition template="plantillas/vista2.xhtml">
             <ui:define name="content">
                 <section class="container">
                     <div class="row">
@@ -26,11 +26,9 @@
                                              paginator="true" rows="10" style="margin-bottom:20px" >
 
                                     <p:column headerText="Pasajero">
-                                        <p:link value="#{solicitud.pasajero.pnombre}" outcome="PerfilPasajeroIH" >
+                                        <p:link value="#{administrarSolicitudesC.getPasajeroNombre(solicitud)}" outcome="PerfilPasajeroIH" >
                                             <f:param name="pasajeroId" value="#{solicitud.pasajero.idPasajero}" />
                                         </p:link>
-                                        <br/>
-                                        <h:outputText value="#{solicitud.pasajero.pcorreo}" />
                                     </p:column>
                                     
                                     <p:column headerText="Dia -> hora">

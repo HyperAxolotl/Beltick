@@ -1,9 +1,12 @@
 package controlador.frijoles;
 
 import controlador.logica.CalificacionL;
+import controlador.logica.HorarioL;
 import controlador.logica.PerfilChoferL;
 import controlador.logica.PerfilL;
 import controlador.logica.RutaL;
+import java.io.ByteArrayInputStream;
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -16,16 +19,19 @@ import javax.faces.context.FacesContext;
 import modelo.Automovil;
 import modelo.CalificacionChofer;
 import modelo.Chofer;
+import modelo.Imagen;
 import modelo.Horario;
 import modelo.Pasajero;
 import modelo.PerfilChofer;
 import modelo.Ruta;
+import org.primefaces.model.DefaultStreamedContent;
+import org.primefaces.model.StreamedContent;
 import org.primefaces.model.map.MapModel;
 
 @Named(value = "perfilChoferC")
 @ManagedBean
 @ViewScoped
-public class PerfilChoferC {
+public class PerfilChoferC implements Serializable {
 
     private Chofer chofer;
     private PerfilChoferL ayudante;
@@ -35,8 +41,12 @@ public class PerfilChoferC {
     private Automovil auto;
     private RutaL rutaL = new RutaL();
     private CalificacionChofer calificacionChofer;
+    private Imagen imagen;
     private Horario horario;
     private List<CalificacionChofer> calificaciones;
+    private HorarioL horarioL;
+    private PerfilChoferL perfilCL;
+
     
     public PerfilChoferC() {
         chofer = new Chofer();
@@ -44,21 +54,33 @@ public class PerfilChoferC {
         perfilL = new PerfilL();
         calificacionL = new CalificacionL();
         calificacionChofer = new CalificacionChofer();
+        horarioL = new HorarioL();
+        imagen = new Imagen();
+        perfilCL = new PerfilChoferL();
     }
-    
-    //@PostConstruct
+
+    @PostConstruct
     public void init() {
-        System.out.println("Chofer..."); 
+        System.out.print("Chofer...");
         int id = Integer.parseInt(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("choferId"));
         chofer = ayudante.getChofer(id);
         System.out.print("Perfil...");
-        perfil = (PerfilChofer)chofer.getPerfilChofers().iterator().next();
+        perfil = perfilCL.getPerfilChofer(chofer.getIdChofer());
         System.out.print("Auto...");
-        if(tieneRuta()) {
+        if (tieneRuta()) {
             auto = ayudante.getAutomovil(id);
             System.out.println("Horario...");
             horario = extraeHorario();
         }
+        imagen = ayudante.getImagenChofer(chofer.getIdChofer());
+    }
+
+    public Imagen getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(Imagen imagen) {
+        this.imagen = imagen;
     }
 
     public Horario getHorario() {
@@ -73,27 +95,28 @@ public class PerfilChoferC {
     public Automovil getAuto() {
         return auto;
     }
-    
+
     public MapModel getModeloMapa() {
         Ruta r = getRuta();
-        if(r != null)
+        if (r != null) {
             return rutaL.getModeloMapa(r.getMapa());
+        }
         System.out.println("ruta nula");
         return null;
     }
-    
-    public Ruta getRuta(){
+
+    public Ruta getRuta() {
         return ayudante.getRuta(auto.getIdAutomovil());
     }
 
     public PerfilChofer getPerfil() {
         return perfil;
     }
-    
+
     public boolean tieneRuta() {
         return ayudante.tieneRuta(chofer);
     }
-    
+
     public int getIdRuta() {
         return ayudante.getIdRuta(chofer);
     }
@@ -113,31 +136,42 @@ public class PerfilChoferC {
     public void setCalificacionChofer(CalificacionChofer calificacionChofer) {
         this.calificacionChofer = calificacionChofer;
     }
-    
-    public String fechaReg(){
+
+    public String fechaReg() {
         SimpleDateFormat dt1 = new SimpleDateFormat("dd-MM-yyyy");
         return dt1.format(perfil.getFechaCreacion());
     }
-    
-    public boolean sobreMi(){
+
+    public boolean sobreMi() {
         return perfil.getCsobreMi().equals("");
     }
-    
+
     public int getCalificacion() {
-        return calificacionL.getCalificacionChofer(chofer);
+        if (chofer != null) {
+            return calificacionL.getCalificacionChofer(chofer);
+        } 
+        return 0;
     }
-    
+
     public boolean verificarPasajero(Pasajero p) {
         return perfilL.verificarPasajero(chofer,p);
     }
-    
+
     public String calificar(Pasajero p) {
-        calificacionL.calificarChofer(calificacionChofer,p,chofer);
+        calificacionL.calificarChofer(calificacionChofer, p, chofer);
         return "PerfilChoferIH";
+    }
+
+    public boolean verificarImagen() {
+        return ayudante.getImagenChofer(chofer.getIdChofer()) != null;
     }
     
     public Horario extraeHorario() {
-        return (Horario)getRuta().getHorarios().iterator().next();
+        return horarioL.getHorario(getRuta().getIdRuta());
+    }
+    
+    public String formateaHora(Date hora) {
+        return horarioL.formateaHora(hora);
     }
     
     public String formateoDia(Date d){
@@ -151,3 +185,5 @@ public class PerfilChoferC {
         System.out.println("Estamos aqui...");
     }
 }
+
+

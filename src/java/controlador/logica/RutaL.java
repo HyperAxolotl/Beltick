@@ -47,34 +47,6 @@ public class RutaL implements Serializable {
         return lstRutas;
     }
 
-    public FacesMessage registrar(Ruta r, Horario h) {
-        FacesMessage mensaje = null;
-        try {
-            if (con == null || !con.isOpen()) {
-                con = ConexionBD.getSessionFactory().openSession();
-            }
-            trans = con.beginTransaction();
-            Date fecha = new Date();
-            String mapa = FacesContext.getCurrentInstance().
-                    getExternalContext().getRequestParameterMap().get("mapa");
-            r.setMapa(mapa);
-            r.setActiva(true);
-            r.setFechaCreacion(fecha);
-            con.save(r);
-            h.setRuta(r);
-            con.save(h);
-            trans.commit();
-        } catch (Exception e) {
-            trans.rollback();
-            mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "Error con el registro de la ruta", null);
-            e.printStackTrace();
-        } finally {
-            con.close();
-            return mensaje;
-        }
-
-    }
-
     public FacesMessage solicitar(Pasajero p, Ruta r, String[] dias) {
         FacesMessage mensaje = null;
         try {
@@ -92,7 +64,6 @@ public class RutaL implements Serializable {
                 sol.setPasajero(p);
                 sol.setRuta(r);
                 con.save(sol);
-                p.getSolicituds().add(sol);
                 NotificacionChofer nc = new NotificacionChofer();
                 nc.setTitulo("Solicitud de servicio");
                 nc.setContenido(String.format("Tienes una nueva solicitud de servicio "
@@ -243,6 +214,26 @@ public class RutaL implements Serializable {
             return mensaje;
         }
 
+    }
+    
+    public Chofer getChofer(int idRuta) {
+        Chofer a = null;
+        try {
+            if (con == null || !con.isOpen())
+                con = ConexionBD.getSessionFactory().openSession();
+            String hql = "SELECT c FROM Ruta r join r.automovil a join a.chofer c WHERE r.idRuta = :id";
+            Query query = con.createQuery(hql);
+            query.setParameter("id", idRuta);
+            List<Chofer> l = query.list();
+            if (!l.isEmpty()) {
+                a = l.get(0);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            con.close();
+            return a;
+        }
     }
     
 }

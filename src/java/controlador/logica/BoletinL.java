@@ -44,7 +44,6 @@ public class BoletinL implements Serializable {
             b.setFecha(fecha);
             b.setRuta(r);
             con.save(b);
-            r.getBoletins().add(b);
             trans.commit();
         } catch (Exception e) {
             trans.rollback();

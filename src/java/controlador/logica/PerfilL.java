@@ -9,6 +9,7 @@ import java.util.List;
 import modelo.Automovil;
 import modelo.Chofer;
 import modelo.ConexionBD;
+import modelo.Imagen;
 import modelo.Pasajero;
 import modelo.PerfilChofer;
 import modelo.PerfilPasajero;
@@ -61,15 +62,6 @@ public class PerfilL {
             return lstChoferes;
         }
 
-    }
-
-    public Pasajero getPasajero(int id) {
-        if (con == null || !con.isOpen()) {
-            con = ConexionBD.getSessionFactory().openSession();
-        }
-        Pasajero p = (Pasajero) con.get(Pasajero.class, id);
-        con.close();
-        return p;
     }
 
     public boolean verificarPasajero(Chofer chofer, Pasajero p) {

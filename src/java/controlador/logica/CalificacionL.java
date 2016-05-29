@@ -63,7 +63,7 @@ public class CalificacionL implements Serializable {
             Query query = con.createQuery("select avg(calificacion) from CalificacionChofer c where c.chofer.idChofer = :id");
             query.setParameter("id", chofer.getIdChofer());
             List<Double> l = query.list();
-            if (l.size() > 0) {
+            if (!l.isEmpty() && l.get(0) != null) {
                 d = (int) Math.round(l.get(0));
             }
         } catch (Exception e) {
@@ -117,7 +117,7 @@ public class CalificacionL implements Serializable {
             Query query = con.createQuery("select avg(calificacion) from CalificacionPasajero c where c.pasajero.idPasajero = :id");
             query.setParameter("id", pasajero.getIdPasajero());
             List<Double> l = query.list();
-            if (l.size() > 0) {
+            if (!l.isEmpty() && l.get(0) != null) {
                 d = (int) Math.round(l.get(0));
             }
         } catch (Exception e) {
