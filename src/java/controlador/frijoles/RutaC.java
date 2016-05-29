@@ -1,9 +1,11 @@
 package controlador.frijoles;
 
 import controlador.logica.BoletinL;
+import controlador.logica.HorarioL;
 import controlador.logica.PasajeroL;
 import controlador.logica.RutaL;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 import javax.annotation.PostConstruct;
@@ -14,6 +16,7 @@ import javax.faces.context.FacesContext;
 import modelo.Automovil;
 import modelo.Boletin;
 import modelo.Chofer;
+import modelo.Horario;
 import modelo.Pasajero;
 import modelo.PasajeroRuta;
 import modelo.Ruta;
@@ -29,23 +32,35 @@ public class RutaC implements Serializable {
     private RutaL rutaL;
     private BoletinL boletinL;
     private List<Boletin> lstBoletin;
+    private List<PasajeroRuta> lstPasajeros;
+    private Horario horario;
+    private HorarioL horarioL;
+    private PasajeroL pasajeroL;
 
     public RutaC() {
         ruta = new Ruta();
         rutaL = new RutaL();
         boletin = new Boletin();
         boletinL = new BoletinL();
+        horarioL = new HorarioL();
+        pasajeroL = new PasajeroL();
     }
 
     @PostConstruct
     public void init() {
         ruta = rutaL.getRuta(Integer.parseInt(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("rutaId")));
         rutaL.actualiza(ruta);
+        horario = horarioL.getHorario(ruta.getIdRuta());
         listar();
+        listarPasajeros();
     }
 
     public Boletin getBoletin() {
         return boletin;
+    }
+    
+    public Horario getHorario() {
+        return horario;
     }
 
     public void setBoletin(Boletin boletin) {
@@ -58,6 +73,14 @@ public class RutaC implements Serializable {
 
     public void setLstBoletin(List<Boletin> lstBoletin) {
         this.lstBoletin = lstBoletin;
+    }
+
+    public List<PasajeroRuta> getLstPasajeros() {
+        return lstPasajeros;
+    }
+
+    public void setLstPasajeros(List<PasajeroRuta> lstPasajeros) {
+        this.lstPasajeros = lstPasajeros;
     }
 
     public Ruta getRuta() {
@@ -94,8 +117,29 @@ public class RutaC implements Serializable {
         lstBoletin = boletinL.listar(ruta.getIdRuta());
     }
     
+    public void listarPasajeros() {
+        lstPasajeros = rutaL.listarPasajeros(ruta);
+    }
+    
     public void publicar() {
         boletinL.publicar(boletin,ruta);
         listar();
+    }
+    
+    public String formateaHora(Date hora) {
+        return horarioL.formateaHora(hora);
+    }
+    
+    public String getPasajeroNombre(PasajeroRuta pr) {
+        return rutaL.getPasajeroNombre(pr);
+    }
+    
+    public String getPasajeroHora(PasajeroRuta pr) {
+        return pasajeroL.getHora(pr);
+    }
+    
+    public void eliminarPasajero(PasajeroRuta pr) {
+        pasajeroL.eliminaRuta(pr);
+        listarPasajeros();
     }
 }

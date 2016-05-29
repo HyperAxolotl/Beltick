@@ -15,6 +15,7 @@ import modelo.Horario;
 import modelo.NotificacionChofer;
 import modelo.NotificacionPasajero;
 import modelo.Pasajero;
+import modelo.PasajeroRuta;
 import modelo.Ruta;
 import modelo.Solicitud;
 import modelo.SolicitudId;
@@ -33,6 +34,7 @@ public class RutaL implements Serializable {
     private Session con;
     private Transaction trans;
     private List<Ruta> lstRutas;
+    private List<PasajeroRuta> lstPasajeros;
 
     public List<Ruta> listar() throws Exception {
         try {
@@ -233,6 +235,43 @@ public class RutaL implements Serializable {
         } finally {
             con.close();
             return a;
+        }
+    }
+    
+    public List<PasajeroRuta> listarPasajeros(Ruta r) {
+        try {
+            if (con == null || !con.isOpen()) {
+                con = ConexionBD.getSessionFactory().openSession();
+            }
+            String hql = "FROM PasajeroRuta WHERE id.idRuta = :id "
+                    + "ORDER BY id.dia";
+            Query query = con.createQuery(hql);
+            query.setParameter("id", r.getIdRuta());
+            lstPasajeros = query.list();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return lstPasajeros;
+    }
+    
+    public String getPasajeroNombre(PasajeroRuta s) {
+        String b = "";
+        try {
+            if (con == null || !con.isOpen()) {
+                con = ConexionBD.getSessionFactory().openSession();
+            }
+            Query query = con.createQuery("select p.pnombre from Pasajero p "
+                    + "where p.idPasajero = :id");
+            query.setParameter("id", s.getId().getIdPasajero());
+            List<String> list = query.list();
+            if (list.size() > 0) {
+                b = list.get(0);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            con.close();
+            return b;
         }
     }
     
