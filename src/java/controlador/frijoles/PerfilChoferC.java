@@ -2,6 +2,7 @@ package controlador.frijoles;
 
 import controlador.logica.CalificacionL;
 import controlador.logica.HorarioL;
+import controlador.logica.PerfilChoferL;
 import controlador.logica.PerfilL;
 import controlador.logica.RutaL;
 import java.io.ByteArrayInputStream;
@@ -41,6 +42,7 @@ public class PerfilChoferC implements Serializable {
     private Imagen imagen;
     private Horario horario;
     private HorarioL horarioL;
+    private PerfilChoferL perfilCL;
     
     public PerfilChoferC() {
         chofer = new Chofer();
@@ -49,6 +51,7 @@ public class PerfilChoferC implements Serializable {
         calificacionChofer = new CalificacionChofer();
         horarioL = new HorarioL();
         imagen = new Imagen();
+        perfilCL = new PerfilChoferL();
     }
 
     @PostConstruct
@@ -57,7 +60,7 @@ public class PerfilChoferC implements Serializable {
         int id = Integer.parseInt(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("choferId"));
         chofer = ayudante.getChofer(id);
         System.out.print("Perfil...");
-        perfil = (PerfilChofer) chofer.getPerfilChofers().iterator().next();
+        perfil = perfilCL.getPerfilChofer(chofer.getIdChofer());
         System.out.print("Auto...");
         if (tieneRuta()) {
             auto = ayudante.getAutomovil(id);
@@ -154,7 +157,7 @@ public class PerfilChoferC implements Serializable {
     }
     
     public Horario extraeHorario() {
-        return (Horario)getRuta().getHorarios().iterator().next();
+        return horarioL.getHorario(getRuta().getIdRuta());
     }
     
     public String formateaHora(Date hora) {

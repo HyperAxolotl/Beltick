@@ -196,7 +196,7 @@ public class Chofer implements java.io.Serializable {
         this.mensajeChofers = mensajeChofers;
     }
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "chofer")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "chofer")
     public Set getPerfilChofers() {
         return this.perfilChofers;
     }

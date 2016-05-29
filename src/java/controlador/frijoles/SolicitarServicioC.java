@@ -8,6 +8,7 @@ package controlador.frijoles;
 import controlador.logica.HorarioL;
 import java.io.Serializable;
 import controlador.logica.RutaL;
+import controlador.logica.SolicitudL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -81,7 +82,7 @@ public class SolicitarServicioC implements Serializable {
     @PostConstruct
     public void init() {
         ruta = ayudante.getRuta(Integer.parseInt(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("rutaId")));
-        horario = (Horario) ruta.getHorarios().iterator().next();
+        horario = horarioL.getHorario(ruta.getIdRuta());
     }
 
     public String[] getDiasSeleccionados() {
@@ -107,21 +108,9 @@ public class SolicitarServicioC implements Serializable {
     //Regresa true si un pasajero ya tiene una ruta registrada para el dia recibido como parametro
     //o una solicitud para ese pasajero ese mismo dia
     public boolean noDisponible(Pasajero pasajero, String dia) {
-        boolean b = false;
-        Set s = pasajero.getPasajeroRutas();
-        for(Object o : s) {
-            PasajeroRuta pr = (PasajeroRuta)o;
-            if(StringUtils.stripAccents(pr.getId().getDia()).toLowerCase().equals(dia))
-                b = true;
-        }
-        s = pasajero.getSolicituds();
-        for(Object o : s) {
-            Solicitud pr = (Solicitud)o;
-            if(StringUtils.stripAccents(pr.getId().getDia()).toLowerCase().equals(dia)
-                    && pr.getId().getIdRuta() == horario.getRuta().getIdRuta())
-                b = true;
-        }
-        return b;
+        SolicitudL sL = new SolicitudL();
+        return sL.noDisponible(pasajero, dia, ruta.getIdRuta()) 
+                || !sL.verificarDisponibilidad(ruta.getIdRuta(), dia);
     }
 
 }

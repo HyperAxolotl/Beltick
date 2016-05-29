@@ -6,6 +6,8 @@
 package controlador.frijoles;
 
 import controlador.logica.NotificacionL;
+import controlador.logica.PerfilChoferL;
+import controlador.logica.PerfilPasajeroL;
 import javax.inject.Named;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
@@ -163,9 +165,11 @@ public class SesionC implements Serializable {
 
     private void getPerfil() {
         if (verificarTipo()) {
-            pc = (PerfilChofer) c.getPerfilChofers().iterator().next();
+            PerfilChoferL pL = new PerfilChoferL();
+            pc = pL.getPerfilChofer(c.getIdChofer());
         } else {
-            pp = (PerfilPasajero) p.getPerfilPasajeros().iterator().next();
+            PerfilPasajeroL pL = new PerfilPasajeroL();
+            pp = pL.getPerfilPasajero(p.getIdPasajero());
         }
     }
 

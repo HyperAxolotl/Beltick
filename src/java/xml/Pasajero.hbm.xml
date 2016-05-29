@@ -60,13 +60,13 @@
             </key>
             <one-to-many class="modelo.MensajeChofer"/>
         </set>
-        <set fetch="join" inverse="true" lazy="false" name="solicituds" table="solicitud">
+        <set fetch="select" inverse="true" lazy="true" name="solicituds" table="solicitud">
             <key>
                 <column name="id_pasajero" not-null="true"/>
             </key>
             <one-to-many class="modelo.Solicitud"/>
         </set>
-        <set fetch="join" inverse="true" lazy="false" name="perfilPasajeros" table="perfil_pasajero">
+        <set fetch="select" inverse="true" lazy="true" name="perfilPasajeros" table="perfil_pasajero">
             <key>
                 <column name="id_pasajero" not-null="true" unique="true"/>
             </key>

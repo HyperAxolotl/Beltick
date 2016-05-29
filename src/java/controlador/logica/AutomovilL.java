@@ -20,14 +20,16 @@ public class AutomovilL implements Serializable{
     
     public FacesMessage registrar(Automovil a, Ruta r, Horario h, Chofer c){
         FacesMessage mensaje = null;
+        System.out.println("registrando");
         try{
             if (con == null || !con.isOpen())
                 con = ConexionBD.getSessionFactory().openSession();
             trans = con.beginTransaction();
             a.setPlaca(a.getPlaca().toUpperCase());
             a.setChofer(c);
-            c.getAutomovils().add(a);
+            System.out.println("Coche agregado a bean");
             con.save(a);
+            System.out.println("Coche registrado");
             Date fecha = new Date();
             String mapa = FacesContext.getCurrentInstance().
                     getExternalContext().getRequestParameterMap().get("mapa");
@@ -36,9 +38,12 @@ public class AutomovilL implements Serializable{
             r.setFechaCreacion(fecha);
             r.setAutomovil(a);
             con.save(r);
+            System.out.println("Ruta registrado");
             h.setRuta(r);
             con.save(h);
+            System.out.println("Horario registrado");
             trans.commit();
+            System.out.println("registrado");
         }catch(Exception e){
             trans.rollback();
             c.getAutomovils().clear();

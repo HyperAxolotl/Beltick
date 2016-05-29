@@ -73,49 +73,16 @@ public class AdministrarSolicitudesC implements Serializable {
     }
 
     public void listarSolicitudes() throws Exception {
-        lstSolicitudes = ayudante.listar();
-        List<Solicitud> l = new ArrayList<>();
-        for (Solicitud s : lstSolicitudes) {
-            if (s.getRuta().getAutomovil().getChofer().getIdChofer() == chofer.getIdChofer()) {
-                l.add(s);
-            }
-        }
-        lstSolicitudes = l;
+        lstSolicitudes = ayudante.listar(chofer.getIdChofer());
     }
 
     public String getHora(Solicitud solicitud) throws Exception {
-        Horario h = (Horario) solicitud.getRuta().getHorarios().iterator().next();
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-        if (solicitud.getId().getDia().equals("Lunes")) {
-            return sdf.format(h.getLunes());
-        }
-        if (solicitud.getId().getDia().equals("Martes")) {
-            return sdf.format(h.getMartes());
-        }
-        if (solicitud.getId().getDia().equals("Miércoles")) {
-            return sdf.format(h.getMiercoles());
-        }
-        if (solicitud.getId().getDia().equals("Jueves")) {
-            return sdf.format(h.getJueves());
-        }
-        if (solicitud.getId().getDia().equals("Viernes")) {
-            return sdf.format(h.getViernes());
-        }
-        return sdf.format(h.getSabado());
+        return ayudante.getHora(solicitud);
     }
 
     //Regresa true si aun hay espacio en el coche del chofer en el dia recibido como parametro
     public boolean verificarDisponibilidad(Solicitud s) {
-        Automovil a = (Automovil)chofer.getAutomovils().iterator().next();
-        Set set = s.getRuta().getPasajeroRutas();
-        int i = 0;
-        for(Object o : set){
-            PasajeroRuta pr = (PasajeroRuta)o;
-            if(pr.getId().getDia().equals(s.getId().getDia()))
-                i++;
-        }
-        return i < a.getCapacidad();
-//        return ayudante.verificarDisponibilidad(b, c);
+        return ayudante.verificarDisponibilidad(s.getId().getIdRuta(), s.getId().getDia());
     }
 
 }

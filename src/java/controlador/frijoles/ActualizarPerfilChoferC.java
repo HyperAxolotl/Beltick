@@ -55,8 +55,10 @@ public class ActualizarPerfilChoferC implements Serializable {
         horarioL = new HorarioL();
         perfilL = new PerfilChoferL();
         automovil = automovilL.getAutomovil(chofer.getIdChofer());
-        ruta = rutaL.getAutomovilRuta(automovil.getIdAutomovil());
-        horario = horarioL.getHorario(ruta.getIdRuta());
+        if (automovil != null) {
+            ruta = rutaL.getAutomovilRuta(automovil.getIdAutomovil());
+            horario = horarioL.getHorario(ruta.getIdRuta());
+        }
         perfil = perfilL.getPerfilChofer(chofer.getIdChofer());
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         fecha = sdf.format(chofer.getCfechaNac());

@@ -11,7 +11,9 @@
     <h:body>
         <ui:composition template="plantillas/vista2.xhtml">
             <ui:define name="content">
-                <h:form enctype="multipart/form-data">			
+                <p:growl id="growl" life="2000"/>
+                <h:form enctype="multipart/form-data">	
+                    
                     <section class="container">
                         <p:tabView>
                             <p:tab title="Perfil">
@@ -63,7 +65,22 @@
                             </p:tab>
 
                             <p:tab title="Rutas">
-                               
+                                
+                                <h:outputText value="Selecciona las rutas que quieres eliminar" />
+
+                                <p:dataList value="#{actualizarPerfilPasajeroC.listaRutas}" var="dia" rows="10" emptyMessage="No hay rutas registradas" type="unordered">
+                                    <p:panelGrid columns="4">
+                                        <p:outputLabel value="#{dia.id.dia}: #{actualizarPerfilPasajeroC.getHora(dia)}" />
+                                        <p:button icon="fa fa-user" outcome="PerfilChoferIH">
+                                            <f:param name="choferId" value="#{actualizarPerfilPasajeroC.getChoferId(dia)}" />
+                                        </p:button>
+                                        <p:button icon="fa fa-road" outcome="RutaIH">
+                                            <f:param name="rutaId" value="#{dia.ruta.idRuta}" />
+                                        </p:button>
+                                        <p:commandButton icon="fa fa-fw fa-remove" update="growl,@form" actionListener="#{actualizarPerfilPasajeroC.eliminaRuta(dia)}"/>
+                                    </p:panelGrid>
+                                </p:dataList>
+
                             </p:tab>
 
                         </p:tabView>
