@@ -45,7 +45,6 @@ public class PerfilChoferC implements Serializable {
     private Horario horario;
     private List<CalificacionChofer> calificaciones;
     private HorarioL horarioL;
-    private PerfilChoferL perfilCL;
 
     
     public PerfilChoferC() {
@@ -56,7 +55,6 @@ public class PerfilChoferC implements Serializable {
         calificacionChofer = new CalificacionChofer();
         horarioL = new HorarioL();
         imagen = new Imagen();
-        perfilCL = new PerfilChoferL();
     }
 
     @PostConstruct
@@ -65,7 +63,7 @@ public class PerfilChoferC implements Serializable {
         int id = Integer.parseInt(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("choferId"));
         chofer = ayudante.getChofer(id);
         System.out.print("Perfil...");
-        perfil = perfilCL.getPerfilChofer(chofer.getIdChofer());
+        perfil = ayudante.getPerfilChofer(chofer.getIdChofer());
         System.out.print("Auto...");
         if (tieneRuta()) {
             auto = ayudante.getAutomovil(id);

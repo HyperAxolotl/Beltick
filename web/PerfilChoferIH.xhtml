@@ -33,28 +33,26 @@
                                 <h:outputText value=""/>
                                 <!--/f:facet-->
                                 <h:panelGrid columns="1">         
-                                    <h4> <h:outputText value="Chofer: #{perfilChoferC.chofer.cnombre} #{perfilChoferC.chofer.capp} #{perfilChoferC.chofer.capm}" styleClass="data"/> </h4>
+                                    <h4> <h:outputText value="#{perfilChoferC.chofer.cnombre} #{perfilChoferC.chofer.capp} #{perfilChoferC.chofer.capm}" styleClass="data"/> </h4>
                                     <p:separator styleClass="separadorP"/>
                                     <h:outputText value="#{perfilChoferC.chofer.ccorreo}" styleClass="minord"/>
                                     <p:separator styleClass="separadorP"/>
                                     <h:outputText value="N° Cuenta: #{perfilChoferC.chofer.cnoCuenta}" styleClass="minord"/>
                                     <p:separator styleClass="separadorP"/>
-                                    <p:rating value="#{perfilChoferC.getCalificacion()}" stars="10" readonly="true"/> 
-                                    
-                                    <p:commandButton actionListener="#{perfilChoferC.listarCalificaciones()}" id="estrellas" onclick="PF('califs').show();" icon="fa fa-plus"> 
-                                        <f:param name="choferId" value="#{perfilChoferC.chofer.idChofer}" />
-                                    </p:commandButton> 
-                                    
+                                    <h:panelGrid columns="2">
+                                        <p:commandButton actionListener="#{perfilChoferC.listarCalificaciones()}" id="estrellas" onclick="PF('califs').show();" icon="fa fa-comment"> 
+                                            <f:param name="choferId" value="#{perfilChoferC.chofer.idChofer}" />
+                                        </p:commandButton> 
+                                        <p:rating value="#{perfilChoferC.getCalificacion()}" stars="10" readonly="false" cancel="false"/>
+                                    </h:panelGrid>
                                     <p:separator styleClass="separadorP"/>
+                                    
                                 </h:panelGrid>
                                 <div>
-                                    <p:button  icon="fa fa-send" value="Mandar mensaje" outcome="MandarMensajeIH" rendered="#{sesionC.verificarTipo() eq false}" >
+                                    <p:button  icon="fa fa-send" value="Mensaje" outcome="MandarMensajeIH" rendered="#{sesionC.verificarTipo() eq false}" >
                                         <f:param name="choferId" value="#{perfilChoferC.chofer.idChofer}" />
                                     </p:button>
-
-                                </div>
-                                <div>
-                                    <p:commandButton value="Califica" rendered="#{sesionC.verificarTipo() eq false and perfilChoferC.verificarPasajero(sesionC.pasajero)}"
+                                    <p:commandButton value="Califica" icon="fa fa-star-half-o" rendered="#{sesionC.verificarTipo() eq false and perfilChoferC.verificarPasajero(sesionC.pasajero)}"
                                                      onclick="PF('dlgc').show();" >
                                         <f:param name="choferId" value="#{perfilChoferC.chofer.idChofer}" />
                                     </p:commandButton>
@@ -66,10 +64,10 @@
                                         <p:tab title="Personal">
                                             <h:form>
                                                 <h3>Sobre mi:</h3>
-                                                <h4><h:outputText value="#{perfilChoferC.perfil.csobreMi}"/></h4> <!--rendered="{perfilChoferC.sobreMi-->
+                                                <h:outputText value="#{perfilChoferC.perfil.csobreMi}"/> <!--rendered="{perfilChoferC.sobreMi-->
                                                 <p:separator styleClass="separadorT"/>
                                                 <h3>Antigüedad:</h3>
-                                                <h:outputText value="Usuario desde: #{perfilChoferC.fechaReg()}" styleClass="minord"/>
+                                                <h:outputText value="Usuario desde: #{perfilChoferC.fechaReg()}"/>
                                                 <p:separator styleClass="separadorT"/>
                                             </h:form>
                                         </p:tab>
@@ -146,7 +144,7 @@
                     <!--Aqui comienza-->
                     <p:dialog modal="true" widgetVar="califs" draggable="false" hideEffect="fade" style="align-content: center;" closable="true" rendered="true" height="500px" width="500px">
                         <!--h:outputText value="Exito!!"/-->
-                        <p:dataTable value="#{perfilChoferC.calificaciones}" paginator="true" paginatorPosition="bottom" var="cc" rows="3">
+                        <p:dataTable value="#{perfilChoferC.calificaciones}" paginator="true" paginatorPosition="bottom" var="cc" rows="5">
                             <p:column headerText="Nombre Pasajero">
                                 <p:link value="#{cc.pasajero.pnombre} #{cc.pasajero.papp}" outcome="PerfilPasajeroIH" >
                                     <f:param name="pasajeroId" value="#{cc.pasajero.idPasajero}" />

@@ -55,7 +55,7 @@ public class HorarioL implements Serializable {
     }
     
     public String formateaHora(Date hora) {
-        String s = "No disponible";
+        String s = "Inactivo";
         if (hora != null) {
             SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
             s = sdf.format(hora);
