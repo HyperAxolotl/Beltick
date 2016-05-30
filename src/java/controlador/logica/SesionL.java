@@ -127,7 +127,9 @@ public class SesionL {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            con.close();
+            if (con != null && con.isOpen()) {
+                con.close();
+            }
             return b;
         }
     }
@@ -153,7 +155,9 @@ public class SesionL {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            con.close();
+            if (con != null && con.isOpen()) {
+                con.close();
+            }
             return b;
         }
     }

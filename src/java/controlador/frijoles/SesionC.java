@@ -98,7 +98,7 @@ public class SesionC implements Serializable {
                     resultado = "PerfilPasajeroIH?faces-redirect=true&pasajeroId=" + pa.getIdPasajero();
                     p = pa;
                 } else {
-                    mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "Correo o contraseña incorrectos", null);
+                    mensaje = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Correo o contraseña incorrectos", null);
                     FacesContext.getCurrentInstance().addMessage(null, mensaje);
                     resultado = "";
                 }
@@ -116,7 +116,7 @@ public class SesionC implements Serializable {
                     resultado = "PerfilChoferIH?faces-redirect=true&choferId=" + usc.getIdChofer();
                     c = usc;
                 } else {
-                    mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "Correo o contraseña incorrectos", null);
+                    mensaje = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Correo o contraseña incorrectos", null);
                     FacesContext.getCurrentInstance().addMessage(null, mensaje);
                     resultado = "";
                 }

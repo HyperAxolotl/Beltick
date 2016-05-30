@@ -42,7 +42,7 @@
                                         <!--p:commandButton actionListener="{perfilPasajeroC.listarCalificaciones()}" id="estrellas" onclick="PF('califs').show();" icon="fa fa-comment"> 
                                             <f:param name="choferId" value="{perfilPasajeroC.pasajero.idPasajero}" />
                                         </p:commandButton--> 
-                                        <p:rating value="#{perfilPasajeroC.getCalificacion()}" stars="10" readonly="false" cancel="false"/>
+                                        <p:rating value="#{perfilPasajeroC.getCalificacion()}" stars="10" readonly="true" />
                                     </h:panelGrid>
                                     <p:separator styleClass="separadorP"/>
                                 </h:panelGrid>

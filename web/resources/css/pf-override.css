@@ -13,7 +13,7 @@
     display: block;
     position: relative;
     width: auto;
-    
+
 }
 
 .barra-nav a {
@@ -53,4 +53,14 @@
 
 .ui-tabs-nav.ui-helper-reset.ui-helper-clearfix.ui-widget-header.ui-corner-all {
     background: #fff;
+}
+
+.mi-panel-grid tr td {
+    padding: 7px;
+}
+
+.mi-tr, .ui-inputfield.ui-widget.ui-state-default.ui-corner-all.hasDatepicker {
+    box-shadow: none;
+    text-align: left;
+    border-color: #D2D9DE;
 }

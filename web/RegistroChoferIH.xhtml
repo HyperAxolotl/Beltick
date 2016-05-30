@@ -4,114 +4,121 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pe="http://primefaces.org/ui/extensions">
 
     <h:body>
         <ui:composition template="plantillas/vista2.xhtml">
             <ui:define name="content">
-                <section class="container">
-                    <div class="row">
-                        <div class="col-sm-12" align="center">
-                            <p:tooltip />
-                            <h:form styleClass="form">
-                                <div class="form-group">
-                                    <h2>Registro Chofer</h2>
-                                    <h3>Ingresa tus datos</h3>
-                                    <h:panelGrid id="grid" columns="3" cellpadding="5">
-                                        <p:outputLabel for="nombre" value="Nombre"/>
-                                        <p:inputText id="nombre" styleClass="form-control input-sm" required="true" style="text-align: left;" value="#{choferC.chofer.cnombre}"/>
-                                        <p:message for="nombre" display="text" />
+                <div class="col-sm-12" align="center">
+                    <p:tooltip />
+                    <h:form>
+                        <h2>Registro Chofer</h2>
+                        <h3>Ingresa tus datos</h3>
+                        <p:messages autoUpdate="true" showDetail="true" closable="true"/>
+                        <h:panelGrid id="grid" columns="3" styleClass="mi-panel-grid">
+                            <p:outputLabel for="nombre" value="Nombre"/>
+                            <p:inputText id="nombre" required="true" styleClass="mi-tr" value="#{choferC.chofer.cnombre}">
+                                <pe:keyFilter regEx="/[a-z_' üñ]/i"/>
+                            </p:inputText>
+                            <p:message for="nombre" display="text" />
 
-                                        <p:outputLabel for="app" value="Apellido Paterno" />
-                                        <p:inputText id="app" styleClass="form-control input-sm" required="true" style="text-align: left;" value="#{choferC.chofer.capp}"/>
-                                        <p:message for="app" display="text" />
+                            <p:outputLabel for="app" value="Apellido Paterno" />
+                            <p:inputText id="app" required="true" styleClass="mi-tr" value="#{choferC.chofer.capp}">
+                                <pe:keyFilter regEx="/[a-z_' üñ]/i"/>
+                            </p:inputText>
+                            <p:message for="app" display="text" />
 
-                                        <p:outputLabel for="apm" value="Apellido Materno" />
-                                        <p:inputText id="apm" styleClass="form-control input-sm"  required="true" style="text-align: left;" value="#{choferC.chofer.capm}"/>
-                                        <p:message for="apm" display="text" />
+                            <p:outputLabel for="apm" value="Apellido Materno" />
+                            <p:inputText id="apm"  required="true" styleClass="mi-tr" value="#{choferC.chofer.capm}">
+                                <pe:keyFilter regEx="/[a-z_' üñ]/i"/>
+                            </p:inputText>
+                            <p:message for="apm" display="text" />
 
-                                        <p:outputLabel for="correo" value="Correo" />
-                                        <p:inputText id="correo" styleClass="form-control input-sm" required="true" style="text-align: left;" value="#{choferC.chofer.ccorreo}"/>
-                                        <p:message for="correo" display="text" />
+                            <p:outputLabel for="correo" value="Correo" />
+                            <p:inputText id="correo" required="true" styleClass="mi-tr" value="#{choferC.chofer.ccorreo}"
+                                         placeholder="correo@ciencias.unam.mx">
+                                <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@ciencias.unam.mx" />
+                                <pe:keyFilter regEx="/[a-z0-9_\-\.@]/i" />
+                            </p:inputText>
+                            <p:message for="correo" display="text" />
 
-                                        <p:outputLabel for="contrasenia" value="Contraseña" />
-                                        <p:password id="contrasenia" styleClass="form-control input-sm" required="true" style="text-align: left;" value="#{choferC.chofer.ccontrasenia}"
-                                                    feedback="true" inline="true" promptLabel="Ingresa una contraseña" 
-                                                    weakLabel="Débil" goodLabel="Medio" strongLabel="Fuerte" />
-                                        <p:message for="contrasenia" display="text" />
+                            <p:outputLabel for="contrasenia" value="Contraseña" />
+                            <p:password id="contrasenia" required="true" styleClass="mi-tr" value="#{choferC.chofer.ccontrasenia}"
+                                        feedback="true" inline="true" promptLabel="Ingresa una contraseña" 
+                                        weakLabel="Débil" goodLabel="Medio" strongLabel="Fuerte" />
+                            <p:message for="contrasenia" display="text" />
 
-                                        <p:outputLabel for="contraseniac" value="Confirmación de Contraseña" />
-                                        <p:password id="contraseniac" styleClass="form-control input-sm"  required="true" style="text-align: left;" value="#{choferC.confirmacion}" />
-                                        <p:message for="contraseniac" display="text" />
+                            <p:outputLabel for="contraseniac" value="Confirmación de Contraseña" />
+                            <p:password id="contraseniac" required="true" styleClass="mi-tr" value="#{choferC.confirmacion}" />
+                            <p:message for="contraseniac" display="text" />
 
-                                        <p:outputLabel for="ncuenta" value="Numero de Cuenta" />
-                                        <p:inputText id="ncuenta" styleClass="form-control input-sm" required="true" style="text-align: left;" value="#{choferC.chofer.cnoCuenta}" />
-                                        <p:message for="ncuenta" display="text" />
+                            <p:outputLabel for="ncuenta" value="Numero de Cuenta" />
+                            <p:inputMask id="ncuenta" required="true" styleClass="mi-tr" value="#{choferC.chofer.cnoCuenta}" 
+                                         mask="999999999"/>
+                            <p:message for="ncuenta" display="text" />
 
-                                        <p:outputLabel for="nid" value="Numero de Identificación (Licencia)" />
-                                        <p:inputText id="nid" styleClass="form-control input-sm" required="true" style="text-align: left;" value="#{choferC.chofer.cnoId}" />
-                                        <p:message for="nid" display="text" />  
+                            <p:outputLabel for="nid" value="Numero de Identificación (Licencia)" />
+                            <p:inputText id="nid" required="true" styleClass="mi-tr" value="#{choferC.chofer.cnoId}" />
+                            <p:message for="nid" display="text" />  
 
-                                        <p:outputLabel for="fecha" value="Fecha de Nacimiento" />
-                                        <p:calendar id="fecha" required="true" style="text-align: left; height: 8px;g" pattern="dd-MM-yyyy" mask="true" value="#{choferC.chofer.cfechaNac}" />
+                            <p:outputLabel for="fecha" value="Fecha de Nacimiento" />
+                            <p:calendar id="fecha" required="true" pattern="dd-MM-yyyy" mask="true" value="#{choferC.chofer.cfechaNac}" />
 
-                                        <p:message for="fecha" display="text" />
-                                    </h:panelGrid>
-                                </div>
-                                <section class="container">
-                                    <div class="row">
-                                        <div class="col-sm-12" align="center">
+                            <p:message for="fecha" display="text" />
+                        </h:panelGrid>
+                        <section class="container">
+                            <div class="row">
+                                <div class="col-sm-12" align="center">
 
-                                            <h:outputText value="Al hacer click en 'Registrar',estás aceptando nuestros:"/> 
-                                            <a  
-                                                data-toggle="modal" 
-                                                data-target="#myModal" 
-                                                href="Proyecto/Informacion.xhtml">
-                                                Términos y condiciones de uso
-                                            </a>
+                                    <h:outputText value="Al hacer click en 'Registrar',estás aceptando nuestros:"/> 
+                                    <a  
+                                        data-toggle="modal" 
+                                        data-target="#myModal" 
+                                        href="Proyecto/Informacion.xhtml">
+                                        Términos y condiciones de uso
+                                    </a>
 
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                            <h4 class="modal-title" id="myModalLabel">Términos y condiciones de uso</h4>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            ...
-                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
-                                                        </div>
-                                                    </div>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                    <h4 class="modal-title" id="myModalLabel">Términos y condiciones de uso</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    ...
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
                                                 </div>
                                             </div>
-                                            <div>
-                                                <p:dialog id="dialogTest" header="Exito" widgetVar="dlg2" modal="true" 
-                                                          resizable="false" closable="false" height="100" visible="#{choferC.exito}">
-                                                    <p:messages/>
-                                                    <p:button value="Cerrar" onclick="PF('dlg2').hide()" outcome="PaginaPrincipalIH"/>
-                                                </p:dialog>
-
-                                                <h:panelGrid columns="1" cellpadding="5">
-                                                    <p:commandButton styleClass="btn btn-info" 
-                                                                     value="Registrar" action="#{choferC.registro()}" update="grid,dialogTest" 
-                                                                     onclick="if (#{choferC.exito}) {
-                                                                                 PF('dlg2').show();
-                                                                             }">
-                                                    </p:commandButton>
-                                                </h:panelGrid>
-
-                                            </div>        
                                         </div>
                                     </div>
-                                </section>
-                            </h:form>        
-                        </div>
-                    </div>
-                </section>
+                                    <div>
+                                        <p:dialog id="dialogTest" header="Exito" widgetVar="dlg2" modal="true" 
+                                                  resizable="false" closable="false" height="100" visible="#{choferC.exito}">
+                                            <p:messages/>
+                                            <p:button value="Cerrar" onclick="PF('dlg2').hide()" outcome="PaginaPrincipalIH"/>
+                                        </p:dialog>
+
+                                        <h:panelGrid columns="1" cellpadding="5">
+                                            <p:commandButton styleClass="btn btn-info" 
+                                                             value="Registrar" action="#{choferC.registro()}" update="grid,dialogTest" 
+                                                             onclick="if (#{choferC.exito}) {
+                                                                         PF('dlg2').show();
+                                                                     }">
+                                            </p:commandButton>
+                                        </h:panelGrid>
+
+                                    </div>        
+                                </div>
+                            </div>
+                        </section>
+                    </h:form>        
+                </div>
             </ui:define>
         </ui:composition>
     </h:body>

@@ -26,6 +26,7 @@ public class ChoferC implements Serializable {
     
     
     public ChoferC() {
+        ayudante = new ChoferL();
     }
     
     public Chofer getChofer() {
@@ -42,12 +43,11 @@ public class ChoferC implements Serializable {
     
     public String registro() {
         mensaje = ayudante.registrar(chofer,confirmacion);
-        ayudante = new ChoferL();
-        Cartero cartero = new Cartero(ayudante.getPerfilChofer(chofer.getIdChofer()));
         if(mensaje != null) {
             FacesContext.getCurrentInstance().addMessage("msg", mensaje);
             return "";
         }
+        Cartero cartero = new Cartero(ayudante.getPerfilChofer(chofer.getIdChofer()));
         mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "Tu registro fue exitoso... Revisa en tu bandeja el correo de activación de tu cuenta.", null);
         FacesContext.getCurrentInstance().addMessage(null, mensaje);
         exito = true;

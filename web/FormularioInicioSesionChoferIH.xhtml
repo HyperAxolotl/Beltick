@@ -10,33 +10,32 @@
     <h:body>
         <ui:composition template="plantillas/vista2.xhtml">
             <ui:define name="content">
-                <section class="container">
-                    <div class="row">
-                        <div class="col-sm-12" align="center">
-                            <h:form class="form">
-                                <h2>Iniciar Sesión Chofer</h2>
-                                <h:messages infoStyle="color:red" />
+                <div class="col-sm-12" align="center">
+                    <h:form styleClass="form">
+                        <h2>Iniciar Sesión Chofer</h2>
+                        <p:messages autoUpdate="true"/>
+                        <h:panelGrid id="grid" columns="3" styleClass="mi-panel-grid">			
 
-                                <h:panelGrid columns="2" columnClasses="alignmentCenter">			
+                            <p:outputLabel for="correo" value="Correo " />
+                            <p:inputText id="correo" styleClass="mi-tr" style="border-color: #D2D9DE;text-align: left;" value="#{sesionC.chofer.ccorreo}" required="true" >
+                                <pe:keyFilter regEx="/[a-z0-9_\-\.@]/i" />
+                                <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@ciencias.unam.mx" />
+                            </p:inputText>
+                            <p:message for="correo" display="text" />
 
-                                    <h:outputLabel value="Correo " />
-                                    <p:inputText style="text-align: left;" value="#{sesionC.chofer.ccorreo}" >
-                                        <pe:keyFilter regEx="/[a-z0-9_\-\.'@]/i" />
-                                    </p:inputText>
+                            <p:outputLabel for="password" value="Contraseña" />
+                            <p:password id="password" styleClass="mi-tr" style="border-color: #D2D9DE;text-align: left;"  value="#{sesionC.chofer.ccontrasenia}" required="true" />
+                            <p:message for="password" display="text" />
 
-                                    <h:outputLabel value="Contraseña  " />
-                                    <p:password style="text-align: left;" value="#{sesionC.chofer.ccontrasenia}" />
-                                    <section name="button">
-                                        <h:commandButton  styleClass="btn btn-info" value="Aceptar" action="#{sesionC.verificarDatos()}" >
-                                            <f:actionListener binding="#{sesionC.setTipo(true)}" />
-                                        </h:commandButton>
-                                    </section>    
+                            <section name="button">
+                                <h:commandButton  styleClass="btn btn-info" value="Aceptar" action="#{sesionC.verificarDatos()}" >
+                                    <f:actionListener binding="#{sesionC.setTipo(true)}" />
+                                </h:commandButton>
+                            </section>    
 
-                                </h:panelGrid>
-                            </h:form> 
-                        </div>
-                    </div>
-                </section>
+                        </h:panelGrid>
+                    </h:form> 
+                </div>
 
             </ui:define>
 

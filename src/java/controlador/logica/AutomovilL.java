@@ -46,7 +46,6 @@ public class AutomovilL implements Serializable{
             System.out.println("registrado");
         }catch(Exception e){
             trans.rollback();
-            c.getAutomovils().clear();
             mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "Error al registrar los datos", null);
             e.printStackTrace();
         }finally{

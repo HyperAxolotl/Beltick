@@ -1,4 +1,5 @@
 package controlador.logica;
+
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -16,46 +17,62 @@ import org.hibernate.Query;
 import org.hibernate.Transaction;
 import utiles.Cripta;
 
+public class PasajeroL implements Serializable {
 
-public class PasajeroL implements Serializable{
-    
     private Session con;
     private Transaction trans;
     private PerfilPasajero perfil = new PerfilPasajero();
     private Cripta cripta;
     private List<PasajeroRuta> listaRutas;
-       
-    public FacesMessage registrar(Pasajero p, String confirmacion){
+
+    public FacesMessage registrar(Pasajero p, String confirmacion) {
         FacesMessage mensaje = null;
-        if(!confirmacion.equals(p.getPcontrasenia())) 
-                return new FacesMessage(FacesMessage.SEVERITY_INFO, "Las contraseñas no coinciden", null);
+        if (!confirmacion.equals(p.getPcontrasenia())) {
+            return new FacesMessage(FacesMessage.SEVERITY_ERROR, "Las contraseñas no coinciden", null);
+        }
         System.out.println("\n\n\n\n\nComienza registro de pasajero");
-        try{
+        try {
             cripta = new Cripta();
-            if (con == null || !con.isOpen())
+            if (con == null || !con.isOpen()) {
                 con = ConexionBD.getSessionFactory().openSession();
-            System.out.println("Conexion realizada");
-            trans = con.beginTransaction();
-            p.setPcontrasenia(cripta.encripta(confirmacion));
-            con.save(p);
-            trans.commit();
-        }catch(Exception e){
+            }
+            Query query = con.createQuery("from Pasajero where pcorreo = :correo");
+            query.setParameter("correo", p.getPcorreo());
+            List<Pasajero> l = query.list();
+            if (!l.isEmpty()) {
+                mensaje = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Este correo ya está registrado");
+            } else {
+                query = con.createQuery("from Pasajero where pnoCuenta = :noCuenta");
+                query.setParameter("noCuenta", p.getPnoCuenta());
+                l = query.list();
+                if (!l.isEmpty()) {
+                    mensaje = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Este número de cuenta ya está registrado");
+
+                } else {
+                    System.out.println("Conexion realizada");
+                    trans = con.beginTransaction();
+                    p.setPcontrasenia(cripta.encripta(confirmacion));
+                    con.save(p);
+                    trans.commit();
+                }
+            }
+        } catch (Exception e) {
             trans.rollback();
-            mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "Error con el registro del pasajero", null);
-            System.out.println("Esta es la excepcion "+e.getClass().getName());
+            mensaje = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Ha habido un error con el registro");
+            System.out.println("Esta es la excepcion " + e.getClass().getName());
             e.printStackTrace();
-        }finally{
-            //con.update(p);
+        } finally {
             con.close();
             return mensaje;
         }
     }
-    
+
     public PerfilPasajero getPerfilPasajero(int id) {
         PerfilPasajero pp = null;
         try {
-            if (con == null || !con.isOpen())
+            if (con == null || !con.isOpen()) {
                 con = ConexionBD.getSessionFactory().openSession();
+            }
             String hql = "FROM PerfilPasajero WHERE pasajero.idPasajero = '" + id + "'";
             Query query = con.createQuery(hql);
             if (!query.list().isEmpty()) {
@@ -66,25 +83,26 @@ public class PasajeroL implements Serializable{
         }
         return pp;
     }
-    
+
     public FacesMessage actualizarPasajero(Pasajero p) {
         FacesMessage mensaje = null;
-        try{
-            if (con == null || !con.isOpen())
+        try {
+            if (con == null || !con.isOpen()) {
                 con = ConexionBD.getSessionFactory().openSession();
+            }
             trans = con.beginTransaction();
             con.merge(p);
             trans.commit();
-        }catch(Exception e){
+        } catch (Exception e) {
             trans.rollback();
             mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "Error al actualizar perfil", null);
             e.printStackTrace();
-        }finally{
+        } finally {
             con.close();
             return mensaje;
         }
     }
-    
+
     public List<PasajeroRuta> listaRutas(Pasajero pasajero) {
         try {
             if (con == null || !con.isOpen()) {
@@ -100,7 +118,7 @@ public class PasajeroL implements Serializable{
             return listaRutas;
         }
     }
-    
+
     public String getHora(PasajeroRuta pr) {
         Date d = null;
         String st = "";
@@ -124,7 +142,7 @@ public class PasajeroL implements Serializable{
             return st;
         }
     }
-    
+
     public int getChoferId(PasajeroRuta pr) {
         int id = 0;
         try {
@@ -143,7 +161,7 @@ public class PasajeroL implements Serializable{
             return id;
         }
     }
-    
+
     public FacesMessage eliminaRuta(PasajeroRuta pr) {
         FacesMessage mensaje = null;
         try {
