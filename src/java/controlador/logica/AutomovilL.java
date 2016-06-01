@@ -2,6 +2,7 @@ package controlador.logica;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import org.hibernate.Session;
@@ -13,53 +14,64 @@ import modelo.Ruta;
 import org.hibernate.Query;
 import org.hibernate.Transaction;
 
-public class AutomovilL implements Serializable{
-    
+public class AutomovilL implements Serializable {
+
     private Session con;
     private Transaction trans;
-    
-    public FacesMessage registrar(Automovil a, Ruta r, Horario h, Chofer c){
+
+    public FacesMessage registrar(Automovil a, Ruta r, Horario h, Chofer c) {
         FacesMessage mensaje = null;
         System.out.println("registrando");
-        try{
-            if (con == null || !con.isOpen())
+        try {
+            if (con == null || !con.isOpen()) {
                 con = ConexionBD.getSessionFactory().openSession();
-            trans = con.beginTransaction();
+            }
             a.setPlaca(a.getPlaca().toUpperCase());
-            a.setChofer(c);
-            System.out.println("Coche agregado a bean");
-            con.save(a);
-            System.out.println("Coche registrado");
-            Date fecha = new Date();
-            String mapa = FacesContext.getCurrentInstance().
-                    getExternalContext().getRequestParameterMap().get("mapa");
-            r.setMapa(mapa);
-            r.setActiva(true);
-            r.setFechaCreacion(fecha);
-            r.setAutomovil(a);
-            con.save(r);
-            System.out.println("Ruta registrado");
-            h.setRuta(r);
-            con.save(h);
-            System.out.println("Horario registrado");
-            trans.commit();
-            System.out.println("registrado");
-        }catch(Exception e){
+            Query query = con.createQuery("from Automovil where placa = :placa");
+            query.setParameter("placa", a.getPlaca());
+            List<Automovil> l = query.list();
+            if (!l.isEmpty()) {
+                mensaje = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "El automóvil con esta placa ya está registrado");
+            } else {
+                query = con.createQuery("from Automovil where noIdentificacion = :noId");
+                query.setParameter("noId", a.getNoIdentificacion());
+                l = query.list();
+                if (!l.isEmpty()) {
+                    mensaje = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "El automóvil con este número de identificación ya está registrado");
+                } else {
+                    trans = con.beginTransaction();
+                    a.setChofer(c);
+                    con.save(a);
+                    Date fecha = new Date();
+                    String mapa = FacesContext.getCurrentInstance().
+                            getExternalContext().getRequestParameterMap().get("mapa");
+                    r.setMapa(mapa);
+                    r.setActiva(true);
+                    r.setFechaCreacion(fecha);
+                    r.setAutomovil(a);
+                    con.save(r);
+                    h.setRuta(r);
+                    con.save(h);
+                    trans.commit();
+                }
+            }
+        } catch (Exception e) {
             trans.rollback();
             mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "Error al registrar los datos", null);
             e.printStackTrace();
-        }finally{
+        } finally {
             con.close();
             return mensaje;
         }
-     
+
     }
-    
+
     public Automovil getAutomovil(int choferId) {
         Automovil a = null;
         try {
-            if (con == null || !con.isOpen())
+            if (con == null || !con.isOpen()) {
                 con = ConexionBD.getSessionFactory().openSession();
+            }
             String hql = "FROM Automovil WHERE chofer.idChofer= :id";
             Query query = con.createQuery(hql);
             query.setParameter("id", choferId);
@@ -73,24 +85,25 @@ public class AutomovilL implements Serializable{
             return a;
         }
     }
-    
+
     public FacesMessage actualizarAutomovil(Automovil a) {
         FacesMessage mensaje = null;
-        try{
-            if (con == null || !con.isOpen())
+        try {
+            if (con == null || !con.isOpen()) {
                 con = ConexionBD.getSessionFactory().openSession();
+            }
             trans = con.beginTransaction();
             a.setPlaca(a.getPlaca().toUpperCase());
             con.update(a);
             trans.commit();
-        }catch(Exception e){
+        } catch (Exception e) {
             trans.rollback();
             mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "Error al actualizar datos del automóvil", null);
             e.printStackTrace();
-        }finally{
+        } finally {
             con.close();
             return mensaje;
         }
     }
-   
+
 }

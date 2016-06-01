@@ -21,25 +21,25 @@
                         <p:messages autoUpdate="true" showDetail="true" closable="true"/>
                         <h:panelGrid id="grid" columns="3" styleClass="mi-panel-grid">
                             <p:outputLabel for="nombre" value="Nombre" />
-                            <p:inputText id="nombre" required="true" styleClass="mi-tr" value="#{pasajeroC.pasajero.pnombre}" >
+                            <p:inputText id="nombre" required="true" styleClass="mi-tr" value="#{pasajeroC.pasajero.pnombre}" label="Nombre">
                                 <pe:keyFilter regEx="/[a-z_' üñ]/i"/>
                             </p:inputText>
                             <p:message for="nombre" display="text"/>
 
                             <p:outputLabel for="app" value="Apellido Paterno" />
-                            <p:inputText id="app" required="true" styleClass="mi-tr" value="#{pasajeroC.pasajero.papp}">
+                            <p:inputText id="app" required="true" styleClass="mi-tr" value="#{pasajeroC.pasajero.papp}" label="Apellido Paterno">
                                 <pe:keyFilter regEx="/[a-z_' üñ]/i"/>
                             </p:inputText>
                             <p:message for="app" display="text"/>
 
                             <p:outputLabel for="apm" value="Apellido Materno" />
-                            <p:inputText id="apm" required="true" styleClass="mi-tr" value="#{pasajeroC.pasajero.papm}">
+                            <p:inputText id="apm" required="true" styleClass="mi-tr" value="#{pasajeroC.pasajero.papm}" label="Apellido Materno">
                                 <pe:keyFilter regEx="/[a-z_' üñ]/i"/>
                             </p:inputText>
                             <p:message for="apm" display="text"/>
 
                             <p:outputLabel for="correo" value="Correo" />
-                            <p:inputText id="correo" required="true" styleClass="mi-tr" value="#{pasajeroC.pasajero.pcorreo}" 
+                            <p:inputText id="correo" required="true" styleClass="mi-tr" value="#{pasajeroC.pasajero.pcorreo}" label="Correo" 
                                          placeholder="correo@ciencias.unam.mx">
                                 <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@ciencias.unam.mx" />
                                 <pe:keyFilter regEx="/[a-z0-9_\-\.@]/i" />
@@ -49,21 +49,20 @@
                             <p:outputLabel for="contrasenia" value="Contraseña" />
                             <p:password id="contrasenia" required="true" styleClass="mi-tr" value="#{pasajeroC.pasajero.pcontrasenia}" 
                                         feedback="true" inline="true" promptLabel="Ingresa una contraseña" 
-                                        weakLabel="Débil" goodLabel="Medio" strongLabel="Fuerte" />
+                                        weakLabel="Débil" goodLabel="Medio" strongLabel="Fuerte" label="Contraseña"/>
                             <p:message for="contrasenia" display="text"/>
 
                             <p:outputLabel for="contraseniac" value="Confirmación de Contraseña" />
-                            <p:password id="contraseniac" required="true" styleClass="mi-tr" value="#{pasajeroC.confirmacion}" />
+                            <p:password id="contraseniac" required="true" styleClass="mi-tr" value="#{pasajeroC.confirmacion}" label="Confirmación"/>
                             <p:message for="contraseniac" display="text" />
 
                             <p:outputLabel for="ncuenta" value="Numero de Cuenta" />
-                            <p:inputMask id="ncuenta" required="true" styleClass="mi-tr" value="#{pasajeroC.pasajero.pnoCuenta}" 
+                            <p:inputMask id="ncuenta" required="true" styleClass="mi-tr" value="#{pasajeroC.pasajero.pnoCuenta}" label="Numero de Cuenta"
                                          mask="999999999"/>
                             <p:message for="ncuenta" display="text" />
 
                             <p:outputLabel for="fecha" value="Fecha de Nacimiento" />
-                            <p:calendar  id="fecha" required="true" pattern="dd-MM-yyyy" mask="true" value="#{pasajeroC.pasajero.pfechaNac}" />
-
+                            <p:calendar  id="fecha" required="true" pattern="dd-MM-yyyy" mask="true" value="#{pasajeroC.pasajero.pfechaNac}" label="Fecha de Nacimiento"/>
                             <p:message for="fecha" display="text" />
 
                         </h:panelGrid>

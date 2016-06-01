@@ -18,26 +18,26 @@
                         <p:messages autoUpdate="true" showDetail="true" closable="true"/>
                         <h:panelGrid id="grid" columns="3" styleClass="mi-panel-grid">
                             <p:outputLabel for="nombre" value="Nombre"/>
-                            <p:inputText id="nombre" required="true" styleClass="mi-tr" value="#{choferC.chofer.cnombre}">
+                            <p:inputText id="nombre" required="true" styleClass="mi-tr" value="#{choferC.chofer.cnombre}" label="Nombre">
                                 <pe:keyFilter regEx="/[a-z_' üñ]/i"/>
                             </p:inputText>
                             <p:message for="nombre" display="text" />
 
                             <p:outputLabel for="app" value="Apellido Paterno" />
-                            <p:inputText id="app" required="true" styleClass="mi-tr" value="#{choferC.chofer.capp}">
+                            <p:inputText id="app" required="true" styleClass="mi-tr" value="#{choferC.chofer.capp}" label="Apellido Paterno">
                                 <pe:keyFilter regEx="/[a-z_' üñ]/i"/>
                             </p:inputText>
                             <p:message for="app" display="text" />
 
                             <p:outputLabel for="apm" value="Apellido Materno" />
-                            <p:inputText id="apm"  required="true" styleClass="mi-tr" value="#{choferC.chofer.capm}">
+                            <p:inputText id="apm"  required="true" styleClass="mi-tr" value="#{choferC.chofer.capm}" label="Apellido Materno">
                                 <pe:keyFilter regEx="/[a-z_' üñ]/i"/>
                             </p:inputText>
                             <p:message for="apm" display="text" />
 
                             <p:outputLabel for="correo" value="Correo" />
                             <p:inputText id="correo" required="true" styleClass="mi-tr" value="#{choferC.chofer.ccorreo}"
-                                         placeholder="correo@ciencias.unam.mx">
+                                         placeholder="correo@ciencias.unam.mx" label="Correo">
                                 <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@ciencias.unam.mx" />
                                 <pe:keyFilter regEx="/[a-z0-9_\-\.@]/i" />
                             </p:inputText>
@@ -46,24 +46,24 @@
                             <p:outputLabel for="contrasenia" value="Contraseña" />
                             <p:password id="contrasenia" required="true" styleClass="mi-tr" value="#{choferC.chofer.ccontrasenia}"
                                         feedback="true" inline="true" promptLabel="Ingresa una contraseña" 
-                                        weakLabel="Débil" goodLabel="Medio" strongLabel="Fuerte" />
+                                        weakLabel="Débil" goodLabel="Medio" strongLabel="Fuerte" label="Contraseña"/>
                             <p:message for="contrasenia" display="text" />
 
                             <p:outputLabel for="contraseniac" value="Confirmación de Contraseña" />
-                            <p:password id="contraseniac" required="true" styleClass="mi-tr" value="#{choferC.confirmacion}" />
+                            <p:password id="contraseniac" required="true" styleClass="mi-tr" value="#{choferC.confirmacion}" label="Confirmación"/>
                             <p:message for="contraseniac" display="text" />
 
                             <p:outputLabel for="ncuenta" value="Numero de Cuenta" />
                             <p:inputMask id="ncuenta" required="true" styleClass="mi-tr" value="#{choferC.chofer.cnoCuenta}" 
-                                         mask="999999999"/>
+                                         mask="999999999" label="Numero de Cuenta"/>
                             <p:message for="ncuenta" display="text" />
 
                             <p:outputLabel for="nid" value="Numero de Identificación (Licencia)" />
-                            <p:inputText id="nid" required="true" styleClass="mi-tr" value="#{choferC.chofer.cnoId}" />
+                            <p:inputText id="nid" required="true" styleClass="mi-tr" value="#{choferC.chofer.cnoId}" label="Numero de Identificación"/>
                             <p:message for="nid" display="text" />  
 
                             <p:outputLabel for="fecha" value="Fecha de Nacimiento" />
-                            <p:calendar id="fecha" required="true" pattern="dd-MM-yyyy" mask="true" value="#{choferC.chofer.cfechaNac}" />
+                            <p:calendar id="fecha" required="true" pattern="dd-MM-yyyy" mask="true" value="#{choferC.chofer.cfechaNac}" label="Fecha de Nacimiento"/>
 
                             <p:message for="fecha" display="text" />
                         </h:panelGrid>
