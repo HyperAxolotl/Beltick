@@ -19,7 +19,7 @@
 
                                     <p:outputLabel for="imagen" value="Imágen" />
                                     <p:fileUpload id="imagen" value="#{actualizarPerfilChoferC.archivo}" mode="simple" label="Subir imágen" cancelLabel="Cancelar" sizeLimit="1024" />
-                                    
+
                                     <h:outputLabel for="nombre" value="Nombre:" />
                                     <p:inplace id="nombre" editor="true" >
                                         <p:inputText value="#{actualizarPerfilChoferC.chofer.cnombre}" required="true" label="text" />
@@ -64,7 +64,7 @@
                                     </p:inplace>
 
                                 </p:panelGrid>
-                                <h:commandButton styleClass="btn btn-info" value="Aceptar" action="#{actualizarPerfilChoferC.actualizarChofer()}" />
+                                <h:commandButton styleClass="btn btn-info" value="Editar perfil" action="#{actualizarPerfilChoferC.actualizarChofer()}" />
                             </p:tab>
 
                             <p:tab title="Automóvil" rendered="#{actualizarPerfilChoferC.automovil != null}">
@@ -96,7 +96,7 @@
                                     </p:inplace>
 
                                 </p:panelGrid>
-                                <h:commandButton styleClass="btn btn-info" value="Aceptar" action="#{actualizarPerfilChoferC.actualizarAutomovil()}" />
+                                <h:commandButton styleClass="btn btn-info" value="Editar automóvil" action="#{actualizarPerfilChoferC.actualizarAutomovil()}" />
                             </p:tab>
 
                             <p:tab title="Ruta" rendered="#{actualizarPerfilChoferC.ruta != null}">
@@ -117,7 +117,7 @@
                                     <h:outputText id="display" />
                                 </p:inplace>
                                 <br></br>
-                                <h:commandButton styleClass="btn btn-info" value="Aceptar" action="#{actualizarPerfilChoferC.actualizarRuta()}" />
+                                <h:commandButton styleClass="btn btn-info" value="Editar ruta" action="#{actualizarPerfilChoferC.actualizarRuta()}" />
 
                             </p:tab>
                             <p:tab title="Horario" rendered="#{actualizarPerfilChoferC.horario != null}">
@@ -163,12 +163,23 @@
                                             <f:convertDateTime pattern="HH:mm" />
                                         </p:inputMask>
                                     </p:inplace>
-                                    
+
                                 </p:panelGrid>
-                                <h:commandButton styleClass="btn btn-info" value="Aceptar" action="#{actualizarPerfilChoferC.actualizarHorario()}" />
+                                <h:commandButton styleClass="btn btn-info" value="Editar horario" action="#{actualizarPerfilChoferC.actualizarHorario()}" />
+                            </p:tab>
+                            <p:tab title="Eliminar cuenta">
+                                <h:outputText value="Si eliminas tu cuenta todos tus datos serán eliminados y no podrás recuperarlos"/>
+                                <p:commandButton value="Eliminar cuenta" actionListener="#{actualizarPerfilChoferC.eliminarCuenta()}">
+                                    <p:confirm header="Confirmación" message="¿Estás seguro de que quieres borrar tu cuenta permanentemente" icon="ui-icon-alert"/>
+                                </p:commandButton>
                             </p:tab>
                         </p:tabView>
                     </section>
+                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                        <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
+                        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>
+                    </p:confirmDialog>
+
                 </h:form>
             </ui:define>
         </ui:composition>

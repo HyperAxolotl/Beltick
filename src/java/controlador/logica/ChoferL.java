@@ -102,4 +102,23 @@ public class ChoferL implements Serializable {
             return mensaje;
         }
     }
+    
+    public FacesMessage eliminarCuenta(Chofer chofer) {
+        FacesMessage mensaje = null;
+        try {
+            if (con == null || !con.isOpen())
+                con = ConexionBD.getSessionFactory().openSession();
+            trans = con.beginTransaction();
+            con.delete(chofer);
+            trans.commit();
+            mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "Éxito", "Cuenta eliminada correctamente");
+        } catch (Exception e) {
+            trans.rollback();
+            mensaje = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Tu cuenta no pudo ser eliminada");
+            e.printStackTrace();
+        } finally {
+            con.close();
+            return mensaje;
+        }
+    }
 }

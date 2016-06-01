@@ -13,7 +13,7 @@
             <ui:define name="content">
                 <p:growl id="growl" life="2000"/>
                 <h:form enctype="multipart/form-data">	
-                    
+
                     <section class="container">
                         <p:tabView>
                             <p:tab title="Perfil">
@@ -65,7 +65,7 @@
                             </p:tab>
 
                             <p:tab title="Rutas">
-                                
+
                                 <h:outputText value="Selecciona las rutas que quieres eliminar" />
 
                                 <p:dataList value="#{actualizarPerfilPasajeroC.listaRutas}" var="dia" rows="10" emptyMessage="No hay rutas registradas" type="unordered">
@@ -83,8 +83,18 @@
 
                             </p:tab>
 
+                            <p:tab title="Eliminar cuenta">
+                                <h:outputText value="Si eliminas tu cuenta todos tus datos serán eliminados y no podrás recuperarlos"/>
+                                <p:commandButton value="Eliminar cuenta" actionListener="#{actualizarPerfilPasajeroC.eliminarCuenta()}">
+                                    <p:confirm header="Confirmación" message="¿Estás seguro de que quieres borrar tu cuenta permanentemente" icon="ui-icon-alert"/>
+                                </p:commandButton>
+                            </p:tab>
                         </p:tabView>
                     </section>
+                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                        <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
+                        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>
+                    </p:confirmDialog>
                 </h:form>
             </ui:define>
         </ui:composition>

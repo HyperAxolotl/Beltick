@@ -2,6 +2,7 @@ package controlador.frijoles;
 
 import controlador.logica.PasajeroL;
 import controlador.logica.PerfilPasajeroL;
+import java.io.IOException;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -119,5 +120,18 @@ public class ActualizarPerfilPasajeroC implements Serializable {
         mensaje = pasajeroL.eliminaRuta(pr);
         listaRutas();
         FacesContext.getCurrentInstance().addMessage(null, mensaje);
+    }
+    
+    public void eliminarCuenta() {
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        mensaje = pasajeroL.eliminarCuenta(pasajero);
+        FacesContext.getCurrentInstance().getExternalContext()
+                .invalidateSession();
+        try {
+            FacesContext.getCurrentInstance().getExternalContext().redirect("PaginaPrincipalIH.xhtml");
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 }

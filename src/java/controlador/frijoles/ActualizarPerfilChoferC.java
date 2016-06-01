@@ -6,6 +6,7 @@ import controlador.logica.HorarioL;
 import controlador.logica.PerfilChoferL;
 import controlador.logica.RutaL;
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -180,5 +181,18 @@ public class ActualizarPerfilChoferC implements Serializable {
         mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "Horario actualizado con éxito", null);
         FacesContext.getCurrentInstance().addMessage(null, mensaje);
         return "";
+    }
+    
+    public void eliminarCuenta() {
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        mensaje = choferL.eliminarCuenta(chofer);
+        FacesContext.getCurrentInstance().getExternalContext()
+                .invalidateSession();
+        try {
+            FacesContext.getCurrentInstance().getExternalContext().redirect("PaginaPrincipalIH.xhtml");
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 }
