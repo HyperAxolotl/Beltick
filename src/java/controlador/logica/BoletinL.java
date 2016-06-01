@@ -47,12 +47,30 @@ public class BoletinL implements Serializable {
             trans.commit();
         } catch (Exception e) {
             trans.rollback();
-            mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "Error con el registro de la ruta", null);
+            mensaje = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error con el registro de la ruta", null);
             e.printStackTrace();
         } finally {
             con.close();
             return mensaje;
         }
 
+    }
+
+    public FacesMessage eliminaPublicacion(Boletin b) {
+        FacesMessage mensaje = null;
+        try {
+            if (con == null || !con.isOpen())
+                con = ConexionBD.getSessionFactory().openSession();
+            trans = con.beginTransaction();
+            con.delete(b);
+            trans.commit();
+        } catch (Exception e) {
+            trans.rollback();
+            mensaje = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al borrar publicación", null);
+            e.printStackTrace();
+        } finally {
+            con.close();
+            return mensaje;
+        }
     }
 }

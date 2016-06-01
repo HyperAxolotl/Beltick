@@ -21,8 +21,8 @@
 
                                 <h:outputText value="Tienes #{sesionC.notificacionesNuevas} notificaciones nuevas" style="color: lightseagreen;"/>
                                 <p:dataTable id="tablaNotificacionesC" value="#{notificacionC.lstNotificacionesC}" 
-                                             var="notificacion" widgetVar="tablaNotificacionesC" rendered="#{sesionC.verificarSesion() &amp;&amp; sesionC.verificarTipo()}" 
-                                             rows="10" style="margin-bottom:20px" >
+                                             var="notificacion" widgetVar="tablaNotificacionesC" rendered="#{sesionC.verificarSesion() and sesionC.verificarTipo()}" 
+                                             rows="10" style="margin-bottom:20px" paginator="true">
 
                                     <p:column headerText="Titulo">
                                         <h:outputText value="#{notificacion.titulo}" />
@@ -39,7 +39,7 @@
                                 </p:dataTable>
                                 
                                 <p:dataTable id="tablaNotificacionesP" value="#{notificacionC.lstNotificacionesP}" 
-                                             var="notificacion" widgetVar="tablaNotificacionesP" rendered="#{sesionC.verificarSesion() &amp;&amp; sesionC.verificarTipo() eq false}" 
+                                             var="notificacion" widgetVar="tablaNotificacionesP" rendered="#{sesionC.verificarSesion() and sesionC.verificarTipo() eq false}" 
                                              rows="10" style="margin-bottom:20px" >
 
                                     <p:column headerText="Titulo">

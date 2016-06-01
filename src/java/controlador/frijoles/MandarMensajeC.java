@@ -26,11 +26,16 @@ public class MandarMensajeC implements Serializable {
     private FacesMessage mensaje;
     private Chofer chofer;
     private Pasajero pasajero;
+    private boolean exito;
 
     public MandarMensajeC() {
         mensajeC = new MensajeChofer();
         mensajeP = new MensajePasajero();
         ayudante = new MensajeL();
+    }
+    
+    public boolean isExito() {
+        return exito;
     }
 
     public MensajeChofer getMensajeC() {
@@ -69,24 +74,24 @@ public class MandarMensajeC implements Serializable {
         mensaje = ayudante.registroMensajeC(mensajeC, p, chofer);
         if (mensaje != null) {
             FacesContext.getCurrentInstance().addMessage(null, mensaje);
-            return "error";
+            return "";
         }
         mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "Tu mensaje se envio exitosamente", null);
         FacesContext.getCurrentInstance().addMessage(null, mensaje);
-//        exito = true;
-        return "exito";
+        exito = true;
+        return "";
     }
 
     public String registroMensajeP(Chofer c) {
         mensaje = ayudante.registroMensajeP(mensajeP, c, pasajero);
         if (mensaje != null) {
             FacesContext.getCurrentInstance().addMessage(null, mensaje);
-            return "error";
+            return "";
         }
         mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "Tu mensaje se envio exitosamente", null);
         FacesContext.getCurrentInstance().addMessage(null, mensaje);
-//        exito = true;
-        return "exito";
+        exito = true;
+        return "";
     }
 
     @PostConstruct

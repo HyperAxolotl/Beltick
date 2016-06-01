@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.inject.Named;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -36,6 +37,7 @@ public class RutaC implements Serializable {
     private Horario horario;
     private HorarioL horarioL;
     private PasajeroL pasajeroL;
+    private FacesMessage mensaje;
 
     public RutaC() {
         ruta = new Ruta();
@@ -141,5 +143,14 @@ public class RutaC implements Serializable {
     public void eliminarPasajero(PasajeroRuta pr) {
         pasajeroL.eliminaRuta(pr);
         listarPasajeros();
+        mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "Éxito", "Pasajero eliminado de ruta");
+        FacesContext.getCurrentInstance().addMessage(null, mensaje);
+    }
+    
+    public void eliminaPublicacion(Boletin b) {
+        mensaje = boletinL.eliminaPublicacion(b);
+        if (mensaje == null)
+            mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "Éxito", "Publicación borrada");
+        FacesContext.getCurrentInstance().addMessage(null, mensaje);
     }
 }

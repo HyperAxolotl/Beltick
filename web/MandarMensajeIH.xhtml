@@ -21,7 +21,7 @@
                             <h2>Mandar mensaje</h2>                            
 
                             <h:form id="mensaje">
-                                <h:panelGrid columns="1" rendered="#{sesionC.verificarSesion() &amp;&amp; sesionC.verificarTipo()}">             
+                                <h:panelGrid columns="1" rendered="#{sesionC.verificarSesion() and sesionC.verificarTipo()}">             
 
                                     <p:outputLabel value="Mensaje para #{mandarMensajeC.pasajero.pnombre}" />
                                     
@@ -31,12 +31,15 @@
                                     <p:outputLabel for="contenidoP" value="Contenido" />
                                     <p:inputTextarea id="contenidoP" value="#{mandarMensajeC.mensajeP.contenido}" />
                                     
-                                    <p:commandButton value="Enviar" action="#{mandarMensajeC.registroMensajeP(sesionC.chofer)}" />
-
-                                    <h:messages infoStyle="color:red"/>
+                                    <p:commandButton value="Enviar" action="#{mandarMensajeC.registroMensajeP(sesionC.chofer)}" 
+                                                     onclick="if (#{mandarMensajeC.exito}) {
+                                                                             PF('dlg2').show();
+                                                                         }" update="dialogTest,mensaje">
+                                        <f:param name="pasajeroId" value="#{mandarMensajeC.pasajero.idPasajero}" />
+                                    </p:commandButton>
                                 </h:panelGrid>
                                 
-                                <h:panelGrid columns="1" rendered="#{sesionC.verificarSesion() &amp;&amp; sesionC.verificarTipo() eq false}">             
+                                <h:panelGrid columns="1" rendered="#{sesionC.verificarSesion() and sesionC.verificarTipo() eq false}">             
 
                                     <p:outputLabel value="Mensaje para #{mandarMensajeC.chofer.cnombre}" />
                                     
@@ -46,9 +49,24 @@
                                     <p:outputLabel for="contenidoC" value="Contenido" />
                                     <p:inputTextarea id="contenidoC" value="#{mandarMensajeC.mensajeC.contenido}" />
 
-                                    <p:commandButton value="Enviar" action="#{mandarMensajeC.registroMensajeC(sesionC.pasajero)}" />
-                                    <h:messages infoStyle="color:red"/>
+                                    <p:commandButton value="Enviar" action="#{mandarMensajeC.registroMensajeC(sesionC.pasajero)}" 
+                                                     onclick="if (#{mandarMensajeC.exito}) {
+                                                                             PF('dlg2').show();
+                                                                         }"  update="dialogTest,mensaje">
+                                        <f:param name="choferId" value="#{mandarMensajeC.chofer.idChofer}" />
+                                    </p:commandButton>
                                 </h:panelGrid>
+                                
+                                <p:dialog id="dialogTest" header="Exito" widgetVar="dlg2" modal="true"  draggable="false"  
+                                          resizable="false" closable="false" height="100" visible="#{mandarMensajeC.exito}">
+                                    <p:messages />
+                                    <p:button value="Cerrar" onclick="PF('dlg2').hide()" outcome="PerfilChoferIH" rendered="#{sesionC.verificarTipo() eq false}">
+                                        <f:param name="choferId" value="#{mandarMensajeC.chofer.idChofer}" />
+                                    </p:button> 
+                                    <p:button value="Cerrar" onclick="PF('dlg2').hide()" outcome="PerfilPasajeroIH" rendered="#{sesionC.verificarTipo()}">
+                                        <f:param name="pasajeroId" value="#{mandarMensajeC.pasajero.idPasajero}" />
+                                    </p:button>
+                                </p:dialog>
                             </h:form>
 
                         </div>

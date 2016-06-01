@@ -19,6 +19,7 @@
                         <div class="col-sm-12" align="center">
                             <h2>Ruta</h2>
                             <h:messages infoStyle="color:red"/>
+                            <p:growl id="growl" showDetail="true" sticky="false" life="3000" />
                             <p:layout>
                                 <p:layoutUnit position="west" style="border: none;">
                                     <h:form>
@@ -57,7 +58,7 @@
                                                         <h:outputText value="#{rPasajero.id.dia} -> #{rutaC.getPasajeroHora(rPasajero)}"/>
                                                     </p:column>
                                                     <p:column rendered="#{sesionC.verificarTipo() and rutaC.verificarMiembro(sesionC.verificarTipo(),sesionC.chofer,sesionC.pasajero)}">
-                                                        <p:commandButton value="Eliminar" update="@form" actionListener="#{rutaC.eliminarPasajero(rPasajero)}">
+                                                        <p:commandButton icon="fa fa-fw fa-remove" update="@form,growl" actionListener="#{rutaC.eliminarPasajero(rPasajero)}">
                                                             <f:param name="rutaId" value="#{rutaC.ruta.idRuta}" />
                                                         </p:commandButton>
                                                     </p:column>
@@ -65,11 +66,12 @@
                                             </h:form>
                                         </p:tab>
                                         <p:tab title="Boletín">
+                                            
                                             <h:form id="formulario" rendered="#{rutaC.verificarMiembro(sesionC.verificarTipo(),sesionC.chofer,sesionC.pasajero)}">
                                                 <p:outputLabel value="Boletín" style="font-size:20px;" /> <br></br>
                                                 <p:commandButton value="Publicar entrada" type="button" onclick="PF('dlg-pub').show();" 
                                                                  rendered="#{sesionC.verificarTipo()}" />
-                                                <p:dataTable value="#{rutaC.lstBoletin}" var="pub" widgetVar="boletin" rows="10" >
+                                                <p:dataTable value="#{rutaC.lstBoletin}" var="pub" widgetVar="boletin">
                                                     <p:column headerText="Titulo" >
                                                         <p:outputLabel value="#{pub.titulo}"/>
                                                     </p:column>
@@ -78,6 +80,11 @@
                                                     </p:column>
                                                     <p:column headerText="Fecha" >
                                                         <p:outputLabel value="#{pub.fecha}"/>
+                                                    </p:column>
+                                                    <p:column>
+                                                        <p:commandButton icon="fa fa-fw fa-remove" update="@form,growl" actionListener="#{rutaC.eliminaPublicacion(pub)}">
+                                                            <f:param name="rutaId" value="#{rutaC.ruta.idRuta}"/>
+                                                        </p:commandButton>
                                                     </p:column>
                                                 </p:dataTable>
                                             </h:form>
