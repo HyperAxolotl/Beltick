@@ -79,9 +79,9 @@
                                                         <p:outputLabel value="#{pub.contenido}"/>
                                                     </p:column>
                                                     <p:column headerText="Fecha" >
-                                                        <p:outputLabel value="#{pub.fecha}"/>
+                                                        <p:outputLabel value="#{rutaC.formateaFecha(pub.fecha)}"/>
                                                     </p:column>
-                                                    <p:column>
+                                                    <p:column rendered="#{sesionC.verificarTipo()}">
                                                         <p:commandButton icon="fa fa-fw fa-remove" update="@form,growl" actionListener="#{rutaC.eliminaPublicacion(pub)}">
                                                             <f:param name="rutaId" value="#{rutaC.ruta.idRuta}"/>
                                                         </p:commandButton>

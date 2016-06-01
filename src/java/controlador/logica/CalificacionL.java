@@ -9,6 +9,8 @@ import modelo.CalificacionChofer;
 import modelo.CalificacionPasajero;
 import modelo.Chofer;
 import modelo.ConexionBD;
+import modelo.NotificacionChofer;
+import modelo.NotificacionPasajero;
 import modelo.Pasajero;
 import modelo.Ruta;
 import org.hibernate.Query;
@@ -43,6 +45,13 @@ public class CalificacionL implements Serializable {
                 c.setChofer(ch);
                 con.save(c);
             }
+            NotificacionChofer np = new NotificacionChofer();
+            np.setTitulo("Calificación recibida");
+            np.setContenido(String.format("Haz sido calificado por el pasajero %s", p.getPnombre()));
+            np.setFecha(fecha);
+            np.setChofer(ch);
+            np.setVisto(false);
+            con.save(np);
             trans.commit();
         } catch (Exception e) {
             trans.rollback();
@@ -97,6 +106,13 @@ public class CalificacionL implements Serializable {
                 c.setChofer(ch);
                 con.save(c);
             }
+            NotificacionPasajero np = new NotificacionPasajero();
+            np.setTitulo("Calificación recibida");
+            np.setContenido(String.format("Haz sido calificado por el chofer %s", ch.getCnombre()));
+            np.setFecha(fecha);
+            np.setPasajero(p);
+            np.setVisto(false);
+            con.save(np);
             trans.commit();
         } catch (Exception e) {
             trans.rollback();

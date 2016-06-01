@@ -153,4 +153,9 @@ public class RutaC implements Serializable {
             mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "Éxito", "Publicación borrada");
         FacesContext.getCurrentInstance().addMessage(null, mensaje);
     }
+    
+    public String formateaFecha(Date fecha) {
+        HorarioL h = new HorarioL();
+        return h.formateaFecha(fecha);
+    }
 }

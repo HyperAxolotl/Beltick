@@ -43,7 +43,7 @@
                                         <p:commandButton actionListener="#{perfilChoferC.listarCalificaciones()}" id="estrellas" onclick="PF('califs').show();" icon="fa fa-comment"> 
                                             <f:param name="choferId" value="#{perfilChoferC.chofer.idChofer}" />
                                         </p:commandButton> 
-                                        <p:rating value="#{perfilChoferC.getCalificacion()}" stars="10" readonly="true"/>
+                                        <p:rating value="#{perfilChoferC.getCalificacion()}" stars="5" readonly="true"/>
                                     </h:panelGrid>
                                     <p:separator styleClass="separadorP"/>
                                     
@@ -123,7 +123,7 @@
                                     <p:button icon="fa fa-automobile" value="Solicitar Servicio" outcome="SolicitarServicioIH" rendered="#{sesionC.verificarTipo() eq false and perfilChoferC.tieneRuta()}">
                                         <f:param name="rutaId" value="#{perfilChoferC.getIdRuta()}" />
                                     </p:button>
-                                    <p:button icon="fa fa-compass" value="Explorar" outcome="RutaIH" rendered="#{perfilChoferC.tieneRuta()}">
+                                    <p:button icon="fa fa-compass" value="Ir a ruta" outcome="RutaIH" rendered="#{perfilChoferC.tieneRuta()}">
                                         <f:param name="rutaId" value="#{perfilChoferC.getIdRuta()}" />
                                     </p:button>
                                 </h:form>
@@ -132,7 +132,7 @@
                     </section>
 
                     <p:dialog header="Califica a #{perfilChoferC.chofer.cnombre}" widgetVar="dlgc" modal="true" height="400" width="600">
-                        <p:rating value="#{perfilChoferC.calificacionChofer.calificacion}" stars="10" />
+                        <p:rating value="#{perfilChoferC.calificacionChofer.calificacion}" stars="5" />
                         <br></br>
                         <p:outputLabel for="descripcion" value="Descripción" />
                         <p:inputTextarea id="descripcion" value="#{perfilChoferC.calificacionChofer.descripcion}" />

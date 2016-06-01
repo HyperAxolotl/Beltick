@@ -99,14 +99,19 @@
                                             <p:outputLabel value="#{dia.id.dia}: #{actualizarPerfilPasajeroC.getHora(dia)}" />
                                         </p:column>
                                         <p:column>
-                                            <p:button icon="fa fa-user" outcome="PerfilChoferIH">
+                                            <p:button id="irachofer" icon="fa fa-user" outcome="PerfilChoferIH">
                                                 <f:param name="choferId" value="#{actualizarPerfilPasajeroC.getChoferId(dia)}" />
                                             </p:button>
-                                            <p:button icon="fa fa-road" outcome="RutaIH">
+                                            <p:tooltip id="irachofertt" for="irachofer" value="Ir a perfil de chofer" />
+                                            
+                                            <p:button id="iraruta" icon="fa fa-road" outcome="RutaIH">
                                                 <f:param name="rutaId" value="#{dia.ruta.idRuta}" />
                                             </p:button>
-                                            <p:commandButton icon="fa fa-fw fa-remove" update="growl,@form" actionListener="#{actualizarPerfilPasajeroC.eliminaRuta(dia)}"/>
-                                        <!--</h:panelGrid>-->
+                                            <p:tooltip id="irarutatt" for="iraruta" value="Ir a ruta" />
+                                            
+                                            <p:commandButton id="eliminar" icon="fa fa-fw fa-remove" update="growl,@form" actionListener="#{actualizarPerfilPasajeroC.eliminaRuta(dia)}"/>
+                                            <p:tooltip id="eliminartt" for="eliminar" value="Eliminar ruta" />
+                                            <!--</h:panelGrid>-->
                                         </p:column>
                                     </p:dataTable>
 

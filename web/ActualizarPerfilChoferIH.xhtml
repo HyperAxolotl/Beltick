@@ -133,7 +133,8 @@
                                 </p:tab>
 
                                 <p:tab title="Ruta" rendered="#{actualizarPerfilChoferC.ruta != null}">
-
+                                    Da click en el mapa para formar tu ruta
+                                    <br></br>
                                     <p:gmap id="gmap" center="19.3241874,-99.1789797" zoom="13" type="ROADMAP" style="width:500px;height:400px"
                                             model="#{actualizarPerfilChoferC.modeloMapa}" onPointClick="addLatLng(event);" widgetVar="map" />
                                     <h:outputScript library="js" name="RegistroRuta.js" />

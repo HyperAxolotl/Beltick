@@ -23,8 +23,10 @@
                                              var="mensaje" widgetVar="tablaMensajesC" rendered="#{sesionC.verificarSesion() &amp;&amp; sesionC.verificarTipo()}" 
                                              rows="10" style="margin-bottom:20px" >
 
-                                    <p:column headerText="Pasajero">
-                                        <h:outputText value="#{mensaje.pasajero.pnombre}" />
+                                    <p:column headerText="Remitente">
+                                        <h:link value="#{mensaje.pasajero.pnombre}" outcome="PerfilPasajeroIH">
+                                            <f:param name="pasajeroId" value="#{mensaje.pasajero.idPasajero}"/>
+                                        </h:link>
                                     </p:column>
                                     
                                     <p:column headerText="Titulo">
@@ -36,7 +38,7 @@
                                     </p:column>
                                     
                                     <p:column headerText="Fecha">
-                                        <h:outputText value="#{mensaje.fecha}" />
+                                        <h:outputText value="#{mostrarMensajesC.formateaFecha(mensaje.fecha)}" />
                                     </p:column>
                                     
                                 </p:dataTable>
@@ -45,8 +47,10 @@
                                              var="mensaje" widgetVar="tablaMensajesP" rendered="#{sesionC.verificarSesion() &amp;&amp; sesionC.verificarTipo() eq false}" 
                                              rows="10" style="margin-bottom:20px" >
 
-                                    <p:column headerText="Chofer">
-                                        <h:outputText value="#{mensaje.chofer.cnombre}" />
+                                    <p:column headerText="Remitente">
+                                        <h:link value="#{mensaje.chofer.cnombre}" outcome="PerfilChoferIH">
+                                            <f:param name="choferId" value="#{mensaje.chofer.idChofer}"/>
+                                        </h:link>
                                     </p:column>
                                     
                                     <p:column headerText="Titulo">
@@ -58,7 +62,7 @@
                                     </p:column>
                                     
                                     <p:column headerText="Fecha">
-                                        <h:outputText value="#{mensaje.fecha}" />
+                                        <h:outputText value="#{mostrarMensajesC.formateaFecha(mensaje.fecha)}" />
                                     </p:column>
                                     
                                 </p:dataTable>

@@ -1,7 +1,9 @@
 package controlador.frijoles;
 
+import controlador.logica.HorarioL;
 import controlador.logica.NotificacionL;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
@@ -57,5 +59,10 @@ public class NotificacionC implements Serializable {
     
     public void listarPasajero() {
         lstNotificacionesP = ayudante.listarPasajero(pasajero);
+    }
+    
+    public String formateaFecha(Date fecha) {
+        HorarioL h = new HorarioL();
+        return h.formateaFecha(fecha);
     }
 }

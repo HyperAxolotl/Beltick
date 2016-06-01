@@ -40,6 +40,7 @@ public class ChoferL implements Serializable {
                 if (!l.isEmpty()) {
                     mensaje = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Este número de cuenta ya está registrado");
                 } else {
+                    c.setCnoId(c.getCnoId().toUpperCase());
                     query = con.createQuery("from Chofer where cnoId = :noId");
                     query.setParameter("noId", c.getCnoId());
                     l = query.list();
@@ -48,7 +49,6 @@ public class ChoferL implements Serializable {
                     } else {
                         System.out.println("Conexion realizada");
                         trans = con.beginTransaction();
-                        c.setCnoId(c.getCnoId().toUpperCase());
                         c.setCcontrasenia(cripta.encripta(confirmacion));
                         con.save(c);
                         trans.commit();
@@ -57,7 +57,7 @@ public class ChoferL implements Serializable {
             }
         } catch (Exception e) {
             trans.rollback();
-            mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "Error con el registro del chofer", null);
+            mensaje = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error con el registro del chofer", null);
             System.out.println("Esta es la excepcion " + e.getClass().getName());
             e.printStackTrace();
         } finally {

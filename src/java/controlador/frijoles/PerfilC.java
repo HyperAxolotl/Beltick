@@ -1,6 +1,8 @@
 package controlador.frijoles;
 
+import controlador.logica.PerfilChoferL;
 import controlador.logica.PerfilL;
+import controlador.logica.PerfilPasajeroL;
 import java.io.Serializable;
 import modelo.PerfilPasajero;
 import modelo.PerfilChofer;
@@ -8,6 +10,9 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import modelo.Chofer;
+import modelo.Imagen;
+import modelo.Pasajero;
 
 /**
  *
@@ -55,4 +60,23 @@ public class PerfilC implements Serializable {
         pasajeros = ayudante.listaPasajeros();
     }
 
+    public boolean verificarImagenChofer(Chofer chofer) {
+        PerfilChoferL pL = new PerfilChoferL();
+        return pL.getImagenChofer(chofer.getIdChofer()) != null;
+    }
+    
+    public boolean verificarImagenPasajero(Pasajero pasajero) {
+        PerfilPasajeroL pL = new PerfilPasajeroL();
+        return pL.getImagenPasajero(pasajero.getIdPasajero()) != null;
+    }
+    
+    public Imagen getImagenChofer(Chofer chofer) {
+        PerfilChoferL pL = new PerfilChoferL();
+        return pL.getImagenChofer(chofer.getIdChofer());
+    }
+    
+    public Imagen getImagenPasajero(Pasajero pasajero) {
+        PerfilPasajeroL pL = new PerfilPasajeroL();
+        return pL.getImagenPasajero(pasajero.getIdPasajero());
+    }
 }

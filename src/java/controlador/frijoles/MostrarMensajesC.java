@@ -1,8 +1,10 @@
 package controlador.frijoles;
 
+import controlador.logica.HorarioL;
 import controlador.logica.MensajeL;
 import controlador.logica.NotificacionL;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
@@ -58,6 +60,11 @@ public class MostrarMensajesC implements Serializable {
 
     public void listarPasajero() {
         lstMensajesP = ayudante.listarPasajero(pasajero);
+    }
+    
+    public String formateaFecha(Date fecha) {
+        HorarioL h = new HorarioL();
+        return h.formateaFecha(fecha);
     }
 
 }

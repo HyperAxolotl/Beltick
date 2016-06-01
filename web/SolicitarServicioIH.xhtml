@@ -43,8 +43,6 @@
                                             <p:button value="Cerrar" onclick="PF('dlg2').hide()" outcome="PaginaPrincipalIH"/>
                                         </p:dialog>
                                         
-                                        <h:messages/>
-                                        
                                         <h:commandButton styleClass="btn btn-info" value="solicitar" action="#{solicitarServicioC.solicitar(sesionC.pasajero)}" onclick="if (#{solicitarServicioC.exito}) {
                                                     PF('dlg2').show();
                                                 }" >

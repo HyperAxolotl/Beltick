@@ -42,7 +42,7 @@
                                         <!--p:commandButton actionListener="{perfilPasajeroC.listarCalificaciones()}" id="estrellas" onclick="PF('califs').show();" icon="fa fa-comment"> 
                                             <f:param name="choferId" value="{perfilPasajeroC.pasajero.idPasajero}" />
                                         </p:commandButton--> 
-                                        <p:rating value="#{perfilPasajeroC.getCalificacion()}" stars="10" readonly="true" />
+                                        <p:rating value="#{perfilPasajeroC.getCalificacion()}" stars="5" readonly="true" />
                                     </h:panelGrid>
                                     <p:separator styleClass="separadorP"/>
                                 </h:panelGrid>
@@ -138,12 +138,12 @@
                             </div>
 
                             <p:dialog header="Califica a #{perfilPasajeroC.pasajero.pnombre}" widgetVar="dlgc" modal="true" height="400" width="600">
-                                <p:rating value="#{perfilPasajeroC.calificacionPasajero.calificacion}" stars="10" />
+                                <p:rating value="#{perfilPasajeroC.calificacionPasajero.calificacion}" stars="5" />
                                 <br></br>
                                 <p:outputLabel for="descripcion" value="Descripción" />
                                 <p:inputTextarea id="descripcion" value="#{perfilPasajeroC.calificacionPasajero.descripcion}" />
                                 <br></br>
-                                <p:commandButton value="Calificar" actionListener="#{perfilPasajeroC.calificar(sesionC.chofer)}" onclick="PF('dlg').hide()" update="@form">
+                                <p:commandButton value="Calificar" actionListener="#{perfilPasajeroC.calificar(sesionC.chofer)}" onclick="PF('dlgc').hide()" update="@form">
                                     <f:param name="pasajeroId" value="#{perfilPasajeroC.pasajero.idPasajero}" />
                                 </p:commandButton>
                             </p:dialog> 

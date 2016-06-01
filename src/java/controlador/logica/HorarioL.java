@@ -13,33 +13,35 @@ import org.hibernate.Transaction;
 import utiles.Cripta;
 
 public class HorarioL implements Serializable {
-    
+
     private Session con;
     private Transaction trans;
-    
+
     public FacesMessage actualizarHorario(Horario h) {
         FacesMessage mensaje = null;
-        try{
-            if (con == null || !con.isOpen())
+        try {
+            if (con == null || !con.isOpen()) {
                 con = ConexionBD.getSessionFactory().openSession();
+            }
             trans = con.beginTransaction();
             con.update(h);
             trans.commit();
-        }catch(Exception e){
+        } catch (Exception e) {
             trans.rollback();
             mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "Error al actualizar horario", null);
             e.printStackTrace();
-        }finally{
+        } finally {
             con.close();
             return mensaje;
         }
     }
-    
+
     public Horario getHorario(int rutaId) {
         Horario a = null;
         try {
-            if (con == null || !con.isOpen())
+            if (con == null || !con.isOpen()) {
                 con = ConexionBD.getSessionFactory().openSession();
+            }
             String hql = "FROM Horario WHERE ruta.idRuta= :id";
             Query query = con.createQuery(hql);
             query.setParameter("id", rutaId);
@@ -53,7 +55,7 @@ public class HorarioL implements Serializable {
             return a;
         }
     }
-    
+
     public String formateaHora(Date hora) {
         String s = "Inactivo";
         if (hora != null) {
@@ -61,5 +63,10 @@ public class HorarioL implements Serializable {
             s = sdf.format(hora);
         }
         return s;
+    }
+
+    public String formateaFecha(Date fecha) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+        return sdf.format(fecha);
     }
 }
