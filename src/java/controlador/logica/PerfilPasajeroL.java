@@ -133,7 +133,7 @@ public class PerfilPasajeroL implements Serializable {
                     break;
                 case 3:
                     System.out.println("Obteniendo hora en miercoles");
-                    query = con.createQuery("select h.miercoles from Horario h join h.ruta r join r.pasajeroRutas pr where pr.pasajero.idPasajero = :id and pr.id.dia = 'Miercoles'");
+                    query = con.createQuery("select h.miercoles from Horario h join h.ruta r join r.pasajeroRutas pr where pr.pasajero.idPasajero = :id and pr.id.dia = 'Miércoles'");
                     break;
                 case 4:
                     System.out.println("Obteniendo hora en jueves");
@@ -145,7 +145,7 @@ public class PerfilPasajeroL implements Serializable {
                     break;
                 case 6:
                     System.out.println("Obteniendo hora en sabado");
-                    query = con.createQuery("select h.sabado from Horario h join h.ruta r join r.pasajeroRutas pr where pr.pasajero.idPasajero = :id and pr.id.dia = 'Sabado'");
+                    query = con.createQuery("select h.sabado from Horario h join h.ruta r join r.pasajeroRutas pr where pr.pasajero.idPasajero = :id and pr.id.dia = 'Sábado'");
                     break;
                 default:
                     break;
@@ -184,7 +184,7 @@ public class PerfilPasajeroL implements Serializable {
                     query = con.createQuery("select r FROM Horario h join h.ruta r join r.pasajeroRutas pr WHERE pr.pasajero.idPasajero= :id and pr.id.dia = 'Martes'");
                     break;
                 case 3:
-                    query = con.createQuery("select r FROM Horario h join h.ruta r join r.pasajeroRutas pr WHERE pr.pasajero.idPasajero= :id and pr.id.dia = 'Miercoles'");
+                    query = con.createQuery("select r FROM Horario h join h.ruta r join r.pasajeroRutas pr WHERE pr.pasajero.idPasajero= :id and pr.id.dia = 'Miércoles'");
                     break;
                 case 4:
                     query = con.createQuery("select r FROM Horario h join h.ruta r join r.pasajeroRutas pr WHERE pr.pasajero.idPasajero= :id and pr.id.dia = 'Jueves'");
@@ -193,7 +193,7 @@ public class PerfilPasajeroL implements Serializable {
                     query = con.createQuery("select r FROM Horario h join h.ruta r join r.pasajeroRutas pr WHERE pr.pasajero.idPasajero= :id and pr.id.dia = 'Viernes'");
                     break;
                 case 6:
-                    query = con.createQuery("select r FROM Horario h join h.ruta r join r.pasajeroRutas pr WHERE pr.pasajero.idPasajero= :id and pr.id.dia = 'Sabado'");
+                    query = con.createQuery("select r FROM Horario h join h.ruta r join r.pasajeroRutas pr WHERE pr.pasajero.idPasajero= :id and pr.id.dia = 'Sábado'");
                     break;
                 default:
                     break;

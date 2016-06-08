@@ -100,7 +100,7 @@
                                                     <p:button value="Ruta #{perfilPasajeroC.rutaDia(3).idRuta}" outcome="RutaIH" disabled="#{perfilPasajeroC.rutaDia(3) eq null}">
                                                         <f:param name="rutaId" value="#{perfilPasajeroC.rutaDia(3).idRuta}" />
                                                     </p:button>
-                                                    <p:button value="Chofer #{perfilPasajeroC.rutaDia(3).automovil.chofer}" outcome="PerfilChoferIH" disabled="#{perfilPasajeroC.elChofer(3) eq -1}">
+                                                    <p:button value="Chofer #{perfilPasajeroC.rutaDia(3).automovil.chofer.cnombre}" outcome="PerfilChoferIH" disabled="#{perfilPasajeroC.elChofer(3) eq -1}">
                                                         <f:param name="choferId" value="#{perfilPasajeroC.elChofer(3)}"/>
                                                     </p:button>
                                                     
