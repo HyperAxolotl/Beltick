@@ -6,6 +6,7 @@
     display: block;
     position: relative;
     width: auto;
+    
 }
 
 .ui-menuitem-link.ui-submenu-link.ui-corner-all.ui-state-hover,
@@ -14,11 +15,13 @@
     display: block;
     position: relative;
     width: auto;
+    font-family: 'Pontano Sans', sans-serif;
 
 }
 
 .barra-nav a {
     color: white;
+    font-family: 'Pontano Sans', sans-serif !important;
 }
 
 .ui-datatable thead th, .ui-datatable tbody td, .ui-datatable tfoot td, .ui-datatable tfoot th {
@@ -64,4 +67,5 @@
     box-shadow: none;
     text-align: left;
     border-color: #D2D9DE;
+    font-family: 'Pontano Sans', sans-serif !important;
 }

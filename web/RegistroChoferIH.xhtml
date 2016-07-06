@@ -10,73 +10,74 @@
     <h:body>
         <ui:composition template="plantillas/vista2.xhtml">
             <ui:define name="content">
-                <div class="col-sm-12" align="center">
-                    <p:tooltip />
-                    <h:form>
-                        <h2>Registro Chofer</h2>
-                        <h3>Ingresa tus datos</h3>
-                        <p:messages autoUpdate="true" showDetail="true" closable="true"/>
-                        <h:panelGrid id="grid" columns="3" styleClass="mi-panel-grid">
-                            <p:outputLabel for="nombre" value="Nombre"/>
-                            <p:inputText id="nombre" required="true" styleClass="mi-tr" value="#{choferC.chofer.cnombre}" label="Nombre">
-                                <pe:keyFilter regEx="/[a-z_' üñ]/i"/>
-                            </p:inputText>
-                            <p:message for="nombre" display="text" />
+                <center>
+                    <div id="container-registro" align="center">
+                        <p:tooltip />
+                        <h:form>
 
-                            <p:outputLabel for="app" value="Apellido Paterno" />
-                            <p:inputText id="app" required="true" styleClass="mi-tr" value="#{choferC.chofer.capp}" label="Apellido Paterno">
-                                <pe:keyFilter regEx="/[a-z_' üñ]/i"/>
-                            </p:inputText>
-                            <p:message for="app" display="text" />
+                            <h2>Regístrate</h2>
 
-                            <p:outputLabel for="apm" value="Apellido Materno" />
-                            <p:inputText id="apm"  required="true" styleClass="mi-tr" value="#{choferC.chofer.capm}" label="Apellido Materno">
-                                <pe:keyFilter regEx="/[a-z_' üñ]/i"/>
-                            </p:inputText>
-                            <p:message for="apm" display="text" />
+                            <div class="cuadro-registro">
+                                <p:messages autoUpdate="true" showDetail="true" closable="true"/>
+                                <h:panelGrid id="grid" columns="3" styleClass="mi-panel-grid">
+                                    <p:outputLabel for="nombre" value="Nombre"/>
+                                    <p:inputText id="nombre" required="true" styleClass="mi-tr" value="#{choferC.chofer.cnombre}" label="Nombre">
+                                        <pe:keyFilter regEx="/[a-z_' üñ]/i"/>
+                                    </p:inputText>
+                                    <p:message for="nombre" display="text" />
 
-                            <p:outputLabel for="correo" value="Correo" />
-                            <p:inputText id="correo" required="true" styleClass="mi-tr" value="#{choferC.chofer.ccorreo}"
-                                         placeholder="correo@ciencias.unam.mx" label="Correo">
-                                <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@ciencias.unam.mx" />
-                                <pe:keyFilter regEx="/[a-z0-9_\-\.@]/i" />
-                            </p:inputText>
-                            <p:message for="correo" display="text" />
+                                    <p:outputLabel for="app" value="Apellido Paterno" />
+                                    <p:inputText id="app" required="true" styleClass="mi-tr" value="#{choferC.chofer.capp}" label="Apellido Paterno">
+                                        <pe:keyFilter regEx="/[a-z_' üñ]/i"/>
+                                    </p:inputText>
+                                    <p:message for="app" display="text" />
 
-                            <p:outputLabel for="contrasenia" value="Contraseña" />
-                            <p:password id="contrasenia" required="true" styleClass="mi-tr" value="#{choferC.chofer.ccontrasenia}"
-                                        feedback="true" inline="true" promptLabel="Ingresa una contraseña" 
-                                        weakLabel="Débil" goodLabel="Medio" strongLabel="Fuerte" label="Contraseña"/>
-                            <p:message for="contrasenia" display="text" />
+                                    <p:outputLabel for="apm" value="Apellido Materno" />
+                                    <p:inputText id="apm"  required="true" styleClass="mi-tr" value="#{choferC.chofer.capm}" label="Apellido Materno">
+                                        <pe:keyFilter regEx="/[a-z_' üñ]/i"/>
+                                    </p:inputText>
+                                    <p:message for="apm" display="text" />
 
-                            <p:outputLabel for="contraseniac" value="Confirmación de Contraseña" />
-                            <p:password id="contraseniac" required="true" styleClass="mi-tr" value="#{choferC.confirmacion}" label="Confirmación"/>
-                            <p:message for="contraseniac" display="text" />
+                                    <p:outputLabel for="correo" value="Correo" />
+                                    <p:inputText id="correo" required="true" styleClass="mi-tr" value="#{choferC.chofer.ccorreo}"
+                                                 placeholder="correo@ciencias.unam.mx" label="Correo">
+                                        <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@ciencias.unam.mx" />
+                                        <pe:keyFilter regEx="/[a-z0-9_\-\.@]/i" />
+                                    </p:inputText>
+                                    <p:message for="correo" display="text" />
 
-                            <p:outputLabel for="ncuenta" value="Numero de Cuenta" />
-                            <p:inputMask id="ncuenta" required="true" styleClass="mi-tr" value="#{choferC.chofer.cnoCuenta}" 
-                                         mask="999999999" label="Numero de Cuenta"/>
-                            <p:message for="ncuenta" display="text" />
+                                    <p:outputLabel for="contrasenia" value="Contraseña" />
+                                    <p:password id="contrasenia" required="true" styleClass="mi-tr" value="#{choferC.chofer.ccontrasenia}"
+                                                feedback="true" inline="true" promptLabel="Ingresa una contraseña" 
+                                                weakLabel="Débil" goodLabel="Medio" strongLabel="Fuerte" label="Contraseña"/>
+                                    <p:message for="contrasenia" display="text" />
 
-                            <p:outputLabel for="nid" value="Numero de Identificación (Licencia)" />
-                            <p:inputText id="nid" required="true" styleClass="mi-tr" value="#{choferC.chofer.cnoId}" label="Numero de Identificación"/>
-                            <p:message for="nid" display="text" />  
+                                    <p:outputLabel for="contraseniac" value="Confirmación de Contraseña" />
+                                    <p:password id="contraseniac" required="true" styleClass="mi-tr" value="#{choferC.confirmacion}" label="Confirmación"/>
+                                    <p:message for="contraseniac" display="text" />
 
-                            <p:outputLabel for="fecha" value="Fecha de Nacimiento" />
-                            <p:calendar id="fecha" required="true" pattern="dd-MM-yyyy" mask="true" value="#{choferC.chofer.cfechaNac}" label="Fecha de Nacimiento"/>
+                                    <p:outputLabel for="ncuenta" value="Numero de Cuenta" />
+                                    <p:inputMask id="ncuenta" required="true" styleClass="mi-tr" value="#{choferC.chofer.cnoCuenta}" 
+                                                 mask="999999999" label="Numero de Cuenta"/>
+                                    <p:message for="ncuenta" display="text" />
 
-                            <p:message for="fecha" display="text" />
-                        </h:panelGrid>
-                        <section class="container">
-                            <div class="row">
-                                <div class="col-sm-12" align="center">
+                                    <p:outputLabel for="nid" value="Numero de Identificación (Licencia)" />
+                                    <p:inputText id="nid" required="true" styleClass="mi-tr" value="#{choferC.chofer.cnoId}" label="Numero de Identificación"/>
+                                    <p:message for="nid" display="text" />  
 
-                                    <h:outputText value="Al hacer click en 'Registrar',estás aceptando nuestros:"/> 
+                                    <p:outputLabel for="fecha" value="Fecha de Nacimiento" />
+                                    <p:calendar id="fecha" required="true" pattern="dd-MM-yyyy" mask="true" value="#{choferC.chofer.cfechaNac}" label="Fecha de Nacimiento"/>
+
+                                    <p:message for="fecha" display="text" />
+                                </h:panelGrid>
+                                <div style="padding-top: 40px;">
+
+                                    <h:outputText value="Al hacer click en 'Aceptar' estás aceptando nuestros " style="color: gray"/> 
                                     <a  
                                         data-toggle="modal" 
                                         data-target="#myModal" 
                                         href="Proyecto/Informacion.xhtml">
-                                        Términos y condiciones de uso
+                                        términos y condiciones de uso
                                     </a>
 
                                     <!-- Modal -->
@@ -99,26 +100,24 @@
                                     </div>
                                     <div>
                                         <p:dialog id="dialogTest" header="Exito" widgetVar="dlg2" modal="true" 
-                                                  resizable="false" closable="false" height="100" visible="#{choferC.exito}">
+                                                  resizable="false" closable="false" height="100" visible="#{choferC.exito}" appendTo="@(body)">
                                             <p:messages/>
                                             <p:button value="Cerrar" onclick="PF('dlg2').hide()" outcome="PaginaPrincipalIH"/>
                                         </p:dialog>
 
-                                        <h:panelGrid columns="1" cellpadding="5">
-                                            <p:commandButton styleClass="btn btn-info" 
-                                                             value="Registrar" action="#{choferC.registro()}" update="grid,dialogTest" 
-                                                             onclick="if (#{choferC.exito}) {
-                                                                         PF('dlg2').show();
-                                                                     }">
-                                            </p:commandButton>
-                                        </h:panelGrid>
+                                        <p:commandButton styleClass="boton-registro" 
+                                                         value="Aceptar" action="#{choferC.registro()}" update="grid,dialogTest" 
+                                                         onclick="if (#{choferC.exito}) {
+                                                                 PF('dlg2').show();
+                                                             }">
+                                        </p:commandButton>
 
-                                    </div>        
+                                    </div> 
                                 </div>
                             </div>
-                        </section>
-                    </h:form>        
-                </div>
+                        </h:form>       
+                    </div>
+                </center>
             </ui:define>
         </ui:composition>
     </h:body>
