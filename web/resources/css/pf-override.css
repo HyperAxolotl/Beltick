@@ -1,5 +1,6 @@
 .ui-menu, .ui-menu .ui-menu-child {
     background: -moz-linear-gradient(141deg, #1C1E1D 0%, #1e2020 51%, #141415 75%);
+    background: -webkit-linear-gradient(141deg, #1C1E1D 0%, #1e2020 51%, #141415 75%);
     border: 0px;
     color: white;
     display: block;

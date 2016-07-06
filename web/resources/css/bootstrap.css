@@ -12,6 +12,7 @@ html {
 body {
   margin: 0;
   background-color: -moz-linear-gradient(141deg, #d1d7d5 0%, #cfdbdb 51%, #C3C7CB 75%);
+  background-color: -webkit-linear-gradient(141deg, #d1d7d5 0%, #cfdbdb 51%, #C3C7CB 75%);
 }
 article,
 aside,
