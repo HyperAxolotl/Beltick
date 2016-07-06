@@ -133,8 +133,8 @@ html {
     font-weight: bold;
 }
 
-.ui-outputlabel {
-    font-family: 'Pontano Sans', sans-serif;
+.ui-outputlabel, .ui-inputfield.ui-password.ui-widget.ui-state-default.ui-corner-all.mi-tr {
+    font-family: 'Pontano Sans', sans-serif !important;
 }
 
 #container-exp-perf {
@@ -197,8 +197,8 @@ html {
     background: #f6f6f6;
 }
 
-.ui-inputfield.ui-inputtext.ui-widget.ui-state-default.ui-corner-all {
+/*.ui-inputfield.ui-inputtext.ui-widget.ui-state-default.ui-corner-all {
     margin-left: 20px;
     font-size: 13px;
     font-family: 'Karla', sans-serif;
-}
+}*/
