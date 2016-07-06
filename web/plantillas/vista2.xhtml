@@ -16,6 +16,7 @@
             <meta charset="utf-8"/> 
             <meta name="viewport" content="width=device-width, initial-scale=1"/>
             <script src="http://maps.google.com/maps/api/js" type="text/javascript"/>
+            <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'/>
             <script src="resources/js/bootstrap.min.js"/>
             <title>Beltick</title>
         </h:head>
@@ -23,6 +24,7 @@
         <h:body>
             <f:facet name="last">
                 <h:outputStylesheet library="css" name="pf-override.css" />
+                <h:outputStylesheet library="css" name="estilo.css" />
             </f:facet>
             <ui:insert name="top">
 
@@ -31,7 +33,7 @@
                     <p:menubar styleClass="barra-nav" autoDisplay="false">
                         <p:menuitem style="margin-top:-20px" >
                             <h:link outcome="PaginaPrincipalIH">
-                                <h:graphicImage library="imagenes" name="logobelt.png" style="max-width:120px;float:left;"/>
+                                <h:graphicImage library="imagenes" name="logobelt.png" style="max-width:120px;float:left;margin-top: 6px;"/>
                             </h:link>
                         </p:menuitem>
                         <p:menuitem style="position: absolute; right: 100px;" value="Explorar rutas" outcome="ExplorarRutasIH" rendered="#{sesionC.verificarSesion()}" />
@@ -68,7 +70,7 @@
                 <h:graphicImage library="imagenes" name="circulo.png" style="width:27px;height:21px;position: absolute; right: 55px;top:0px;" rendered="#{sesionC.verificarNotificacionesNuevas()}"/>
             </ui:insert>
             <ui:insert name="content">
-
+                
             </ui:insert> 
         </h:body>
     </f:view>

@@ -11,30 +11,36 @@
         <ui:composition template="plantillas/vista2.xhtml">
             <ui:define name="content">
                 <div class="col-sm-12" align="center">
-                    <h:form styleClass="form">
-                        <h2>Iniciar Sesión Chofer</h2>
-                        <p:messages autoUpdate="true"/>
-                        <h:panelGrid id="grid" columns="3" styleClass="mi-panel-grid">			
+                    <div id="container-inicio-sesion">
+                        <div class="cuadro-inicio-sesion2">
+                            <h:graphicImage library="imagenes" name="icono.png" style="position:absolute;max-width:50px;margin-left: -25px; margin-top: 7px;"/>
 
-                            <p:outputLabel for="correo" value="Correo " />
-                            <p:inputText id="correo" styleClass="mi-tr" style="border-color: #D2D9DE;text-align: left;" value="#{sesionC.chofer.ccorreo}" required="true" >
-                                <pe:keyFilter regEx="/[a-z0-9_\-\.@]/i" />
-                                <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@ciencias.unam.mx" />
-                            </p:inputText>
-                            <p:message for="correo" display="text" />
+                        </div>
+                        <div class="cuadro-inicio-sesion3"/>
+                        <div class="cuadro-inicio-sesion">
 
-                            <p:outputLabel for="password" value="Contraseña" />
-                            <p:password id="password" styleClass="mi-tr" style="border-color: #D2D9DE;text-align: left;"  value="#{sesionC.chofer.ccontrasenia}" required="true" />
-                            <p:message for="password" display="text" />
+                            <h:form>
+                                <p:messages autoUpdate="true"/>
+                                <h:panelGrid id="grid" columns="3" styleClass="mi-panel-grid">			
 
-                            <section name="button">
-                                <h:commandButton  styleClass="btn btn-info" value="Aceptar" action="#{sesionC.verificarDatos()}" >
+                                    <p:outputLabel for="correo" value="Correo " />
+                                    <p:inputText id="correo" styleClass="mi-tr" style="border-color: #D2D9DE;text-align: left;" value="#{sesionC.chofer.ccorreo}" required="true" >
+                                        <pe:keyFilter regEx="/[a-z0-9_\-\.@]/i" />
+                                        <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@ciencias.unam.mx" />
+                                    </p:inputText>
+                                    <p:message for="correo" display="text" />
+
+                                    <p:outputLabel for="password" value="Contraseña" />
+                                    <p:password id="password" styleClass="mi-tr" style="border-color: #D2D9DE;text-align: left;"  value="#{sesionC.chofer.ccontrasenia}" required="true" />
+                                    <p:message for="password" display="text" />
+                                </h:panelGrid>
+                                <h:commandButton class="boton-inicia-sesion" value="Iniciar sesión" action="#{sesionC.verificarDatos()}" >
                                     <f:actionListener binding="#{sesionC.setTipo(true)}" />
-                                </h:commandButton>
-                            </section>    
+                                </h:commandButton>  
+                            </h:form> 
+                        </div>
+                    </div>
 
-                        </h:panelGrid>
-                    </h:form> 
                 </div>
 
             </ui:define>

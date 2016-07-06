@@ -1,5 +1,6 @@
 body {
     margin: 0px;
+    background-color: -moz-linear-gradient(141deg, #d1d7d5 0%, #cfdbdb 51%, #C3C7CB 75%);
 }
 
 #top {
