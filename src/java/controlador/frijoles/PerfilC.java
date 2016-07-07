@@ -1,5 +1,6 @@
 package controlador.frijoles;
 
+import controlador.logica.CalificacionL;
 import controlador.logica.PerfilChoferL;
 import controlador.logica.PerfilL;
 import controlador.logica.PerfilPasajeroL;
@@ -60,23 +61,39 @@ public class PerfilC implements Serializable {
         pasajeros = ayudante.listaPasajeros();
     }
 
-    public boolean verificarImagenChofer(Chofer chofer) {
+    public boolean verificarImagenChofer(int chofer) {
         PerfilChoferL pL = new PerfilChoferL();
-        return pL.getImagenChofer(chofer.getIdChofer()) != null;
+        return pL.getImagenChofer(chofer) != null;
     }
     
-    public boolean verificarImagenPasajero(Pasajero pasajero) {
+    public boolean verificarImagenPasajero(int pasajero) {
         PerfilPasajeroL pL = new PerfilPasajeroL();
-        return pL.getImagenPasajero(pasajero.getIdPasajero()) != null;
+        return pL.getImagenPasajero(pasajero) != null;
     }
     
-    public Imagen getImagenChofer(Chofer chofer) {
+    public Imagen getImagenChofer(int chofer) {
         PerfilChoferL pL = new PerfilChoferL();
-        return pL.getImagenChofer(chofer.getIdChofer());
+        return pL.getImagenChofer(chofer);
     }
     
-    public Imagen getImagenPasajero(Pasajero pasajero) {
+    public Imagen getImagenPasajero(int pasajero) {
         PerfilPasajeroL pL = new PerfilPasajeroL();
-        return pL.getImagenPasajero(pasajero.getIdPasajero());
+        return pL.getImagenPasajero(pasajero);
+    }
+    
+    public int getCalificacionPasajero(Pasajero pasajero) {
+        CalificacionL calificacionL = new CalificacionL();
+        if (pasajero != null) {
+            return calificacionL.getCalificacionPasajero(pasajero);
+        }
+        return 0;
+    }
+    
+    public int getCalificacionChofer(Chofer chofer) {
+        CalificacionL calificacionL = new CalificacionL();
+        if (chofer != null) {
+            return calificacionL.getCalificacionChofer(chofer);
+        }
+        return 0;
     }
 }
