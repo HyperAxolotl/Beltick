@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Merriweather);
+
 .cuadro-inicio-sesion {
     position: absolute;
     width:500px;
@@ -204,6 +206,11 @@ html {
 .ui-datatable-header.ui-widget-header.ui-corner-top {
     border: none;
     background: #f6f6f6;
+}
+
+.color-texto{
+    color:gainsboro;
+    font-family: 'Merriweather' !important;
 }
 
 /*.ui-inputfield.ui-inputtext.ui-widget.ui-state-default.ui-corner-all {
