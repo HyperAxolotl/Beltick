@@ -59,6 +59,13 @@ body {
     font-family: 'Raleway', sans-serif !important; 
 }
 
+.tab1{
+    width: 100%; 
+    background-color: transparent !important;
+    float: right;
+}
+
+
 #container-inicio-sesion {
   width: 100px;
   height: 100px;

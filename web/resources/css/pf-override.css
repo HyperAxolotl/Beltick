@@ -52,8 +52,21 @@
     border: 0px;
 }
 
+/* Lo que sigue podría interferir con otra vista... pero no super cómo más 
+podía sobreescribir el comportamiento de las pestañas de primefaces. Espero no 
+joder nada que tenían*/
 .ui-tabs-nav.ui-helper-reset.ui-helper-clearfix.ui-widget-header.ui-corner-all {
-    background: #fff;
+    background: transparent;
+}
+
+.ui-tabs .ui-tabs-nav .ui-tabs-selected{
+    background-color: #eee9e9;
+}
+
+
+
+.ui-panelgrid-cell{
+    background-color: #ededed;
 }
 
 .mi-panel-grid tr td {
