@@ -14,64 +14,125 @@
         <ui:composition template="plantillas/vista2.xhtml">
             <ui:define name="content">   
                 <center>
-                    <div id="container-registro">
-                        <div id="container-exp-perf" align="center">
-                            <h:panelGrid columns="1">
-                                <p:tabView>
-                                    <p:tab title="Choferes">
-                                        <h:form>
-                                            <p:dataTable value="#{perfilC.choferes}" paginatorPosition="bottom" var="pc" widgetVar="tablaChoferes" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
-                                                         paginator="true" rows="7" style="margin-bottom:20px">
-                                                <f:facet name="header">
-                                                    <p:outputPanel>
-                                                        <h:outputText value="Busca chofer" style="margin-right: 20px;"/>
-                                                        <p:inputText id="globalFilter" onkeyup="PF('tablaChoferes').filter()" style="width:150px" placeholder="Palabra clave"/>
-                                                    </p:outputPanel>
-                                                </f:facet>
-                                                <p:column headerText="Nombre">
-                                                    <p:link value="#{pc.chofer.cnombre} #{pc.chofer.capp}" outcome="PerfilChoferIH"  style="font-family: 'Arimo', sans-serif;font-size: 13px;" >
-                                                        <f:param name="choferId" value="#{pc.chofer.idChofer}" />
-                                                    </p:link>
-                                                </p:column>
-                                                <p:column headerText="Correo" >
-                                                    <p:outputLabel value="#{pc.chofer.ccorreo}" style="font-family: 'Arimo', sans-serif; font-weight: normal; font-size: 13px;"/>
-                                                </p:column>
-                                            </p:dataTable>
-                                        </h:form>
-                                    </p:tab>
-                                    <p:tab title="Pasajeros">
-                                        <h:form>
-                                            <p:dataTable value="#{perfilC.pasajeros}" paginatorPosition="bottom" var="pp" widgetVar="tablaPasajeros" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
-                                                         paginator="true" rows="7" style="margin-bottom:20px">
-                                                <f:facet name="header">
-                                                    <p:outputPanel>
-                                                        <h:outputText value="Busca pasajero" style="margin-right: 20px;" />
-                                                        <p:inputText id="globalFilter" onkeyup="PF('tablaPasajeros').filter()" style="width:150px" placeholder="Palabra clave"/>
-                                                    </p:outputPanel>
-                                                </f:facet>
-                                                <p:column headerText="Nombre">
-                                                    <h:panelGrid columns="1">
-                                                        <c:if test="#{perfilC.verificarImagenPasajero(pp.pasajero.idPasajero) eq false}" >
-                                                            <p:graphicImage id="imagene" library="imagenes" name="foto_usuario/usuario.png" width="100px" height="100px"  />
-                                                        </c:if>
-                                                        <c:if test="#{perfilC.verificarImagenPasajero(pp.pasajero.idPasajero)}" >
-                                                            <o:graphicImage id="img" value="#{imagenC.getImagen(perfilC.getImagenPasajero(pp.pasajero.idPasajero))}" height="100px" width="100px" />
-                                                        </c:if>
+                    <div id="container-exp-perf" align="center">
+                        <p:outputLabel value="Explora los perfiles de otros usuarios" style="font-size: 24px; margin-bottom: -20px; margin-left: -270px; color: #c5c5c5;"/>
+                        <hr style="width: 800px; margin-left: -100px; margin-bottom: 30px;"></hr>
+                        <p:tabView style="padding-right: 70px; padding-left: 70px; width: 800px; margin-left: -100px; border-radius: 0px;">
+                            <p:tab title="Choferes">
+                                <h:form>
+                                    <p:dataTable value="#{perfilC.choferes}" paginatorPosition="bottom" var="pc" widgetVar="tablaChoferes" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                                                 paginator="true" rows="7" style="margin-bottom:20px">
+                                        <f:facet name="header">
+                                            <p:outputPanel>
+                                                <h:outputText value="Buscar chofer" style="margin-right: 20px;"/>
+                                                <p:inputText id="globalFilter" onkeyup="PF('tablaChoferes').filter()" style="width:150px" placeholder="Palabra clave"/>
+                                            </p:outputPanel>
+                                        </f:facet>
 
+
+
+                                        <p:column headerText="Chofer">
+                                            <div class="panel panel-default" id="panel-perfiles">
+                                                <div class="panel-heading">
+                                                    <h3 class="panel-title">
+                                                        <p:link value="#{pc.chofer.cnombre} #{pc.chofer.capp}" outcome="PerfilChoferIH"  style="font-family: 'Arimo', sans-serif;font-size: 13px;" >
+                                                            <f:param name="choferId" value="#{pc.chofer.idChofer}" />
+                                                        </p:link>
+                                                    </h3>
+                                                </div>
+                                                <div class="panel-body">
+                                                    <div class="media">
+                                                        <div class="media-left media-middle">
+                                                            <c:if test="#{perfilC.verificarImagenChofer(pc.chofer.idChofer) eq false}" >
+                                                                <p:graphicImage id="imagene" library="imagenes" name="foto_usuario/usuario.png" width="100px" height="100px"  />
+                                                            </c:if>
+                                                            <c:if test="#{perfilC.verificarImagenChofer(pc.chofer.idChofer)}" >
+                                                                <o:graphicImage id="img" value="#{imagenC.getImagen(perfilC.getImagenChofer(pc.chofer.idChofer))}" height="100px" width="100px" />
+                                                            </c:if>
+                                                            <p:rating value="#{perfilC.getCalificacionChofer(pc.chofer)}" readonly="true"/>
+                                                        </div>
+                                                        <div class="media-body">
+
+                                                            <h4 style="margin-bottom: 0px;">
+                                                                <p:outputLabel value="Descripción" style="font-family: 'Arimo', sans-serif; font-weight: bold; font-size: 14px; margin-top: 0px;"/>
+                                                            </h4>
+                                                            <c:if test="#{pc.csobreMi eq null}">
+                                                                <h:outputText value="Éste usuario no tiene ninguna descripción disponible" style="font-family: 'Arimo', sans-serif; font-weight: normal; font-size: 12px;"/>
+                                                            </c:if>
+                                                            <c:if test="#{not pc.csobreMi eq null}">
+                                                                <h:outputText value="#{pc.csobreMi}" style="font-family: 'Arimo', sans-serif; font-weight: normal; font-size: 12px;"/>
+                                                            </c:if>
+                                                            <h4>
+                                                                <p:outputLabel value="#{pc.chofer.ccorreo}" style="font-family: 'Arimo', sans-serif; font-weight: normal; font-size: 13px; color:gray;"/>
+                                                            </h4>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </p:column>
+
+
+
+                                    </p:dataTable>
+                                </h:form>
+                            </p:tab>
+                            <p:tab title="Pasajeros">
+                                <h:form>
+                                    <p:dataTable value="#{perfilC.pasajeros}" paginatorPosition="bottom" var="pp" widgetVar="tablaPasajeros" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                                                 paginator="true" rows="7" style="margin-bottom:20px">
+                                        <f:facet name="header">
+                                            <p:outputPanel>
+                                                <h:outputText value="Buscar pasajero" style="margin-right: 20px;" />
+                                                <p:inputText id="globalFilter" onkeyup="PF('tablaPasajeros').filter()" style="width:150px" placeholder="Palabra clave"/>
+                                            </p:outputPanel>
+                                        </f:facet>
+
+                                        <p:column headerText="Pasajero">
+                                            <div class="panel panel-default" id="panel-perfiles">
+                                                <div class="panel-heading">
+                                                    <h3 class="panel-title">
                                                         <p:link value="#{pp.pasajero.pnombre} #{pp.pasajero.papp}" outcome="PerfilPasajeroIH" style="font-family: 'Arimo', sans-serif;font-size: 13px;" >
                                                             <f:param name="pasajeroId" value="#{pp.pasajero.idPasajero}" />
                                                         </p:link>
-                                                    </h:panelGrid>
-                                                </p:column>
-                                                <p:column headerText="Correo">
-                                                    <p:outputLabel value="#{pp.pasajero.pcorreo}" style="font-family: 'Arimo', sans-serif; font-weight: normal; font-size: 13px;"/>
-                                                </p:column>
-                                            </p:dataTable>
-                                        </h:form>
-                                    </p:tab>
-                                </p:tabView>
-                            </h:panelGrid>
-                        </div>
+                                                    </h3>
+                                                </div>
+                                                <div class="panel-body">
+                                                    <div class="media">
+                                                        <div class="media-left media-middle">
+                                                            <c:if test="#{perfilC.verificarImagenPasajero(pp.pasajero.idPasajero) eq false}" >
+                                                                <p:graphicImage id="imagene" library="imagenes" name="foto_usuario/usuario.png" width="100px" height="100px"  />
+                                                            </c:if>
+                                                            <c:if test="#{perfilC.verificarImagenPasajero(pp.pasajero.idPasajero)}" >
+                                                                <o:graphicImage id="img" value="#{imagenC.getImagen(perfilC.getImagenPasajero(pp.pasajero.idPasajero))}" height="100px" width="100px" />
+                                                            </c:if>
+                                                            <p:rating value="#{perfilC.getCalificacionPasajero(pp.pasajero)}" readonly="true"/>
+                                                        </div>
+                                                        <div class="media-body">
+
+                                                            <h4 style="margin-bottom: 0px;">
+                                                                <p:outputLabel value="Descripción" style="font-family: 'Arimo', sans-serif; font-weight: bold; font-size: 14px; margin-top: 0px;"/>
+                                                            </h4>
+                                                            <c:if test="#{pp.psobreMi eq null}">
+                                                                <h:outputText value="Éste usuario no tiene ninguna descripción disponible" style="font-family: 'Arimo', sans-serif; font-weight: normal; font-size: 12px;"/>
+                                                            </c:if>
+                                                            <c:if test="#{not pp.psobreMi eq null}">
+                                                                <h:outputText value="#{pp.psobreMi}" style="font-family: 'Arimo', sans-serif; font-weight: normal; font-size: 12px;"/>
+                                                            </c:if>
+                                                            <h4>
+                                                                <p:outputLabel value="#{pp.pasajero.pcorreo}" style="font-family: 'Arimo', sans-serif; font-weight: normal; font-size: 13px; color:gray;"/>
+                                                            </h4>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </p:column>
+
+                                    </p:dataTable>
+                                </h:form>
+                            </p:tab>
+                        </p:tabView>
                     </div>
                 </center>
             </ui:define>
