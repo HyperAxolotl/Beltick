@@ -1,5 +1,5 @@
 @import url("bootstrap.css");
-<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+@import url(https://fonts.googleapis.com/css?family=Roboto);
 
 /*colorscheme id: #4D51TqxkXw0w0*/
 * {
