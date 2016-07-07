@@ -1,0 +1,15 @@
+#container-notif {
+    padding-top: 20px;
+    padding-left: 100px;
+    padding-right: 100px;
+    width: 800px;
+    height: 100vh;
+    background: white;
+}
+
+#panel-notif {
+    width: 600px; 
+    border-radius: 0px; 
+    margin-left: -10px;
+    margin-bottom: 0px;
+}

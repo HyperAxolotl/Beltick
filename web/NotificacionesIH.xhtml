@@ -12,55 +12,56 @@
     <h:body>
         <ui:composition template="plantillas/vista2.xhtml">
             <ui:define name="content">
-                <section class="container">
-                    <div class="row">
-                        <div class="col-sm-12" align="center">
-                            <h2>Notificaciones</h2>                            
+                <center>
+                    <div id="container-notif" align="center">
+                        <h2 style="color:black; font-weight: bold; margin-right: 10px;">Notificaciones</h2>                            
+                        <hr style="width: 800px; margin-left: -100px; margin-bottom: 30px;"></hr>
+                        <h:form id="notificaciones">
 
-                            <h:form id="notificaciones">
+                            <h:outputText value="Tienes #{sesionC.notificacionesNuevas} notificaciones nuevas" style="color: gray;"/>
+                            <p:dataTable id="tablaNotificacionesC" value="#{notificacionC.lstNotificacionesC}" paginatorPosition="bottom"
+                                         var="notificacion" widgetVar="tablaNotificacionesC" rendered="#{sesionC.verificarSesion() and sesionC.verificarTipo()}" 
+                                         rows="10" style="margin-bottom:20px; margin-top: 20px;" paginator="true">
 
-                                <h:outputText value="Tienes #{sesionC.notificacionesNuevas} notificaciones nuevas" style="color: lightseagreen;"/>
-                                <p:dataTable id="tablaNotificacionesC" value="#{notificacionC.lstNotificacionesC}" 
-                                             var="notificacion" widgetVar="tablaNotificacionesC" rendered="#{sesionC.verificarSesion() and sesionC.verificarTipo()}" 
-                                             rows="10" style="margin-bottom:20px" paginator="true">
+                                <p:column>
+                                    <div class="panel panel-default" id="panel-notif">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title">
+                                                <h:outputText value="#{notificacion.titulo}" style="font-family: 'Arimo', sans-serif; font-weight: bold; font-size: 13px; margin-top: 0px;"/>
+                                                <h:outputText value="Fecha: #{notificacionC.formateaFecha(notificacion.fecha)}" style="float:right; font-family: 'Arimo', sans-serif; font-weight: bold; font-size: 13px; margin-top: 0px;"/>
+                                            </h3>
+                                        </div>
+                                        <div class="panel-body">
+                                            <h:outputText value="#{notificacion.contenido}" style="font-family: 'Arimo', sans-serif; font-size: 13px; margin-top: 0px;"/>
+                                        </div>
+                                    </div>
+                                </p:column>
 
-                                    <p:column headerText="Titulo">
-                                        <h:outputText value="#{notificacion.titulo}" />
-                                    </p:column>
-                                    
-                                    <p:column headerText="Contenido">
-                                        <h:outputText value="#{notificacion.contenido}" />
-                                    </p:column>
-                                    
-                                    <p:column headerText="Fecha">
-                                        <h:outputText value="#{notificacionC.formateaFecha(notificacion.fecha)}" />
-                                    </p:column>
-                                    
-                                </p:dataTable>
-                                
-                                <p:dataTable id="tablaNotificacionesP" value="#{notificacionC.lstNotificacionesP}" 
-                                             var="notificacion" widgetVar="tablaNotificacionesP" rendered="#{sesionC.verificarSesion() and sesionC.verificarTipo() eq false}" 
-                                             rows="10" style="margin-bottom:20px" >
+                            </p:dataTable>
 
-                                    <p:column headerText="Titulo">
-                                        <h:outputText value="#{notificacion.titulo}" />
-                                    </p:column>
-                                    
-                                    <p:column headerText="Contenido">
-                                        <h:outputText value="#{notificacion.contenido}" />
-                                    </p:column>
-                                    
-                                    <p:column headerText="Fecha">
-                                        <h:outputText value="#{notificacionC.formateaFecha(notificacion.fecha)}" />
-                                    </p:column>
-                                    
-                                </p:dataTable>
-                            </h:form>
+                            <p:dataTable id="tablaNotificacionesP" value="#{notificacionC.lstNotificacionesP}" 
+                                         var="notificacion" widgetVar="tablaNotificacionesP" paginatorPosition="bottom" paginator="true" rendered="#{sesionC.verificarSesion() and sesionC.verificarTipo() eq false}" 
+                                         rows="10" style="margin-bottom:20px; margin-top: 20px;" >
 
-                        </div>
+                                <p:column>
+                                    <div class="panel panel-default" id="panel-notif">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title">
+                                                <h:outputText value="#{notificacion.titulo}" style="font-family: 'Arimo', sans-serif; font-weight: bold; font-size: 13px; margin-top: 0px;"/>
+                                                <h:outputText value="Fecha: #{notificacionC.formateaFecha(notificacion.fecha)}" style="float:right; font-family: 'Arimo', sans-serif; font-weight: bold; font-size: 13px; margin-top: 0px;"/>
+                                            </h3>
+                                        </div>
+                                        <div class="panel-body">
+                                            <h:outputText value="#{notificacion.contenido}" style="font-family: 'Arimo', sans-serif; font-size: 13px; margin-top: 0px;"/>
+                                        </div>
+                                    </div>
+                                </p:column>
+
+                            </p:dataTable>
+                        </h:form>
+
                     </div>
-                </section>
-
+                </center>
             </ui:define>
         </ui:composition>
     </h:body>

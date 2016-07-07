@@ -12,66 +12,65 @@
     <h:body>
         <ui:composition template="plantillas/vista2.xhtml">
             <ui:define name="content">
-                <section class="container">
-                    <div class="row">
-                        <div class="col-sm-12" align="center">
-                            <h2>Mensajes</h2>                            
+                <center>
+                    <div id="container-notif">
+                        <h2 style="color:black; font-weight: bold; margin-right: 10px;">Mensajes</h2>                            
+                        <hr style="width: 800px; margin-left: -100px; margin-bottom: 30px;"></hr>
+                        <h:form id="mensajes">
 
-                            <h:form id="mensajes">
+                            <p:dataTable id="tablaMensajesC" value="#{mostrarMensajesC.lstMensajesC}" 
+                                         var="mensaje" widgetVar="tablaMensajesC" rendered="#{sesionC.verificarSesion() &amp;&amp; sesionC.verificarTipo()}" 
+                                         rows="10" style="margin-bottom:20px" paginatorPosition="bottom" paginator="true" >
 
-                                <p:dataTable id="tablaMensajesC" value="#{mostrarMensajesC.lstMensajesC}" 
-                                             var="mensaje" widgetVar="tablaMensajesC" rendered="#{sesionC.verificarSesion() &amp;&amp; sesionC.verificarTipo()}" 
-                                             rows="10" style="margin-bottom:20px" >
+                                <p:column>
+                                    <div class="panel panel-default" id="panel-notif">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title">
+                                                <h:link value="De: #{mensaje.pasajero.pnombre}" outcome="PerfilPasajeroIH" style="font-family: 'Arimo', sans-serif; font-weight: bold; font-size: 13px; margin-top: 0px;">
+                                                    <f:param name="pasajeroId" value="#{mensaje.pasajero.idPasajero}"/>
+                                                </h:link>
+                                                <h:outputText value="#{mostrarMensajesC.formateaFecha(mensaje.fecha)}" style="float:right; font-family: 'Arimo', sans-serif; font-weight: bold; font-size: 13px; margin-top: 0px;"/>
+                                            </h3>
+                                        </div>
+                                        <div class="panel-body">
+                                            <h4  style="font-family: 'Arimo', sans-serif; font-weight: bold; font-size: 14px; margin-top: 0px;">
+                                                <h:outputText value="Asunto: #{mensaje.asunto}" style="font-family: 'Arimo', sans-serif;" />
+                                            </h4>
+                                            <h:outputText value="#{mensaje.contenido}" style="font-family: 'Arimo', sans-serif; font-size: 14px;" />
+                                        </div>
+                                    </div>
+                                </p:column>
 
-                                    <p:column headerText="Remitente">
-                                        <h:link value="#{mensaje.pasajero.pnombre}" outcome="PerfilPasajeroIH">
-                                            <f:param name="pasajeroId" value="#{mensaje.pasajero.idPasajero}"/>
-                                        </h:link>
-                                    </p:column>
-                                    
-                                    <p:column headerText="Titulo">
-                                        <h:outputText value="#{mensaje.asunto}" />
-                                    </p:column>
-                                    
-                                    <p:column headerText="Contenido">
-                                        <h:outputText value="#{mensaje.contenido}" />
-                                    </p:column>
-                                    
-                                    <p:column headerText="Fecha">
-                                        <h:outputText value="#{mostrarMensajesC.formateaFecha(mensaje.fecha)}" />
-                                    </p:column>
-                                    
-                                </p:dataTable>
-                                
-                                <p:dataTable id="tablaMensajesP" value="#{mostrarMensajesC.lstMensajesP}" 
-                                             var="mensaje" widgetVar="tablaMensajesP" rendered="#{sesionC.verificarSesion() &amp;&amp; sesionC.verificarTipo() eq false}" 
-                                             rows="10" style="margin-bottom:20px" >
+                            </p:dataTable>
 
-                                    <p:column headerText="Remitente">
-                                        <h:link value="#{mensaje.chofer.cnombre}" outcome="PerfilChoferIH">
-                                            <f:param name="choferId" value="#{mensaje.chofer.idChofer}"/>
-                                        </h:link>
-                                    </p:column>
-                                    
-                                    <p:column headerText="Titulo">
-                                        <h:outputText value="#{mensaje.asunto}" />
-                                    </p:column>
-                                    
-                                    <p:column headerText="Contenido">
-                                        <h:outputText value="#{mensaje.contenido}" />
-                                    </p:column>
-                                    
-                                    <p:column headerText="Fecha">
-                                        <h:outputText value="#{mostrarMensajesC.formateaFecha(mensaje.fecha)}" />
-                                    </p:column>
-                                    
-                                </p:dataTable>
-                            </h:form>
+                            <p:dataTable id="tablaMensajesP" value="#{mostrarMensajesC.lstMensajesP}" 
+                                         var="mensaje" widgetVar="tablaMensajesP" paginatorPosition="bottom" paginator="true" rendered="#{sesionC.verificarSesion() &amp;&amp; sesionC.verificarTipo() eq false}" 
+                                         rows="10" style="margin-bottom:20px" >
 
-                        </div>
+                                <p:column>
+                                    <div class="panel panel-default" id="panel-notif">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title">
+                                                <h:link value="De: #{mensaje.chofer.cnombre}" outcome="PerfilChoferIH" style="font-family: 'Arimo', sans-serif; font-weight: bold; font-size: 13px; margin-top: 0px;">
+                                                    <f:param name="choferId" value="#{mensaje.chofer.idChofer}"/>
+                                                </h:link>
+                                                <h:outputText value="Fecha: #{mostrarMensajesC.formateaFecha(mensaje.fecha)}" style="float:right; font-family: 'Arimo', sans-serif; font-weight: bold; font-size: 13px; margin-top: 0px;"/>
+                                            </h3>
+                                        </div>
+                                        <div class="panel-body">
+                                            <h4  style="font-family: 'Arimo', sans-serif; font-weight: bold; font-size: 14px; margin-top: 0px;">
+                                                <h:outputText value="Asunto: #{mensaje.asunto}" style="font-family: 'Arimo', sans-serif;" />
+                                            </h4>
+                                            <h:outputText value="#{mensaje.contenido}" style="font-family: 'Arimo', sans-serif; font-size: 14px;" />
+                                        </div>
+                                    </div>
+                                </p:column>
+
+                            </p:dataTable>
+                        </h:form>
+
                     </div>
-                </section>
-
+                </center>
             </ui:define>
         </ui:composition>
     </h:body>
