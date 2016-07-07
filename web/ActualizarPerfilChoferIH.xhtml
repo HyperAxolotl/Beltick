@@ -12,80 +12,85 @@
     <h:body>
         <ui:composition template="plantillas/vista2.xhtml">
             <ui:define name="content">
-                <div class="col-sm-12" align="center">
-                    <h:form enctype="multipart/form-data">			
-                        <section class="container">
-                            <p:tabView>
+                <center>
+                    <div id="container-notif">
+                        <h:form enctype="multipart/form-data">
+                            <p:outputLabel value="Modifica tus datos" style="color:black; font-weight: bold; margin-right: 10px; font-size: 30px; margin-top: 20px;"/>
+                            <hr style="width: 800px; margin-left: -100px; margin-bottom: 30px; margin-top: 10px;"></hr>
+                            <p:tabView style="margin-left: 40px;">
                                 <p:tab title="Perfil">
-                                    <h:panelGrid columns="3" styleClass="mi-panel-grid">  
+                                    <div class="cuadro-editar" style="width: 525px; margin-left: -23px; padding-left: 30px; padding-right:0px;">
+                                        <div class="cuadro-editar2" style="width: 525px; margin-left: -30px;"></div>
+                                        <h:panelGrid columns="3" styleClass="mi-panel-grid">  
 
-                                        <p:outputLabel for="imagen" value="Imágen:" />
-                                        <p:fileUpload id="imagen" value="#{actualizarPerfilChoferC.archivo}" mode="simple" label="Subir imágen" cancelLabel="Cancelar" sizeLimit="1024" />
-                                        <p:message for="imagen" display="text" />
+                                            <p:outputLabel for="imagen" value="Imágen:" />
+                                            <p:fileUpload id="imagen" value="#{actualizarPerfilChoferC.archivo}" mode="simple" label="Subir imágen" cancelLabel="Cancelar" sizeLimit="1024" />
+                                            <p:message for="imagen" display="text" />
 
-                                        <h:outputLabel for="nombre" value="Nombre:" />
-                                        <p:inplace id="nombre" editor="true">
-                                            <p:inputText id="inombre" value="#{actualizarPerfilChoferC.chofer.cnombre}" required="true" label="Nombre" >
-                                                <pe:keyFilter regEx="/[a-z_' üñ]/i"/>
-                                            </p:inputText>
-                                        </p:inplace>
-                                        <p:message for="inombre" display="text" />
+                                            <p:outputLabel for="nombre" value="Nombre:" />
+                                            <p:inplace id="nombre" editor="true">
+                                                <p:inputText id="inombre" value="#{actualizarPerfilChoferC.chofer.cnombre}" required="true" label="Nombre" >
+                                                    <pe:keyFilter regEx="/[a-z_' üñ]/i"/>
+                                                </p:inputText>
+                                            </p:inplace>
+                                            <p:message for="inombre" display="text" />
 
-                                        <h:outputLabel for="apellidop" value="Apellido paterno:" />
-                                        <p:inplace id="apellidop" editor="true" >
-                                            <p:inputText id="iapellidop" value="#{actualizarPerfilChoferC.chofer.capp}" required="true" label="Apellido paterno">
-                                                <pe:keyFilter regEx="/[a-z_' üñ]/i"/>
-                                            </p:inputText>
-                                        </p:inplace>
-                                        <p:message for="iapellidop" display="text" />
+                                            <p:outputLabel for="apellidop" value="Apellido paterno:" />
+                                            <p:inplace id="apellidop" editor="true" >
+                                                <p:inputText id="iapellidop" value="#{actualizarPerfilChoferC.chofer.capp}" required="true" label="Apellido paterno">
+                                                    <pe:keyFilter regEx="/[a-z_' üñ]/i"/>
+                                                </p:inputText>
+                                            </p:inplace>
+                                            <p:message for="iapellidop" display="text" />
 
-                                        <h:outputLabel for="apellidom" value="Apellido materno:" />
-                                        <p:inplace id="apellidom" editor="true" >
-                                            <p:inputText id="iapellidom" value="#{actualizarPerfilChoferC.chofer.capm}" required="true" label="Apellido materno">
-                                                <pe:keyFilter regEx="/[a-z_' üñ]/i"/>
-                                            </p:inputText>
-                                        </p:inplace>
-                                        <p:message for="iapellidom" display="text" />
+                                            <p:outputLabel for="apellidom" value="Apellido materno:" />
+                                            <p:inplace id="apellidom" editor="true" >
+                                                <p:inputText id="iapellidom" value="#{actualizarPerfilChoferC.chofer.capm}" required="true" label="Apellido materno">
+                                                    <pe:keyFilter regEx="/[a-z_' üñ]/i"/>
+                                                </p:inputText>
+                                            </p:inplace>
+                                            <p:message for="iapellidom" display="text" />
 
-                                        <h:outputLabel for="correo" value="Correo:" />
-                                        <p:inplace id="correo" editor="true" >
-                                            <p:inputText id="icorreo" value="#{actualizarPerfilChoferC.chofer.ccorreo}" required="true" label="Correo">
-                                                <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@ciencias.unam.mx" />
-                                                <pe:keyFilter regEx="/[a-z0-9_\-\.@]/i" />
-                                            </p:inputText>
-                                        </p:inplace>
-                                        <p:message for="icorreo" display="text" />
+                                            <p:outputLabel for="correo" value="Correo:" />
+                                            <p:inplace id="correo" editor="true" >
+                                                <p:inputText id="icorreo" value="#{actualizarPerfilChoferC.chofer.ccorreo}" required="true" label="Correo">
+                                                    <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@ciencias.unam.mx" />
+                                                    <pe:keyFilter regEx="/[a-z0-9_\-\.@]/i" />
+                                                </p:inputText>
+                                            </p:inplace>
+                                            <p:message for="icorreo" display="text" />
 
-                                        <h:outputLabel for="numcuenta" value="Numero de cuenta:" />
-                                        <p:inplace id="numcuenta" editor="true" >
-                                            <p:inputMask id="inumcuenta" required="true" value="#{actualizarPerfilChoferC.chofer.cnoCuenta}" 
-                                                         mask="999999999" label="Numero de cuenta"/>
-                                        </p:inplace>
-                                        <p:message for="inumcuenta" display="text" />
+                                            <p:outputLabel for="numcuenta" value="Numero de cuenta:" />
+                                            <p:inplace id="numcuenta" editor="true" >
+                                                <p:inputMask id="inumcuenta" required="true" value="#{actualizarPerfilChoferC.chofer.cnoCuenta}" 
+                                                             mask="999999999" label="Numero de cuenta"/>
+                                            </p:inplace>
+                                            <p:message for="inumcuenta" display="text" />
 
-                                        <p:outputLabel for="nid" value="Numero de Identificación (Licencia):" />
-                                        <p:inplace id="nid" editor="true" >
-                                            <p:inputText id="inid" value="#{actualizarPerfilChoferC.chofer.cnoId}" required="true" label="Numero de Identificación" />
-                                        </p:inplace>
-                                        <p:message for="inid" display="text" />
+                                            <p:outputLabel for="nid" value="Numero de Identificación (Licencia):" />
+                                            <p:inplace id="nid" editor="true" >
+                                                <p:inputText id="inid" value="#{actualizarPerfilChoferC.chofer.cnoId}" required="true" label="Numero de Identificación" />
+                                            </p:inplace>
+                                            <p:message for="inid" display="text" />
 
-                                        <p:outputLabel for="fecha" value="Fecha de Nacimiento:" />
-                                        <p:inplace id="fecha" label="#{actualizarPerfilChoferC.fecha}" effectSpeed="fast" editor="true">
-                                            <p:calendar id="ifecha" value="#{actualizarPerfilChoferC.chofer.cfechaNac}" pattern="dd-MM-yyyy" mask="true" 
-                                                        required="true" label="Fecha de Nacimiento">
-                                                <f:convertDateTime pattern="dd-MM-yyyy" />
-                                            </p:calendar>
-                                        </p:inplace>
-                                        <p:message for="ifecha" display="text" />
+                                            <p:outputLabel for="fecha" value="Fecha de Nacimiento:" />
+                                            <p:inplace id="fecha" label="#{actualizarPerfilChoferC.fecha}" effectSpeed="fast" editor="true">
+                                                <p:calendar id="ifecha" value="#{actualizarPerfilChoferC.chofer.cfechaNac}" pattern="dd-MM-yyyy" mask="true" 
+                                                            required="true" label="Fecha de Nacimiento">
+                                                    <f:convertDateTime pattern="dd-MM-yyyy" />
+                                                </p:calendar>
+                                            </p:inplace>
+                                            <p:message for="ifecha" display="text" />
 
-                                        <p:outputLabel for="sobremi" value="Sobre mi:" />
-                                        <p:inplace id="sobremi" editor="true" emptyLabel="Describete" >
-                                            <p:inputTextarea id="isobremi" value="#{actualizarPerfilChoferC.perfil.csobreMi}" label="Sobre mi" />
-                                        </p:inplace>
-                                        <p:message for="isobremi" display="text" />
+                                            <p:outputLabel for="sobremi" value="Sobre mi:" />
+                                            <p:inplace id="sobremi" editor="true" emptyLabel="Describete" >
+                                                <p:inputTextarea id="isobremi" value="#{actualizarPerfilChoferC.perfil.csobreMi}" label="Sobre mi" />
+                                            </p:inplace>
+                                            <p:message for="isobremi" display="text" />
 
-                                    </h:panelGrid>
-                                    <h:commandButton styleClass="btn btn-info" value="Editar perfil" action="#{actualizarPerfilChoferC.actualizarChofer()}" />
+                                        </h:panelGrid>
+                                        <h:commandButton styleClass="boton-ed-perfil" value="Editar perfil" action="#{actualizarPerfilChoferC.actualizarChofer()}" />
+                                    </div>
                                 </p:tab>
 
                                 <p:tab title="Automóvil" rendered="#{actualizarPerfilChoferC.automovil != null}">
@@ -164,7 +169,7 @@
                                         </p:inplace>
                                         <p:message for="ilunes" display="text" />
 
-                                        <h:outputLabel for="martes" value="Martes" />
+                                        <p:outputLabel for="martes" value="Martes" />
                                         <p:inplace id="martes" effectSpeed="fast" editor="true" emptyLabel="Campo vacío">
                                             <p:inputMask id="imartes" value="#{actualizarPerfilChoferC.horario.martes}" mask="99:99" label="Martes">
                                                 <f:convertDateTime pattern="HH:mm" />
@@ -172,7 +177,7 @@
                                         </p:inplace>
                                         <p:message for="imartes" display="text" />
 
-                                        <h:outputLabel for="miercoles" value="Miercoles" />
+                                        <p:outputLabel for="miercoles" value="Miercoles" />
                                         <p:inplace id="miercoles" effectSpeed="fast" editor="true" emptyLabel="Campo vacío">
                                             <p:inputMask id="imiercoles" value="#{actualizarPerfilChoferC.horario.miercoles}" mask="99:99" label="Miercoles">
                                                 <f:convertDateTime pattern="HH:mm" />
@@ -180,7 +185,7 @@
                                         </p:inplace>
                                         <p:message for="imiercoles" display="text" />
 
-                                        <h:outputLabel for="jueves" value="Jueves" />
+                                        <p:outputLabel for="jueves" value="Jueves" />
                                         <p:inplace id="jueves" effectSpeed="fast" editor="true" emptyLabel="Campo vacío">
                                             <p:inputMask id="ijueves" value="#{actualizarPerfilChoferC.horario.jueves}" mask="99:99" label="Jueves">
                                                 <f:convertDateTime pattern="HH:mm" />
@@ -188,7 +193,7 @@
                                         </p:inplace>
                                         <p:message for="ijueves" display="text" />
 
-                                        <h:outputLabel for="viernes" value="Viernes" />
+                                        <p:outputLabel for="viernes" value="Viernes" />
                                         <p:inplace id="viernes" effectSpeed="fast" editor="true" emptyLabel="Campo vacío">
                                             <p:inputMask id="iviernes" value="#{actualizarPerfilChoferC.horario.viernes}" mask="99:99" label="Viernes">
                                                 <f:convertDateTime pattern="HH:mm" />
@@ -196,7 +201,7 @@
                                         </p:inplace>
                                         <p:message for="iviernes" display="text" />
 
-                                        <h:outputLabel for="sabado" value="Sábado" />
+                                        <p:outputLabel for="sabado" value="Sábado" />
                                         <p:inplace id="sabado" effectSpeed="fast" editor="true" emptyLabel="Campo vacío">
                                             <p:inputMask id="isabado" value="#{actualizarPerfilChoferC.horario.sabado}" mask="99:99" label="Sabado"> 
                                                 <f:convertDateTime pattern="HH:mm" />
@@ -215,14 +220,14 @@
                                     </p:commandButton>
                                 </p:tab>
                             </p:tabView>
-                        </section>
-                        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                            <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
-                            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>
-                        </p:confirmDialog>
+                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
+                                <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>
+                            </p:confirmDialog>
 
-                    </h:form>
-                </div>
+                        </h:form>
+                    </div>
+                </center>
             </ui:define>
         </ui:composition>
     </h:body>

@@ -12,81 +12,86 @@
     <h:body>
         <ui:composition template="plantillas/vista2.xhtml">
             <ui:define name="content">
-                <div class="col-md-4" align="center">
-                    <p:growl id="growl" life="2000"/>
-                    <h:form enctype="multipart/form-data">	
-
-                        <section class="container">
-                            <p:tabView>
+                <center>
+                    <div id="container-notif">
+                        <p:growl id="growl" life="2000"/>
+                        <h:form enctype="multipart/form-data">	
+                            
+                            <p:outputLabel value="Modifica tus datos" style="color:black; font-weight: bold; margin-right: 10px; font-size: 30px; margin-top: 20px;"/>
+                            <hr style="width: 800px; margin-left: -100px; margin-bottom: 30px; margin-top: 10px;"></hr>
+                            <p:tabView style="margin-top: 30px; width: 500px;">
                                 <p:tab title="Perfil">
-                                    <h:panelGrid columns="3" styleClass="mi-panel-grid">  
+                                    <div class="cuadro-editar">
+                                        <div class="cuadro-editar2"></div>
+                                        <h:panelGrid columns="3" styleClass="mi-panel-grid" >  
 
-                                        <p:outputLabel for="imagen" value="Imágen:" />
-                                        <p:fileUpload id="imagen" value="#{actualizarPerfilPasajeroC.archivo}" mode="simple" label="Subir imágen" cancelLabel="Cancelar" sizeLimit="1024" />
-                                        <p:message for="imagen" display="text" />
+                                            <p:outputLabel for="imagen" value="Imágen:" />
+                                            <p:fileUpload id="imagen" value="#{actualizarPerfilPasajeroC.archivo}" mode="simple" skinSimple="true" label="Subir imágen" cancelLabel="Cancelar" sizeLimit="1024" />
+                                            <p:message for="imagen" display="text" />
 
-                                        <h:outputLabel for="nombre" value="Nombre:" />
-                                        <p:inplace id="nombre" editor="true" >
-                                            <p:inputText id="inombre" value="#{actualizarPerfilPasajeroC.pasajero.pnombre}" required="true" 
-                                                         label="Nombre" >
-                                                <pe:keyFilter regEx="/[a-z_' üñ]/i"/>
-                                            </p:inputText>
-                                        </p:inplace>
-                                        <p:message for="inombre" display="text" />
+                                            <p:outputLabel for="nombre" value="Nombre:" />
+                                            <p:inplace id="nombre" editor="true" >
+                                                <p:inputText id="inombre" value="#{actualizarPerfilPasajeroC.pasajero.pnombre}" required="true" 
+                                                             label="Nombre" >
+                                                    <pe:keyFilter regEx="/[a-z_' üñ]/i"/>
+                                                </p:inputText>
+                                            </p:inplace>
+                                            <p:message for="inombre" display="text" />
 
-                                        <h:outputLabel for="apellidop" value="Apellido paterno:" />
-                                        <p:inplace id="apellidop" editor="true" >
-                                            <p:inputText id="iapellidop" value="#{actualizarPerfilPasajeroC.pasajero.papp}" required="true" 
-                                                         label="Apellido paterno">
-                                                <pe:keyFilter regEx="/[a-z_' üñ]/i"/>
-                                            </p:inputText>
-                                        </p:inplace>
-                                        <p:message for="iapellidop" display="text" />
+                                            <p:outputLabel for="apellidop" value="Apellido paterno:" />
+                                            <p:inplace id="apellidop" editor="true" >
+                                                <p:inputText id="iapellidop" value="#{actualizarPerfilPasajeroC.pasajero.papp}" required="true" 
+                                                             label="Apellido paterno">
+                                                    <pe:keyFilter regEx="/[a-z_' üñ]/i"/>
+                                                </p:inputText>
+                                            </p:inplace>
+                                            <p:message for="iapellidop" display="text" />
 
-                                        <h:outputLabel for="apellidom" value="Apellido materno:" />
-                                        <p:inplace id="apellidom" editor="true" >
-                                            <p:inputText id="iapellidom" value="#{actualizarPerfilPasajeroC.pasajero.papm}" required="true" 
-                                                         label="Apellido materno">
-                                                <pe:keyFilter regEx="/[a-z_' üñ]/i"/>
-                                            </p:inputText>
-                                        </p:inplace>
-                                        <p:message for="iapellidom" display="text" />
+                                            <p:outputLabel for="apellidom" value="Apellido materno:" />
+                                            <p:inplace id="apellidom" editor="true" >
+                                                <p:inputText id="iapellidom" value="#{actualizarPerfilPasajeroC.pasajero.papm}" required="true" 
+                                                             label="Apellido materno">
+                                                    <pe:keyFilter regEx="/[a-z_' üñ]/i"/>
+                                                </p:inputText>
+                                            </p:inplace>
+                                            <p:message for="iapellidom" display="text" />
 
-                                        <h:outputLabel for="correo" value="Correo:" />
-                                        <p:inplace id="correo" editor="true" >
-                                            <p:inputText id="icorreo" value="#{actualizarPerfilPasajeroC.pasajero.pcorreo}" required="true" 
-                                                         label="Correo">
-                                                <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@ciencias.unam.mx" />
-                                                <pe:keyFilter regEx="/[a-z0-9_\-\.@]/i" />
-                                            </p:inputText>
-                                        </p:inplace>
-                                        <p:message for="icorreo" display="text" />
+                                            <p:outputLabel for="correo" value="Correo:" />
+                                            <p:inplace id="correo" editor="true" >
+                                                <p:inputText id="icorreo" value="#{actualizarPerfilPasajeroC.pasajero.pcorreo}" required="true" 
+                                                             label="Correo">
+                                                    <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@ciencias.unam.mx" />
+                                                    <pe:keyFilter regEx="/[a-z0-9_\-\.@]/i" />
+                                                </p:inputText>
+                                            </p:inplace>
+                                            <p:message for="icorreo" display="text" />
 
-                                        <h:outputLabel for="numcuenta" value="Numero de cuenta:" />
-                                        <p:inplace id="numcuenta" editor="true" >
-                                            <p:inputMask id="inumcuenta" required="true" value="#{actualizarPerfilPasajeroC.pasajero.pnoCuenta}" 
-                                                         mask="999999999" label="Numero de cuenta"/>
-                                        </p:inplace>
-                                        <p:message for="inumcuenta" display="text" />
+                                            <p:outputLabel for="numcuenta" value="Numero de cuenta:" />
+                                            <p:inplace id="numcuenta" editor="true" >
+                                                <p:inputMask id="inumcuenta" required="true" value="#{actualizarPerfilPasajeroC.pasajero.pnoCuenta}" 
+                                                             mask="999999999" label="Numero de cuenta"/>
+                                            </p:inplace>
+                                            <p:message for="inumcuenta" display="text" />
 
-                                        <p:outputLabel for="fecha" value="Fecha de Nacimiento:" />
-                                        <p:inplace id="fecha" label="#{actualizarPerfilPasajeroC.fecha}" effectSpeed="fast" editor="true">
-                                            <p:calendar id="ifecha" value="#{actualizarPerfilPasajeroC.pasajero.pfechaNac}" pattern="dd-MM-yyyy" 
-                                                        mask="true" label="Fecha de Nacimiento" required="true">
-                                                <f:convertDateTime pattern="dd-MM-yyyy" />
-                                            </p:calendar>
-                                            <!--<h:message for="fecha"/>-->
-                                        </p:inplace>
-                                        <p:message for="ifecha" display="text" />
+                                            <p:outputLabel for="fecha" value="Fecha de Nacimiento:" />
+                                            <p:inplace id="fecha" label="#{actualizarPerfilPasajeroC.fecha}" effectSpeed="fast" editor="true">
+                                                <p:calendar id="ifecha" value="#{actualizarPerfilPasajeroC.pasajero.pfechaNac}" pattern="dd-MM-yyyy" 
+                                                            mask="true" label="Fecha de Nacimiento" required="true">
+                                                    <f:convertDateTime pattern="dd-MM-yyyy" />
+                                                </p:calendar>
+                                                <!--<h:message for="fecha"/>-->
+                                            </p:inplace>
+                                            <p:message for="ifecha" display="text" />
 
-                                        <p:outputLabel for="sobremi" value="Sobre mi" />
-                                        <p:inplace id="sobremi" editor="true" emptyLabel="Describete" >
-                                            <p:inputTextarea id="isobremi" value="#{actualizarPerfilPasajeroC.perfil.psobreMi}" label="text" />
-                                        </p:inplace>
-                                        <p:message for="isobremi" display="text" />
+                                            <p:outputLabel for="sobremi" value="Sobre mi" />
+                                            <p:inplace id="sobremi" editor="true" emptyLabel="Describete" >
+                                                <p:inputTextarea id="isobremi" value="#{actualizarPerfilPasajeroC.perfil.psobreMi}" label="text" />
+                                            </p:inplace>
+                                            <p:message for="isobremi" display="text" />
 
-                                    </h:panelGrid>
-                                    <h:commandButton styleClass="btn btn-info" value="Aceptar" action="#{actualizarPerfilPasajeroC.actualizarPasajero()}" />
+                                        </h:panelGrid>
+                                        <h:commandButton styleClass="boton-ed-perfil" value="Editar perfil" action="#{actualizarPerfilPasajeroC.actualizarPasajero()}" />
+                                    </div>
                                 </p:tab>
 
                                 <p:tab title="Rutas">
@@ -103,12 +108,12 @@
                                                 <f:param name="choferId" value="#{actualizarPerfilPasajeroC.getChoferId(dia)}" />
                                             </p:button>
                                             <p:tooltip id="irachofertt" for="irachofer" value="Ir a perfil de chofer" />
-                                            
+
                                             <p:button id="iraruta" icon="fa fa-road" outcome="RutaIH">
                                                 <f:param name="rutaId" value="#{dia.ruta.idRuta}" />
                                             </p:button>
                                             <p:tooltip id="irarutatt" for="iraruta" value="Ir a ruta" />
-                                            
+
                                             <p:commandButton id="eliminar" icon="fa fa-fw fa-remove" update="growl,@form" actionListener="#{actualizarPerfilPasajeroC.eliminaRuta(dia)}"/>
                                             <p:tooltip id="eliminartt" for="eliminar" value="Eliminar ruta" />
                                             <!--</h:panelGrid>-->
@@ -125,13 +130,14 @@
                                     </p:commandButton>
                                 </p:tab>
                             </p:tabView>
-                        </section>
-                        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                            <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
-                            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>
-                        </p:confirmDialog>
-                    </h:form>
-                </div>
+
+                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
+                                <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>
+                            </p:confirmDialog>
+                        </h:form>
+                    </div>
+                </center>
             </ui:define>
         </ui:composition>
     </h:body>

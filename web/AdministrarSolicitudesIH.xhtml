@@ -12,42 +12,40 @@
     <h:body>
         <ui:composition template="plantillas/vista2.xhtml">
             <ui:define name="content">
-                <section class="container">
-                    <div class="row">
-                        <div class="col-sm-12" align="center">
-                            <h2>Administrar Solicitudes</h2>                            
+                <center>
+                    <div id="container-notif" align="center">
+                        <h2 style="color:black; font-weight: bold; margin-right: 10px;">Solicitudes</h2>                            
+                        <hr style="width: 800px; margin-left: -100px; margin-bottom: 30px;"></hr>
+                        <h:form id="administrarSolicitudes">
+                            <p:growl id="growl" showDetail="true" sticky="false" life="3000" />
 
-                            <h:form id="administrarSolicitudes">
-                                <p:growl id="growl" showDetail="true" sticky="false" life="3000" />
+                            <p:dataTable id="tablaSolicitudes" value="#{administrarSolicitudesC.lstSolicitudes}" 
+                                         var="solicitud" widgetVar="tablaSolicitudes" rendered="#{sesionC.verificarSesion() &amp;&amp; sesionC.verificarTipo()}" 
+                                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                                         paginator="true" paginatorPosition="bottom" rows="10" style="margin-bottom:20px" >
 
-                                <p:dataTable id="tablaSolicitudes" value="#{administrarSolicitudesC.lstSolicitudes}" 
-                                             var="solicitud" widgetVar="tablaSolicitudes" rendered="#{sesionC.verificarSesion() &amp;&amp; sesionC.verificarTipo()}" 
-                                             paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
-                                             paginator="true" rows="10" style="margin-bottom:20px" >
+                                <p:column headerText="Pasajero">
+                                    <p:link value="#{administrarSolicitudesC.getPasajeroNombre(solicitud)}" outcome="PerfilPasajeroIH" >
+                                        <f:param name="pasajeroId" value="#{solicitud.pasajero.idPasajero}" />
+                                    </p:link>
+                                </p:column>
 
-                                    <p:column headerText="Pasajero">
-                                        <p:link value="#{administrarSolicitudesC.getPasajeroNombre(solicitud)}" outcome="PerfilPasajeroIH" >
-                                            <f:param name="pasajeroId" value="#{solicitud.pasajero.idPasajero}" />
-                                        </p:link>
-                                    </p:column>
-                                    
-                                    <p:column headerText="Dia -> hora">
-                                        <h:outputText value="#{solicitud.id.dia} -> #{administrarSolicitudesC.getHora(solicitud)}" />
-                                    </p:column>
+                                <p:column headerText="Dia -> hora">
+                                    <p:outputLabel value="#{solicitud.id.dia} -> #{administrarSolicitudesC.getHora(solicitud)}" />
+                                </p:column>
 
-                                    <p:column headerText="Acción">
-                                        <p:commandButton  value="Aceptar" update="@form" disabled="#{administrarSolicitudesC.verificarDisponibilidad(solicitud) eq false}"
-                                                          actionListener="#{administrarSolicitudesC.registrarSolicitud(solicitud)}" />
-                                        <p:commandButton  value="Rechazar" update="@form" 
-                                                          actionListener="#{administrarSolicitudesC.eliminarSolicitud(solicitud)}" />
-                                    </p:column>
+                                <p:column headerText="Acción">
+                                    <p:commandButton  icon="fa fa-check" update="@form" disabled="#{administrarSolicitudesC.verificarDisponibilidad(solicitud) eq false}"
+                                                      actionListener="#{administrarSolicitudesC.registrarSolicitud(solicitud)}" styleClass="boton-exp-rutas2" style="margin-top:0px;" />
+                                    <p:commandButton  icon="fa fa-close" update="@form" 
+                                                      actionListener="#{administrarSolicitudesC.eliminarSolicitud(solicitud)}" styleClass="boton-exp-rutas2" style="margin-top:0px;" />
+                                </p:column>
 
-                                </p:dataTable>
-                            </h:form>
+                            </p:dataTable>
+                        </h:form>
 
-                        </div>
                     </div>
-                </section>
+                </center>
 
             </ui:define>
         </ui:composition>

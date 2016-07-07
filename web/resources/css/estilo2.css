@@ -13,3 +13,60 @@
     margin-left: -10px;
     margin-bottom: 0px;
 }
+
+.boton-ed-perfil {
+    margin-top: 20px;
+    text-transform: none !important;
+    color: white !important;
+    background: -moz-linear-gradient(141deg, #35d2c8 0%, #48d2d2 51%, #47dae0 75%) !important;
+    background: -webkit-linear-gradient(141deg, #35d2c8 0%, #48d2d2 51%, #47dae0 75%) !important;
+    border: 1px solid #48d2d2 !important;
+    height: 30px;
+    border-radius: 3px !important;
+    width: 150px;
+    font-size: 13px;
+    font-family: 'Raleway', sans-serif !important; 
+    box-shadow: none;
+    font-weight: normal !important;
+}
+
+.ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-text-icon-left {
+    margin-top: 10px;
+    text-transform: none !important;
+    color: white !important;
+    background: -moz-linear-gradient(141deg, #5e78d4 0%, #6887b7 51%, #7089de 75%) !important;
+    background: -webkit-linear-gradient(141deg, #5e78d4 0%, #6887b7 51%, #7089de 75%) !important;
+    height: 30px;
+    border-radius: 3px !important;
+    width: 90px;
+    font-size: 14px;
+    font-family: 'Raleway', sans-serif !important; 
+    box-shadow: none;
+    font-weight: normal !important;
+    border: none;
+    padding-top: 2px;
+}
+
+.ui-tabs ui-widget.ui-widget-content.ui-corner-all.ui-hidden-container.ui-tabs-top, .ui-tabs-panels {
+    background: transparent;
+}
+
+.cuadro-editar {
+    background: #f8f8f8;
+    border-radius: 4px;
+    width: 500px;
+    margin-left: -20px;
+    padding-bottom: 30px;
+    padding-top: 15px;
+}
+
+.cuadro-editar2 {
+    background: -moz-linear-gradient(141deg, #35d2c8 0%, #48d2d2 51%, #47dae0 75%) !important;
+    background: -webkit-linear-gradient(141deg, #35d2c8 0%, #48d2d2 51%, #47dae0 75%) !important;
+    position: absolute;
+    border-radius: 3px;
+    width: 500px;
+    height: 20px;
+    margin-top: -33px;
+    z-index: 20;
+}
