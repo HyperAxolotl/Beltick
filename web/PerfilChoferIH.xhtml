@@ -65,12 +65,12 @@
                                     <p:tabView class="tab1">
                                         <p:tab title="Personal">
                                             <h:form>
-                                                <h3>Sobre mi:</h3>
-                                                <h:outputText value="#{perfilChoferC.perfil.csobreMi}"/> <!--rendered="{perfilChoferC.sobreMi-->
-                                                <p:separator styleClass="separadorT"/>
-                                                <h3>Antigüedad:</h3>
-                                                <h:outputText value="Usuario desde: #{perfilChoferC.fechaReg()}"/>
-                                                <p:separator styleClass="separadorT"/>
+                                                <h3 class="color-texto">Sobre mi:</h3>
+                                                <h:outputText class="color-texto" value="#{perfilChoferC.perfil.csobreMi}"/> <!--rendered="{perfilChoferC.sobreMi-->
+                                                <p:separator styleClass="separadorP"/>
+                                                <h3 class="color-texto">Antigüedad:</h3>
+                                                <h:outputText class="color-texto" value="Usuario desde: #{perfilChoferC.fechaReg()}"/>
+                                                <p:separator styleClass="separadorP"/>
                                             </h:form>
                                         </p:tab>
                                         <p:tab title="Horario">
@@ -91,21 +91,21 @@
                                                 </p:panelGrid>
                                             </h:form>
                                         </p:tab>
-                                        <p:tab title="Auto" >
+                                        <p:tab title="Auto">
                                             <p:button value="Registra tu auto"  outcome="RegistroAutomovilIH" 
                                                       rendered="#{sesionC.verificarTipo() and sesionC.chofer.idChofer == perfilChoferC.chofer.idChofer and sesionC.tieneAuto() eq false}" />
                                             <h:form style="text-align: right;" rendered="#{perfilChoferC.tieneRuta()}">
-                                                <h3>Modelo</h3>             
-                                                <h:outputText value="Marca: #{perfilChoferC.auto.modelo}"/>   
-                                                <p:separator styleClass="separadorT"/>
-                                                <h3>Licencia</h3>             
-                                                <h:outputText value="N° Id: #{perfilChoferC.auto.noIdentificacion}"/>   
-                                                <p:separator styleClass="separadorT"/>
-                                                <h3>Placa</h3> 
-                                                <h:outputText value="Número: #{perfilChoferC.auto.placa}"/>                    
-                                                <p:separator styleClass="separadorT"/>
-                                                <h3>Color</h3>
-                                                <h:outputText value="#{perfilChoferC.auto.color}"/> 
+                                                <h3 class="color-texto">Modelo</h3>             
+                                                <h:outputText class="color-texto" value="Marca: #{perfilChoferC.auto.modelo}"/>   
+                                                <p:separator styleClass="separadorP"/>
+                                                <h3 class="color-texto">Licencia</h3>             
+                                                <h:outputText class="color-texto" value="N° Id: #{perfilChoferC.auto.noIdentificacion}"/>   
+                                                <p:separator styleClass="separadorP"/>
+                                                <h3 class="color-texto">Placa</h3> 
+                                                <h:outputText class="color-texto" value="Número: #{perfilChoferC.auto.placa}"/>                    
+                                                <p:separator styleClass="separadorP"/>
+                                                <h3 class="color-texto">Color</h3>
+                                                <h:outputText class="color-texto" value="#{perfilChoferC.auto.color}"/> 
                                             </h:form>
                                         </p:tab>
                                     </p:tabView>
@@ -114,7 +114,7 @@
 
                             <div class="col-sm-3" id="bordoM" align="right">
                                 <h:form rendered="#{perfilChoferC.tieneRuta()}">
-                                    <h3 align="center">Ruta</h3>
+                                    <h3 align="center" class="color-texto">Ruta</h3>
                                     <p:gmap id="gmap" center="19.3241874,-99.1789797" zoom="12" type="ROADMAP" style="width:500px;height:400px" model="#{perfilChoferC.getModeloMapa()}" />
                                     <p:commandButton icon="fa fa-search-plus" value="Expandir" onclick="PF('dlg').show();" style="align-content: center;">
                                         <f:param name="choferId" value="#{perfilChoferC.chofer.idChofer}" />

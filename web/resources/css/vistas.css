@@ -276,7 +276,6 @@ p{color:#fff;text-align: center;}
     border-width: 10px;
     padding-top: 70px;
     padding-left: 40px; 
-    /*background-color: #99ccff;*/
     height: 560px;  
     width: 330px;
 }
@@ -302,10 +301,9 @@ p{color:#fff;text-align: center;}
     width: 100px;
 }
 .separadorP {
-    border-color: #0277BD;
-    background-color: #0277BD;
+    border-color: #48d2d2 !important;
     height:0px;
-    width: 230px;
+    width: 250px;
 }
 
 separadorP > .separadorT {
@@ -314,11 +312,13 @@ separadorP > .separadorT {
 
 .data {
     font-size: x-large;
+    color:gainsboro;
 }
 
 .minord {
     position: relative;
     font-size: large;
+    color:gainsboro;
 }
 
 #opPerfil{

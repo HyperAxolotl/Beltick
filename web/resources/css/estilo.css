@@ -203,6 +203,10 @@ html {
     background: #f6f6f6;
 }
 
+.color-texto{
+    color:gainsboro;
+}
+
 /*.ui-inputfield.ui-inputtext.ui-widget.ui-state-default.ui-corner-all {
     margin-left: 20px;
     font-size: 13px;

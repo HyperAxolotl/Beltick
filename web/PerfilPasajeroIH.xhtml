@@ -64,12 +64,12 @@
                                     <p:tabView class="tab1">
                                         <p:tab title="Personal">
                                             <h:form>
-                                                <h3>Sobre mi:</h3>
-                                                <h:outputText value="#{perfilPasajeroC.perfil.psobreMi}"/> <!--rendered="{perfilChoferC.sobreMi-->
-                                                <p:separator styleClass="separadorT"/>
-                                                <h3>Antigüedad:</h3>
-                                                <h:outputText value="Usuario desde: #{perfilPasajeroC.fechaReg()}"/>
-                                                <p:separator styleClass="separadorT"/>
+                                                <h3 class="color-texto">Sobre mi:</h3>
+                                                <h:outputText value="#{perfilPasajeroC.perfil.psobreMi}" class="color-texto"/> <!--rendered="{perfilChoferC.sobreMi-->
+                                                <p:separator styleClass="separadorP"/>
+                                                <h3 class="color-texto">Antigüedad:</h3>
+                                                <h:outputText class="color-texto" value="Usuario desde: #{perfilPasajeroC.fechaReg()}"/>
+                                                <p:separator styleClass="separadorP"/>
                                             </h:form>
                                         </p:tab>
                                         <p:tab title="Horario">
