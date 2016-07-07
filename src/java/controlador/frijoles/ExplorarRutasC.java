@@ -1,5 +1,6 @@
 package controlador.frijoles;
 
+import controlador.logica.CalificacionL;
 import javax.faces.bean.ManagedBean;
 import java.io.Serializable;
 
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ViewScoped;
+import modelo.Chofer;
 import org.primefaces.model.map.DefaultMapModel;
 import org.primefaces.model.map.LatLng;
 import org.primefaces.model.map.MapModel;
@@ -107,6 +109,14 @@ public class ExplorarRutasC implements Serializable {
                 * Math.cos(Math.toRadians(lat2))
                 * Math.sin(lngD / 2) * Math.sin(lngD / 2);
         return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    }
+    
+    public int getCalificacionChofer(Chofer chofer) {
+        CalificacionL calificacionL = new CalificacionL();
+        if (chofer != null) {
+            return calificacionL.getCalificacionChofer(chofer);
+        }
+        return 0;
     }
 
 }
