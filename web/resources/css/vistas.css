@@ -1,4 +1,5 @@
 @import url("bootstrap.css");
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 
 /*colorscheme id: #4D51TqxkXw0w0*/
 * {
@@ -313,12 +314,14 @@ separadorP > .separadorT {
 .data {
     font-size: x-large;
     color:gainsboro;
+    font-family: 'Roboto' !important;
 }
 
 .minord {
     position: relative;
     font-size: large;
     color:gainsboro;
+    font-family: 'Roboto' !important;
 }
 
 #opPerfil{

@@ -6,14 +6,15 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-      xmlns:o="http://omnifaces.org/ui">
+      xmlns:o="http://omnifaces.org/ui"
+      >
     <h:head>
         <title>Perfil pasajero</title>
         <f:metadata>
             <f:event type="preRenderView" listener="#{perfilPasajeroC.init}" />
         </f:metadata>
     </h:head>
-    <h:body>
+    <h:body class="font">
         <ui:composition template="plantillas/vista2.xhtml">
             <ui:define name="content">
                 <h:form class="fondo">			
