@@ -73,6 +73,12 @@ html {
     font-family: 'Raleway', sans-serif !important; 
 }
 
+.tab1{
+    width: 100%; 
+    background-color: transparent !important;
+    float: right;
+}
+
 .boton-registro {
     margin-top: 20px;
     text-transform: none !important;

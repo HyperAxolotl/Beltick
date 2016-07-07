@@ -33,7 +33,9 @@
                                 <h:outputText value=""/>
                                 <!--/f:facet-->
                                 <h:panelGrid columns="1">         
-                                    <h4> <h:outputText value="#{perfilChoferC.chofer.cnombre} #{perfilChoferC.chofer.capp} #{perfilChoferC.chofer.capm}" styleClass="data"/> </h4>
+                                    <h4><h:outputText value="#{perfilChoferC.chofer.cnombre} #{perfilChoferC.chofer.capp} #{perfilChoferC.chofer.capm}" styleClass="data"/></h4>
+                                    <p:separator styleClass="separadorP"/>
+                                    <h:outputText value="Chofer" styleClass="minord"/>
                                     <p:separator styleClass="separadorP"/>
                                     <h:outputText value="#{perfilChoferC.chofer.ccorreo}" styleClass="minord"/>
                                     <p:separator styleClass="separadorP"/>
@@ -60,7 +62,7 @@
                             </div>
                             <div class="col-sm-3" id="bordo">
                                 <h:panelGrid columns="1">
-                                    <p:tabView>
+                                    <p:tabView class="tab1">
                                         <p:tab title="Personal">
                                             <h:form>
                                                 <h3>Sobre mi:</h3>
@@ -74,7 +76,7 @@
                                         <p:tab title="Horario">
                                             <h:form rendered="#{perfilChoferC.tieneRuta()}">
                                                 <p:panelGrid columns="2"> 
-                                                    <h:outputLabel value="Lunes" />
+                                                    <h:outputLabel value="Lunes" class="etiquetaT"/>
                                                     <h:outputLabel value="#{perfilChoferC.formateaHora(perfilChoferC.horario.lunes)}"/>
                                                     <h:outputLabel value="Martes"/>
                                                     <h:outputLabel value="#{perfilChoferC.formateaHora(perfilChoferC.horario.martes)}"/>
@@ -112,13 +114,13 @@
 
                             <div class="col-sm-3" id="bordoM" align="right">
                                 <h:form rendered="#{perfilChoferC.tieneRuta()}">
-                                    <h3 align="center">Mapa</h3>
+                                    <h3 align="center">Ruta</h3>
                                     <p:gmap id="gmap" center="19.3241874,-99.1789797" zoom="12" type="ROADMAP" style="width:500px;height:400px" model="#{perfilChoferC.getModeloMapa()}" />
                                     <p:commandButton icon="fa fa-search-plus" value="Expandir" onclick="PF('dlg').show();" style="align-content: center;">
                                         <f:param name="choferId" value="#{perfilChoferC.chofer.idChofer}" />
                                     </p:commandButton>
                                     <p:dialog header="Ruta de #{perfilChoferC.chofer.cnombre}" widgetVar="dlg" modal="true" height="500px" width="1000px">
-                                        <p:gmap id="gmap-dlg" center="19.3241874,-99.1789797" zoom="12" type="ROADMAP" style="width:100%;height:100%" model="#{perfilChoferC.getModeloMapa()}" />
+                                        <p:gmap id="gmap-dlg" center="19.3241874,-99.1789797" zoom="12" type="ROADMAP" style="width:100%;height:100%;" model="#{perfilChoferC.getModeloMapa()}" />
                                     </p:dialog>
                                     <p:button icon="fa fa-automobile" value="Solicitar Servicio" outcome="SolicitarServicioIH" rendered="#{sesionC.verificarTipo() eq false and perfilChoferC.tieneRuta()}">
                                         <f:param name="rutaId" value="#{perfilChoferC.getIdRuta()}" />

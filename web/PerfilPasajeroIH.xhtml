@@ -16,7 +16,7 @@
     <h:body>
         <ui:composition template="plantillas/vista2.xhtml">
             <ui:define name="content">
-                <h:form>			
+                <h:form class="fondo">			
                     <section class="container">
                         <div class="rogue">
                             <div class="col-sm-3" align="center" id="borde">
@@ -31,6 +31,8 @@
                                 </c:if>
                                 <h:panelGrid columns="1"> 
                                     <h:outputText value="#{perfilPasajeroC.pasajero.pnombre} #{perfilPasajeroC.pasajero.papp} #{perfilPasajeroC.pasajero.papm}" styleClass="data"/>
+                                    <p:separator styleClass="separadorP"/>
+                                    <h:outputText value="Pasajero" styleClass="minord"/>
                                     <p:separator styleClass="separadorP"/>
                                     <h:outputText value="#{perfilPasajeroC.pasajero.pcorreo}" styleClass="minord"/>
                                     <p:separator styleClass="separadorP"/>
@@ -59,7 +61,7 @@
 
                             <div class="col-sm-3" id="bordo">
                                 <h:panelGrid columns="1">
-                                    <p:tabView style="width: 100%;">
+                                    <p:tabView class="tab1">
                                         <p:tab title="Personal">
                                             <h:form>
                                                 <h3>Sobre mi:</h3>
