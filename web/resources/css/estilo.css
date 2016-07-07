@@ -146,8 +146,11 @@ html {
 }
 
 #container-exp-perf {
-    padding-top: 60px;
-    width: 600px;
+    padding-top: 20px;
+    padding-left: 100px;
+    padding-right: 100px;
+    width: 800px;
+    height: 100vh;
     background: white;
 }
 
@@ -180,7 +183,7 @@ html {
 }
 
 .ui-datatable-odd {
-    background: none repeat scroll 0 0 #FCFCFC;
+    background: none;
 }
 
 .ui-widget-content {
@@ -215,3 +218,98 @@ html {
     font-size: 13px;
     font-family: 'Karla', sans-serif;
 }*/
+
+#panel-perfiles {
+    width: 616px; 
+    border-radius: 0px; 
+    margin-left: -10px;
+    margin-bottom: 0px;
+}
+
+.ui-state-default.ui-corner-top a {
+    font-family: 'Arimo', sans-serif;
+    font-size: 16px;
+}
+
+.ui-state-default.ui-corner-top {
+    background: #f8f5f0;
+    box-shadow: none;
+}
+
+.ui-state-default.ui-corner-top.ui-tabs-selected.ui-state-active a {
+    font-family: 'Arimo', sans-serif;
+    font-size: 16px;
+}
+
+.boton-exp-rutas {
+    margin-top: 20px;
+    text-transform: none !important;
+    color: white !important;
+    background: -moz-linear-gradient(141deg, #35d2c8 0%, #48d2d2 51%, #47dae0 75%) !important;
+    background: -webkit-linear-gradient(141deg, #35d2c8 0%, #48d2d2 51%, #47dae0 75%) !important;
+    border: 1px solid #48d2d2 !important;
+    height: 30px;
+    border-radius: 3px !important;
+    width: 300px;
+    font-size: 13px;
+    font-family: 'Raleway', sans-serif !important; 
+    box-shadow: none;
+    font-weight: normal !important;
+}
+
+#container-exp-rutas {
+    padding-top: 20px;
+    padding-left: 100px;
+    padding-right: 100px;
+    width: 800px;
+    height: 100vh;
+    background: white;
+}
+
+#east {  
+    padding:1em;  
+    width:30em; 
+    float:left; 
+    margin-right:30px; 
+    padding-left: 108px;
+} 
+
+#west { 
+    margin:0;    
+    width:60em; 
+    height:100vh; 
+    float:right; 
+    background: white;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 30px;
+}      
+
+#panel-exp-rutas {
+    width: 740px; 
+    border-radius: 0px; 
+    margin-left: -10px;
+    margin-bottom: 0px;
+}
+
+.boton-exp-rutas2 {
+    margin-top: 20px;
+    text-transform: none !important;
+    color: white !important;
+    background: -moz-linear-gradient(141deg, #35d2c8 0%, #48d2d2 51%, #47dae0 75%) !important;
+    background: -webkit-linear-gradient(141deg, #35d2c8 0%, #48d2d2 51%, #47dae0 75%) !important;
+    border: 1px solid #48d2d2 !important;
+    height: 30px;
+    border-radius: 2px !important;
+    width: 30px;
+    font-size: 13px;
+    font-family: 'Raleway', sans-serif !important; 
+    box-shadow: none;
+    font-weight: normal !important;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.ui-button-icon-left.ui-icon.ui-c, .ui-menuitem-icon.ui-icon {
+    border-radius: 0px;
+}
