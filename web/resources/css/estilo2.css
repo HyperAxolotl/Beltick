@@ -70,3 +70,12 @@
     margin-top: -33px;
     z-index: 20;
 }
+
+.cuadro-mensaje {
+    background: white;
+    border-radius: 4px;
+    width: 400px;
+    margin-left: -20px;
+    padding-bottom: 30px;
+    padding-top: 15px;
+}
