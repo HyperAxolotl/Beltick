@@ -33,31 +33,32 @@
                                 </h:panelGrid>
                                 <p:commandButton value="Enviar mensaje" action="#{mandarMensajeC.registroMensajeP(sesionC.chofer)}" styleClass="boton-ed-perfil"  style=" width: 290px; margin-left: 10px;"
                                                  onclick="if (#{mandarMensajeC.exito}) {
-                                                                 PF('dlg2').show();
-                                                             }" update="dialogTest,mensaje">
+                                                             PF('dlg2').show();
+                                                         }" update="dialogTest,mensaje">
                                     <f:param name="pasajeroId" value="#{mandarMensajeC.pasajero.idPasajero}" />
                                 </p:commandButton>
 
                             </h:panelGrid>
-                        </div>
-                        <h:panelGrid columns="1" rendered="#{sesionC.verificarSesion() and sesionC.verificarTipo() eq false}">             
 
-                            <p:outputLabel value="Mensaje para #{mandarMensajeC.chofer.cnombre}" style="font-size: 19px; font-family: 'Karla', sans-serif;"/>
+                            <h:panelGrid columns="1" rendered="#{sesionC.verificarSesion() and sesionC.verificarTipo() eq false}">             
 
-                            <p:outputLabel for="asuntoC" value="Asunto" />
-                            <p:inputText id="asuntoC" value="#{mandarMensajeC.mensajeC.asunto}" maxlength="64" />
+                                <p:outputLabel value="Mensaje para #{mandarMensajeC.chofer.cnombre}" style="font-size: 17px; font-family: 'Karla', sans-serif; color: gray; margin-left: 5px; margin-bottom: 10px;"/>
 
-                            <p:outputLabel for="contenidoC" value="Contenido" />
-                            <p:inputTextarea id="contenidoC" value="#{mandarMensajeC.mensajeC.contenido}" />
+                                <h:panelGrid columns="2" styleClass="mi-panel-grid">
+                                    <p:outputLabel for="asuntoC" value="Asunto" />
+                                    <p:inputText id="asuntoC" value="#{mandarMensajeC.mensajeC.asunto}" maxlength="64" />
 
-                            <p:commandButton value="Enviar" action="#{mandarMensajeC.registroMensajeC(sesionC.pasajero)}" styleClass="boton-ed-perfil" 
-                                             onclick="if (#{mandarMensajeC.exito}) {
+                                    <p:outputLabel for="contenidoC" value="Contenido" />
+                                    <p:inputTextarea id="contenidoC" value="#{mandarMensajeC.mensajeC.contenido}" />
+                                </h:panelGrid>
+                                <p:commandButton value="Enviar" action="#{mandarMensajeC.registroMensajeC(sesionC.pasajero)}" styleClass="boton-ed-perfil" style=" width: 290px; margin-left: 10px;"
+                                                 onclick="if (#{mandarMensajeC.exito}) {
                                                              PF('dlg2').show();
                                                          }"  update="dialogTest,mensaje">
-                                <f:param name="choferId" value="#{mandarMensajeC.chofer.idChofer}" />
-                            </p:commandButton>
-                        </h:panelGrid>
-
+                                    <f:param name="choferId" value="#{mandarMensajeC.chofer.idChofer}" />
+                                </p:commandButton>
+                            </h:panelGrid>
+                        </div>
                         <p:dialog id="dialogTest" header="Exito" widgetVar="dlg2" modal="true"  draggable="false"  
                                   resizable="false" closable="false" height="100" visible="#{mandarMensajeC.exito}">
                             <p:messages />

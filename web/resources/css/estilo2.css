@@ -79,3 +79,7 @@
     padding-bottom: 30px;
     padding-top: 15px;
 }
+
+.ui-chkbox-box.ui-widget.ui-corner-all.ui-state-default {
+    margin: 5px !important;
+}
