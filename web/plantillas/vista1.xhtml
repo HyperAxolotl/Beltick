@@ -52,7 +52,7 @@
                     <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
 
                         <h:form>
-                            <p:menubar styleClass="barra-nav" autoDisplay="false">
+                            <p:menubar styleClass="barra-nav">
                                 <p:menuitem style="position: absolute; right: 100px;" value="Explorar rutas" outcome="ExplorarRutasIH" rendered="#{sesionC.verificarSesion()}" />
                                 <p:menuitem style="position: absolute; right: 225px;" value="Explorar perfiles" outcome="ExplorarPerfilesIH" rendered="#{sesionC.verificarSesion()}" />
                                 <p:menuitem style="position: absolute; right: 60px;" icon="fa fa-bell" action="#{sesionC.notificacionesVistas()}" rendered="#{sesionC.verificarSesion()}" />

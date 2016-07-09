@@ -222,5 +222,10 @@ public class Chofer implements java.io.Serializable {
     public void setNotificacionChofers(Set notificacionChofers) {
         this.notificacionChofers = notificacionChofers;
     }
+    
+    @Override
+    public String toString(){
+        return String.format("%s %s %s",cnombre,capp,capm);
+    }
 
 }

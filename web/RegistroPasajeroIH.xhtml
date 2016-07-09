@@ -19,8 +19,7 @@
 
                             <h2 style="margin-left: -250px;">Regístrate</h2>
 
-                            <div class="cuadro-registro" style="height: 400px;">
-                                <p:messages autoUpdate="true" showDetail="true" closable="true"/>
+                            <div class="cuadro-registro" style="height: auto; min-height: 400px;">
                                 <h:panelGrid id="grid" columns="3" styleClass="mi-panel-grid">
                                     <p:outputLabel for="nombre" value="Nombre" />
                                     <p:inputText id="nombre" required="true" styleClass="mi-tr" value="#{pasajeroC.pasajero.pnombre}" label="Nombre">
@@ -101,17 +100,19 @@
                                 </div>
                                 <div>
                                     <p:dialog id="dialogTest" header="Exito" widgetVar="dlg2" modal="true"  draggable="false"  
-                                              resizable="false" closable="false" height="100" visible="#{pasajeroC.exito}" appendTo="@(body)">
+                                              resizable="false" closable="false" height="160" visible="#{pasajeroC.exito}" appendTo="@(body)">
                                         <p:messages/>
-                                        <p:button value="Cerrar" onclick="PF('dlg2').hide()" outcome="PaginaPrincipalIH"/>
+                                        <center>
+                                            <p:button value="Cerrar" styleClass="boton-registro" style="height: 40px;" onclick="PF('dlg2').hide()" outcome="PaginaPrincipalIH"/>
+                                        </center>
                                     </p:dialog>
 
                                     <h:panelGrid columns="1" cellpadding="5">
                                         <p:commandButton styleClass="boton-registro" 
                                                          value="Aceptar" action="#{pasajeroC.registro()}" update="grid,dialogTest" 
                                                          onclick="if (#{pasajeroC.exito}) {
-                                                                         PF('dlg2').show();
-                                                                     }">
+                                                                     PF('dlg2').show();
+                                                                 }">
                                         </p:commandButton>
                                     </h:panelGrid>
                                 </div>        

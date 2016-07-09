@@ -22,7 +22,7 @@
                         <h:form id="solicitarServicio">
 
                             <p:outputLabel for="horario" value="Horario semanal" style="font-weight: bold;" />
-                            
+
                             <p:outputLabel for="horario" value="Selecciona los días para los que quieres solicitar el servicio: " style="font-weight: normal; margin-bottom: 20px; font-size: 15px; color: gray;" />
 
                             <p:selectManyCheckbox id="horario" value="#{solicitarServicioC.diasSeleccionados}" layout="grid" columns="2" >
@@ -36,9 +36,13 @@
                             <!--<div class="col-sm-2">-->
 
                             <p:dialog id="dialogTest" header="Exito" widgetVar="dlg2" modal="true"  draggable="false"  
-                                      resizable="false" closable="false" height="100" visible="#{solicitarServicioC.exito}">
+                                      resizable="false" closable="false" height="160" visible="#{solicitarServicioC.exito}">
                                 <p:messages/>
-                                <p:button value="Cerrar" onclick="PF('dlg2').hide()" outcome="PaginaPrincipalIH"/>
+                                <center>
+                                    <p:button value="Cerrar"  styleClass="boton-registro" style="height: 40px;" onclick="PF('dlg2').hide()" outcome="RutaIH">
+                                        <f:param name="rutaId" value="#{solicitarServicioC.ruta.idRuta}"/>
+                                    </p:button>
+                                </center>
                             </p:dialog>
 
                             <h:commandButton value="Solicitar" action="#{solicitarServicioC.solicitar(sesionC.pasajero)}" onclick="if (#{solicitarServicioC.exito}) {

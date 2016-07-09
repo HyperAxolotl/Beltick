@@ -18,141 +18,142 @@
         <ui:composition template="plantillas/vista2.xhtml">
             <ui:define name="content">
                 <h:form class="fondo">			
-                    <section class="container">
-                        <div class="rogue">
-                            <div class="col-sm-3" align="center" id="borde">
+                    <div id="east-pp" align="center">
 
-                                <c:if test="#{perfilPasajeroC.verificarImagen() eq false}" >
-                                    <p:graphicImage id="imagene" library="imagenes" name="foto_usuario/usuario.png" width="230px" height="230px"  styleClass="imagene"/>
-                                    <p:tooltip id="toolTip" for="imagene" value="#{perfilPasajeroC.pasajero.pnombre} #{perfilPasajeroC.pasajero.papp} #{perfilPasajeroC.pasajero.papm}" />
-                                </c:if>
-                                <c:if test="#{perfilPasajeroC.verificarImagen()}">
-                                    <o:graphicImage id="img" value="#{imagenC.getImagen(perfilPasajeroC.imagen.idImagen)}" height="230px" width="230px" />
-                                    <p:tooltip id="toolTipTrack" for="img" value="#{perfilPasajeroC.pasajero.pnombre} #{perfilPasajeroC.pasajero.papp} #{perfilPasajeroC.pasajero.papm}" />
-                                </c:if>
-                                <h:panelGrid columns="1"> 
-                                    <h:outputText value="#{perfilPasajeroC.pasajero.pnombre} #{perfilPasajeroC.pasajero.papp} #{perfilPasajeroC.pasajero.papm}" styleClass="data"/>
-                                    <p:separator styleClass="separadorP"/>
-                                    <h:outputText value="Pasajero" styleClass="minord"/>
-                                    <p:separator styleClass="separadorP"/>
-                                    <h:outputText value="#{perfilPasajeroC.pasajero.pcorreo}" styleClass="minord"/>
-                                    <p:separator styleClass="separadorP"/>
-                                    <h:outputText value="#{perfilPasajeroC.pasajero.pnoCuenta}" styleClass="minord"/>
-                                    <p:separator styleClass="separadorP"/>
-                                    <h:outputText value="#{perfilPasajeroC.pasajero.pfechaNac}" styleClass="minord"/>
-                                    <p:separator styleClass="separadorP"/>
-                                    <h:panelGrid columns="2">
-                                        <!--p:commandButton actionListener="{perfilPasajeroC.listarCalificaciones()}" id="estrellas" onclick="PF('califs').show();" icon="fa fa-comment"> 
-                                            <f:param name="choferId" value="{perfilPasajeroC.pasajero.idPasajero}" />
-                                        </p:commandButton--> 
-                                        <p:rating value="#{perfilPasajeroC.getCalificacion()}" stars="5" readonly="true" />
-                                    </h:panelGrid>
-                                    <p:separator styleClass="separadorP"/>
-                                </h:panelGrid>
-                                <div>
-                                    <p:button icon="fa fa-send" value="Mensaje" outcome="MandarMensajeIH" rendered="#{sesionC.verificarTipo()}">
-                                        <f:param name="pasajeroId" value="#{perfilPasajeroC.pasajero.idPasajero}" />
-                                    </p:button>
-                                    <p:commandButton value="Califica" rendered="#{sesionC.verificarTipo() and perfilPasajeroC.verificarPasajero(sesionC.chofer)}"
-                                                     onclick="PF('dlgc').show();">
-                                        <f:param name="pasajeroId" value="#{perfilPasajeroC.pasajero.idPasajero}" />
-                                    </p:commandButton>
-                                </div>
-                            </div>
+                        <h:panelGrid columns="1"> 
+                            <p:outputLabel value="PASAJERO" styleClass="dataa" style="font-size: 20px; margin-left: 68px;"/>
+                            <c:if test="#{perfilPasajeroC.verificarImagen() eq false}" >
+                                <p:graphicImage id="imagene" library="imagenes" name="foto_usuario/usuario.png" width="230px" height="230px"  styleClass="imagene" style="border-radius: 5px; border:none; background: white"/>
+                                <p:tooltip id="toolTip" for="imagene" value="#{perfilPasajeroC.pasajero}" />
+                            </c:if>
+                            <c:if test="#{perfilPasajeroC.verificarImagen()}">
+                                <o:graphicImage id="img" value="#{imagenC.getImagen(perfilPasajeroC.imagen.idImagen)}" height="230px" width="230px" style="border-radius: 5px;" />
+                                <p:tooltip id="toolTipTrack" for="img" value="#{perfilPasajeroC.pasajero}" />
+                            </c:if>
 
-                            <div class="col-sm-3" id="bordo">
-                                <h:panelGrid columns="1">
-                                    <p:tabView class="tab1">
-                                        <p:tab title="Personal">
-                                            <h:form>
-                                                <h3 class="color-texto">Sobre mi:</h3>
-                                                <h:outputText value="#{perfilPasajeroC.perfil.psobreMi}" class="color-texto"/> <!--rendered="{perfilChoferC.sobreMi-->
-                                                <p:separator styleClass="separadorP"/>
-                                                <h3 class="color-texto">Antigüedad:</h3>
-                                                <h:outputText class="color-texto" value="Usuario desde: #{perfilPasajeroC.fechaReg()}"/>
-                                                <p:separator styleClass="separadorP"/>
-                                            </h:form>
-                                        </p:tab>
-                                        <p:tab title="Horario">
-                                            <h:form rendered="#{perfilPasajeroC.tieneRuta() eq false and perfilPasajeroC.enSesion(sesionC.pasajero)}"> 
-                                                <h:outputText value="Aún no eres aceptado en ninguna ruta"/>
-                                                <p:button value="Explorar Rutas" outcome="ExplorarRutasIH"/>
-                                            </h:form>
-                                            <h:form rendered="#{perfilPasajeroC.tieneRuta()}">
-                                                <p:panelGrid columns="4" style="align-content: center;"> 
-                                                    <h:outputLabel value="Lunes" />
-                                                    <h:outputLabel value="#{perfilPasajeroC.horaDia(1)}"/>
-                                                    <p:button value="Ruta #{perfilPasajeroC.rutaDia(1).idRuta}" outcome="RutaIH" disabled="#{perfilPasajeroC.rutaDia(1) eq null}">
-                                                        <f:param name="rutaId" value="#{perfilPasajeroC.rutaDia(1).idRuta}" />
-                                                    </p:button>
-                                                    <p:button value="Chofer #{perfilPasajeroC.rutaDia(1).automovil.chofer.cnombre}" outcome="PerfilChoferIH" disabled="#{perfilPasajeroC.elChofer(1) eq -1}">
-                                                        <f:param name="choferId" value="#{perfilPasajeroC.elChofer(1)}"/>
-                                                    </p:button>
-                                                    
-                                                    <h:outputLabel value="Martes"/>
-                                                    <h:outputLabel value="#{perfilPasajeroC.horaDia(2)}"/>
-                                                    <p:button value="Ruta #{perfilPasajeroC.rutaDia(2).idRuta}" outcome="RutaIH" disabled="#{perfilPasajeroC.rutaDia(2) eq null}">
-                                                        <f:param name="rutaId" value="#{perfilPasajeroC.rutaDia(2).idRuta}" />
-                                                    </p:button>
-                                                    <p:button value="Chofer #{perfilPasajeroC.rutaDia(2).automovil.chofer.cnombre}" outcome="PerfilChoferIH" disabled="#{perfilPasajeroC.elChofer(2) eq -1}">
-                                                        <f:param name="choferId" value="#{perfilPasajeroC.elChofer(2)}"/>
-                                                    </p:button>
-                                                    
-                                                    <h:outputLabel value="Miércoles"/>
-                                                    <h:outputLabel value="#{perfilPasajeroC.horaDia(3)}"/>
-                                                    <p:button value="Ruta #{perfilPasajeroC.rutaDia(3).idRuta}" outcome="RutaIH" disabled="#{perfilPasajeroC.rutaDia(3) eq null}">
-                                                        <f:param name="rutaId" value="#{perfilPasajeroC.rutaDia(3).idRuta}" />
-                                                    </p:button>
-                                                    <p:button value="Chofer #{perfilPasajeroC.rutaDia(3).automovil.chofer.cnombre}" outcome="PerfilChoferIH" disabled="#{perfilPasajeroC.elChofer(3) eq -1}">
-                                                        <f:param name="choferId" value="#{perfilPasajeroC.elChofer(3)}"/>
-                                                    </p:button>
-                                                    
-                                                    <h:outputLabel value="Jueves"/>
-                                                    <h:outputLabel value="#{perfilPasajeroC.horaDia(4)}"/>
-                                                    <p:button value="Ruta #{perfilPasajeroC.rutaDia(4).idRuta}" outcome="RutaIH" disabled="#{perfilPasajeroC.rutaDia(4) eq null}">
-                                                        <f:param name="rutaId" value="#{perfilPasajeroC.rutaDia(4).idRuta}" />
-                                                    </p:button>
-                                                    <p:button value="Chofer #{perfilPasajeroC.rutaDia(4).automovil.chofer.cnombre}" outcome="PerfilChoferIH" disabled="#{perfilPasajeroC.elChofer(4) eq -1}">
-                                                        <f:param name="choferId" value="#{perfilPasajeroC.elChofer(4)}"/>
-                                                    </p:button>
-                                                    
-                                                    <h:outputLabel value="Viernes"/>
-                                                    <h:outputLabel value="#{perfilPasajeroC.horaDia(5)}"/>
-                                                    <p:button value="Ruta #{perfilPasajeroC.rutaDia(5).idRuta}" outcome="RutaIH" disabled="#{perfilPasajeroC.rutaDia(5) eq null}">
-                                                        <f:param name="rutaId" value="#{perfilPasajeroC.rutaDia(5).idRuta}" />
-                                                    </p:button>
-                                                    <p:button value="Chofer #{perfilPasajeroC.rutaDia(5).automovil.chofer.cnombre}" outcome="PerfilChoferIH" disabled="#{perfilPasajeroC.elChofer(5) eq -1}">
-                                                        <f:param name="choferId" value="#{perfilPasajeroC.elChofer(5)}"/>
-                                                    </p:button>
-                                                    
-                                                    <h:outputLabel value="Sábado"/>
-                                                    <h:outputLabel value="#{perfilPasajeroC.horaDia(6)}"/>
-                                                    <p:button value="Ruta #{perfilPasajeroC.rutaDia(6).idRuta}" outcome="RutaIH" disabled="#{perfilPasajeroC.rutaDia(6) eq null}">
-                                                        <f:param name="rutaId" value="#{perfilPasajeroC.rutaDia(6).idRuta}" />
-                                                    </p:button>
-                                                    <p:button value="Chofer #{perfilPasajeroC.rutaDia(6).automovil.chofer.cnombre}" outcome="PerfilChoferIH" disabled="#{perfilPasajeroC.elChofer(6) eq -1}">
-                                                        <f:param name="choferId" value="#{perfilPasajeroC.elChofer(6)}"/>
-                                                    </p:button>
-                                                </p:panelGrid>
-                                            </h:form>
-                                        </p:tab>
-                                    </p:tabView>
-                                </h:panelGrid>
-                            </div>
-
-                            <p:dialog header="Califica a #{perfilPasajeroC.pasajero.pnombre}" widgetVar="dlgc" modal="true" height="400" width="600">
-                                <p:rating value="#{perfilPasajeroC.calificacionPasajero.calificacion}" stars="5" />
-                                <br></br>
-                                <p:outputLabel for="descripcion" value="Descripción" />
-                                <p:inputTextarea id="descripcion" value="#{perfilPasajeroC.calificacionPasajero.descripcion}" />
-                                <br></br>
-                                <p:commandButton value="Calificar" actionListener="#{perfilPasajeroC.calificar(sesionC.chofer)}" onclick="PF('dlgc').hide()" update="@form">
-                                    <f:param name="pasajeroId" value="#{perfilPasajeroC.pasajero.idPasajero}" />
-                                </p:commandButton>
-                            </p:dialog> 
-
+                            <p:outputLabel value="#{perfilPasajeroC.pasajero}" styleClass="dataa"/>
+                            <p:outputLabel value="#{perfilPasajeroC.pasajero.pcorreo}" styleClass="minorda"/>
+                            <h:panelGrid columns="2">
+                                <!--p:commandButton actionListener="{perfilPasajeroC.listarCalificaciones()}" id="estrellas" onclick="PF('califs').show();" icon="fa fa-comment"> 
+                                    <f:param name="choferId" value="{perfilPasajeroC.pasajero.idPasajero}" />
+                                </p:commandButton--> 
+                                <p:rating value="#{perfilPasajeroC.getCalificacion()}" stars="5" readonly="true" />
+                            </h:panelGrid>
+                        </h:panelGrid>
+                        <div>
+                            <p:button icon="fa fa-send" value="Mensaje" outcome="MandarMensajeIH" rendered="#{sesionC.verificarTipo()}">
+                                <f:param name="pasajeroId" value="#{perfilPasajeroC.pasajero.idPasajero}" />
+                            </p:button>
+                            <p:commandButton value="Califica" rendered="#{sesionC.verificarTipo() and perfilPasajeroC.verificarPasajero(sesionC.chofer)}"
+                                             onclick="PF('dlgc').show();">
+                                <f:param name="pasajeroId" value="#{perfilPasajeroC.pasajero.idPasajero}" />
+                            </p:commandButton>
                         </div>
-                    </section>
+                    </div>
+
+                    <div id="west-pp" >
+
+                        <div class="cuadro-pazul">
+                            <h2 style="color:white;font-weight: bold; float: right; margin-top: -9px; margin-right: 215px;">Horario</h2>
+                            <h2 style="color:white;font-weight: bold; float: left; margin-top: -9px; margin-left: 40px;">Información</h2>
+                        </div>
+                        <h:form>
+                            <h:panelGrid columns="1" styleClass="mi-panel-grid3">
+                                <p:outputLabel styleClass="datab" value="No. Cuenta"/> 
+                                <h:outputText styleClass="minordb" value="#{perfilPasajeroC.pasajero.pnoCuenta}"/>
+                                <p:outputLabel styleClass="datab" value="Edad"/>  
+                                <h:outputText value="#{perfilPasajeroC.getEdad()} años" styleClass="minordb"/>
+                                <p:outputLabel styleClass="datab" value="Usuario desde"/>
+                                <h:outputText styleClass="minordb" value="#{perfilPasajeroC.fechaReg()}" />
+                                <p:outputLabel styleClass="datab" value="Sobre mí"/>
+                                <h:outputText value="#{perfilPasajeroC.perfil.psobreMi}" styleClass="minordb"/>
+                            </h:panelGrid>
+                        </h:form>
+
+                        <div class="cuadro-ppp">
+
+                            <div class="cuadro-pp">
+                                <h:form rendered="#{perfilPasajeroC.tieneRuta() eq false and perfilPasajeroC.enSesion(sesionC.pasajero)}"> 
+                                    <p:outputLabel value="Aún no eres aceptado en ninguna ruta"/>
+                                    <p:button value="Explorar Rutas" outcome="ExplorarRutasIH"/>
+                                </h:form>
+                                <h:form rendered="#{not perfilPasajeroC.tieneRuta()}">
+                                    <p:outputLabel value="Este pasajero no tiene ninguna ruta asignada" styleClass="minordb"/>
+                                </h:form>
+                                <h:form rendered="#{perfilPasajeroC.tieneRuta()}">
+                                    <h:panelGrid columns="4" styleClass="mi-panel-grid2" style="align-content: center;"> 
+                                        <p:outputLabel value="Lunes" styleClass="minorc"/>
+                                        <p:outputLabel value="#{perfilPasajeroC.horaDia(1)}"  styleClass="minorc"/>
+                                        <p:button styleClass="boton-pp" icon="fa fa-road" outcome="RutaIH" disabled="#{perfilPasajeroC.rutaDia(1) eq null}">
+                                            <f:param name="rutaId" value="#{perfilPasajeroC.rutaDia(1).idRuta}" />
+                                        </p:button>
+
+                                        <p:button styleClass="boton-pp" icon="fa fa-user" outcome="PerfilChoferIH" disabled="#{perfilPasajeroC.elChofer(1) eq -1}">
+                                            <f:param name="choferId" value="#{perfilPasajeroC.elChofer(1)}"/>
+                                        </p:button>
+
+                                        <p:outputLabel value="Martes"  styleClass="minorc"/>
+                                        <p:outputLabel value="#{perfilPasajeroC.horaDia(2)}"  styleClass="minorc"/>
+                                        <p:button styleClass="boton-pp" icon="fa fa-road" outcome="RutaIH" disabled="#{perfilPasajeroC.rutaDia(2) eq null}">
+                                            <f:param name="rutaId" value="#{perfilPasajeroC.rutaDia(2).idRuta}" />
+                                        </p:button>
+                                        <p:button styleClass="boton-pp" icon="fa fa-user" outcome="PerfilChoferIH" disabled="#{perfilPasajeroC.elChofer(2) eq -1}">
+                                            <f:param name="choferId" value="#{perfilPasajeroC.elChofer(2)}"/>
+                                        </p:button>
+
+                                        <p:outputLabel value="Miércoles"  styleClass="minorc"/>
+                                        <p:outputLabel value="#{perfilPasajeroC.horaDia(3)}"  styleClass="minorc"/>
+                                        <p:button styleClass="boton-pp" icon="fa fa-road" outcome="RutaIH" disabled="#{perfilPasajeroC.rutaDia(3) eq null}">
+                                            <f:param name="rutaId" value="#{perfilPasajeroC.rutaDia(3).idRuta}" />
+                                        </p:button>
+                                        <p:button styleClass="boton-pp" icon="fa fa-user" outcome="PerfilChoferIH" disabled="#{perfilPasajeroC.elChofer(3) eq -1}">
+                                            <f:param name="choferId" value="#{perfilPasajeroC.elChofer(3)}"/>
+                                        </p:button>
+
+                                        <p:outputLabel value="Jueves"  styleClass="minorc"/>
+                                        <p:outputLabel value="#{perfilPasajeroC.horaDia(4)}"  styleClass="minorc"/>
+                                        <p:button styleClass="boton-pp" icon="fa fa-road" outcome="RutaIH" disabled="#{perfilPasajeroC.rutaDia(4) eq null}">
+                                            <f:param name="rutaId" value="#{perfilPasajeroC.rutaDia(4).idRuta}" />
+                                        </p:button>
+                                        <p:button styleClass="boton-pp" icon="fa fa-user" outcome="PerfilChoferIH" disabled="#{perfilPasajeroC.elChofer(4) eq -1}">
+                                            <f:param name="choferId" value="#{perfilPasajeroC.elChofer(4)}"/>
+                                        </p:button>
+
+                                        <p:outputLabel value="Viernes"  styleClass="minorc"/>
+                                        <p:outputLabel value="#{perfilPasajeroC.horaDia(5)}"  styleClass="minorc"/>
+                                        <p:button styleClass="boton-pp" icon="fa fa-road" outcome="RutaIH" disabled="#{perfilPasajeroC.rutaDia(5) eq null}">
+                                            <f:param name="rutaId" value="#{perfilPasajeroC.rutaDia(5).idRuta}" />
+                                        </p:button>
+                                        <p:button styleClass="boton-pp" icon="fa fa-user" outcome="PerfilChoferIH" disabled="#{perfilPasajeroC.elChofer(5) eq -1}">
+                                            <f:param name="choferId" value="#{perfilPasajeroC.elChofer(5)}"/>
+                                        </p:button>
+
+                                        <p:outputLabel value="Sábado"  styleClass="minorc"/>
+                                        <p:outputLabel value="#{perfilPasajeroC.horaDia(6)}"  styleClass="minorc"/>
+                                        <p:button styleClass="boton-pp" icon="fa fa-road" outcome="RutaIH" disabled="#{perfilPasajeroC.rutaDia(6) eq null}">
+                                            <f:param name="rutaId" value="#{perfilPasajeroC.rutaDia(6).idRuta}" />
+                                        </p:button>
+                                        <p:button styleClass="boton-pp" icon="fa fa-user" outcome="PerfilChoferIH" disabled="#{perfilPasajeroC.elChofer(6) eq -1}">
+                                            <f:param name="choferId" value="#{perfilPasajeroC.elChofer(6)}"/>
+                                        </p:button>
+                                    </h:panelGrid>
+                                </h:form>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <p:dialog header="Califica a #{perfilPasajeroC.pasajero.pnombre}" widgetVar="dlgc" modal="true" height="400" width="600">
+                        <p:rating value="#{perfilPasajeroC.calificacionPasajero.calificacion}" stars="5" />
+                        <br></br>
+                        <p:outputLabel for="descripcion" value="Descripción" />
+                        <p:inputTextarea id="descripcion" value="#{perfilPasajeroC.calificacionPasajero.descripcion}" />
+                        <br></br>
+                        <p:commandButton value="Calificar" actionListener="#{perfilPasajeroC.calificar(sesionC.chofer)}" onclick="PF('dlgc').hide()" update="@form">
+                            <f:param name="pasajeroId" value="#{perfilPasajeroC.pasajero.idPasajero}" />
+                        </p:commandButton>
+                    </p:dialog> 
+
                 </h:form>
             </ui:define>
         </ui:composition>

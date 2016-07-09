@@ -220,5 +220,10 @@ public class Pasajero implements java.io.Serializable {
     public void setCalificacionPasajeros(Set calificacionPasajeros) {
         this.calificacionPasajeros = calificacionPasajeros;
     }
+    
+    @Override
+    public String toString(){
+        return String.format("%s %s %s",pnombre,papp,papm);
+    }
 
 }

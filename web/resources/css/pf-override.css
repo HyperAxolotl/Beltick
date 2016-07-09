@@ -82,3 +82,26 @@ joder nada que tenían*/
     border-color: #D2D9DE;
     font-family: 'Pontano Sans', sans-serif !important;
 }
+
+.ui-menuitem.ui-widget.ui-corner-all.ui-menuitem-active, .ui-menuitem-link.ui-submenu-link.ui-corner-all.ui-state-hover {
+    background: #fefefe;
+}
+
+.ui-menuitem-link.ui-corner-all.ui-state-hover {
+    box-shadow: none;
+    background: none;
+    border: none;
+}
+
+.ui-menuitem-link.ui-corner-all.ui-state-hover {
+    width: 100%;
+}
+
+.ui-widget.ui-menuitem.ui-corner-all.ui-menu-parent a:focus {
+    color: graytext;
+}
+
+.ui-menuitem-link.ui-corner-all.menu-itemc.ui-state-hover {
+    background: white;
+    width: auto;
+}

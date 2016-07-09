@@ -23,16 +23,15 @@
                             <h:panelGrid columns="2">
                                 <h2 style="color:white; font-weight: bold; margin-right: 10px;">Explorar rutas</h2>
                                 <p:commandButton id="btn" icon="fa fa-question" type="button" styleClass="boton-exp-rutas2" style="height:20px;width:20px; " />
+                                <p:tooltip for="btn" value="Instrucciones"/>
                             </h:panelGrid>
                             <p:overlayPanel id="imagePanel" for="btn" hideEffect="fade">
-                                Para buscar rutas que pasen por una circunferencia determinada:
-                                <br></br>
-                                - Ingresar un valor en "Radio de la circunferencia"
-                                <br></br>
-                                - Dar click en el mapa en donde se quiera que esté el centro de la circunferencia
-                                <br></br>
-                                - Seleccionar el botón listar rutas dentro de la circunferencia
-                                <br></br>
+                                <h:panelGrid columns="1">
+                                    <p:outputLabel value="Para buscar rutas que pasen por una circunferencia determinada:" />
+                                    <p:outputLabel value="Ingresar un valor en 'Radio de la circunferencia'" style="font-weight:normal"/>
+                                    <p:outputLabel value="Dar click en el mapa en donde se quiera que esté el centro de la circunferencia" style="font-weight:normal"/>
+                                    <p:outputLabel value="Seleccionar el botón 'Listar rutas dentro de la circunferencia'" style="font-weight:normal"/>
+                                </h:panelGrid>
                             </p:overlayPanel>
 
 
@@ -58,11 +57,11 @@
                                 </p:outputPanel>
                             </f:facet>
 
-                            <p:column headerText="Rutas">
+                            <p:column headerText="Rutas" style="width:740px;">
                                 <div class="panel panel-default" id="panel-exp-rutas">
                                     <div class="panel-heading">
                                         <h3 class="panel-title">
-                                            <p:link value="#{ruta.automovil.chofer.cnombre}" outcome="PerfilChoferIH">
+                                            <p:link value="#{ruta.automovil.chofer}" outcome="PerfilChoferIH">
                                                 <f:param name="choferId" value="#{ruta.automovil.chofer.idChofer}" />
                                             </p:link>
                                         </h3>
@@ -104,6 +103,10 @@
                                     </div>
                                 </div>
                             </p:column>
+
+                            <p:column filterBy="#{ruta.automovil.chofer.cnombre}" visible="false"/>
+                            <p:column filterBy="#{ruta.automovil.chofer.capp}" visible="false"/>
+                            <p:column filterBy="#{ruta.automovil.chofer.capm}" visible="false"/>
 
                         </p:dataTable>
                     </div>

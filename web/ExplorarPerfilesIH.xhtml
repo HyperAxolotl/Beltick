@@ -31,11 +31,11 @@
 
 
 
-                                        <p:column headerText="Chofer">
+                                        <p:column headerText="Chofer" style="width: 617px;">
                                             <div class="panel panel-default" id="panel-perfiles">
                                                 <div class="panel-heading">
                                                     <h3 class="panel-title">
-                                                        <p:link value="#{pc.chofer.cnombre} #{pc.chofer.capp}" outcome="PerfilChoferIH"  style="font-family: 'Arimo', sans-serif;font-size: 13px;" >
+                                                        <p:link value="#{pc.chofer}" outcome="PerfilChoferIH"  style="font-family: 'Arimo', sans-serif;font-size: 13px;" >
                                                             <f:param name="choferId" value="#{pc.chofer.idChofer}" />
                                                         </p:link>
                                                     </h3>
@@ -71,6 +71,11 @@
                                                 </div>
                                             </div>
                                         </p:column>
+                                        
+                                        <p:column filterBy="#{pc.chofer.cnombre}" visible="false"/>
+                                        <p:column filterBy="#{pc.chofer.capp}" visible="false"/>
+                                        <p:column filterBy="#{pc.chofer.capm}" visible="false"/>
+                                        <p:column filterBy="#{pc.chofer.ccorreo}" visible="false"/>
 
 
 
@@ -88,11 +93,11 @@
                                             </p:outputPanel>
                                         </f:facet>
 
-                                        <p:column headerText="Pasajero">
+                                        <p:column headerText="Pasajero" style="width: 617px;">
                                             <div class="panel panel-default" id="panel-perfiles">
                                                 <div class="panel-heading">
                                                     <h3 class="panel-title">
-                                                        <p:link value="#{pp.pasajero.pnombre} #{pp.pasajero.papp}" outcome="PerfilPasajeroIH" style="font-family: 'Arimo', sans-serif;font-size: 13px;" >
+                                                        <p:link value="#{pp.pasajero}" outcome="PerfilPasajeroIH" style="font-family: 'Arimo', sans-serif;font-size: 13px;" >
                                                             <f:param name="pasajeroId" value="#{pp.pasajero.idPasajero}" />
                                                         </p:link>
                                                     </h3>
@@ -128,6 +133,11 @@
                                                 </div>
                                             </div>
                                         </p:column>
+                                        
+                                        <p:column filterBy="#{pp.pasajero.pnombre}" visible="false"/>
+                                        <p:column filterBy="#{pp.pasajero.papp}" visible="false"/>
+                                        <p:column filterBy="#{pp.pasajero.papm}" visible="false"/>
+                                        <p:column filterBy="#{pp.pasajero.pcorreo}" visible="false"/>
 
                                     </p:dataTable>
                                 </h:form>

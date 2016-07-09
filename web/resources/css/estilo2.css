@@ -83,3 +83,151 @@
 .ui-chkbox-box.ui-widget.ui-corner-all.ui-state-default {
     margin: 5px !important;
 }
+
+.ui-dialog-titlebar.ui-widget-header.ui-helper-clearfix.ui-corner-top {
+    background: -moz-linear-gradient(141deg, #35d2c8 0%, #48d2d2 51%, #47dae0 75%) !important;
+    background: -webkit-linear-gradient(141deg, #35d2c8 0%, #48d2d2 51%, #47dae0 75%) !important;
+    color: white;
+}
+
+#east-pp {  
+    padding:1em;  
+    width:30vw; 
+    float:left; 
+    height:100vh; 
+    padding-left: 16vw;
+    padding-top: 50px;
+} 
+
+#west-pp { 
+    margin-top:60px;    
+    width:46vw; 
+    min-height:500px; 
+    float:right;
+    padding-right: 10px;
+    padding-top: 60px;
+    background: white;
+    margin-right: 14vw;
+    border-radius: 5px;
+    height: auto;
+}  
+
+.dataa {
+    font-size: 18px;
+    font-family: 'Karla', sans-serif !important; 
+    color: white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.minorda {
+    font-size: 14px;
+    font-family: 'Karla', sans-serif !important; 
+    color: white;
+}
+
+.cuadro-pp {
+    width: 400px;
+    height: 430px;
+    background: white;
+    border-radius: 4px;
+    padding-top: 50px;
+    padding-left: 50px;
+    background: white;
+}
+
+.datab {
+    font-size: 18px;
+    font-family: 'Karla', sans-serif !important; 
+    color: black;
+}
+
+.minordb {
+    font-size: 14px;
+    font-family: 'Karla', sans-serif !important; 
+    color: black;
+}
+
+.boton-pp {
+    text-transform: none !important;
+    color: white !important;
+    background: -moz-linear-gradient(141deg, #35d2c8 0%, #48d2d2 51%, #47dae0 75%) !important;
+    background: -webkit-linear-gradient(141deg, #35d2c8 0%, #48d2d2 51%, #47dae0 75%) !important;
+    border: 1px solid #48d2d2 !important;
+    height: 25px;
+    border-radius: 3px !important;
+    width: 25px;
+    font-size: 13px;
+    font-family: 'Raleway', sans-serif !important; 
+    box-shadow: none;
+    font-weight: normal !important;
+}
+
+.mi-panel-grid2 {
+    margin-top: 20px;
+}
+
+.mi-panel-grid2 tr td {
+    padding: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.mi-panel-grid2 tr:nth-child(even) {
+    background-color: #f8f8f8;
+}
+
+.mi-panel-grid3 tr td {
+    padding: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+    
+}
+.mi-panel-grid3 {
+    margin-top: 60px;
+    width: 250px;
+    /*background: black;*/
+    margin-left: 40px;
+}
+
+.minorc {
+    font-size: 14px;
+    font-family: 'Karla', sans-serif !important; 
+    color: black;
+    margin-right: 15px;
+    margin-bottom: 10px;
+    
+}
+
+.cuadro-pazul {
+    background: -moz-linear-gradient(141deg, #35d2c8 0%, #48d2d2 51%, #47dae0 75%) !important;
+    background: -webkit-linear-gradient(141deg, #35d2c8 0%, #48d2d2 51%, #47dae0 75%) !important;
+    border-radius: 0px;
+    position: absolute;
+    width: 46vw;
+    margin-top: -20px;
+    padding-bottom: 30px;
+    padding-top: 15px;
+    height: 20px;
+}
+
+.cuadro-ppp {
+    /*position: absolute;*/
+    width: 390px;
+    height: 380px;
+    margin-top: -240px;
+    /*margin-left: -50px;*/
+    border-radius: 5px;
+    float: right;
+    margin-right: 20px;
+}
+
+.cuadro-pp {
+    background: #f0f4f6;
+    /*position: absolute;*/
+    width: 290px;
+    height: 300px;
+    margin-left: 100px;
+    border-radius: 5px;
+    padding: 20px;
+}

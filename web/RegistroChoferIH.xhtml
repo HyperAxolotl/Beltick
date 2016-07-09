@@ -17,8 +17,7 @@
 
                             <h2>Regístrate</h2>
 
-                            <div class="cuadro-registro">
-                                <p:messages autoUpdate="true" showDetail="true" closable="true"/>
+                            <div class="cuadro-registro" style="height: auto; min-height: 450px; margin-bottom: 0px;">
                                 <h:panelGrid id="grid" columns="3" styleClass="mi-panel-grid">
                                     <p:outputLabel for="nombre" value="Nombre"/>
                                     <p:inputText id="nombre" required="true" styleClass="mi-tr" value="#{choferC.chofer.cnombre}" label="Nombre">
@@ -70,50 +69,53 @@
 
                                     <p:message for="fecha" display="text" />
                                 </h:panelGrid>
-                                <div style="padding-top: 40px;">
+                            </div>
+                            <div style="padding-top: 20px;">
 
-                                    <h:outputText value="Al hacer click en 'Aceptar' estás aceptando nuestros " style="color: gray"/> 
-                                    <a  
-                                        data-toggle="modal" 
-                                        data-target="#myModal" 
-                                        href="Proyecto/Informacion.xhtml">
-                                        términos y condiciones de uso
-                                    </a>
+                                <h:outputText value="Al hacer click en 'Aceptar' estás aceptando nuestros " style="color: gray"/> 
+                                <a  
+                                    data-toggle="modal" 
+                                    data-target="#myModal" 
+                                    href="Proyecto/Informacion.xhtml">
+                                    términos y condiciones de uso
+                                </a>
 
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                    <h4 class="modal-title" id="myModalLabel">Términos y condiciones de uso</h4>
-                                                </div>
-                                                <div class="modal-body">
-                                                    ...
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
-                                                </div>
+                                <!-- Modal -->
+                                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                <h4 class="modal-title" id="myModalLabel">Términos y condiciones de uso</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                ...
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
                                             </div>
                                         </div>
                                     </div>
-                                    <div>
-                                        <p:dialog id="dialogTest" header="Exito" widgetVar="dlg2" modal="true" 
-                                                  resizable="false" closable="false" height="100" visible="#{choferC.exito}" appendTo="@(body)">
-                                            <p:messages/>
-                                            <p:button value="Cerrar" onclick="PF('dlg2').hide()" outcome="PaginaPrincipalIH"/>
-                                        </p:dialog>
+                                </div>
+                                <div>
+                                    <p:dialog id="dialogTest" header="Exito" widgetVar="dlg2" modal="true" 
+                                              resizable="false" closable="false" height="160" visible="#{choferC.exito}" appendTo="@(body)">
+                                        <p:messages/>
+                                        <center>
+                                            <p:button styleClass="boton-registro" style="height: 40px;"  value="Cerrar" onclick="PF('dlg2').hide()" outcome="PaginaPrincipalIH"/>
+                                        </center>
+                                    </p:dialog>
 
-                                        <p:commandButton styleClass="boton-registro" 
-                                                         value="Aceptar" action="#{choferC.registro()}" update="grid,dialogTest" 
-                                                         onclick="if (#{choferC.exito}) {
+                                    <p:commandButton styleClass="boton-registro" 
+                                                     value="Aceptar" action="#{choferC.registro()}" update="grid,dialogTest" 
+                                                     onclick="if (#{choferC.exito}) {
                                                                  PF('dlg2').show();
                                                              }">
-                                        </p:commandButton>
+                                    </p:commandButton>
 
-                                    </div> 
-                                </div>
+                                </div> 
+
                             </div>
                         </h:form>       
                     </div>

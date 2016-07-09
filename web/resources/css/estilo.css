@@ -3,23 +3,27 @@
 .cuadro-inicio-sesion {
     position: absolute;
     width:500px;
-    height:280px;   
+    min-height:280px; 
+    height: auto;
     background: white;
     z-index: 0;
-    margin-top: 180px;
+    margin-top: 130px;
     border-radius: 10px;
     padding-top: 100px;
+    padding-bottom: 30px;
 }
 
 .cuadro-inicio-sesion2 {
     position: absolute;
     margin-left: 220px;
-    margin-top:200px;
+    margin-top: 150px;
     width:65px;
     height:65px;   
     background: #48d2d2;
     background: -moz-linear-gradient(141deg, #35d2c8 0%, #48d2d2 51%, #47dae0 75%);
     background: -webkit-linear-gradient(141deg, #35d2c8 0%, #48d2d2 51%, #47dae0 75%);
+    background: -webkit-gradient(linear,141deg, #35d2c8 0%, #48d2d2 51%, #47dae0 75%);
+    background: linear-gradient(141deg, #35d2c8 0%, #48d2d2 51%, #47dae0 75%);
     z-index: 2;
     border-radius: 65px;
 }
@@ -27,9 +31,9 @@
 .cuadro-inicio-sesion3 {
     position: absolute;
     margin-left: 0px;
-    margin-top:213px;
-    width:500px;
-    height:40px;   
+    margin-top: 163px;
+    width: 500px;
+    height: 40px;   
     background: -moz-linear-gradient(141deg, #1C1E1D 0%, #302F2C 51%, #141415 75%);
     background: -webkit-linear-gradient(141deg, #1C1E1D 0%, #302F2C 51%, #141415 75%);
     z-index: 1;
@@ -107,9 +111,11 @@ html {
 #container-registro {
     padding-top: 60px;
     width: 800px;
-    height: 100vh;
+    height: auto;
+    min-height: 100vh;
     background: white;
     margin-top: -35px;
+    padding-bottom: 30px;
 }
 
 #container-registro h2 {
@@ -167,7 +173,7 @@ html {
 }
 
 .ui-paginator-page.ui-state-default.ui-state-active.ui-corner-all {
-    background: #58c0a9;
+    background: #a7cec5;
     box-shadow: none;
     color: rgb(233, 251, 255);
     border: none;

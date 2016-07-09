@@ -6,6 +6,7 @@ import controlador.logica.PerfilL;
 import controlador.logica.PerfilPasajeroL;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -130,23 +131,22 @@ public class PerfilPasajeroC implements Serializable {
         return horloge.formateaHora(d);
     }
 
-    
     public String horaDia(int dia) {
-        Date lunes = ayudante.horaDia(pasajero.getIdPasajero(),dia);
-        return horloge.formateaHora(lunes);    
+        Date lunes = ayudante.horaDia(pasajero.getIdPasajero(), dia);
+        return horloge.formateaHora(lunes);
     }
-    
-    public int rutaDia1(int dia){
+
+    public int rutaDia1(int dia) {
         return 0;
-    } 
-    
-    public Ruta rutaDia(int dia){
-        return ayudante.rutaDia(pasajero.getIdPasajero(),dia);
     }
-    
-    public int elChofer(int dia){
+
+    public Ruta rutaDia(int dia) {
+        return ayudante.rutaDia(pasajero.getIdPasajero(), dia);
+    }
+
+    public int elChofer(int dia) {
         Ruta r = rutaDia(dia);
-        if(r != null) {
+        if (r != null) {
             Automovil a = r.getAutomovil();
             Chofer c = a.getChofer();
             return c.getIdChofer();
@@ -154,6 +154,16 @@ public class PerfilPasajeroC implements Serializable {
         return -1;
     }
 
+    public String getEdad() {
+        Date date = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        int anio = cal.get(Calendar.YEAR);
+        cal.setTime(pasajero.getPfechaNac());
+        int aniop = cal.get(Calendar.YEAR);
+        return anio - aniop + "";
+    }
+    
     /*
     public String horaMartes() {
         System.out.println("Obteniendo hora en lunes");

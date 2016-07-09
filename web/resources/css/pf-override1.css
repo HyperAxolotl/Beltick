@@ -1,3 +1,7 @@
 .ui-menu.ui-menubar.ui-widget.ui-widget-content.ui-corner-all.ui-helper-clearfix.barra-nav {
     background: none;
 }
+
+.ui-menuitem-link.ui-corner-all.ui-state-hover {
+    width: auto;
+}

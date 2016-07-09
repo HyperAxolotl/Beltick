@@ -21,18 +21,17 @@
 
                             <h:form>
                                 <p:messages autoUpdate="true"/>
-                                <h:panelGrid id="grid" columns="3" styleClass="mi-panel-grid">			
+                                <h:panelGrid id="grid" columns="2" styleClass="mi-panel-grid">			
 
                                     <p:outputLabel for="correo" value="Correo " />
                                     <p:inputText id="correo" styleClass="mi-tr" style="border-color: #D2D9DE;text-align: left;" value="#{sesionC.chofer.ccorreo}" required="true" >
                                         <pe:keyFilter regEx="/[a-z0-9_\-\.@]/i" />
                                         <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@ciencias.unam.mx" />
                                     </p:inputText>
-                                    <p:message for="correo" display="text" />
 
                                     <p:outputLabel for="password" value="Contraseña" />
                                     <p:password id="password" styleClass="mi-tr" style="border-color: #D2D9DE;text-align: left;"  value="#{sesionC.chofer.ccontrasenia}" required="true" />
-                                    <p:message for="password" display="text" />
+                                 
                                 </h:panelGrid>
                                 <h:commandButton class="boton-inicia-sesion" value="Iniciar sesión" action="#{sesionC.verificarDatos()}" >
                                     <f:actionListener binding="#{sesionC.setTipo(true)}" />
