@@ -8,22 +8,31 @@
         <link  href="resources/css/vistas.css" rel="stylesheet"/>
         <style> 
             h1{
-                color:#540739;
                 text-align: center;
+                font-weight: bold; 
+                margin-right: 20px;
+                margin-left: 20px;
             }
             h3,h4{
-                color:#3F2354;
                 text-align: center;
+                margin-right: 20px;
+                margin-left: 20px;
+                font-family: 'Karla', sans-serif !important;
+                font-weight: bold;
             }
             p{
-                color:#160A4B;
+                color: black;
                 text-align: justify;
+                margin-right: 20px;
+                margin-left: 20px;
+                font-family: 'Karla', sans-serif !important; 
             }
         </style>
     </h:head>
     <h:body>
         <f:facet name="last">
             <h:outputStylesheet library="css" name="pf-override.css" />
+            <h:outputStylesheet library="css" name="estilo.css" />
         </f:facet>
         <div class="content">
             <h1>Información general sobre el servicio</h1>
@@ -42,7 +51,7 @@
                     otras condiciones o particulares que resulten de la aplicación. Asimismo, Beltick se reserva el derecho de suspender, 
                     interrumpir o dejar de operar la aplicación en cualquier momento.
                 </p>   
-                <h4>Contenidos</h4>
+                <h3>Contenidos</h3>
                 <p>
                     A través de la aplicación, Beltick facilita al Usuario un servicio de auto compartido (en adelante, el “Servicio”).
                     La aplicación facilita al Usuario el acceso a diversos contenidos, información y datos proporcionados por Beltick 
@@ -59,7 +68,7 @@
                     , como se menciona en el presente, el servicio es únicamente proporcionado por otros usuarios y no por
                     Beltick, quien meramente se conduce como un intermediario.
                 </p>
-                <h4>Acceso y uso</h4>
+                <h3>Acceso y uso</h3>
                 <p>
                     El acceso a la aplicación estará limitado a alumnos de la Facultad de Ciencias de la UNAM.
                     Con carácter general, el Usuario podrá acceder a la aplicación  de forma libre y gratuita.
@@ -86,7 +95,7 @@
                     obtener los contenidos empleando para ello medios o procedimientos distintos de los que, según los casos,
                     se hayan puesto a su disposición a este efecto.
                 </p>
-                <h4>Propiedad intelectual</h4>
+                <h3>Propiedad intelectual</h3>
                 <p>
                     Beltick autoriza al Usuario a utilizar, visualizar, imprimir, descargar y almacenar los contenidos y/o 
                     los elementos insertados en la aplicación exclusivamente para su uso personal, privado y no lucrativo, 
@@ -97,7 +106,7 @@
                     distinto de los aquí expresamente previstos estará sujeto a la autorización previa de Beltick.
                 </p>
 
-                <h4>Protección de datos</h4>
+                <h3>Protección de datos</h3>
                 <p>
                     Los datos personales que proporcione el Usuario por medio del Formulario de Registro se integrarán en un 
                     fichero de datos personales que es responsabilidad de Beltick. Para más información, leer el Aviso de privacidad
@@ -139,7 +148,7 @@
             </section>
             <!--IT'S A TRAP-->
             <section class="button" align="center">
-                <button type="button" class="btn btn-info" data-dismiss="modal">Aceptar</button>
+                <button type="button" class="boton-ed-perfil" style="margin-bottom: 20px;" data-dismiss="modal">Aceptar</button>
             </section>
 
         </div>

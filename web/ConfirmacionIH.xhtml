@@ -14,18 +14,16 @@
     <h:body>
         <ui:composition template="plantillas/vista2.xhtml">
             <ui:define name="content">
-                <section class="container">
-                    <div class="row">
-                        <div class="col-sm-12" align="center">
-                            <h2>BIENVENIDO A BELTICK</h2>
-                            <h3>Gracias por escogernos</h3>
-                            <h:form>
-                                <h:outputLabel value="#{confirmacionC.getNombre()}"/>   
-                                <p:messages/>
-                            </h:form>
-                        </div>
+                <center>
+                    <div id="container-notif" align="center">
+                        <h2 style="color:black; font-weight: bold; margin-right: 10px;">BIENVENIDO A BELTICK</h2>
+                        <h3 style="color:black; font-weight: bold; margin-right: 10px;">Gracias por escogernos</h3>
+                        <h:form>
+                            <h:outputLabel value="#{confirmacionC.getNombre()}"/>   
+                            <p:messages/>
+                        </h:form>
                     </div>
-                </section>
+                </center>
             </ui:define>
         </ui:composition>
     </h:body>

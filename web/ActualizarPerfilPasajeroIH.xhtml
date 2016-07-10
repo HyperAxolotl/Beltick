@@ -16,7 +16,7 @@
                     <div id="container-notif">
                         <p:growl id="growl" life="2000"/>
                         <h:form enctype="multipart/form-data">	
-                            
+
                             <p:outputLabel value="Modifica tus datos" style="color:black; font-weight: bold; margin-right: 10px; font-size: 30px; margin-top: 20px;"/>
                             <hr style="width: 800px; margin-left: -100px; margin-bottom: 30px; margin-top: 10px;"></hr>
                             <p:tabView style="margin-top: 30px; width: 500px;">
@@ -95,45 +95,53 @@
                                 </p:tab>
 
                                 <p:tab title="Rutas">
+                                    <div class="cuadro-editar">
+                                        <div class="cuadro-editar2"></div>
+                                        <p:outputLabel value="Selecciona las rutas que quieres eliminar" styleClass="datab" />
 
-                                    <h:outputText value="Selecciona las rutas que quieres eliminar" />
+                                        <p:dataTable value="#{actualizarPerfilPasajeroC.listaRutas}" style="width: 300px;" var="dia" rows="10" emptyMessage="No hay rutas registradas">
+                                            <!--<h:panelGrid columns="4" styleClass="mi-panel-grid">-->
+                                            <p:column  headerText="Día" style="width: 80px">
+                                                <p:outputLabel value="#{dia.id.dia}" />
+                                            </p:column>
+                                            <p:column  headerText="Hora" style="width: 70px">
+                                                <p:outputLabel value="#{actualizarPerfilPasajeroC.getHora(dia)}" />
+                                            </p:column>
+                                            <p:column>
+                                                <p:button id="irachofer" styleClass="boton-pp2" icon="fa fa-user" outcome="PerfilChoferIH">
+                                                    <f:param name="choferId" value="#{actualizarPerfilPasajeroC.getChoferId(dia)}" />
+                                                </p:button>
+                                                <p:tooltip id="irachofertt" for="irachofer" value="Ir a perfil de chofer" />
 
-                                    <p:dataTable value="#{actualizarPerfilPasajeroC.listaRutas}" var="dia" rows="10" emptyMessage="No hay rutas registradas">
-                                        <!--<h:panelGrid columns="4" styleClass="mi-panel-grid">-->
-                                        <p:column>
-                                            <p:outputLabel value="#{dia.id.dia}: #{actualizarPerfilPasajeroC.getHora(dia)}" />
-                                        </p:column>
-                                        <p:column>
-                                            <p:button id="irachofer" icon="fa fa-user" outcome="PerfilChoferIH">
-                                                <f:param name="choferId" value="#{actualizarPerfilPasajeroC.getChoferId(dia)}" />
-                                            </p:button>
-                                            <p:tooltip id="irachofertt" for="irachofer" value="Ir a perfil de chofer" />
+                                                <p:button id="iraruta" styleClass="boton-pp2" icon="fa fa-road" outcome="RutaIH">
+                                                    <f:param name="rutaId" value="#{dia.ruta.idRuta}" />
+                                                </p:button>
+                                                <p:tooltip id="irarutatt" for="iraruta" value="Ir a ruta" />
 
-                                            <p:button id="iraruta" icon="fa fa-road" outcome="RutaIH">
-                                                <f:param name="rutaId" value="#{dia.ruta.idRuta}" />
-                                            </p:button>
-                                            <p:tooltip id="irarutatt" for="iraruta" value="Ir a ruta" />
-
-                                            <p:commandButton id="eliminar" icon="fa fa-fw fa-remove" update="growl,@form" actionListener="#{actualizarPerfilPasajeroC.eliminaRuta(dia)}"/>
-                                            <p:tooltip id="eliminartt" for="eliminar" value="Eliminar ruta" />
-                                            <!--</h:panelGrid>-->
-                                        </p:column>
-                                    </p:dataTable>
-
+                                                <p:commandButton id="eliminar" styleClass="boton-pp2" icon="fa fa-fw fa-remove" update="growl,@form" actionListener="#{actualizarPerfilPasajeroC.eliminaRuta(dia)}"/>
+                                                <p:tooltip id="eliminartt" for="eliminar" value="Eliminar ruta" />
+                                                <!--</h:panelGrid>-->
+                                            </p:column>
+                                        </p:dataTable>
+                                    </div>
                                 </p:tab>
 
                                 <p:tab title="Eliminar cuenta">
-                                    <h:outputText value="Si eliminas tu cuenta todos tus datos serán eliminados y no podrás recuperarlos"/>
-                                    <br></br>
-                                    <p:commandButton value="Eliminar cuenta" actionListener="#{actualizarPerfilPasajeroC.eliminarCuenta()}">
-                                        <p:confirm header="Confirmación" message="¿Estás seguro de que quieres borrar tu cuenta permanentemente" icon="ui-icon-alert"/>
-                                    </p:commandButton>
+                                    <div class="cuadro-editar">
+                                        <div class="cuadro-editar2"></div>
+                                        <p:outputLabel value="Si eliminas tu cuenta todos tus datos serán eliminados y no podrás recuperarlos" styleClass="datab"/>
+                                        <p:commandButton styleClass="boton-ed-perfil" value="Eliminar cuenta" actionListener="#{actualizarPerfilPasajeroC.eliminarCuenta()}">
+                                            <p:confirm header="Confirmación" message="¿Estás seguro de que quieres borrar tu cuenta permanentemente" icon="ui-icon-alert"/>
+                                        </p:commandButton>
+                                    </div>
                                 </p:tab>
                             </p:tabView>
 
                             <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                                <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
-                                <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>
+                                <center>
+                                    <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
+                                    <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>
+                                </center>
                             </p:confirmDialog>
                         </h:form>
                     </div>

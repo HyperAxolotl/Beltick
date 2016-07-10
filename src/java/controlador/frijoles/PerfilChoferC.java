@@ -8,6 +8,7 @@ import controlador.logica.RutaL;
 import java.io.ByteArrayInputStream;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -157,6 +158,7 @@ public class PerfilChoferC implements Serializable {
 
     public String calificar(Pasajero p) {
         calificacionL.calificarChofer(calificacionChofer, p, chofer);
+        System.out.println("chofer calificado");
         return "PerfilChoferIH";
     }
 
@@ -181,6 +183,16 @@ public class PerfilChoferC implements Serializable {
     public void listarCalificaciones() {
         calificaciones = ayudante.listarCalificaciones(chofer.getIdChofer());
         System.out.println("Estamos aqui...");
+    }
+    
+    public String getEdad() {
+        Date date = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        int anio = cal.get(Calendar.YEAR);
+        cal.setTime(chofer.getCfechaNac());
+        int aniop = cal.get(Calendar.YEAR);
+        return anio - aniop + "";
     }
 }
 

@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
+import modelo.CalificacionPasajero;
 import modelo.Chofer;
 import modelo.ConexionBD;
 import modelo.Horario;
@@ -13,6 +14,7 @@ import modelo.Pasajero;
 import modelo.PerfilChofer;
 import modelo.PerfilPasajero;
 import modelo.Ruta;
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -234,4 +236,28 @@ public class PerfilPasajeroL implements Serializable {
         }
         
     }*/
+    
+    public List<CalificacionPasajero> listarCalificaciones(int idP) {
+        Criteria c;
+        List<CalificacionPasajero> lstCalif = null;
+        try {
+            if (con == null || !con.isOpen()) {
+                con = ConexionBD.getSessionFactory().openSession();
+            }
+            Query query = con.createQuery("select c from CalificacionPasajero c where c.pasajero.idPasajero = :id");
+            query.setParameter("id", idP);
+            lstCalif = query.list();
+            if (lstCalif.isEmpty()) {
+                System.out.println("Está vacía para el id " + idP);
+            } else {
+                System.out.println(lstCalif.get(0).getDescripcion());
+            }
+            System.out.println("Se ha creado la lista de calificaciones");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            //con.close();
+            return lstCalif;
+        }
+    }
 }

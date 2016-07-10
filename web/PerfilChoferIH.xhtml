@@ -16,132 +16,134 @@
     <h:body>
         <ui:composition template="plantillas/vista2.xhtml">
             <ui:define name="content">
+
                 <h:form>
-                    <section class="container">
-                        <div class="rogue">
-                            <div class="col-sm-3" align="center" id="borde">
-                                <!--p:panelGrid columns="1"-->  
-                                <!--f:facet name="header"-->
-                                <c:if test="#{perfilChoferC.verificarImagen() eq false}" >
-                                    <p:graphicImage id="imagene" library="imagenes" name="foto_usuario/usuario.png" width="230px" height="230px"  styleClass="imagene"/>
-                                    <p:tooltip id="toolTip" for="imagene" value="#{perfilChoferC.chofer.cnombre} #{perfilChoferC.chofer.capp} #{perfilChoferC.chofer.capm}" />
-                                </c:if>
-                                <c:if test="#{perfilChoferC.verificarImagen()}" >
-                                    <o:graphicImage id="img" value="#{imagenC.getImagen(perfilChoferC.imagen.idImagen)}" height="230px" width="230px" />
-                                    <p:tooltip id="toolTipTrack" for="img" value="#{perfilChoferC.chofer.cnombre} #{perfilChoferC.chofer.capp} #{perfilChoferC.chofer.capm}" />
-                                </c:if>
-                                <h:outputText value=""/>
-                                <!--/f:facet-->
-                                <h:panelGrid columns="1">         
-                                    <h4><h:outputText value="#{perfilChoferC.chofer}" styleClass="data"/></h4>
-                                    <p:separator styleClass="separadorP"/>
-                                    <h:outputText value="Chofer" styleClass="minord"/>
-                                    <p:separator styleClass="separadorP"/>
-                                    <h:outputText value="#{perfilChoferC.chofer.ccorreo}" styleClass="minord"/>
-                                    <p:separator styleClass="separadorP"/>
-                                    <h:outputText value="N° Cuenta: #{perfilChoferC.chofer.cnoCuenta}" styleClass="minord"/>
-                                    <p:separator styleClass="separadorP"/>
-                                    <h:panelGrid columns="2">
-                                        <p:commandButton actionListener="#{perfilChoferC.listarCalificaciones()}" id="estrellas" onclick="PF('califs').show();" icon="fa fa-comment"> 
-                                            <f:param name="choferId" value="#{perfilChoferC.chofer.idChofer}" />
-                                        </p:commandButton> 
-                                        <p:rating value="#{perfilChoferC.getCalificacion()}" stars="5" readonly="true"/>
-                                    </h:panelGrid>
-                                    <p:separator styleClass="separadorP"/>
-                                    
-                                </h:panelGrid>
-                                <div>
-                                    <p:button  icon="fa fa-send" value="Mensaje" outcome="MandarMensajeIH" rendered="#{sesionC.verificarTipo() eq false}" >
-                                        <f:param name="choferId" value="#{perfilChoferC.chofer.idChofer}" />
-                                    </p:button>
-                                    <p:commandButton value="Califica" icon="fa fa-star-half-o" rendered="#{sesionC.verificarTipo() eq false and perfilChoferC.verificarPasajero(sesionC.pasajero)}"
-                                                     onclick="PF('dlgc').show();" >
-                                        <f:param name="choferId" value="#{perfilChoferC.chofer.idChofer}" />
-                                    </p:commandButton>
-                                </div>
-                            </div>
-                            <div class="col-sm-3" id="bordo">
-                                <h:panelGrid columns="1">
-                                    <p:tabView class="tab1">
-                                        <p:tab title="Personal">
-                                            <h:form>
-                                                <h3 class="color-texto">Sobre mi:</h3>
-                                                <h:outputText class="color-texto" value="#{perfilChoferC.perfil.csobreMi}"/> <!--rendered="{perfilChoferC.sobreMi-->
-                                                <p:separator styleClass="separadorP"/>
-                                                <h3 class="color-texto">Antigüedad:</h3>
-                                                <h:outputText class="color-texto" value="Usuario desde: #{perfilChoferC.fechaReg()}"/>
-                                                <p:separator styleClass="separadorP"/>
-                                            </h:form>
-                                        </p:tab>
-                                        <p:tab title="Horario">
-                                            <h:form rendered="#{perfilChoferC.tieneRuta()}">
-                                                <p:panelGrid columns="2"> 
-                                                    <h:outputLabel value="Lunes" class="etiquetaT"/>
-                                                    <h:outputLabel value="#{perfilChoferC.formateaHora(perfilChoferC.horario.lunes)}"/>
-                                                    <h:outputLabel value="Martes"/>
-                                                    <h:outputLabel value="#{perfilChoferC.formateaHora(perfilChoferC.horario.martes)}"/>
-                                                    <h:outputLabel value="Miércoles"/>
-                                                    <h:outputLabel value="#{perfilChoferC.formateaHora(perfilChoferC.horario.miercoles)}"/>
-                                                    <h:outputLabel value="Jueves"/>
-                                                    <h:outputLabel value="#{perfilChoferC.formateaHora(perfilChoferC.horario.jueves)}"/>
-                                                    <h:outputLabel value="Viernes"/>
-                                                    <h:outputLabel value="#{perfilChoferC.formateaHora(perfilChoferC.horario.viernes)}"/>
-                                                    <h:outputLabel value="Sábado"/>
-                                                    <h:outputLabel value="#{perfilChoferC.formateaHora(perfilChoferC.horario.sabado)}"/>
-                                                </p:panelGrid>
-                                            </h:form>
-                                        </p:tab>
-                                        <p:tab title="Auto">
-                                            <p:button value="Registra tu auto"  outcome="RegistroAutomovilIH" 
-                                                      rendered="#{sesionC.verificarTipo() and sesionC.chofer.idChofer == perfilChoferC.chofer.idChofer and sesionC.tieneAuto() eq false}" />
-                                            <h:form style="text-align: right;" rendered="#{perfilChoferC.tieneRuta()}">
-                                                <h3 class="color-texto">Modelo</h3>             
-                                                <h:outputText class="color-texto" value="Marca: #{perfilChoferC.auto.modelo}"/>   
-                                                <p:separator styleClass="separadorP"/>
-                                                <h3 class="color-texto">Licencia</h3>             
-                                                <h:outputText class="color-texto" value="N° Id: #{perfilChoferC.auto.noIdentificacion}"/>   
-                                                <p:separator styleClass="separadorP"/>
-                                                <h3 class="color-texto">Placa</h3> 
-                                                <h:outputText class="color-texto" value="Número: #{perfilChoferC.auto.placa}"/>                    
-                                                <p:separator styleClass="separadorP"/>
-                                                <h3 class="color-texto">Color</h3>
-                                                <h:outputText class="color-texto" value="#{perfilChoferC.auto.color}"/> 
-                                            </h:form>
-                                        </p:tab>
-                                    </p:tabView>
-                                </h:panelGrid>
-                            </div>
-
-                            <div class="col-sm-3" id="bordoM" align="right">
-                                <h:form rendered="#{perfilChoferC.tieneRuta()}">
-                                    <h3 align="center" class="color-texto">Ruta</h3>
-                                    <p:gmap id="gmap" center="19.3241874,-99.1789797" zoom="12" type="ROADMAP" style="width:500px;height:400px" model="#{perfilChoferC.getModeloMapa()}" />
-                                    <p:commandButton icon="fa fa-search-plus" value="Expandir" onclick="PF('dlg').show();" style="align-content: center;">
-                                        <f:param name="choferId" value="#{perfilChoferC.chofer.idChofer}" />
-                                    </p:commandButton>
-                                    <p:dialog header="Ruta de #{perfilChoferC.chofer.cnombre}" widgetVar="dlg" modal="true" height="500px" width="1000px">
-                                        <p:gmap id="gmap-dlg" center="19.3241874,-99.1789797" zoom="12" type="ROADMAP" style="width:100%;height:100%;" model="#{perfilChoferC.getModeloMapa()}" />
-                                    </p:dialog>
-                                    <p:button icon="fa fa-automobile" value="Solicitar Servicio" outcome="SolicitarServicioIH" rendered="#{sesionC.verificarTipo() eq false and perfilChoferC.tieneRuta()}">
-                                        <f:param name="rutaId" value="#{perfilChoferC.getIdRuta()}" />
-                                    </p:button>
-                                    <p:button icon="fa fa-compass" value="Ir a ruta" outcome="RutaIH" rendered="#{perfilChoferC.tieneRuta()}">
-                                        <f:param name="rutaId" value="#{perfilChoferC.getIdRuta()}" />
-                                    </p:button>
-                                </h:form>
-                            </div>
+                    <div id="east-pc">
+                        <h:panelGrid columns="1"> 
+                            <p:outputLabel value="CHOFER" styleClass="dataa" style="font-size: 20px; margin-left: 68px;"/>
+                            <c:if test="#{perfilChoferC.verificarImagen() eq false}" >
+                                <p:graphicImage id="imagene" library="imagenes" name="foto_usuario/usuario.png" width="230px" height="230px"  styleClass="imagene" style="border-radius: 5px; border:none; background: white"/>
+                                <p:tooltip id="toolTip" for="imagene" value="#{perfilChoferC.chofer}"/>
+                            </c:if>
+                            <c:if test="#{perfilChoferC.verificarImagen()}" >
+                                <o:graphicImage id="img" value="#{imagenC.getImagen(perfilChoferC.imagen.idImagen)}" height="230px" width="230px" style="border-radius: 5px;" />
+                                <p:tooltip id="toolTipTrack" for="img" value="#{perfilChoferC.chofer}" />
+                            </c:if>
+                            <p:outputLabel value="#{perfilChoferC.chofer}" styleClass="dataa"/>
+                            <p:outputLabel value="#{perfilChoferC.chofer.ccorreo}" styleClass="minorda"/>
+                            <p:rating value="#{perfilChoferC.getCalificacion()}" stars="5" readonly="true"/>
+                        </h:panelGrid>
+                        <div>
+                            <p:commandButton styleClass="boton-exp-rutas2" actionListener="#{perfilChoferC.listarCalificaciones()}" id="califs" onclick="PF('califs').show();" icon="fa fa-table"> 
+                                <f:param name="choferId" value="#{perfilChoferC.chofer.idChofer}" />
+                            </p:commandButton> 
+                            <p:tooltip for="califs" value="Ver calificaciones"/>
+                            <p:button id="mess" styleClass="boton-exp-rutas2" icon="fa fa-send" outcome="MandarMensajeIH" rendered="#{sesionC.verificarTipo() eq false}" >
+                                <f:param name="choferId" value="#{perfilChoferC.chofer.idChofer}" />
+                            </p:button>
+                            <p:tooltip for="mess" value="Mandar mensaje"/>
+                            <p:commandButton id="calif" styleClass="boton-exp-rutas2" icon="fa fa-star" rendered="#{sesionC.verificarTipo() eq false and perfilChoferC.verificarPasajero(sesionC.pasajero)}"
+                                             onclick="PF('dlgc').show();" >
+                                <f:param name="choferId" value="#{perfilChoferC.chofer.idChofer}" />
+                            </p:commandButton>
+                            <p:tooltip for="calif" value="Calificar"/>
                         </div>
-                    </section>
+                    </div>
+                    <div id="west-pc">
+                        <div class="cuadro-cazul">
+                            <h3 align="center" style="color: white; font-weight: bold; margin-right: 5px; margin-top: 0px; margin-bottom: -15px; position:absolute; margin-left: 65px;">Información</h3>
+                            <h3 align="center" style="color: white; font-weight: bold; margin-right: 5px; margin-top: 0px; margin-bottom: -15px;">Ruta</h3>
+                        </div>
+                        <p:tabView style="margin-top: 120px; margin-left: 40px; position: absolute;">
 
-                    <p:dialog header="Califica a #{perfilChoferC.chofer.cnombre}" widgetVar="dlgc" modal="true" height="400" width="600">
-                        <p:rating value="#{perfilChoferC.calificacionChofer.calificacion}" stars="5" />
-                        <br></br>
-                        <p:outputLabel for="descripcion" value="Descripción" />
-                        <p:inputTextarea id="descripcion" value="#{perfilChoferC.calificacionChofer.descripcion}" />
-                        <br></br>
-                        <p:commandButton value="Calificar" actionListener="#{perfilChoferC.calificar(sesionC.pasajero)}" onclick="PF('dlgc').hide()" update="@form">
-                            <f:param name="choferId" value="#{perfilChoferC.chofer.idChofer}" />
-                        </p:commandButton>
+                            <p:tab title="Personal">
+                                <div class="cuadro-editar" style="width: 270px; margin-left: -19px; padding-left: 30px; padding-right:0px; min-height: 300px;">
+                                    <div class="cuadro-editar2" style="width: 270px; margin-left: -30px;"></div>
+                                    <h:panelGrid columns="1" styleClass="mi-panel-grid4">
+                                        <p:outputLabel styleClass="datab" value="No. Cuenta"/>
+                                        <h:outputText styleClass="minordb" value="#{perfilChoferC.chofer.cnoCuenta}"/>
+                                        <p:outputLabel styleClass="datab" value="Usuario desde"/>
+                                        <h:outputText styleClass="minordb" value="#{perfilChoferC.fechaReg()}"/>
+                                        <p:outputLabel styleClass="datab" value="Sobre mí"/>
+                                        <h:outputText styleClass="minordb" value="#{perfilChoferC.perfil.csobreMi}"/>
+                                    </h:panelGrid>
+                                </div>
+                            </p:tab>
+                            <p:tab title="Horario">
+                                <div class="cuadro-editar" style="width: 270px; margin-left: -19px; padding-left: 30px; padding-right:0px; min-height: 300px;">
+                                    <div class="cuadro-editar2" style="width: 270px; margin-left: -30px;"></div>
+                                    <h:panelGrid columns="2" styleClass="mi-panel-grid4" rendered="#{perfilChoferC.tieneRuta()}"> 
+                                        <p:outputLabel styleClass="datab" value="Lunes"/>
+                                        <p:outputLabel styleClass="datab" value="#{perfilChoferC.formateaHora(perfilChoferC.horario.lunes)}"/>
+                                        <p:outputLabel styleClass="datab" value="Martes"/>
+                                        <p:outputLabel styleClass="datab" value="#{perfilChoferC.formateaHora(perfilChoferC.horario.martes)}"/>
+                                        <p:outputLabel styleClass="datab" value="Miércoles"/>
+                                        <p:outputLabel styleClass="datab" value="#{perfilChoferC.formateaHora(perfilChoferC.horario.miercoles)}"/>
+                                        <p:outputLabel styleClass="datab" value="Jueves"/>
+                                        <p:outputLabel styleClass="datab" value="#{perfilChoferC.formateaHora(perfilChoferC.horario.jueves)}"/>
+                                        <p:outputLabel styleClass="datab" value="Viernes"/>
+                                        <p:outputLabel styleClass="datab" value="#{perfilChoferC.formateaHora(perfilChoferC.horario.viernes)}"/>
+                                        <p:outputLabel styleClass="datab" value="Sábado"/>
+                                        <p:outputLabel styleClass="datab" value="#{perfilChoferC.formateaHora(perfilChoferC.horario.sabado)}"/>
+                                    </h:panelGrid>
+                                </div>
+                            </p:tab>
+                            <p:tab title="Auto">
+                                <div class="cuadro-editar" style="width: 270px; margin-left: -19px; padding-left: 30px; padding-right:0px; min-height: 300px;">
+                                    <div class="cuadro-editar2" style="width: 270px; margin-left: -30px;"></div>
+                                    <p:button value="Registra tu auto"  outcome="RegistroAutomovilIH" styleClass="boton-ed-perfil" style="margin-left:30px;"
+                                              rendered="#{sesionC.verificarTipo() and sesionC.chofer.idChofer == perfilChoferC.chofer.idChofer and sesionC.tieneAuto() eq false}" />
+
+                                    <h:panelGrid columns="1" styleClass="mi-panel-grid4" rendered="#{perfilChoferC.tieneRuta()}">
+                                        <p:outputLabel styleClass="datab" value="Modelo"/>
+                                        <h:outputText styleClass="minordb" value="Marca: #{perfilChoferC.auto.modelo}"/>
+                                        <p:outputLabel styleClass="datab" value="Licencia"/>
+                                        <h:outputText styleClass="minordb" value="N° Id: #{perfilChoferC.auto.noIdentificacion}"/>
+                                        <p:outputLabel styleClass="datab" value="Placa"/>
+                                        <h:outputText styleClass="minordb" value="#{perfilChoferC.auto.placa}"/>
+                                        <p:outputLabel styleClass="datab" value="Color"/>
+                                        <h:outputText styleClass="minordb" value="#{perfilChoferC.auto.color}"/> 
+                                    </h:panelGrid>
+                                </div>
+                            </p:tab>
+                        </p:tabView>
+
+                        <!--<h:form  style="position: absolute;">-->
+
+                        <p:gmap rendered="#{perfilChoferC.tieneRuta()}" id="gmap" center="19.3241874,-99.1789797" zoom="12" type="ROADMAP" style="width:400px;height:300px;position:absolute; margin-top: 130px; margin-left: 370px; border-radius: 5px;" model="#{perfilChoferC.getModeloMapa()}" />
+                        <div style="margin-left: 370px; margin-bottom: -200px; margin-top: 430px; position: absolute;">
+                            <p:commandButton rendered="#{perfilChoferC.tieneRuta()}" icon="fa fa-search-plus" id="expandir" styleClass="boton-exp-rutas2" onclick="PF('dlg').show();" style="align-content: center;">
+                                <f:param name="choferId" value="#{perfilChoferC.chofer.idChofer}" />
+                            </p:commandButton>
+                            <p:tooltip rendered="#{perfilChoferC.tieneRuta()}" for="expandir" value="Expandir"/>
+
+                            <p:dialog rendered="#{perfilChoferC.tieneRuta()}" header="Ruta de #{perfilChoferC.chofer.cnombre}" widgetVar="dlg" modal="true" height="500px" width="1000px">
+                                <p:gmap id="gmap-dlg" center="19.3241874,-99.1789797" zoom="12" type="ROADMAP" style="width:100%;height:100%;" model="#{perfilChoferC.getModeloMapa()}" />
+                            </p:dialog>
+
+                            <p:button icon="fa fa-external-link" id="ruta" styleClass="boton-exp-rutas2" outcome="RutaIH" rendered="#{perfilChoferC.tieneRuta()}">
+                                <f:param name="rutaId" value="#{perfilChoferC.getIdRuta()}" />
+                            </p:button>
+                            <p:tooltip for="ruta" value="Ir a ruta"/>
+
+                            <p:button icon="fa fa-plus" id="solicitar" styleClass="boton-exp-rutas2" outcome="SolicitarServicioIH" rendered="#{sesionC.verificarTipo() eq false and perfilChoferC.tieneRuta()}">
+                                <f:param name="rutaId" value="#{perfilChoferC.getIdRuta()}" />
+                            </p:button>
+                            <p:tooltip for="solicitar" value="Solicitar servicio"/>
+                        </div>
+                        <!--</h:form>-->
+                    </div>
+
+
+                    <p:dialog header="Califica a #{perfilChoferC.chofer}" widgetVar="dlgc" modal="true" height="250" width="250">
+                        <h:panelGrid columns="1" styleClass="mi-panel-grid">
+                            <p:rating value="#{perfilChoferC.calificacionChofer.calificacion}" stars="5" />
+                            <p:outputLabel for="descripcion" value="Descripción" />
+                            <p:inputTextarea id="descripcion" value="#{perfilChoferC.calificacionChofer.descripcion}" />
+                            <p:commandButton styleClass="boton-exp-rutas" style="width:210px; margin-top: 10px;" value="Calificar" actionListener="#{perfilChoferC.calificar(sesionC.pasajero)}" onclick="PF('dlgc').hide()" update="@form">
+                                <f:param name="choferId" value="#{perfilChoferC.chofer.idChofer}" />
+                            </p:commandButton>
+                        </h:panelGrid>
                     </p:dialog> 
                     <!--Aqui comienza-->
                     <p:dialog modal="true" widgetVar="califs" draggable="false" hideEffect="fade" style="align-content: center;" closable="true" rendered="true" height="500px" width="500px">

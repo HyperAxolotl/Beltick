@@ -9,121 +9,122 @@
     <h:body>
         <ui:composition template="plantillas/vista2.xhtml">
             <ui:define name="content">
-                <section class="container">
-                    <div class="row">
-                        <div class="col-sm-12" align="center">
-                            <h:outputScript library="js" name="RegistroRuta.js" />
-                            
-                            <h:form class="form" id="forma">
-                                
-                                <input type="hidden" id="mapa" name="mapa" value="" />
-                                <p:wizard nextLabel="Siguiente" backLabel="Regresar">
-                                    <p:tab id="regautomovil" title="Automóvil">
-                                        <p:panel header="Datos de automóvil">
-                                            <h:panelGrid columns="3" styleClass="mi-panel-grid">
-                                                <h:outputLabel for="noId" value="Número de identificación" />
-                                                <p:inputText id="noId" value="#{automovilC.automovil.noIdentificacion}" required="true" label="Número de identificación"/>
-                                                <p:message for="noId" display="text" />
+                <center>
+                    <div class="cuadro-ed-auto">
+                        <h:outputScript library="js" name="RegistroRuta.js" />
 
-                                                <h:outputLabel for="modelo" value="Modelo" />
-                                                <p:inputText id="modelo" value="#{automovilC.automovil.modelo}" required="true" label="Modelo"/>
-                                                <p:message for="modelo" display="text" />
+                        <h:form class="form" id="forma">
 
-                                                <h:outputLabel for="placa" value="Placa" />
-                                                <p:inputMask id="placa" value="#{automovilC.automovil.placa}" mask="*99-aaa" required="true" label="Placa"/>
-                                                <p:message for="placa" display="text" />
+                            <input type="hidden" id="mapa" name="mapa" value="" />
+                            <p:wizard nextLabel="Siguiente" backLabel="Regresar" style="width: 800px; margin-top: 20px;">
+                                <p:tab id="regautomovil" title="Automóvil">
+                                    <p:panel header="Datos del automóvil">
+                                        <h:panelGrid columns="3" styleClass="mi-panel-grid">
+                                            <p:outputLabel for="noId" value="Número de identificación" />
+                                            <p:inputText id="noId" value="#{automovilC.automovil.noIdentificacion}"  styleClass="mi-tr2" required="true" label="Número de identificación"/>
+                                            <p:message for="noId" display="text" />
 
-                                                <h:outputLabel for="color" value="Color" />
-                                                <p:inputText id="color" value="#{automovilC.automovil.color}" required="true" label="Color"/>
-                                                <p:message for="color" display="text" />
+                                            <p:outputLabel for="modelo" value="Modelo" />
+                                            <p:inputText id="modelo" value="#{automovilC.automovil.modelo}" styleClass="mi-tr2" required="true" label="Modelo"/>
+                                            <p:message for="modelo" display="text" />
 
-                                                <h:outputLabel for="capacidad" value="Capacidad de pasajeros" />
-                                                <pe:inputNumber id="capacidad" value="#{automovilC.automovil.capacidad}" emptyValue="empty" required="true" decimalPlaces="0" label="Capacidad">
-                                                    <f:validateDoubleRange minimum="1" maximum="100"/>
-                                                </pe:inputNumber>
-                                                <p:message for="capacidad" display="text" />
-                                                <h:outputText value="*Tus datos sensibles seran confidenciales" style="color: lightseagreen;"/>
-                                            </h:panelGrid>
-                                        </p:panel>
-                                    </p:tab>
-                                    <p:tab id="regruta" title="Ruta">
-                                        <p:panel header="Ruta diaria">
-                                            <h:outputText value="Da click en el mapa para crear tu ruta" style="color:green"/>
-                                            <p:gmap id="gmap" center="19.3241874,-99.1789797" zoom="13" type="ROADMAP" style="width:500px;height:400px"
-                                                    model="#{automovilC.getModeloMapa()}" onPointClick="addLatLng(event);" widgetVar="map" />
+                                            <p:outputLabel for="placa" value="Placa" />
+                                            <p:inputMask id="placa" value="#{automovilC.automovil.placa}" styleClass="mi-tr2" mask="*99-aaa" required="true" label="Placa"/>
+                                            <p:message for="placa" display="text" />
 
-                                            <p:button value="Borrar último punto" id="borrar-ultimo" onclick="return borrarUltimo();" />
-                                            <p:button value="Borrar todo" id="borrar-todo" onclick="return borrarTodo();" />
+                                            <p:outputLabel for="color" value="Color" />
+                                            <p:inputText id="color" value="#{automovilC.automovil.color}" styleClass="mi-tr2" required="true" label="Color"/>
+                                            <p:message for="color" display="text" />
 
-                                            <h:panelGrid columns="1" styleClass="mi-panel-grid">
-                                                <p:outputLabel for="descripcion" value="Descripción" />
-                                                <p:inputTextarea id="descripcion" value="#{automovilC.ruta.descripcion}" rows="5" cols="33" 
-                                                                 counter="display" maxlength="120" counterTemplate="{0}" 
-                                                                 placeholder="Escribe una breve descripción de tu ruta (opcional)"/>
-                                                <h:outputText id="display" />
-                                            </h:panelGrid>
-                                        </p:panel>
-                                    </p:tab>
-                                    <p:tab id="reghorario" title="Horario">
-                                        <p:growl id="growl" showDetail="true" sticky="false" life="5000" />
-                                        <p:panel header="Horario semanal">
-                                            <h:outputText value="Escribe la hora en la que llegas cada dia a la facultad" style="color: green;"/>
-                                            <h:panelGrid columns="3" styleClass="mi-panel-grid">
-                                                <h:outputLabel for="lunes" value="Lunes" />
-                                                <p:inputMask id="lunes" value="#{automovilC.horario.lunes}" mask="99:99" label="Lunes">
-                                                    <f:convertDateTime pattern="HH:mm" />
-                                                </p:inputMask>
-                                                <p:message for="lunes" display="text" />
+                                            <p:outputLabel for="capacidad" value="Capacidad de pasajeros" />
+                                            <pe:inputNumber id="capacidad" value="#{automovilC.automovil.capacidad}" styleClass="mi-tr2" emptyValue="empty" required="true" decimalPlaces="0" label="Capacidad">
+                                                <f:validateDoubleRange minimum="1" maximum="100"/>
+                                            </pe:inputNumber>
+                                            <p:message for="capacidad" display="text" />
+                                            <p:outputLabel value="Tus datos sensibles seran confidenciales" style="color: gray;"/>
+                                        </h:panelGrid>
+                                    </p:panel>
+                                </p:tab>
+                                <p:tab id="regruta" title="Ruta">
+                                    <p:panel header="Ruta diaria">
+                                        <p:outputLabel value="Da click en el mapa para crear tu ruta" style="margin-top: 20px;" />
+                                        <p:gmap id="gmap" center="19.3241874,-99.1789797" zoom="13" type="ROADMAP" style="width:400px;height:300px; border-right: 4px;"
+                                                model="#{automovilC.getModeloMapa()}" onPointClick="addLatLng(event);" widgetVar="map" />
 
-                                                <h:outputLabel for="martes" value="Martes" />
-                                                <p:inputMask id="martes" value="#{automovilC.horario.martes}" mask="99:99" label="Martes">
-                                                    <f:convertDateTime pattern="HH:mm" />
-                                                </p:inputMask>
-                                                <p:message for="martes" display="text" />
+                                        <p:button styleClass="boton-ed-mapa" value="Borrar último punto" id="borrar-ultimo" onclick="return borrarUltimo();" />
+                                        <p:button styleClass="boton-ed-mapa" value="Borrar todo" id="borrar-todo" onclick="return borrarTodo();" />
 
-                                                <h:outputLabel for="miercoles" value="Miercoles" />
-                                                <p:inputMask id="miercoles" value="#{automovilC.horario.miercoles}" mask="99:99" label="Miercoles">
-                                                    <f:convertDateTime pattern="HH:mm" />
-                                                </p:inputMask>
-                                                <p:message for="miercoles" display="text" />
+                                        <h:panelGrid columns="1" styleClass="mi-panel-grid" style="margin-top: 20px;">
+                                            <p:outputLabel for="descripcion" value="Descripción" />
+                                            <p:inputTextarea id="descripcion" value="#{automovilC.ruta.descripcion}" rows="5" cols="33" 
+                                                             counter="display" maxlength="120" counterTemplate="{0}" 
+                                                             placeholder="Escribe una breve descripción de tu ruta (opcional)"/>
+                                            <h:outputText id="display" />
+                                        </h:panelGrid>
+                                    </p:panel>
+                                </p:tab>
+                                <p:tab id="reghorario" title="Horario">
+                                    <p:growl id="growl" showDetail="true" sticky="false" life="5000" />
+                                    <p:panel header="Horario semanal">
+                                        <p:outputLabel value="Escribe la hora en la que llegas cada dia a la facultad" style="margin-top: 20px;"/>
+                                        <h:panelGrid columns="3" styleClass="mi-panel-grid">
+                                            <p:outputLabel for="lunes" value="Lunes" />
+                                            <p:inputMask id="lunes" styleClass="mi-tr2" value="#{automovilC.horario.lunes}" mask="99:99" label="Lunes">
+                                                <f:convertDateTime pattern="HH:mm" />
+                                            </p:inputMask>
+                                            <p:message for="lunes" display="text" />
 
-                                                <h:outputLabel for="jueves" value="Jueves" />
-                                                <p:inputMask id="jueves" value="#{automovilC.horario.jueves}" mask="99:99" label="Jueves">
-                                                    <f:convertDateTime pattern="HH:mm" />
-                                                </p:inputMask>
-                                                <p:message for="jueves" display="text" />
+                                            <p:outputLabel for="martes" value="Martes" />
+                                            <p:inputMask id="martes" styleClass="mi-tr2" value="#{automovilC.horario.martes}" mask="99:99" label="Martes">
+                                                <f:convertDateTime pattern="HH:mm" />
+                                            </p:inputMask>
+                                            <p:message for="martes" display="text" />
 
-                                                <h:outputLabel for="viernes" value="Viernes" />
-                                                <p:inputMask id="viernes" value="#{automovilC.horario.viernes}" mask="99:99" label="Viernes">
-                                                    <f:convertDateTime pattern="HH:mm" />
-                                                </p:inputMask>
-                                                <p:message for="viernes" display="text" />
+                                            <p:outputLabel for="miercoles" value="Miercoles" />
+                                            <p:inputMask id="miercoles" styleClass="mi-tr2" value="#{automovilC.horario.miercoles}" mask="99:99" label="Miercoles">
+                                                <f:convertDateTime pattern="HH:mm" />
+                                            </p:inputMask>
+                                            <p:message for="miercoles" display="text" />
 
-                                                <h:outputLabel for="sabado" value="Sábado" />
-                                                <p:inputMask id="sabado" value="#{automovilC.horario.sabado}" mask="99:99" label="Sábado"> 
-                                                    <f:convertDateTime pattern="HH:mm" />
-                                                </p:inputMask>
-                                                <p:message for="sabado" display="text" />
-                                                <p:commandButton value="Registrar datos" action="#{automovilC.registro(sesionC.chofer)}" update="dialogTest,forma" 
+                                            <p:outputLabel for="jueves" value="Jueves" />
+                                            <p:inputMask id="jueves" styleClass="mi-tr2" value="#{automovilC.horario.jueves}" mask="99:99" label="Jueves">
+                                                <f:convertDateTime pattern="HH:mm" />
+                                            </p:inputMask>
+                                            <p:message for="jueves" display="text" />
+
+                                            <p:outputLabel for="viernes" value="Viernes" />
+                                            <p:inputMask id="viernes" styleClass="mi-tr2" value="#{automovilC.horario.viernes}" mask="99:99" label="Viernes">
+                                                <f:convertDateTime pattern="HH:mm" />
+                                            </p:inputMask>
+                                            <p:message for="viernes" display="text" />
+
+                                            <p:outputLabel for="sabado" value="Sábado" />
+                                            <p:inputMask id="sabado" styleClass="mi-tr2" value="#{automovilC.horario.sabado}" mask="99:99" label="Sábado"> 
+                                                <f:convertDateTime pattern="HH:mm" />
+                                            </p:inputMask>
+                                            <p:message for="sabado" display="text" />
+                                            <center>
+                                                <p:commandButton styleClass="boton-ed-perfil" value="Registrar datos" action="#{automovilC.registro(sesionC.chofer)}" update="dialogTest,forma" 
                                                                  onclick="if (#{automovilC.exito}) {
                                                                              PF('dlg2').show();
                                                                          }"/>
-                                            </h:panelGrid>
-                                        </p:panel>
-                                    </p:tab>
-                                </p:wizard>
-                                <p:dialog id="dialogTest" header="Exito" widgetVar="dlg2" modal="true"  draggable="false"  
-                                          resizable="false" closable="false" height="100" visible="#{automovilC.exito}">
-                                    <p:messages />
-                                    <p:button value="Cerrar" onclick="PF('dlg2').hide()" outcome="PerfilChoferIH">
+                                            </center>
+                                        </h:panelGrid>
+                                    </p:panel>
+                                </p:tab>
+                            </p:wizard>
+                            <p:dialog id="dialogTest" header="Exito" widgetVar="dlg2" modal="true"  draggable="false"  
+                                      resizable="false" closable="false" height="150" visible="#{automovilC.exito}" style="padding-bottom: 10px;">
+                                <p:messages />
+                                <center>
+                                    <p:button styleClass="boton-ed-perfil" value="Cerrar" onclick="PF('dlg2').hide()" outcome="PerfilChoferIH">
                                         <f:param name="choferId" value="#{sesionC.chofer.idChofer}" />
                                     </p:button>
-                                </p:dialog>
-                            </h:form> 
-                        </div>
+                                </center>
+                            </p:dialog>
+                        </h:form> 
                     </div>
-                </section>
-
+                </center>
             </ui:define>
         </ui:composition>
 

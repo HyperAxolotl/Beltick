@@ -14,103 +14,108 @@
     <h:body>
         <ui:composition template="plantillas/vista2.xhtml">
             <ui:define name="content">
-                <section class="container">
-                    <div class="row">
-                        <div class="col-sm-12" align="center">
-                            <h2>Ruta</h2>
-                            <h:messages infoStyle="color:red"/>
-                            <p:growl id="growl" showDetail="true" sticky="false" life="3000" />
-                            <p:layout>
-                                <p:layoutUnit position="west" style="border: none;">
-                                    <h:form>
-                                        <p:outputLabel value="Chofer: #{rutaC.ruta.automovil.chofer.cnombre}" />
-                                        <p:gmap id="gmap" center="19.3241874,-99.1789797" zoom="12" type="ROADMAP" style="width:300px;height:300px" model="#{rutaC.getModeloMapa()}" />
-                                        <p:commandButton value="Expandir" type="button" onclick="PF('dlg').show();" />
-                                    </h:form>
-                                </p:layoutUnit>
-                                <p:layoutUnit position="center" style="border: none;">
-                                    <p:tabView id="tab">
-                                        <p:tab title="Horario">
-                                            <p:panelGrid columns="2"> 
-                                                <h:outputLabel value="Lunes" />
-                                                <h:outputLabel value="#{rutaC.formateaHora(rutaC.horario.lunes)}"/>
-                                                <h:outputLabel value="Martes"/>
-                                                <h:outputLabel value="#{rutaC.formateaHora(rutaC.horario.martes)}"/>
-                                                <h:outputLabel value="Miércoles"/>
-                                                <h:outputLabel value="#{rutaC.formateaHora(rutaC.horario.miercoles)}"/>
-                                                <h:outputLabel value="Jueves"/>
-                                                <h:outputLabel value="#{rutaC.formateaHora(rutaC.horario.jueves)}"/>
-                                                <h:outputLabel value="Viernes"/>
-                                                <h:outputLabel value="#{rutaC.formateaHora(rutaC.horario.viernes)}"/>
-                                                <h:outputLabel value="Sábado"/>
-                                                <h:outputLabel value="#{rutaC.formateaHora(rutaC.horario.sabado)}"/>
-                                            </p:panelGrid>
-                                        </p:tab>
-                                        <p:tab title="Pasajeros">
-                                            <h:form>
-                                                <p:dataTable value="#{rutaC.lstPasajeros}" var="rPasajero" widgetVar="tablaPasajeros">
-                                                    <p:column headerText="Pasajero">
-                                                        <p:link value="#{rutaC.getPasajeroNombre(rPasajero)}" outcome="PerfilPasajeroIH">
-                                                            <f:param name="pasajeroId" value="#{rPasajero.id.idPasajero}" />
-                                                        </p:link>
-                                                    </p:column>
-                                                    <p:column headerText="Día -> Hora">
-                                                        <h:outputText value="#{rPasajero.id.dia} -> #{rutaC.getPasajeroHora(rPasajero)}"/>
-                                                    </p:column>
-                                                    <p:column rendered="#{sesionC.verificarTipo() and rutaC.verificarMiembro(sesionC.verificarTipo(),sesionC.chofer,sesionC.pasajero)}">
-                                                        <p:commandButton icon="fa fa-fw fa-remove" update="@form,growl" actionListener="#{rutaC.eliminarPasajero(rPasajero)}">
-                                                            <f:param name="rutaId" value="#{rutaC.ruta.idRuta}" />
-                                                        </p:commandButton>
-                                                    </p:column>
-                                                </p:dataTable>
-                                            </h:form>
-                                        </p:tab>
-                                        <p:tab title="Boletín">
-                                            
-                                            <h:form id="formulario" rendered="#{rutaC.verificarMiembro(sesionC.verificarTipo(),sesionC.chofer,sesionC.pasajero)}">
-                                                <p:outputLabel value="Boletín" style="font-size:20px;" /> <br></br>
-                                                <p:commandButton value="Publicar entrada" type="button" onclick="PF('dlg-pub').show();" 
-                                                                 rendered="#{sesionC.verificarTipo()}" />
-                                                <p:dataTable value="#{rutaC.lstBoletin}" var="pub" widgetVar="boletin">
-                                                    <p:column headerText="Titulo" >
-                                                        <p:outputLabel value="#{pub.titulo}"/>
-                                                    </p:column>
-                                                    <p:column headerText="Contenido">
-                                                        <p:outputLabel value="#{pub.contenido}"/>
-                                                    </p:column>
-                                                    <p:column headerText="Fecha" >
-                                                        <p:outputLabel value="#{rutaC.formateaFecha(pub.fecha)}"/>
-                                                    </p:column>
-                                                    <p:column rendered="#{sesionC.verificarTipo()}">
-                                                        <p:commandButton icon="fa fa-fw fa-remove" update="@form,growl" actionListener="#{rutaC.eliminaPublicacion(pub)}">
-                                                            <f:param name="rutaId" value="#{rutaC.ruta.idRuta}"/>
-                                                        </p:commandButton>
-                                                    </p:column>
-                                                </p:dataTable>
-                                            </h:form>
-                                        </p:tab>
-                                    </p:tabView>
-                                </p:layoutUnit>
-                            </p:layout>
+                <p:growl id="growl" showDetail="true" sticky="false" life="3000" />
+                <div id="east-r">
+                    <h:form>
+                        <h2 style="color:white; font-weight: bold; position: absolute; margin-top: -40px; font-size: 20px;">Ruta de #{rutaC.ruta.automovil.chofer}</h2>
+                        <p:gmap id="gmap" center="19.3241874,-99.1789797" zoom="12" type="ROADMAP" style="width:300px;height:300px; border-radius: 5px; margin-top: 50px;" model="#{rutaC.getModeloMapa()}" />
+                        <p:commandButton styleClass="boton-ed-perfil" style="width:300px;" value="Expandir" type="button" onclick="PF('dlg').show();" />
+                    </h:form>
+                </div>
+                <div id="west-r">
+                    <p:tabView id="tab">
+                        <p:tab title="Horario">
+                            <h:panelGrid columns="2" styleClass="mi-panel-grid2"> 
+                                <p:outputLabel value="Lunes" styleClass="minorda" style="color:black; font-weight: normal; margin-right: 100px;"/>
+                                <p:outputLabel value="#{rutaC.formateaHora(rutaC.horario.lunes)}" styleClass="minorda" style="color:black; font-weight: normal;"/>
+                                <p:outputLabel value="Martes" styleClass="minorda" style="color:black; font-weight: normal;"/>
+                                <p:outputLabel value="#{rutaC.formateaHora(rutaC.horario.martes)}" styleClass="minorda" style="color:black; font-weight: normal;"/>
+                                <p:outputLabel value="Miércoles" styleClass="minorda" style="color:black; font-weight: normal;"/>
+                                <p:outputLabel value="#{rutaC.formateaHora(rutaC.horario.miercoles)}" styleClass="minorda" style="color:black; font-weight: normal;"/>
+                                <p:outputLabel value="Jueves" styleClass="minorda" style="color:black; font-weight: normal;"/>
+                                <p:outputLabel value="#{rutaC.formateaHora(rutaC.horario.jueves)}" styleClass="minorda" style="color:black; font-weight: normal;"/>
+                                <p:outputLabel value="Viernes" styleClass="minorda" style="color:black; font-weight: normal;"/>
+                                <p:outputLabel value="#{rutaC.formateaHora(rutaC.horario.viernes)}" styleClass="minorda" style="color:black; font-weight: normal;"/>
+                                <p:outputLabel value="Sábado" styleClass="minorda" style="color:black; font-weight: normal;"/>
+                                <p:outputLabel value="#{rutaC.formateaHora(rutaC.horario.sabado)}" styleClass="minorda" style="color:black; font-weight: normal;"/>
+                            </h:panelGrid>
+                        </p:tab>
+                        <p:tab title="Pasajeros">
                             <h:form>
-                                <p:dialog header="Publicar entrada" widgetVar="dlg-pub" modal="true" height="500px" width="600px">
-                                    <p:outputLabel for="titulo" value="Título" /> <br></br>
-                                    <p:inputText id="titulo" value="#{rutaC.boletin.titulo}" /><br></br>
-                                    <p:inputTextarea value="#{rutaC.boletin.contenido}" /><br></br>
-                                    <p:commandButton value="Publicar" update="tab:formulario" actionListener="#{rutaC.publicar()}" onclick="PF('dlg-pub').hide()" >
-                                        <f:param name="rutaId" value="#{rutaC.ruta.idRuta}" />
-                                    </p:commandButton>
-                                </p:dialog>
+                                <p:dataTable value="#{rutaC.lstPasajeros}" var="rPasajero" widgetVar="tablaPasajeros">
+                                    <p:column headerText="Pasajero">
+                                        <p:link value="#{rutaC.getPasajeroNombre(rPasajero)}" outcome="PerfilPasajeroIH">
+                                            <f:param name="pasajeroId" value="#{rPasajero.id.idPasajero}" />
+                                        </p:link>
+                                    </p:column>
+                                    <p:column headerText="Día">
+                                        <p:outputLabel value="#{rPasajero.id.dia}" styleClass="minorda" style="color:black; font-weight: normal;"/>
+                                    </p:column>
+                                    <p:column headerText="Hora">
+                                        <p:outputLabel value="#{rutaC.getPasajeroHora(rPasajero)}" styleClass="minorda" style="color:black; font-weight: normal;"/>
+                                    </p:column>
+                                    <p:column rendered="#{sesionC.verificarTipo() and rutaC.verificarMiembro(sesionC.verificarTipo(),sesionC.chofer,sesionC.pasajero)}">
+                                        <p:commandButton icon="fa fa-fw fa-remove" update="@form,growl" styleClass="boton-exp-rutas2" style="margin-top: 0px; height: 25px; width: 25px;" actionListener="#{rutaC.eliminarPasajero(rPasajero)}">
+                                            <f:param name="rutaId" value="#{rutaC.ruta.idRuta}" />
+                                        </p:commandButton>
+                                    </p:column>
+                                </p:dataTable>
                             </h:form>
-                            <p:dialog header="Ruta de #{rutaC.ruta.automovil.chofer.cnombre}" widgetVar="dlg" modal="true" height="500px" width="1000px">
-                                <p:gmap id="gmap-dlg" center="19.3241874,-99.1789797" zoom="12" type="ROADMAP" style="width:100%;height:100%" model="#{rutaC.getModeloMapa()}" />
-                            </p:dialog>
+                        </p:tab>
+                        <p:tab title="Boletín">
 
-                        </div>
+                            <h:form id="formulario" rendered="#{rutaC.verificarMiembro(sesionC.verificarTipo(),sesionC.chofer,sesionC.pasajero)}">
+                                <center>
+                                    <p:commandButton value="Publicar entrada" type="button" onclick="PF('dlg-pub').show();" styleClass="boton-exp-rutas"
+                                                     rendered="#{sesionC.verificarTipo()}" style="width: 458px;
+                                                     background: -moz-linear-gradient(141deg, #5e78d4 0%, #6887b7 51%, #7089de 75%) !important;
+                                                     background: -webkit-linear-gradient(141deg, #5e78d4 0%, #6887b7 51%, #7089de 75%) !important; border: none !important; margin-top: 10px;"/>
+                                </center>
+                                <p:dataTable value="#{rutaC.lstBoletin}" var="pub" widgetVar="boletin">
+                                    <p:column>
+                                        <div class="panel panel-default" id="panel-notif" style="width: 458px;">
+                                            <div class="panel-heading" style="height:30px; padding-top: 5px;">
+                                                <h3 class="panel-title">
 
-                    </div>
 
-                </section>
+                                                    <p:outputLabel value="Fecha: #{rutaC.formateaFecha(pub.fecha)}" styleClass="minordb" style="font-size: 15px; color: #434b51; font-weight: normal;"/>
+                                                    <p:commandButton rendered="#{sesionC.verificarTipo()}" icon="fa fa-fw fa-remove" update="@form,growl"
+                                                                     actionListener="#{rutaC.eliminaPublicacion(pub)}" style="float:right; margin-top: 0px; width: 20px; height: 20px;"
+                                                                     styleClass="boton-exp-rutas2">
+                                                        <f:param name="rutaId" value="#{rutaC.ruta.idRuta}"/>
+                                                    </p:commandButton>
+                                                </h3>
+                                            </div>
+                                            <div class="panel-body">
+                                                <h4  style="font-family: 'Karla', sans-serif; font-weight: bold; font-size: 14px; margin-top: 0px; color:black;">
+                                                    #{pub.titulo}
+                                                </h4>
+                                                <p:outputLabel value="#{pub.contenido}" styleClass="minordb" style="font-weight: normal;"/>
+
+                                            </div>
+                                        </div>
+                                    </p:column>
+                                </p:dataTable>
+                            </h:form>
+                        </p:tab>
+                    </p:tabView>
+                </div>
+                <h:form>
+                    <p:dialog header="Publicar entrada" widgetVar="dlg-pub" modal="true" height="270" width="350">
+                        <h:panelGrid columns="1" styleClass="mi-panel-grid">
+                            <p:outputLabel for="titulo" value="Título" />
+                            <p:inputText id="titulo" value="#{rutaC.boletin.titulo}" style="width: 300px;" />
+                            <p:outputLabel for="titulo" value="Contenido" />
+                            <p:inputTextarea value="#{rutaC.boletin.contenido}" style="width: 300px;" />
+                            <p:commandButton styleClass="boton-exp-rutas" style="width:300px; margin-top: 10px;" value="Publicar" update="tab:formulario" actionListener="#{rutaC.publicar()}" onclick="PF('dlg-pub').hide()" >
+                                <f:param name="rutaId" value="#{rutaC.ruta.idRuta}" />
+                            </p:commandButton>
+                        </h:panelGrid>
+                    </p:dialog>
+                </h:form>
+                <p:dialog header="Ruta de #{rutaC.ruta.automovil.chofer.cnombre}" widgetVar="dlg" modal="true" height="500px" width="1000px">
+                    <p:gmap id="gmap-dlg" center="19.3241874,-99.1789797" zoom="12" type="ROADMAP" style="width:100%;height:100%" model="#{rutaC.getModeloMapa()}" />
+                </p:dialog>
 
             </ui:define>
         </ui:composition>

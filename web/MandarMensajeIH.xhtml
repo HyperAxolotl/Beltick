@@ -22,7 +22,7 @@
                         <div class="cuadro-mensaje">
                             <h:panelGrid columns="1" rendered="#{sesionC.verificarSesion() and sesionC.verificarTipo()}">             
 
-                                <p:outputLabel value="Para: #{mandarMensajeC.pasajero.pnombre}" style="font-size: 17px; font-family: 'Karla', sans-serif; color: gray; margin-left: 5px; margin-bottom: 10px;"/>
+                                <p:outputLabel value="Para: #{mandarMensajeC.pasajero}" style="font-size: 17px; font-family: 'Karla', sans-serif; color: gray; margin-left: 5px; margin-bottom: 10px;"/>
 
                                 <h:panelGrid columns="2" styleClass="mi-panel-grid">
                                     <p:outputLabel for="asuntoP" value="Asunto" />
@@ -60,12 +60,12 @@
                             </h:panelGrid>
                         </div>
                         <p:dialog id="dialogTest" header="Exito" widgetVar="dlg2" modal="true"  draggable="false"  
-                                  resizable="false" closable="false" height="100" visible="#{mandarMensajeC.exito}">
+                                  resizable="false" closable="false" height="130" style="padding-bottom: 10px;" visible="#{mandarMensajeC.exito}">
                             <p:messages />
-                            <p:button value="Cerrar" onclick="PF('dlg2').hide()" outcome="PerfilChoferIH" rendered="#{sesionC.verificarTipo() eq false}">
+                            <p:button styleClass="boton-ed-perfil" value="Cerrar" onclick="PF('dlg2').hide()" outcome="PerfilChoferIH" rendered="#{sesionC.verificarTipo() eq false}">
                                 <f:param name="choferId" value="#{mandarMensajeC.chofer.idChofer}" />
                             </p:button> 
-                            <p:button value="Cerrar" onclick="PF('dlg2').hide()" outcome="PerfilPasajeroIH" rendered="#{sesionC.verificarTipo()}">
+                            <p:button styleClass="boton-ed-perfil" value="Cerrar" onclick="PF('dlg2').hide()" outcome="PerfilPasajeroIH" rendered="#{sesionC.verificarTipo()}">
                                 <f:param name="pasajeroId" value="#{mandarMensajeC.pasajero.idPasajero}" />
                             </p:button>
                         </p:dialog>

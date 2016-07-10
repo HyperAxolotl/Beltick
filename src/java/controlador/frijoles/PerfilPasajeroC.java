@@ -194,4 +194,19 @@ public class PerfilPasajeroC implements Serializable {
         Date = ayudante.horaMartes(pasajero.getIdPasajero());
         return horloge.formateaHora();
     }*/
+    
+    public List<CalificacionPasajero> getCalificaciones() {
+        calificaciones = ayudante.listarCalificaciones(pasajero.getIdPasajero());
+        return calificaciones;
+    }
+    
+    public String formateoDia(Date d){
+        SimpleDateFormat dt1 = new SimpleDateFormat("dd-MM-yyyy");
+        return dt1.format(d);
+    }
+    
+    public void listarCalificaciones() {
+        calificaciones = ayudante.listarCalificaciones(pasajero.getIdPasajero());
+        System.out.println("Estamos aqui...");
+    }
 }

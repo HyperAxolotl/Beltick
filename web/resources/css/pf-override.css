@@ -76,10 +76,10 @@ joder nada que tenían*/
     padding: 7px;
 }
 
-.mi-tr, .ui-inputfield.ui-widget.ui-state-default.ui-corner-all.hasDatepicker {
-    box-shadow: none;
-    text-align: left;
-    border-color: #D2D9DE;
+.mi-tr, .ui-inputfield.ui-widget.ui-state-default.ui-corner-all.hasDatepicker, .ui-inputfield.ui-inputtext.ui-widget.ui-state-default.ui-corner-all.pe-inputNumber {
+    box-shadow: none !important;
+    text-align: left !important;
+    border-color: #D2D9DE !important;
     font-family: 'Pontano Sans', sans-serif !important;
 }
 

@@ -30,8 +30,12 @@
                                     </p:link>
                                 </p:column>
 
-                                <p:column headerText="Dia -> hora">
-                                    <p:outputLabel value="#{solicitud.id.dia} -> #{administrarSolicitudesC.getHora(solicitud)}" />
+                                <p:column headerText="Dia">
+                                    <p:outputLabel value="#{solicitud.id.dia}" style="font-weight: normal;" />
+                                </p:column>
+                                
+                                <p:column headerText="Hora">
+                                    <p:outputLabel value="#{administrarSolicitudesC.getHora(solicitud)}" style="font-weight: normal;" />
                                 </p:column>
 
                                 <p:column headerText="Acción">
