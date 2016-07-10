@@ -283,7 +283,8 @@ html {
 #west { 
     margin:0;    
     width:60em; 
-    height:100vh; 
+    min-height:100vh; 
+    height: auto;
     float:right; 
     background: white;
     padding-left: 50px;
