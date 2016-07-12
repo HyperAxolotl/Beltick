@@ -43,12 +43,10 @@
                                                 <div class="panel-body">
                                                     <div class="media">
                                                         <div class="media-left media-middle">
-                                                            <c:if test="#{perfilC.verificarImagenChofer(pc.chofer.idChofer) eq false}" >
-                                                                <p:graphicImage id="imagene" library="imagenes" name="foto_usuario/usuario.png" width="100px" height="100px"  />
-                                                            </c:if>
-                                                            <c:if test="#{perfilC.verificarImagenChofer(pc.chofer.idChofer)}" >
-                                                                <o:graphicImage id="img" value="#{imagenC.getImagen(perfilC.getImagenChofer(pc.chofer.idChofer))}" height="100px" width="100px" />
-                                                            </c:if>
+                                                                <p:graphicImage id="imagene" library="imagenes" name="foto_usuario/usuario.png" rendered="#{ empty pc.imagen.idImagen}" width="100px" height="100px"  />
+                                                            
+                                                                <o:graphicImage id="img" value="#{imagenC.getImagen(pc.imagen.idImagen)}" rendered="#{not empty pc.imagen.idImagen}" height="100px" width="100px" style="border-radius: 5px; margin-bottom: 4px;" />
+                                                           
                                                             <p:rating value="#{perfilC.getCalificacionChofer(pc.chofer)}" readonly="true"/>
                                                         </div>
                                                         <div class="media-body">
@@ -71,7 +69,7 @@
                                                 </div>
                                             </div>
                                         </p:column>
-                                        
+
                                         <p:column filterBy="#{pc.chofer.cnombre}" visible="false"/>
                                         <p:column filterBy="#{pc.chofer.capp}" visible="false"/>
                                         <p:column filterBy="#{pc.chofer.capm}" visible="false"/>
@@ -105,12 +103,9 @@
                                                 <div class="panel-body">
                                                     <div class="media">
                                                         <div class="media-left media-middle">
-                                                            <c:if test="#{perfilC.verificarImagenPasajero(pp.pasajero.idPasajero) eq false}" >
-                                                                <p:graphicImage id="imagene" library="imagenes" name="foto_usuario/usuario.png" width="100px" height="100px"  />
-                                                            </c:if>
-                                                            <c:if test="#{perfilC.verificarImagenPasajero(pp.pasajero.idPasajero)}" >
-                                                                <o:graphicImage id="img" value="#{imagenC.getImagen(perfilC.getImagenPasajero(pp.pasajero.idPasajero))}" height="100px" width="100px" />
-                                                            </c:if>
+                                                            <p:graphicImage id="imagene" library="imagenes" rendered="#{empty pp.imagen.idImagen}" name="foto_usuario/usuario.png" width="100px" height="100px" />
+                                                            <o:graphicImage id="img" value="#{imagenC.getImagen(pp.imagen.idImagen)}" rendered="#{not empty pp.imagen.idImagen}" height="100px" width="100px" style="border-radius: 5px; margin-bottom: 4px;" />
+
                                                             <p:rating value="#{perfilC.getCalificacionPasajero(pp.pasajero)}" readonly="true"/>
                                                         </div>
                                                         <div class="media-body">
@@ -133,7 +128,7 @@
                                                 </div>
                                             </div>
                                         </p:column>
-                                        
+
                                         <p:column filterBy="#{pp.pasajero.pnombre}" visible="false"/>
                                         <p:column filterBy="#{pp.pasajero.papp}" visible="false"/>
                                         <p:column filterBy="#{pp.pasajero.papm}" visible="false"/>
