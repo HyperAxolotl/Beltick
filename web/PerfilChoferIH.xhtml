@@ -110,7 +110,7 @@
 
                         <!--<h:form  style="position: absolute;">-->
 
-                        <p:gmap rendered="#{perfilChoferC.tieneRuta()}" id="gmap" center="19.3241874,-99.1789797" zoom="12" type="ROADMAP" style="width:400px;height:300px;position:absolute; margin-top: 130px; margin-left: 370px; border-radius: 5px;" model="#{perfilChoferC.getModeloMapa()}" />
+                        <p:gmap rendered="#{perfilChoferC.tieneRuta()}" id="gmap" center="19.3241874,-99.1789797" zoom="12" type="ROADMAP" style="width:25%;height:300px;position:absolute; margin-top: 130px; margin-left: 29%; border-radius: 5px;" model="#{perfilChoferC.getModeloMapa()}" />
                         <div style="margin-left: 370px; margin-bottom: -200px; margin-top: 430px; position: absolute;">
                             <p:commandButton rendered="#{perfilChoferC.tieneRuta()}" icon="fa fa-search-plus" id="expandir" styleClass="boton-exp-rutas2" onclick="PF('dlg').show();" style="align-content: center;">
                                 <f:param name="choferId" value="#{perfilChoferC.chofer.idChofer}" />
