@@ -294,8 +294,7 @@ html {
 
 #panel-exp-rutas {
     width: 740px; 
-    border-radius: 0px; 
-    margin-left: -10px;
+    border-radius: 0px;
     margin-bottom: 0px;
 }
 
@@ -319,4 +318,8 @@ html {
 
 .ui-button-icon-left.ui-icon.ui-c, .ui-menuitem-icon.ui-icon {
     border-radius: 0px;
+}
+
+.ui-datatable-data.ui-widget-content td {
+    padding: 0px;
 }
