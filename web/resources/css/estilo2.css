@@ -254,7 +254,7 @@
 
 #east-pc {  
     padding:1em;  
-    width:32em; 
+    width:32%; 
     float:left;
     height: 100vh;
     padding-left: 150px;
@@ -263,7 +263,7 @@
 
 #west-pc { 
     margin:0;    
-    width:60em; 
+    width:60%; 
     height:550px; 
     float:right; 
     background: white;
@@ -288,7 +288,7 @@
     background: -webkit-linear-gradient(141deg, #35d2c8 0%, #48d2d2 51%, #47dae0 75%) !important;
     border-radius: 0px;
     position: absolute;
-    width: 60em;
+    width: 60%;
     margin-top: 40px;
     padding-bottom: 30px;
     padding-top: 15px;
