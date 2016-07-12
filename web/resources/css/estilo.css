@@ -274,7 +274,7 @@ html {
 
 #east {  
     padding:1em;  
-    width:30em; 
+    width:30%; 
     float:left; 
     margin-right:30px; 
     padding-left: 108px;
@@ -282,7 +282,7 @@ html {
 
 #west { 
     margin:0;    
-    width:60em; 
+    width:62%; 
     min-height:100vh; 
     height: auto;
     float:right; 
