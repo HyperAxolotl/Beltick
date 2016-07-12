@@ -175,18 +175,18 @@
                         <!--h:outputText value="Exito!!"/-->
                         <p:dataTable value="#{perfilPasajeroC.calificaciones}" paginator="true" paginatorPosition="bottom" var="cp" rows="5">
                             <p:column headerText="Nombre Chofer">
-                                <p:link value="#{cp.chofer}" outcome="PerfilChoferIH" >
+                                <p:link value="#{cp.chofer}" outcome="PerfilChoferIH" style="margin-left:7%" >
                                     <f:param name="choferId" value="#{cp.chofer.idChofer}" />
                                 </p:link>
                             </p:column>
                             <p:column headerText="Descripción"> 
-                                <p:outputLabel value="#{cp.descripcion}"/>
+                                <p:outputLabel value="#{cp.descripcion}" style="margin-left:7%"/>
                             </p:column>
                             <p:column headerText="Calificación"> 
-                                <p:rating value="#{cp.calificacion}" stars="5" cancel="false"/>
+                                <p:rating value="#{cp.calificacion}" stars="5" cancel="false" style="margin-left:7%"/>
                             </p:column>
                             <p:column headerText="Fecha"> 
-                                <p:outputLabel value="#{perfilPasajeroC.formateoDia(cp.fecha)}"/>
+                                <p:outputLabel value="#{perfilPasajeroC.formateoDia(cp.fecha)}" style="margin-left:7%"/>
                             </p:column>
                         </p:dataTable>
                     </p:dialog>

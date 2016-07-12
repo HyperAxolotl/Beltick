@@ -14,8 +14,10 @@
             <ui:define name="content">
                 <center>
                     <div id="container-notif" align="center">
-                        <h2 style="color:black; font-weight: bold; margin-right: 10px;">Solicitudes</h2>                            
-                        <hr style="width: 800px; margin-left: -100px; margin-bottom: 30px;"></hr>
+                        <center>
+                        <h2 style="color:black; font-weight: bold;">Solicitudes</h2>                            
+                        <hr style="width: 800px;margin-bottom: 30px; margin-left: -16.7%"></hr>
+                        </center>
                         <h:form id="administrarSolicitudes">
                             <p:growl id="growl" showDetail="true" sticky="false" life="3000" />
 
@@ -25,24 +27,26 @@
                                          paginator="true" paginatorPosition="bottom" rows="10" style="margin-bottom:20px" >
 
                                 <p:column headerText="Pasajero">
-                                    <p:link value="#{administrarSolicitudesC.getPasajeroNombre(solicitud)}" outcome="PerfilPasajeroIH" >
+                                    <p:link value="#{administrarSolicitudesC.getPasajeroNombre(solicitud)}" outcome="PerfilPasajeroIH" style="margin-left:7%" >
                                         <f:param name="pasajeroId" value="#{solicitud.pasajero.idPasajero}" />
                                     </p:link>
                                 </p:column>
 
                                 <p:column headerText="Dia">
-                                    <p:outputLabel value="#{solicitud.id.dia}" style="font-weight: normal;" />
+                                    <p:outputLabel value="#{solicitud.id.dia}" style="font-weight: normal; margin-left:7%" />
                                 </p:column>
                                 
                                 <p:column headerText="Hora">
-                                    <p:outputLabel value="#{administrarSolicitudesC.getHora(solicitud)}" style="font-weight: normal;" />
+                                    <p:outputLabel value="#{administrarSolicitudesC.getHora(solicitud)}" style="font-weight: normal; margin-left:7%"  />
                                 </p:column>
 
                                 <p:column headerText="Acción">
-                                    <p:commandButton  icon="fa fa-check" update="@form" disabled="#{administrarSolicitudesC.verificarDisponibilidad(solicitud) eq false}"
-                                                      actionListener="#{administrarSolicitudesC.registrarSolicitud(solicitud)}" styleClass="boton-exp-rutas2" style="margin-top:0px;" />
-                                    <p:commandButton  icon="fa fa-close" update="@form" 
-                                                      actionListener="#{administrarSolicitudesC.eliminarSolicitud(solicitud)}" styleClass="boton-exp-rutas2" style="margin-top:0px;" />
+                                    <p:commandButton id="aceptar" icon="fa fa-check" update="@form" disabled="#{administrarSolicitudesC.verificarDisponibilidad(solicitud) eq false}"
+                                                      actionListener="#{administrarSolicitudesC.registrarSolicitud(solicitud)}" styleClass="boton-exp-rutas2" style="margin-top:0px; margin-left:7%" />
+                                    <p:tooltip for="aceptar" value="Aceptar"/>
+                                    <p:commandButton id="rechazar" icon="fa fa-close" update="@form" 
+                                                      actionListener="#{administrarSolicitudesC.eliminarSolicitud(solicitud)}" styleClass="boton-exp-rutas2" style="margin-top:0px; margin-left:7%" />
+                                    <p:tooltip for="rechazar" value="Rechazar"/>
                                 </p:column>
 
                             </p:dataTable>

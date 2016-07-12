@@ -62,6 +62,8 @@
                                     <h:panelGrid columns="1" styleClass="mi-panel-grid4">
                                         <p:outputLabel styleClass="datab" value="No. Cuenta"/>
                                         <h:outputText styleClass="minordb" value="#{perfilChoferC.chofer.cnoCuenta}"/>
+                                        <p:outputLabel styleClass="datab" value="Edad"/>
+                                        <h:outputText styleClass="minordb" value="#{perfilChoferC.edad}"/>
                                         <p:outputLabel styleClass="datab" value="Usuario desde"/>
                                         <h:outputText styleClass="minordb" value="#{perfilChoferC.fechaReg()}"/>
                                         <p:outputLabel styleClass="datab" value="Sobre mí"/>
@@ -150,18 +152,18 @@
                         <!--h:outputText value="Exito!!"/-->
                         <p:dataTable value="#{perfilChoferC.calificaciones}" paginator="true" paginatorPosition="bottom" var="cc" rows="5">
                             <p:column headerText="Nombre Pasajero">
-                                <p:link value="#{cc.pasajero.pnombre} #{cc.pasajero.papp}" outcome="PerfilPasajeroIH" >
+                                <p:link value="#{cc.pasajero.pnombre} #{cc.pasajero.papp}" outcome="PerfilPasajeroIH" style="margin-left:7%">
                                     <f:param name="pasajeroId" value="#{cc.pasajero.idPasajero}" />
                                 </p:link>
                             </p:column>
                             <p:column headerText="Descripción"> 
-                                <p:outputLabel value="#{cc.descripcion}"/>
+                                <p:outputLabel value="#{cc.descripcion}" style="margin-left:7%"/>
                             </p:column>
                             <p:column headerText="Calificación"> 
-                                <p:rating value="#{cc.calificacion}" stars="5" cancel="false"/>
+                                <p:rating value="#{cc.calificacion}" stars="5" cancel="false" style="margin-left:7%"/>
                             </p:column>
                             <p:column headerText="Fecha"> 
-                                <p:outputLabel value="#{perfilChoferC.formateoDia(cc.fecha)}"/>
+                                <p:outputLabel value="#{perfilChoferC.formateoDia(cc.fecha)}" style="margin-left:7%"/>
                             </p:column>
                         </p:dataTable>
                     </p:dialog>

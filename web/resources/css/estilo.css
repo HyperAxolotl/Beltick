@@ -228,7 +228,6 @@ html {
 #panel-perfiles {
     width: 616px; 
     border-radius: 0px; 
-    margin-left: -10px;
     margin-bottom: 0px;
 }
 
@@ -321,5 +320,6 @@ html {
 }
 
 .ui-datatable-data.ui-widget-content td {
-    padding: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
 }
