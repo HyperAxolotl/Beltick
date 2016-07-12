@@ -37,6 +37,7 @@ public class CalificacionL implements Serializable {
             if (l.size() > 0) {
                 CalificacionChofer cp = l.get(0);
                 cp.setCalificacion(c.getCalificacion());
+                cp.setDescripcion(c.getDescripcion());
                 cp.setFecha(fecha);
                 con.update(cp);
             } else {
@@ -98,6 +99,7 @@ public class CalificacionL implements Serializable {
             if (l.size() > 0) {
                 CalificacionPasajero cp = l.get(0);
                 cp.setCalificacion(c.getCalificacion());
+                cp.setDescripcion(c.getDescripcion());
                 cp.setFecha(fecha);
                 con.update(cp);
             } else {

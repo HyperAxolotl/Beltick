@@ -151,20 +151,26 @@
                     <p:dialog modal="true" widgetVar="califs" draggable="false" hideEffect="fade" style="align-content: center;" closable="true" rendered="true" height="500px" width="500px">
                         <!--h:outputText value="Exito!!"/-->
                         <p:dataTable value="#{perfilChoferC.calificaciones}" paginator="true" paginatorPosition="bottom" var="cc" rows="5">
-                            <p:column headerText="Nombre Pasajero">
-                                <p:link value="#{cc.pasajero.pnombre} #{cc.pasajero.papp}" outcome="PerfilPasajeroIH" style="margin-left:7%">
-                                    <f:param name="pasajeroId" value="#{cc.pasajero.idPasajero}" />
-                                </p:link>
+                            <p:column>
+                                <div class="panel panel-default" id="panel-notif" style="width: 100%;">
+                                    <div class="panel-heading" style="height:30px; padding-top: 5px;">
+                                        <h3 class="panel-title">
+                                            <p:link value="#{cc.pasajero}" outcome="PerfilPasajeroIH" style="font-family: 'Arimo', sans-serif; font-weight: bold; font-size: 13px; margin-top: 0px;">
+                                                <f:param name="pasajeroId" value="#{cc.pasajero.idPasajero}" />
+                                            </p:link>
+                                            <p:outputLabel value="#{perfilChoferC.formateoDia(cc.fecha)}" style="float:right; font-family: 'Arimo', sans-serif; font-weight: bold; font-size: 13px; margin-top: 0px;"/>
+                                        </h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <h4  style="margin-top: 0px;">
+                                            <p:rating value="#{cc.calificacion}" stars="5" cancel="false" />
+                                        </h4>
+                                        <br></br>
+                                        <p:outputLabel value="#{cc.descripcion}" style="font-family: 'Arimo', sans-serif; font-size: 14px; font-weight: normal"/>
+                                    </div>
+                                </div>
                             </p:column>
-                            <p:column headerText="Descripción"> 
-                                <p:outputLabel value="#{cc.descripcion}" style="margin-left:7%"/>
-                            </p:column>
-                            <p:column headerText="Calificación"> 
-                                <p:rating value="#{cc.calificacion}" stars="5" cancel="false" style="margin-left:7%"/>
-                            </p:column>
-                            <p:column headerText="Fecha"> 
-                                <p:outputLabel value="#{perfilChoferC.formateoDia(cc.fecha)}" style="margin-left:7%"/>
-                            </p:column>
+
                         </p:dataTable>
                     </p:dialog>
                     <!--Aqui termina-->

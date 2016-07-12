@@ -44,18 +44,18 @@
                             <h:form>
                                 <p:dataTable value="#{rutaC.lstPasajeros}" var="rPasajero" widgetVar="tablaPasajeros">
                                     <p:column headerText="Pasajero">
-                                        <p:link value="#{rutaC.getPasajeroNombre(rPasajero)}" outcome="PerfilPasajeroIH">
+                                        <p:link value="#{rutaC.getPasajeroNombre(rPasajero)}" outcome="PerfilPasajeroIH" style="margin-left:7%">
                                             <f:param name="pasajeroId" value="#{rPasajero.id.idPasajero}" />
                                         </p:link>
                                     </p:column>
                                     <p:column headerText="Día">
-                                        <p:outputLabel value="#{rPasajero.id.dia}" styleClass="minorda" style="color:black; font-weight: normal;"/>
+                                        <p:outputLabel value="#{rPasajero.id.dia}" styleClass="minorda" style="color:black; font-weight: normal; margin-left:7%"/>
                                     </p:column>
                                     <p:column headerText="Hora">
-                                        <p:outputLabel value="#{rutaC.getPasajeroHora(rPasajero)}" styleClass="minorda" style="color:black; font-weight: normal;"/>
+                                        <p:outputLabel value="#{rutaC.getPasajeroHora(rPasajero)}" styleClass="minorda" style="color:black; font-weight: normal; margin-left:7%"/>
                                     </p:column>
                                     <p:column rendered="#{sesionC.verificarTipo() and rutaC.verificarMiembro(sesionC.verificarTipo(),sesionC.chofer,sesionC.pasajero)}">
-                                        <p:commandButton icon="fa fa-fw fa-remove" update="@form,growl" styleClass="boton-exp-rutas2" style="margin-top: 0px; height: 25px; width: 25px;" actionListener="#{rutaC.eliminarPasajero(rPasajero)}">
+                                        <p:commandButton icon="fa fa-fw fa-remove" update="@form,growl" styleClass="boton-exp-rutas2" style="margin-top: 0px; height: 25px; width: 25px; margin-left:7%" actionListener="#{rutaC.eliminarPasajero(rPasajero)}">
                                             <f:param name="rutaId" value="#{rutaC.ruta.idRuta}" />
                                         </p:commandButton>
                                     </p:column>
@@ -67,13 +67,13 @@
                             <h:form id="formulario" rendered="#{rutaC.verificarMiembro(sesionC.verificarTipo(),sesionC.chofer,sesionC.pasajero)}">
                                 <center>
                                     <p:commandButton value="Publicar entrada" type="button" onclick="PF('dlg-pub').show();" styleClass="boton-exp-rutas"
-                                                     rendered="#{sesionC.verificarTipo()}" style="width: 458px;
+                                                     rendered="#{sesionC.verificarTipo()}" style="width: 100%;
                                                      background: -moz-linear-gradient(141deg, #5e78d4 0%, #6887b7 51%, #7089de 75%) !important;
                                                      background: -webkit-linear-gradient(141deg, #5e78d4 0%, #6887b7 51%, #7089de 75%) !important; border: none !important; margin-top: 10px;"/>
                                 </center>
                                 <p:dataTable value="#{rutaC.lstBoletin}" var="pub" widgetVar="boletin">
                                     <p:column>
-                                        <div class="panel panel-default" id="panel-notif" style="width: 458px;">
+                                        <div class="panel panel-default" id="panel-notif" style="width: 100%;">
                                             <div class="panel-heading" style="height:30px; padding-top: 5px;">
                                                 <h3 class="panel-title">
 

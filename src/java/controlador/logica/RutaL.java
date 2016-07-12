@@ -36,7 +36,7 @@ public class RutaL implements Serializable {
     private List<Ruta> lstRutas;
     private List<PasajeroRuta> lstPasajeros;
 
-    public List<Ruta> listar() throws Exception {
+    public List<Ruta> listar() {
         try {
             if (con == null || !con.isOpen()) {
                 con = ConexionBD.getSessionFactory().openSession();

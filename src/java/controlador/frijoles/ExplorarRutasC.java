@@ -32,6 +32,9 @@ public class ExplorarRutasC implements Serializable {
     public ExplorarRutasC() {
         ruta = new Ruta();
         ayudante = new RutaL();
+        try {
+        lstRutas = ayudante.listar();
+        } catch(Exception e){}
     }
 
     public double getLat() {
@@ -70,7 +73,7 @@ public class ExplorarRutasC implements Serializable {
         return lstRutas;
     }
 
-    public void listar() throws Exception {
+    public void listar() {
         lstRutas = ayudante.listar();
     }
 
